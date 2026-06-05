@@ -1,0 +1,9 @@
+quest_id: Bm5
+quest_name: 海上護衛強化月間
+category: monthly
+requirement: 1-5，10次A胜
+maps:
+- map_id: 1-5
+  fleet_hint: 4DE/DD
+  synergy_quests:
+  - Bw10

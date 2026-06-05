@@ -1,0 +1,51 @@
+map: 1-2
+source: nga_import
+notes: 南西諸島沖，1CL+4DD固定最短路线A-E直达boss
+presets:
+- name: 萌新推图标准队
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 五十鈴
+      notes: 旗舰
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: 装备2门主炮，夜战触发夜战二连
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - E
+  equip_notes: CL装备2门14cm単装砲，DD装备2门12.7cm単装砲，不携带鱼雷，夜战触发夜战二连
+  example:
+  - ship: 五十鈴
+    equips:
+    - 14cm単装砲
+    - 14cm単装砲
+  - ship: 白露
+    equips:
+    - 12.7cm単装砲
+    - 12.7cm単装砲
+  - ship: 時雨
+    equips:
+    - 12.7cm単装砲
+    - 12.7cm単装砲
+  - ship: 満潮
+    equips:
+    - 12.7cm単装砲
+    - 12.7cm単装砲
+  - ship: 霞
+    equips:
+    - 12.7cm単装砲
+    - 12.7cm単装砲
+  tags:
+  - 固定路线
+  - 最短路线
+  special_attacks: []

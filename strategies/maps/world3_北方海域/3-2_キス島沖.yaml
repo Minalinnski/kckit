@@ -1,0 +1,256 @@
+map: 3-2
+source: nga_import
+notes: キス島沖 — 水雷戦隊向けマップ、DD/CL/AOのみでboss到達可能、boss節点L
+presets:
+- name: 萌新推图 1CL+5DD 高速
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      notes: 旗舰、最高運の艦推奨、発煙装置装備
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      notes: 電探1個装備
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      notes: 双主砲+発煙装置推奨、鱼雷・第三門炮不推奨
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - G
+    - F
+    - L
+  equip_notes: 電探1個必須（H点回避35%）、全員双主砲+発煙装置、第三門炮・鱼雷不可、CL副砲で命中補強可
+  example:
+  - ship: 嵐改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 発煙装置(煙幕)
+  - ship: 五十鈴改二
+    equips:
+    - 15.5cm三連装副砲
+    - 15.5cm三連装副砲
+    - 21号対空電探
+  - ship: 時雨改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 発煙装置(煙幕)
+  - ship: 満潮改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 発煙装置(煙幕)
+  - ship: 夕立改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 発煙装置(煙幕)
+  - ship: 綾波改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 発煙装置(煙幕)
+  tags:
+  - 萌新
+  - 高速
+  - H点回避35%
+  special_attacks: []
+- name: 飙船流 1CL+5DD 高速+
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速+
+      specific_ships:
+      - 阿武隈改二
+      notes: 旗舰推奨、開幕雷撃有り、甲標的+試製61cm六連装（酸素）魚雷装備
+    - ship_class:
+      - DD
+      count: 5
+      speed: 高速+
+      specific_ships:
+      - 夕立改二
+      notes: 高速+必須、電探1個装備、缶+タービンで高速+達成
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - E
+    - F
+    - L
+  equip_notes: 全員高速+必須、電探1個必須、H点・撸爷回避固定、缶+タービン多数装備で速力確保
+  example:
+  - ship: 阿武隈改二
+    equips:
+    - 甲標的 甲型
+    - 試製61cm六連装(酸素)魚雷
+    - 新型高温高圧缶
+  - ship: 夕立改二
+    equips:
+    - GFCS Mk.37
+    - 改良型艦本式タービン
+    - 新型高温高圧缶
+  - ship: 夕立改二
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 改良型艦本式タービン
+    - 新型高温高圧缶
+  - ship: 夕立改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 改良型艦本式タービン
+    - 新型高温高圧缶
+  - ship: 夕立改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 改良型艦本式タービン
+    - 新型高温高圧缶
+  - ship: 夕立改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 改良型艦本式タービン
+    - 新型高温高圧缶
+  tags:
+  - 高速+
+  - C-E-F-L固定
+  - 北方海域警備
+  special_attacks: []
+- name: 補給艦流 速吸/山汐丸+1CL+4DD 高速
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AO
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 山汐丸
+      - 速吸改
+      notes: 高速化必須、艦載機（天山一二型（村田隊）等）装備で開幕攻撃可
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 阿武隈改二
+      notes: 開幕雷撃有り
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      specific_ships:
+      - 夕立改二
+      notes: 電探1個以上装備
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - G
+    - F
+    - L
+  equip_notes: AO高速化必須、電探1個必須、山汐丸は速吸より燃費良好で推奨、DDは12.7cm連装砲B型改四+C型改二+22号対水上電探改四で夜战連击
+  example:
+  - ship: 速吸改
+    equips:
+    - 天山一二型(村田隊)
+    - 天山一二型(村田隊)
+    - 新型高温高圧缶
+  - ship: 阿武隈改二
+    equips:
+    - 甲標的 甲型
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+  - ship: 夕立改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 12.7cm連装砲C型改二
+    - 22号対水上電探改四
+  - ship: 夕立改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 12.7cm連装砲C型改二
+    - 22号対水上電探改四
+  - ship: 夕立改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 12.7cm連装砲C型改二
+    - 22号対水上電探改四
+  - ship: 夕立改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 12.7cm連装砲C型改二
+    - 22号対水上電探改四
+  tags:
+  - 補給艦
+  - 高速
+  - 燃費重視
+  special_attacks: []
+- name: 最速 1CL+5DD 最速+4電探
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 最速
+      notes: 電探装備
+    - ship_class:
+      - DD
+      count: 5
+      speed: 最速
+      notes: 缶+タービン+電探で装備枠大量消費、計4電探必要
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - E
+    - F
+    - L
+  equip_notes: 電探4個必須でC-E-F-L固定（G点回避）、装備枠を缶・電探で占有し火力低下、非杂技党不推奨
+  example: []
+  tags:
+  - 最速
+  - C-E-F-L固定
+  - 杂技向け
+  special_attacks: []
+- name: 弾薬稼ぎ 単艦A-B
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      - CL
+      - CLT
+      - CA
+      - CAV
+      - CVL
+      - SS
+      - SSV
+      - AV
+      - DE
+      count: 1
+      notes: BB/CV系以外の単艦、損管/女神1個装備（消費しない）、Lv1狗粮可
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - B
+  equip_notes: 損管/女神1個装備で大破進撃可（消費なし）、旗舰単艦で资源点B到達、弾薬+4000/時（理論値）、大破または燃料切れ以外は弾薬取得可
+  example: []
+  tags:
+  - 弾薬稼ぎ
+  - 単艦
+  - 狗粮育成
+  special_attacks: []

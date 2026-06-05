@@ -1,0 +1,330 @@
+map: 6-1
+source: nga_import
+notes: 中部海域哨戒線。Boss点K。主要路线C-F-G-H-K（15%概率沟G-I）或A-F-G-H-K（鲸鱼流）。需要至少3SS通关。
+presets:
+- name: 萌新推图：3SS+CV+CL+CLT（C-F-G-H-K）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 60
+      specific_ships:
+      - 赤城改
+      notes: 搭载流星改×20、零式艦戦62型(爆戦)×20、流星改×32、試製烈風 後期型×10
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 65
+      specific_ships:
+      - 川内改二
+      notes: 20.3cm連装砲×2、零式水上偵察機
+    - ship_class:
+      - SS
+      count: 3
+      min_level: 30
+      specific_ships: []
+      notes: 雷装喂满即可，带甲標的 甲型或高雷装鱼雷
+    - ship_class:
+      - CLT
+      count: 1
+      min_level: 60
+      specific_ships:
+      - 北上改二
+      notes: 15.5cm三連装副砲×2、甲標的 甲型
+  requirements:
+    air_state: none
+    air_power_min: 69
+    los_formula: 4
+    los_min: 36.0
+    routing_nodes:
+    - C
+    - F
+    - G
+    - H
+    - K
+  equip_notes: C点69制空空確。Boss点放弃制空。索敵分歧点系数=4，索敵≥36。CV可带彩云避免T不利。索敵不足时SS带水侦或CV带彩云补索敵。
+  example:
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 零式艦戦62型(爆戦)
+    - 流星改
+    - 試製烈風 後期型
+  - ship: 川内改二
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 伊168
+    equips:
+    - 甲標的 甲型
+  - ship: 伊19
+    equips:
+    - 61cm五連装(酸素)魚雷
+  - ship: 伊58
+    equips:
+    - 甲標的 甲型
+  - ship: 北上改二
+    equips:
+    - 15.5cm三連装副砲
+    - 15.5cm三連装副砲
+    - 甲標的 甲型
+  tags:
+  - 萌新推图
+  - C-F-G-H-K
+  special_attacks: []
+- name: 鲸鱼流：AS+CL+4SS（A-F-G-H-K）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 迅鯨改
+      notes: 试制20.3cm(4号)連装砲×2、瑞雲改二(六三四空/熟練)、艦本新設計 増設装甲板(中型艦)；最脆弱放旗舰
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: 15.2cm連装砲改二×2、試製 夜間瑞雲(攻撃装備)、甲標的 丁型改(蛟龍改)、精鋭水雷戦隊 司令部
+    - ship_class:
+      - SS
+      count: 4
+      min_level: 99
+      specific_ships:
+      - 伊36改
+      - 伊58改
+      - 伊47改
+      - 呂500
+      notes: 后期型53cm艦首魚雷(8門)、熟練聴音員+後期型艦首魚雷(4門)、後期型潜艦搭載電探&逆探等；炸了轮换即可
+  requirements:
+    air_state: none
+    los_formula: 4
+    los_min: 25.0
+    routing_nodes:
+    - A
+    - F
+    - G
+    - H
+    - K
+  equip_notes: 鲸和矢矧各带一架瑞雲用于开幕爆炸。A路线绕过C点撸爷，道中少一战。AS带路回避C点和15%沟G-I。索敵分歧点系数=4，索敵≥25。
+  example:
+  - ship: 迅鯨改
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 瑞雲改二(六三四空/熟練)
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丁型改(蛟龍改)
+    - 精鋭水雷戦隊 司令部
+  - ship: 伊36改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 熟練聴音員+後期型艦首魚雷(4門)
+    - 後期型潜水艦搭載電探&逆探
+  - ship: 伊58改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 熟練聴音員+後期型艦首魚雷(6門)
+    - 後期型潜水艦搭載電探&逆探
+  - ship: 伊47改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 熟練聴音員+後期型艦首魚雷(4門)
+    - 後期型電探&逆探+通気管装備
+  - ship: 呂500
+    equips:
+    - 後期型艦首魚雷(6門)
+    - 後期型艦首魚雷(6門)
+    - 後期型電探&逆探+通気管装備
+  tags:
+  - 鲸鱼流
+  - A-F-G-H-K
+  - 迅鯨
+  - 矢矧改二乙
+  special_attacks: []
+- name: 开幕流：3SSV+CV+CL+CLT（C-F-G-H-K）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SSV
+      count: 1
+      specific_ships:
+      - 伊13改
+      notes: 強風改×2、後期型艦首魚雷(6門)；航空潜艦带水战提供制空
+    - ship_class:
+      - SS
+      count: 1
+      specific_ships:
+      - 伊47改
+      notes: 後期型53cm艦首魚雷(8門)×2
+    - ship_class:
+      - SSV
+      count: 1
+      specific_ships:
+      - 伊58改
+      notes: 後期型艦首魚雷(6門)×2；航空潜艦
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 加賀改二
+      notes: 天山一二型(村田隊)×20×2、彗星二二型(六三四空/熟練)×44、彗星(江草隊)×12、零式艦戦53型(岩本隊)MAX×3；放4号位抗伤。高搭载一航战改二最适合
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 15.2cm連装砲改二×2、零式水上偵察機11型乙(熟練)×2、甲標的 丁型改(蛟龍改)×2
+    - ship_class:
+      - CLT
+      count: 1
+      min_level: 60
+      specific_ships:
+      - 北上改二
+      notes: 20.3cm(3号)連装砲×2、甲標的 丙型；6号位CLT保底二連
+  requirements:
+    air_state: none
+    air_power_min: 126
+    los_formula: 4
+    los_min: 36.0
+    routing_nodes:
+    - C
+    - F
+    - G
+    - H
+    - K
+  equip_notes: K点126制空空優。索敵分歧点系数=4，索敵≥36。SS可带后期电探补索敵。CV带击坠回避补正高的攻击机。彩云可帯以避T不利。
+  example:
+  - ship: 伊13改
+    equips:
+    - 強風改
+    - 強風改
+    - 後期型艦首魚雷(6門)
+  - ship: 伊47改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 後期型艦首魚雷(6門)
+  - ship: 伊58改
+    equips:
+    - 後期型艦首魚雷(6門)
+    - 後期型艦首魚雷(6門)
+  - ship: 加賀改二
+    equips:
+    - 天山一二型(村田隊)
+    - 天山一二型(村田隊)
+    - 彗星二二型(六三四空/熟練)
+    - 彗星(江草隊)
+    - 零式艦戦53型(岩本隊)
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 北上改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 甲標的 丙型
+  tags:
+  - 开幕流
+  - C-F-G-H-K
+  - 矢矧改二乙
+  - 加賀改二
+  special_attacks: []
+- name: 炮击流：3SS+BBV伊勢改二+AV日進+CL（C-F-G-H-K）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SS
+      count: 3
+      specific_ships: []
+      notes: 不推荐SS背太多水战。可带呂500节省修理时间，追求输出换锅鸭
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 提供2轮炮击，带高级瑞云补制空。伊勢放在可炮击单位最前面（第二轮炮击先手）。不放旗舰位
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships:
+      - 日進
+      notes: 带双14cm改，开幕雷+夜战输出强。带昼战二連観測
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 能背2个水侦的4格高火力CL，提高全队观测射击触发率。带昼战二連観測
+  requirements:
+    air_state: none
+    air_power_min: 126
+    los_formula: 4
+    los_min: 36.0
+    routing_nodes:
+    - C
+    - F
+    - G
+    - H
+    - K
+  equip_notes: K点126制空空優。索敵分歧点系数=4，索敵≥36。伊勢改二带高级瑞雲（有击坠回避补正）。彩云必带（因T不利难打）。不推荐使用警戒阵（对大船回避提升低，雷击命中下降）。伊勢改二不足时带舰战。
+  example: []
+  tags:
+  - 炮击流
+  - C-F-G-H-K
+  - 伊勢改二
+  - 日進
+  special_attacks: []
+- name: 任务B91：4SS旗舰+CV+CL（C-F-G-H-K）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SS
+      count: 4
+      specific_ships: []
+      notes: 旗舰为SS/SSV（任务要求）
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships: []
+      notes: 高搭载空母
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 126
+    los_formula: 4
+    los_min: 36.0
+    routing_nodes:
+    - C
+    - F
+    - G
+    - H
+    - K
+  equip_notes: 任务B91：潜水艦隊、中部海域の哨戒を実施せよ！4SS/SSV旗舰，B胜以上。K点126空優或C点69空確。索敵分歧点系数=4，索敵≥36。15%沟G-I。
+  example: []
+  tags:
+  - 任务B91
+  - C-F-G-H-K
+  - 4SS旗舰
+  special_attacks: []

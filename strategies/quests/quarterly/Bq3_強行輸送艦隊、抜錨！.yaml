@@ -1,0 +1,10 @@
+quest_id: Bq3
+quest_name: 強行輸送艦隊、抜錨！
+category: quarterly
+requirement: 1-6，到达终点2次，需要至少2个AO或BBV
+maps:
+- map_id: 1-6
+  fleet_hint: 2AO+4DD
+  notes: F点83空优，25%沟K；或2BBV+1CL/AV+3DD，D点198空优，索敌>=32
+  synergy_quests:
+  - By2

@@ -1,0 +1,675 @@
+map: 5-1
+source: nga_import
+notes: 南方海域前面，boss点J，主要路线B-C-F-J和B-E-G-J，需制空和水上打击部队编成
+presets:
+- name: 萌新推图 B-C-F-J 空优配置
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 隼鷹改
+      notes: 旗舰，搭载舰战补制空
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - 長門改
+      notes: 41cm連装砲×2+零式水上偵察機+一式穿甲弾
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改
+      notes: 20.3cm連装砲×2+零式水上偵察機×2
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 川内改
+      notes: 20.3cm連装砲×2+零式水上偵察機
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 時雨改
+      - 満潮改
+      notes: 12.7cm連装砲×2+13号対空電探
+  requirements:
+    air_state: none
+    air_power_min: 126
+    enemy_air_power: 252
+    routing_nodes:
+    - B
+    - C
+    - F
+    - J
+  equip_notes: J点85%空優126、100%空優252。CVL搭载舰战补制空，制空战力132~133。索敌22.27。若CVL搭载低或舰战质量不足，可由最上携带水战/瑞云补制空。
+  example:
+  - ship: 隼鷹改
+    equips:
+    - 流星改
+    - 彗星一二型甲
+    - 試製烈風 後期型
+    - 試製烈風 後期型
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 一式徹甲弾
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 川内改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 時雨改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  - ship: 満潮改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  tags:
+  - 萌新推图
+  - B-C-F-J
+  special_attacks: []
+- name: 水上打撃部隊南方へ 低配版 B-E-G-J
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - 長門改
+      notes: 旗舰，41cm連装砲×2+零式水上偵察機+九一式穿甲弾
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改
+      notes: 41cm連装砲×2+瑞雲×2，大和/武蔵/長門/陸奥/伊勢/日向/扶桑/山城 8选3
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改
+      notes: 41cm連装砲×2+瑞雲×2
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 川内改
+      notes: 20.3cm連装砲×2+零式水上偵察機
+    - ship_class:
+      - CAV
+      - CA
+      count: 1
+      specific_ships:
+      - 最上改
+      notes: 20.3cm連装砲+瑞雲+20.3cm連装砲+瑞雲，CAV携水战效果更佳
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 摩耶改
+      notes: 20.3cm連装砲×2+零式水上偵察機×2
+  requirements:
+    air_state: none
+    air_power_min: 72
+    enemy_air_power: 72
+    routing_nodes:
+    - B
+    - E
+    - G
+    - J
+  equip_notes: G点72空確。制空战力91~94，索敌56.59。携带高熟练度瑞雲可在G点拿空確。CAV携水战效果更佳。3BB+1CL+2CA带路固定B-E。
+  example:
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 伊勢改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 瑞雲
+    - 瑞雲
+  - ship: 日向改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 瑞雲
+    - 瑞雲
+  - ship: 川内改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 瑞雲
+    - 20.3cm連装砲
+    - 瑞雲
+  - ship: 摩耶改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  tags:
+  - 水上打撃部隊
+  - 低配
+  - B-E-G-J
+  - 瑞雲
+  special_attacks: []
+- name: 水上打撃部隊南方へ 高速+ 伊勢改二 B-E-G-J
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 長門改二
+      notes: 旗舰，51cm連装砲+試製51cm連装砲+新型高温高圧缶×2
+    - ship_class:
+      - BBV
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 伊勢改二
+      notes: 16inch三連装砲Mk.7+GFCS+41cm三連装砲改二+瑞雲改二(六三四空/熟練)+新型高温高圧缶×2
+    - ship_class:
+      - BBV
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 日向改二
+      notes: 16inch三連装砲Mk.7+GFCS×2+瑞雲(六三四空/熟練)+新型高温高圧缶×2
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fastest
+      specific_ships:
+      - 鈴谷改二
+      notes: 20.3cm(3号)連装砲×2+新型高温高圧缶+瑞雲12型(六三四空)
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fastest
+      specific_ships:
+      - 熊野改二
+      notes: 20.3cm(3号)連装砲×2+新型高温高圧缶+瑞雲12型(六三四空)
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 矢矧改二乙
+      notes: 甲標的 丁型改(蛟龍改)+新型高温高圧缶+二式水戦改(熟練)×2
+  requirements:
+    air_state: none
+    air_power_min: 126
+    enemy_air_power: 252
+    routing_nodes:
+    - B
+    - E
+    - G
+    - J
+  equip_notes: 固定路线不走漩涡。制空战力162~163，索敌40.07。J点85%空優126，100%空優252。需高速+。大和改二可替换長門改二效果更好。
+  example:
+  - ship: 長門改二
+    equips:
+    - 51cm連装砲
+    - 試製51cm連装砲
+    - 新型高温高圧缶
+    - 新型高温高圧缶
+  - ship: 伊勢改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 41cm三連装砲改二
+    - 瑞雲改二(六三四空/熟練)
+    - 新型高温高圧缶
+    - 新型高温高圧缶
+  - ship: 日向改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瑞雲(六三四空/熟練)
+    - 新型高温高圧缶
+    - 新型高温高圧缶
+  - ship: 鈴谷改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 新型高温高圧缶
+    - 瑞雲12型(六三四空)
+  - ship: 熊野改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 新型高温高圧缶
+    - 瑞雲12型(六三四空)
+  - ship: 矢矧改二乙
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 新型高温高圧缶
+    - 二式水戦改(熟練)
+    - 二式水戦改(熟練)
+  tags:
+  - 水上打撃部隊
+  - 高速+
+  - 伊勢改二
+  - B-E-G-J
+  special_attacks: []
+- name: 拡張六水戦+水上打撃部隊 A-D-E-G-J / B-E-G-J
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰，試製61cm六連装(酸素)魚雷+61cm五連装(酸素)魚雷+甲標的 丁型改(蛟龍改)+Hedgehog(初期型)+GFCS Mk.37
+    - ship_class:
+      - BB
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 大和改二
+      notes: 51cm連装砲×2+強風改×2+零式水上偵察機11型乙(熟練)+15m二重測距儀改+21号電探改二+熟練射撃指揮所
+    - ship_class:
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 41cm三連装砲改二+16inch三連装砲Mk.7+GFCS+試製 夜間瑞雲(攻撃装備)+震電改+一式穿甲弾改
+    - ship_class:
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 日向改二
+      notes: 16inch三連装砲Mk.7+GFCS×2+瑞雲改二(六三四空/熟練)+零式艦戦53型(岩本隊)+一式穿甲弾改
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 睦月改二
+      notes: 5inch単装砲Mk.30改+GFCS Mk.37+12.7cm連装砲B型改四(戦時改修)+高射装置+GFCS Mk.37
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 如月改二
+      notes: 5inch単装砲Mk.30改+GFCS Mk.37+12.7cm連装砲B型改四(戦時改修)+高射装置+GFCS Mk.37
+  requirements:
+    air_state: none
+    air_power_min: 0
+    enemy_air_power: 287
+    routing_nodes:
+    - A
+    - D
+    - E
+    - G
+    - J
+  equip_notes: 制空305，D点287空優。水打+六水战联合任务配置。大和改二+伊勢改二+日向改二为水打3BB，夕張改二特旗舰满足六水战条件。小心睦月级脆弱。
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 甲標的 丁型改(蛟龍改)
+    - Hedgehog(初期型)
+    - GFCS Mk.37
+  - ship: 大和改二
+    equips:
+    - 51cm連装砲
+    - 51cm連装砲
+    - 強風改
+    - 強風改二
+    - 零式水上偵察機11型乙(熟練)
+    - 15m二重測距儀改+21号電探改二+熟練射撃指揮所
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 試製 夜間瑞雲(攻撃装備)
+    - 震電改
+    - 一式徹甲弾改
+  - ship: 日向改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瑞雲改二(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 一式徹甲弾改
+  - ship: 睦月改二
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - GFCS Mk.37
+  - ship: 如月改二
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - GFCS Mk.37
+  tags:
+  - 六水戦
+  - 水上打撃部隊
+  - A-D-E-G-J
+  - B-E-G-J
+  special_attacks: []
+- name: 新編三川艦隊 警戒陣特化 B-C-F-J
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰，甲標的 丁型改(蛟龍改)+61cm五連装(酸素)魚雷+試製61cm六連装(酸素)魚雷+水雷戦隊 熟練見張員+GFCS Mk.37
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 睦月改二
+      notes: 5inch単装砲Mk.30改+GFCS Mk.37+12.7cm連装砲B型改四(戦時改修)+高射装置+新型高温高圧缶
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 如月改二
+      notes: 5inch単装砲Mk.30改+GFCS Mk.37+12.7cm連装砲B型改四(戦時改修)+高射装置+新型高温高圧缶
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 鳥海改二
+      notes: 20.3cm(3号)連装砲×2+増設装甲板(中型艦)×2，警戒阵特化抗伤
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 古鷹改二
+      notes: 20.3cm(3号)連装砲+20.3cm(2号)連装砲+増設装甲板(中型艦)×2
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 加古改二
+      notes: 20.3cm(3号)連装砲+20.3cm(2号)連装砲+増設装甲板(中型艦)×2
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - C
+    - F
+    - J
+  equip_notes: 警戒陣特化，CA携増設装甲板抗伤。无制空需求。若无警戒阵，夕張和2DD各带発煙装置拉烟，此时CA一个装甲板换电探补命中。鸟海/青叶/衣笠/加古/古鹰/天龙/夕张
+    7选4满足三川任务。
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 61cm五連装(酸素)魚雷
+    - 試製61cm六連装(酸素)魚雷
+    - 水雷戦隊 熟練見張員
+    - GFCS Mk.37
+  - ship: 睦月改二
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 新型高温高圧缶
+  - ship: 如月改二
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 新型高温高圧缶
+  - ship: 鳥海改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  - ship: 古鷹改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(2号)連装砲
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  - ship: 加古改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(2号)連装砲
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  tags:
+  - 三川艦隊
+  - 警戒陣
+  - B-C-F-J
+  special_attacks: []
+- name: 六水戦+伊勢改二 制空 B-C-F-J 钢坦克
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰，甲標的 丁型改(蛟龍改)+試製61cm六連装(酸素)魚雷+61cm五連装(酸素)魚雷+特二式内火艇+12cm30連装噴進砲改二
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 16inch三連装砲Mk.7+GFCS+41cm三連装砲改二+瑞雲(六三四空/熟練)+零式艦戦53型(岩本隊)+一式穿甲弾
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改二
+      notes: 16inch三連装砲Mk.7+GFCS×2+瑞雲改二(六三四空/熟練)+烈風改二+一式穿甲弾
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships:
+      - 日進甲
+      notes: 甲標的 丙型×2+強風改×2，可换由良改二
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 睦月改二
+      notes: 10cm連装高角砲+94式高射装置×2+GFCS Mk.37
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 如月改二
+      notes: 10cm連装高角砲+94式高射装置×2+GFCS Mk.37
+  requirements:
+    air_state: none
+    air_power_min: 252
+    enemy_air_power: 252
+    routing_nodes:
+    - B
+    - C
+    - F
+    - J
+  equip_notes: 制空战力298~300，J点252空優稳定。索敌29.33。走上路最短路线。可将其中一个BBV换成CVL。日進可换由良改二，睦月级可换其他强力DD。
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 特二式内火艇
+    - 12cm30連装噴進砲改二
+  - ship: 伊勢改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 41cm三連装砲改二
+    - 瑞雲(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 一式徹甲弾
+  - ship: 日向改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瑞雲改二(六三四空/熟練)
+    - 烈風改二
+    - 一式徹甲弾
+  - ship: 日進甲
+    equips:
+    - 甲標的 丙型
+    - 強風改
+    - 強風改
+    - 甲標的 丙型
+  - ship: 睦月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+  - ship: 如月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+  tags:
+  - 六水戦
+  - B-C-F-J
+  - 制空
+  special_attacks: []
+- name: 新編三川艦隊 高速+ 装甲空母 B-E-G-J
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 赤城改二戊
+      notes: 旗舰，零式艦戦62型(爆戦/岩井)+天山一二型(村田隊)+烈風改二戊型(一航戦/熟練)+烈風改二戊型+新型高温高圧缶
+    - ship_class:
+      - CV
+      count: 1
+      speed: fastest
+      specific_ships:
+      - 翔鶴改二甲
+      notes: 装甲空母，彗星二二型(六三四空/熟練)+天山一二型(村田隊)+零式艦戦53型(岩本隊)+新型高温高圧缶
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 夕張改二特
+      notes: 甲標的 丁型改(蛟龍改)+HF/DF+Type144/147 ASDIC+新型高温高圧缶×2+12cm30連装噴進砲改二
+    - ship_class:
+      - CA
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 鳥海改二
+      notes: 20.3cm(3号)連装砲×2+新型高温高圧缶+改良型艦船用タービン
+    - ship_class:
+      - CA
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 古鷹改二
+      notes: 20.3cm(3号)連装砲+20.3cm(2号)連装砲+新型高温高圧缶+改良型艦船用タービン
+    - ship_class:
+      - CA
+      count: 1
+      speed: fast_plus
+      specific_ships:
+      - 加古改二
+      notes: 20.3cm(3号)連装砲+20.3cm(2号)連装砲+新型高温高圧缶+改良型艦船用タービン
+  requirements:
+    air_state: none
+    air_power_min: 126
+    enemy_air_power: 252
+    routing_nodes:
+    - B
+    - E
+    - G
+    - J
+  equip_notes: 制空战力280~282，索敌16.64。需高速+。长射程装母打炮击先手。三川CA打洞，背水侦打二连更佳。J点85%空優126，100%空優252。
+  example:
+  - ship: 赤城改二戊
+    equips:
+    - 零戦62型(爆戦/岩井隊)
+    - 天山一二型(村田隊)
+    - 烈風改二戊型(一航戦/熟練)
+    - 烈風改二戊型
+    - 新型高温高圧缶
+  - ship: 翔鶴改二甲
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 天山一二型(村田隊)
+    - 零式艦戦53型(岩本隊)
+    - 新型高温高圧缶
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - HF/DF + Type144/147 ASDIC
+    - 新型高温高圧缶
+    - 新型高温高圧缶
+    - 12cm30連装噴進砲改二
+  - ship: 鳥海改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 新型高温高圧缶
+    - 改良型艦本式タービン
+  - ship: 古鷹改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(2号)連装砲
+    - 新型高温高圧缶
+    - 改良型艦本式タービン
+  - ship: 加古改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(2号)連装砲
+    - 新型高温高圧缶
+    - 改良型艦本式タービン
+  tags:
+  - 三川艦隊
+  - 高速+
+  - 装甲空母
+  - B-E-G-J
+  special_attacks: []

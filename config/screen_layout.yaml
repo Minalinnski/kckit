@@ -1,0 +1,553 @@
+# KanColle screen layout — coordinates are fractions of screenshot size (889×533).
+# All (x,y) = center of element, (w,h) = full bounding box size.
+# shape: circle → hit-test uses circular radius = min(w,h)/2; default = rect.
+#
+# Calibration sources:
+#   - Figma BZMSy7NPXAaEGVR6ToqQUG node 1:13 (2026-06-04) — precise ellipses
+#     Canvas frame in Figma: offset (111,141), size 889×533.
+#     Conversion: frac = (figma_px_center - canvas_offset) / canvas_size
+#   - poi_nav: from annotated screenshots (2026-05-24), user confirmed OK
+#   - APPROX = not yet Figma-confirmed
+#
+# ── COMMON — present on ALL game screens ──────────────────────────────────────
+# Resource bar (top info strip) is DISPLAY ONLY, not a click target — excluded.
+
+common:
+  elements:
+    # poi React nav bar — calibrated from actual screenshots (2026-05-24), user-confirmed correct
+    # Equal spacing ~0.100 between centers; w=0.097, h=0.073 per button
+    poi_nav_1:       {x: 0.198, y: 0.101, w: 0.097, h: 0.073, label: poi_nav1}
+    poi_nav_2:       {x: 0.298, y: 0.101, w: 0.097, h: 0.073, label: poi_nav2}
+    poi_nav_3:       {x: 0.399, y: 0.101, w: 0.097, h: 0.073, label: poi_nav3}
+    poi_nav_4:       {x: 0.498, y: 0.101, w: 0.097, h: 0.073, label: poi_nav4}
+    poi_nav_5:       {x: 0.601, y: 0.101, w: 0.097, h: 0.073, label: poi_nav5}
+    poi_nav_6:       {x: 0.701, y: 0.101, w: 0.097, h: 0.073, label: poi_nav6}
+    # 母港 crest — top-left teal circle, Figma Ellipse 7 (4:24)
+    back_port:       {x: 0.052, y: 0.081, w: 0.151, h: 0.251, shape: circle, label: 母港}
+
+# ── Left sidebar ─────────────────────────────────────────────────────────────
+# Appears in: 編成/補給/改装/入渠/工廠/出撃 (all sub-screens; NOT port, NOT battle)
+# NOT the same as back_port (top-left teal circle) — different element.
+# Calibrated 2026-06-04 from Figma 10:2, canvas "入渠" (offset 77,96).
+#
+# Layout (looking at the sidebar):
+#   LEFT column (cx≈0.027): 5 nav items stacked vertically
+#     編成 / 補給 / 改装 / 入渠 / 工廠  (top→bottom, 34×46px each, 60px spacing)
+#   RIGHT side (cx≈0.092): 母港 button (32×80px, larger)
+#     — different from back_port (top-left teal circle)
+#
+# Selected state: when on one of the 5 screens, that item shifts right cx 0.027→0.092
+#   + grows taller (46→80px). Example: on 入渠 screen, 入渠 (4th item) shifts;
+#   on 編成 screen, 編成 (1st item) shifts. On 出撃 screen: no item is selected.
+#   The selected item is NOT clickable (already on that screen).
+# For click targets: always use UNSELECTED coords (cx=0.027), w=0.030 (slightly inward).
+# ── Popup dismiss regions (universal, reused across repair/hensei/equipment) ──
+# When a popup list is open, clicking the LEFT portion of the screen closes it.
+# Calibrated from Figma 编成 section (1300:333, 1300:335), 2026-06-05.
+#
+# Level-2 (ship/equipment LIST popup open): left close area
+#   Figma: x=1143,y=186,w=286,h=410 in "编成（選択他舰）" canvas (offset 1032,76)
+#   → canvas center (254,315) → frac (0.286, 0.591), w=0.322, h=0.769
+#
+# Level-3 (confirm popup open): wider close area
+#   Figma: x=1143,y=794,w=541,h=410 in "2026-06-04T18.50.25" canvas (offset 1032,684)
+#   → canvas center (381,315) → frac (0.429, 0.591), w=0.608, h=0.769
+popups:
+  list_dismiss:
+    # Dismiss area for level-2 popup (ship/equipment selection list)
+    # Right edge trimmed -0.03 from original Figma (user: "right edge come in a bit")
+    elements:
+      close_area: {x: 0.271, y: 0.591, w: 0.292, h: 0.769, label: 閉じる（リスト）}
+  confirm_dismiss:
+    # Dismiss area for level-3 popup (confirm/bucket select)
+    elements:
+      close_area: {x: 0.414, y: 0.591, w: 0.578, h: 0.769, label: 閉じる（確認）}
+
+left_nav:
+  elements:
+    # 母港 button (RIGHT side, larger) — takes you back to port
+    left_nav_home:   {x: 0.092, y: 0.539, w: 0.036, h: 0.150, label: 母港}
+    # 5 nav items — all same x=0.027 (unselected position, no selected-state shift)
+    # Selected state would shift right but since selected = current screen = not clickable,
+    # we only track the uniform unselected click target.
+    left_nav_hensei: {x: 0.027, y: 0.319, w: 0.030, h: 0.080, label: 編成}
+    left_nav_supply: {x: 0.027, y: 0.432, w: 0.030, h: 0.080, label: 補給}
+    left_nav_equip:  {x: 0.027, y: 0.544, w: 0.030, h: 0.080, label: 改装}
+    left_nav_repair: {x: 0.027, y: 0.660, w: 0.030, h: 0.080, label: 入渠}
+    left_nav_factory: {x: 0.027, y: 0.767, w: 0.030, h: 0.080, label: 工廠}
+
+screens:
+
+  # ── 母港 ──────────────────────────────────────────────────────────────────
+  # Nav wheel calibrated from Figma ellipses (node 1:13, 2026-06-04).
+  # Figma canvas offset (111,141); all centers = (figma_x+r-111)/889, (figma_y+r-141)/533
+  port:
+    name: 母港
+    detect_hint: "api_port/port event"
+    api_events:
+      - api_port/port
+    elements:
+      # ── Navigation wheel ── all CIRCLE, Figma-calibrated ──────────────────
+      # 出撃 — large center circle (Figma Ellipse 3: x=256,y=355,w=148,h=148)
+      sortie_nav:      {x: 0.246, y: 0.540, w: 0.166, h: 0.278, shape: circle, label: 出撃}
+      # 編成 — upper circle (Figma Ellipse 4: x=281,y=240,w=102,h=102)
+      hensei_nav:      {x: 0.249, y: 0.281, w: 0.115, h: 0.191, shape: circle, label: 編成}
+      # 補給 — left circle (Figma Ellipse 5: x=147,y=337,w=102,h=102)
+      supply_nav:      {x: 0.098, y: 0.463, w: 0.115, h: 0.191, shape: circle, label: 補給}
+      # 改装 — right circle (Figma Ellipse 6: x=412,y=336,w=102,h=102)
+      equipment_nav:   {x: 0.396, y: 0.461, w: 0.115, h: 0.191, shape: circle, label: 改装}
+      # 入渠 — lower-left circle (Figma Ellipse 1: x=198,y=493,w=102,h=102)
+      repair_nav:      {x: 0.155, y: 0.756, w: 0.115, h: 0.191, shape: circle, label: 入渠}
+      # 工廠 — lower-right circle (Figma Ellipse 2: x=362,y=493,w=102,h=102)
+      factory_nav:     {x: 0.340, y: 0.756, w: 0.115, h: 0.191, shape: circle, label: 工廠}
+
+  # ── 編成 ──────────────────────────────────────────────────────────────────
+  # Figma 1291:3637 canvas "编成_満編" offset (69,76), calibrated 2026-06-04.
+  # Layout: 4 fleet tabs top | 2-col × 3-row ship slots | action buttons
+  hensei:
+    name: 編成
+    detect_hint: "api_get_member/deck — fires on entry when data is uncached"
+    api_events:
+      - api_get_member/deck
+    elements:
+      # ── Fleet tabs ①②③④ (Figma Rect29-32, all 16×16px, equal size) ──
+      # Positions: canvas (145,135)/(178,135)/(211,135)/(246,135), cy=0.253
+      fleet_tab_1:     {x: 0.163, y: 0.253, w: 0.018, h: 0.030, shape: circle, label: ①}
+      fleet_tab_2:     {x: 0.200, y: 0.253, w: 0.018, h: 0.030, shape: circle, label: ②}
+      fleet_tab_3:     {x: 0.237, y: 0.253, w: 0.018, h: 0.030, shape: circle, label: ③}
+      fleet_tab_4:     {x: 0.277, y: 0.253, w: 0.018, h: 0.030, shape: circle, label: ④}
+      # ── Top action buttons ───────────────────────────────────────────────
+      supply_btn:      {x: 0.406, y: 0.251, w: 0.034, h: 0.030, label: 給粮}
+      dismiss_btn:     {x: 0.523, y: 0.250, w: 0.074, h: 0.040, label: 一键解散僚舰}
+      # ── 6 ship slots (2 cols × 3 rows, 366×116px each) ──────────────────
+      # Row layout: slot1/2 top, slot3/4 middle, slot5/6 bottom
+      # Left col (cx=0.357), Right col (cx=0.784)
+      ship_slot_1:     {x: 0.357, y: 0.385, w: 0.412, h: 0.218, label: 艦1（左上）}
+      ship_slot_2:     {x: 0.784, y: 0.385, w: 0.412, h: 0.218, label: 艦2（右上）}
+      ship_slot_3:     {x: 0.357, y: 0.617, w: 0.412, h: 0.218, label: 艦3（左中）}
+      ship_slot_4:     {x: 0.784, y: 0.617, w: 0.412, h: 0.218, label: 艦4（右中）}
+      ship_slot_5:     {x: 0.357, y: 0.850, w: 0.412, h: 0.218, label: 艦5（左下）}
+      ship_slot_6:     {x: 0.784, y: 0.850, w: 0.412, h: 0.218, label: 艦6（右下）}
+      # ── 変更 buttons (per slot, cy = slot_cy + 0.063 offset) ────────────
+      change_1:        {x: 0.510, y: 0.448, w: 0.064, h: 0.051, label: 変更1}
+      change_2:        {x: 0.938, y: 0.448, w: 0.064, h: 0.051, label: 変更2}
+      change_3:        {x: 0.510, y: 0.680, w: 0.064, h: 0.051, label: 変更3}
+      change_4:        {x: 0.938, y: 0.680, w: 0.064, h: 0.051, label: 変更4}
+      change_5:        {x: 0.510, y: 0.913, w: 0.064, h: 0.051, label: 変更5}
+      change_6:        {x: 0.938, y: 0.913, w: 0.064, h: 0.051, label: 変更6}
+      # ── Bottom-left: 編成記録 and 編成展開 ────────────────────────────────
+      record_btn:      {x: 0.091, y: 0.743, w: 0.063, h: 0.038, label: 編成記録}
+      expand_btn:      {x: 0.091, y: 0.801, w: 0.063, h: 0.038, label: 編成展開}
+
+  # 編成 ship selection popup — same layout as repair_ship_select (reused KC2 list)
+  # 10 rows, filter/sort button top-right. Canvas "编成（選択他舰）" offset (1032,76).
+  hensei_ship_select:
+    name: 艦娘選択（編成）
+    detect_hint: "popup after clicking a ship slot — no API"
+    elements:
+      filter_btn:      {x: 0.965, y: 0.233, w: 0.061, h: 0.045, label: フィルター}
+      ship_item_1:     {x: 0.744, y: 0.291, w: 0.502, h: 0.056, label: 艦1}
+      ship_item_2:     {x: 0.744, y: 0.355, w: 0.502, h: 0.056, label: 艦2}
+      ship_item_3:     {x: 0.744, y: 0.418, w: 0.502, h: 0.056, label: 艦3}
+      ship_item_4:     {x: 0.744, y: 0.482, w: 0.502, h: 0.056, label: 艦4}
+      ship_item_5:     {x: 0.744, y: 0.546, w: 0.502, h: 0.056, label: 艦5}
+      ship_item_6:     {x: 0.744, y: 0.610, w: 0.502, h: 0.056, label: 艦6}
+      ship_item_7:     {x: 0.744, y: 0.674, w: 0.502, h: 0.056, label: 艦7}
+      ship_item_8:     {x: 0.744, y: 0.738, w: 0.502, h: 0.056, label: 艦8}
+      ship_item_9:     {x: 0.744, y: 0.801, w: 0.502, h: 0.056, label: 艦9}
+      ship_item_10:    {x: 0.744, y: 0.865, w: 0.502, h: 0.056, label: 艦10}
+
+  # 編成 ship confirm — after selecting a ship, confirm button appears
+  # Figma Rect33 in canvas "2026-06-04T18.50.25" offset (1032,684): (0.864,0.932) 100×40px
+  hensei_ship_confirm:
+    name: 編成確認
+    detect_hint: "confirm button after selecting ship from popup"
+    elements:
+      confirm_btn:     {x: 0.864, y: 0.932, w: 0.112, h: 0.075, label: 編成確認}
+
+  # ── 補給 ──────────────────────────────────────────────────────────────────
+  # Figma 1294:3682, canvas "2026-06-04T21.33.29 1" offset (212,132), 2026-06-04.
+  # Typical workflow: 一键全選 → 全補給 (one-click batch supply).
+  # Per-ship checkboxes for daily 15-supply quests; ship list popup rarely used.
+  supply:
+    name: 補給
+    detect_hint: "no API on entry; api_req_hokyu/charge fires on supplying"
+    api_events:
+      - api_req_hokyu/charge
+    elements:
+      # ── Fleet tabs ①~④ + 他艦隊 (5 tabs, all 16×16, cy=0.251) ──────────────
+      fleet_tab_1:     {x: 0.184, y: 0.251, w: 0.018, h: 0.030, shape: circle, label: ①}
+      fleet_tab_2:     {x: 0.222, y: 0.251, w: 0.018, h: 0.030, shape: circle, label: ②}
+      fleet_tab_3:     {x: 0.260, y: 0.251, w: 0.018, h: 0.030, shape: circle, label: ③}
+      fleet_tab_4:     {x: 0.297, y: 0.251, w: 0.018, h: 0.030, shape: circle, label: ④}
+      fleet_tab_other: {x: 0.334, y: 0.251, w: 0.018, h: 0.030, shape: circle, label: 他}
+      # ── 一键全選 (select-all checkbox, top-left) ─────────────────────────────
+      select_all:      {x: 0.148, y: 0.250, w: 0.025, h: 0.041, label: 一键全選}
+      # ── 6 ship checkboxes (16×16, spacing 57px=0.107) ────────────────────────
+      ship_1:          {x: 0.147, y: 0.347, w: 0.018, h: 0.030, shape: circle, label: 1号位}
+      ship_2:          {x: 0.147, y: 0.454, w: 0.018, h: 0.030, shape: circle, label: 2号位}
+      ship_3:          {x: 0.147, y: 0.561, w: 0.018, h: 0.030, shape: circle, label: 3号位}
+      ship_4:          {x: 0.147, y: 0.668, w: 0.018, h: 0.030, shape: circle, label: 4号位}
+      ship_5:          {x: 0.147, y: 0.775, w: 0.018, h: 0.030, shape: circle, label: 5号位}
+      ship_6:          {x: 0.147, y: 0.882, w: 0.018, h: 0.030, shape: circle, label: 6号位}
+      # ── Supply type buttons (bottom-right, cy≈0.921) ─────────────────────────
+      # 舰載機 label/button above row (cy=0.859)
+      plane_btn:       {x: 0.822, y: 0.859, w: 0.103, h: 0.041, label: 舰载机}
+      fuel_btn:        {x: 0.796, y: 0.921, w: 0.030, h: 0.051, label: 油}
+      supply_all_btn:  {x: 0.881, y: 0.921, w: 0.124, h: 0.051, label: 全補給}
+      ammo_btn:        {x: 0.963, y: 0.921, w: 0.030, h: 0.051, label: 弾}
+
+  # ── 改装 ──────────────────────────────────────────────────────────────────
+  # Figma section 1296:287, multiple canvases, calibrated 2026-06-05.
+  # Layout: LEFT panel = ship list; RIGHT panel = selected ship's equipment slots.
+  # Fleet tabs 1-4 + 他, 5 total (Rect45 annotated at cy=0.246, slightly higher than 補給).
+  equipment:
+    name: 改装（1-4艦隊）
+    detect_hint: "no API on entry; api_req_kaisou/* fires on action"
+    api_events:
+      - api_req_kaisou/powerup
+      - api_req_kaisou/remodel_slot
+    elements:
+      # ── Fleet tabs (Figma Rect45 at cy=0.246; 5 tabs, spacing=0.038) ────────
+      fleet_tab_1:     {x: 0.186, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ①}
+      fleet_tab_2:     {x: 0.224, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ②}
+      fleet_tab_3:     {x: 0.262, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ③}
+      fleet_tab_4:     {x: 0.300, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ④}
+      fleet_tab_other: {x: 0.338, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: 他}
+      # ── Left panel: 6 ship rows (Rect46-48 annotated, Rect49-51 extrapolated)
+      # canvas cx=0.263, w=196/889=0.220, h=48/533=0.090, spacing=59px=0.111
+      ship_1:          {x: 0.263, y: 0.353, w: 0.220, h: 0.090, label: 艦1}
+      ship_2:          {x: 0.263, y: 0.463, w: 0.220, h: 0.090, label: 艦2}
+      ship_3:          {x: 0.263, y: 0.574, w: 0.220, h: 0.090, label: 艦3}
+      ship_4:          {x: 0.263, y: 0.685, w: 0.220, h: 0.090, label: 艦4}
+      ship_5:          {x: 0.263, y: 0.795, w: 0.220, h: 0.090, label: 艦5}
+      ship_6:          {x: 0.263, y: 0.906, w: 0.220, h: 0.090, label: 艦6}
+      # ── Right panel: equipment slots (Figma Rect49-53, 184×20px each) ────────
+      # cx=0.573, spacing=35px=0.066, slot count varies by ship (3/4/5)
+      equip_slot_1:    {x: 0.573, y: 0.375, w: 0.207, h: 0.038, label: 装備1}
+      equip_slot_2:    {x: 0.573, y: 0.441, w: 0.207, h: 0.038, label: 装備2}
+      equip_slot_3:    {x: 0.573, y: 0.507, w: 0.207, h: 0.038, label: 装備3}
+      equip_slot_4:    {x: 0.573, y: 0.570, w: 0.207, h: 0.038, label: 装備4}
+      equip_slot_5:    {x: 0.573, y: 0.636, w: 0.207, h: 0.038, label: 装備5}
+      # 各スロット 解除ボタン (10×10px, same cy as slot, Figma Rect54-58)
+      release_1:       {x: 0.687, y: 0.375, w: 0.011, h: 0.019, shape: circle, label: 解1}
+      release_2:       {x: 0.687, y: 0.441, w: 0.011, h: 0.019, shape: circle, label: 解2}
+      release_3:       {x: 0.687, y: 0.507, w: 0.011, h: 0.019, shape: circle, label: 解3}
+      release_4:       {x: 0.687, y: 0.570, w: 0.011, h: 0.019, shape: circle, label: 解4}
+      release_5:       {x: 0.687, y: 0.636, w: 0.011, h: 0.019, shape: circle, label: 解5}
+      # 一键解除 — mutually exclusive; cx=0.404 always, cy depends on slot count
+      # Automation: use ship_db api_slot_num to pick the correct one
+      bulk_release_3:  {x: 0.404, y: 0.550, w: 0.013, h: 0.023, label: 一键解除(3格)}
+      bulk_release_4:  {x: 0.404, y: 0.617, w: 0.013, h: 0.023, label: 一键解除(4格)}
+      bulk_release_5:  {x: 0.404, y: 0.687, w: 0.013, h: 0.023, label: 一键解除(5格)}
+      # 増強補設 (expansion slot, only for ships with it) — ellipse + 解除
+      slot_ex:         {x: 0.944, y: 0.668, w: 0.036, h: 0.060, shape: circle, label: 増強補設}
+      slot_ex_release: {x: 0.974, y: 0.668, w: 0.013, h: 0.023, label: 増強解除}
+
+  # 改装（他艦隊）— same LEFT panel layout as fleet 1-4 (same row size 196×48px)
+  # 他 just shows more ships (scrollable, 10 per page) in the same column structure.
+  # No popup dismiss — this is a main screen view, not a popup.
+  equipment_other:
+    name: 改装（他艦隊）
+    detect_hint: "no API — clicking 他 tab switches to list view"
+    elements:
+      fleet_tab_1:     {x: 0.186, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ①}
+      fleet_tab_2:     {x: 0.224, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ②}
+      fleet_tab_3:     {x: 0.262, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ③}
+      fleet_tab_4:     {x: 0.300, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: ④}
+      fleet_tab_other: {x: 0.338, y: 0.246, w: 0.024, h: 0.040, shape: circle, label: 他}
+      # Same row dimensions as fleet 1-4 (196×48px, spacing 59px) — scrollable list
+      ship_item_1:     {x: 0.263, y: 0.304, w: 0.214, h: 0.045, label: 艦1}                                                          
+      ship_item_2:     {x: 0.263, y: 0.368, w: 0.214, h: 0.045, label: 艦2}                                                          
+      ship_item_3:     {x: 0.263, y: 0.432, w: 0.214, h: 0.045, label: 艦3}                                                          
+      ship_item_4:     {x: 0.263, y: 0.495, w: 0.214, h: 0.045, label: 艦4}                                                          
+      ship_item_5:     {x: 0.263, y: 0.559, w: 0.214, h: 0.045, label: 艦5}                                                          
+      ship_item_6:     {x: 0.263, y: 0.623, w: 0.214, h: 0.045, label: 艦6}                                                          
+      ship_item_7:     {x: 0.263, y: 0.687, w: 0.214, h: 0.045, label: 艦7}                                                          
+      ship_item_8:     {x: 0.263, y: 0.750, w: 0.214, h: 0.045, label: 艦8}                                                          
+      ship_item_9:     {x: 0.263, y: 0.814, w: 0.214, h: 0.045, label: 艦9}                                                          
+      ship_item_10:    {x: 0.263, y: 0.878, w: 0.214, h: 0.045, label: 艦10} 
+      # Right panel: same equipment slots as fleet 1-4 (user confirmed identical)
+      equip_slot_1:    {x: 0.573, y: 0.375, w: 0.207, h: 0.038, label: 装備1}
+      equip_slot_2:    {x: 0.573, y: 0.441, w: 0.207, h: 0.038, label: 装備2}
+      equip_slot_3:    {x: 0.573, y: 0.507, w: 0.207, h: 0.038, label: 装備3}
+      equip_slot_4:    {x: 0.573, y: 0.570, w: 0.207, h: 0.038, label: 装備4}
+      equip_slot_5:    {x: 0.573, y: 0.636, w: 0.207, h: 0.038, label: 装備5}
+      release_1:       {x: 0.687, y: 0.375, w: 0.011, h: 0.019, shape: circle, label: 解1}
+      release_2:       {x: 0.687, y: 0.441, w: 0.011, h: 0.019, shape: circle, label: 解2}
+      release_3:       {x: 0.687, y: 0.507, w: 0.011, h: 0.019, shape: circle, label: 解3}
+      release_4:       {x: 0.687, y: 0.570, w: 0.011, h: 0.019, shape: circle, label: 解4}
+      release_5:       {x: 0.687, y: 0.636, w: 0.011, h: 0.019, shape: circle, label: 解5}
+      bulk_release_3:  {x: 0.404, y: 0.550, w: 0.013, h: 0.023, label: 一键解除(3格)}
+      bulk_release_4:  {x: 0.404, y: 0.617, w: 0.013, h: 0.023, label: 一键解除(4格)}
+      bulk_release_5:  {x: 0.404, y: 0.687, w: 0.013, h: 0.023, label: 一键解除(5格)}
+      slot_ex:         {x: 0.944, y: 0.668, w: 0.036, h: 0.060, shape: circle, label: 増強補設}
+      slot_ex_release: {x: 0.974, y: 0.668, w: 0.013, h: 0.023, label: 増強解除}
+
+  # 装備選択 popup — same reused list (10 rows, 502×56px per row)
+  # Right side of screen; toggle 闲置/其他 at top-right (Figma Rect59, 78×18px)
+  # Default: 闲置装備. Toggle persists per ship, resets on ship switch.
+  equipment_select:
+    name: 装備選択
+    detect_hint: "popup after clicking equip slot (or 増強補設 slot)"
+    elements:
+      # 闲置/其他装備中 toggle only — no filter button in equipment select
+      idle_toggle:     {x: 0.938, y: 0.233, w: 0.088, h: 0.034, label: 闲置/他}
+      # 10 rows (same as repair_ship_select)
+      equip_item_1:    {x: 0.744, y: 0.291, w: 0.502, h: 0.056, label: 装備1}
+      equip_item_2:    {x: 0.744, y: 0.355, w: 0.502, h: 0.056, label: 装備2}
+      equip_item_3:    {x: 0.744, y: 0.418, w: 0.502, h: 0.056, label: 装備3}
+      equip_item_4:    {x: 0.744, y: 0.482, w: 0.502, h: 0.056, label: 装備4}
+      equip_item_5:    {x: 0.744, y: 0.546, w: 0.502, h: 0.056, label: 装備5}
+      equip_item_6:    {x: 0.744, y: 0.610, w: 0.502, h: 0.056, label: 装備6}
+      equip_item_7:    {x: 0.744, y: 0.674, w: 0.502, h: 0.056, label: 装備7}
+      equip_item_8:    {x: 0.744, y: 0.738, w: 0.502, h: 0.056, label: 装備8}
+      equip_item_9:    {x: 0.744, y: 0.801, w: 0.502, h: 0.056, label: 装備9}
+      equip_item_10:   {x: 0.744, y: 0.865, w: 0.502, h: 0.056, label: 装備10}
+
+  # 装備選択-三级確認 — same layout as 編成③ confirm (user confirmed identical)
+  # Left: ship status, Middle: equipment list (still visible), Right: 変更前/後 + 変更 btn
+  # 変更 button at same position as hensei_ship_confirm: (0.864, 0.932)
+  equipment_confirm:
+    name: 装備変更確認
+    detect_hint: "canvas-internal — appears after selecting new equipment"
+    elements:
+      confirm_btn:     {x: 0.864, y: 0.932, w: 0.112, h: 0.075, label: 変更}
+
+  modernize_result:
+    name: 近代化改修結果
+    detect_hint: "api_req_kaisou/powerup event"
+    elements:
+      confirm:         {x: 0.850, y: 0.885, w: 0.100, h: 0.063, label: 確認}
+
+  # ── 入渠 ──────────────────────────────────────────────────────────────────
+  # ── 入渠① 主画面 ─────────────────────────────────────────────────────────
+  # Figma BZMSy7NPXAaEGVR6ToqQUG node 10:2, canvas "入渠" offset (77,96).
+  # Dock info rects: Figma Rect12/2/3/4 (184×52px each). Bucket ellipses 72×72px.
+  repair:
+    name: 入渠
+    detect_hint: "api_get_member/ndock — always fires on entry"
+    api_events:
+      - api_get_member/ndock
+      - api_req_nyukyo/start
+      - api_req_nyukyo/speedchange
+    elements:
+      # Dock info areas (Rect 12/2/3/4 — 184×52px, cx=(267+92-77)/889)
+      dock_1:          {x: 0.317, y: 0.343, w: 0.207, h: 0.098, label: 第1ドック}
+      dock_2:          {x: 0.317, y: 0.514, w: 0.207, h: 0.098, label: 第2ドック}
+      dock_3:          {x: 0.317, y: 0.685, w: 0.207, h: 0.098, label: 第3ドック}
+      dock_4:          {x: 0.317, y: 0.856, w: 0.207, h: 0.098, label: 第4ドック}
+      # 高速修復 CIRCLE — Figma Ellipses 11/10/8/9 (72×72px, x=879-951 in canvas)
+      # cx=(879+36-77)/889=0.942; cy=((y+36)-96)/533
+      bucket_1:        {x: 0.942, y: 0.327, w: 0.081, h: 0.135, shape: circle, label: 高速修復1}
+      bucket_2:        {x: 0.942, y: 0.497, w: 0.081, h: 0.135, shape: circle, label: 高速修復2}
+      bucket_3:        {x: 0.942, y: 0.668, w: 0.081, h: 0.135, shape: circle, label: 高速修復3}
+      bucket_4:        {x: 0.942, y: 0.839, w: 0.081, h: 0.135, shape: circle, label: 高速修復4}
+
+  # ── 入渠② 艦選択 (popup) ─────────────────────────────────────────────────
+  # Figma canvas "入渠-選択" offset (1158,96). 5 rows drawn → 10 per page.
+  # Rect5-9: x=1597,y=236/270/304/338/372,w=446,h=30 → canvas cx=662,rows 30px,step 34px
+  # Filter Rect10: x=1989,y=208,w=54,h=24 → canvas cx=858,cy=124 → (0.965,0.233)
+  repair_ship_select:
+    name: 入渠艦選択
+    detect_hint: "canvas popup after clicking empty dock — no API"
+    elements:
+      filter_btn:      {x: 0.965, y: 0.233, w: 0.061, h: 0.045, label: フィルター}
+      # 10 rows: cx=662/889=0.744, w=446/889=0.502, h=30/533=0.056
+      # step=34px/533=0.064 between row centers
+      ship_item_1:     {x: 0.744, y: 0.291, w: 0.502, h: 0.056, label: 艦1}
+      ship_item_2:     {x: 0.744, y: 0.355, w: 0.502, h: 0.056, label: 艦2}
+      ship_item_3:     {x: 0.744, y: 0.418, w: 0.502, h: 0.056, label: 艦3}
+      ship_item_4:     {x: 0.744, y: 0.482, w: 0.502, h: 0.056, label: 艦4}
+      ship_item_5:     {x: 0.744, y: 0.546, w: 0.502, h: 0.056, label: 艦5}
+      ship_item_6:     {x: 0.744, y: 0.610, w: 0.502, h: 0.056, label: 艦6}
+      ship_item_7:     {x: 0.744, y: 0.674, w: 0.502, h: 0.056, label: 艦7}
+      ship_item_8:     {x: 0.744, y: 0.738, w: 0.502, h: 0.056, label: 艦8}
+      ship_item_9:     {x: 0.744, y: 0.801, w: 0.502, h: 0.056, label: 艦9}
+      ship_item_10:    {x: 0.744, y: 0.865, w: 0.502, h: 0.056, label: 艦10}
+
+  # ── 入渠③ 用桶選択確認 ───────────────────────────────────────────────────
+  # Figma canvas "入渠-選択-単舰確認" offset (77,766).
+  # Rect11 (86×22px): bucket toggle cx=(851+43-77)/889=0.919,cy=(1077+11-766)/533=0.604
+  # Rect12 (156×50px): confirm btn cx=(759+78-77)/889=0.855,cy=(1228+25-766)/533=0.914
+  repair_ship_confirm:
+    name: 入渠確認（用桶選択）
+    detect_hint: "right panel after ship selection — bucket toggle + confirm"
+    elements:
+      bucket_toggle:   {x: 0.919, y: 0.604, w: 0.097, h: 0.041, label: 高速修復toggle}
+      confirm_btn:     {x: 0.855, y: 0.914, w: 0.175, h: 0.094, label: 入渠！}
+
+  # ── 入渠④ 最終確認 YES/NO ────────────────────────────────────────────────
+  # Figma canvas "入渠-最终確認" offset (1159,766).
+  # Rect14 NO: x=1454,y=1202,w=110,h=28 → cx=(1454+55-1159)/889=0.394,cy=(1202+14-766)/533=0.844
+  # Rect13 YES: x=1665,y=1202,w=110,h=28 → cx=(1665+55-1159)/889=0.631,cy=0.844
+  # LEFT=NO, RIGHT=YES (user confirmed). Both buttons same y, blue color, 110×28px.
+  repair_confirm:
+    name: 入渠最終確認
+    detect_hint: "YES/NO dialog — final confirm for repair start or bucket use"
+    elements:
+      no_btn:          {x: 0.394, y: 0.844, w: 0.124, h: 0.053, label: いいえ}
+      yes_btn:         {x: 0.631, y: 0.844, w: 0.124, h: 0.053, label: はい}
+
+  # ── 工廠 ──────────────────────────────────────────────────────────────────
+  # Elements not yet calibrated — placeholder only.
+  factory:
+    name: 工廠
+    detect_hint: "api_get_member/kdock — fires on entry when uncached"
+    api_events:
+      - api_get_member/kdock
+      - api_req_kousyou/createship
+      - api_req_kousyou/getship
+      - api_req_kousyou/createitem
+    elements: {}
+
+  construction_result:
+    name: 建造結果
+    detect_hint: "api_req_kousyou/getship event"
+    elements:
+      confirm:         {x: 0.850, y: 0.885, w: 0.100, h: 0.063, label: 確認}
+
+  # ── 任務 ──────────────────────────────────────────────────────────────────
+  quest_list:
+    name: 任務
+    detect_hint: "api_get_member/questlist — always fires on entry"
+    api_events:
+      - api_get_member/questlist
+      - api_req_quest/clearitemget
+    elements:
+      quest_item_1:    {x: 0.574, y: 0.297, w: 0.792, h: 0.143, label: 任務1}
+      quest_item_2:    {x: 0.574, y: 0.437, w: 0.792, h: 0.137, label: 任務2}
+      quest_item_3:    {x: 0.574, y: 0.578, w: 0.792, h: 0.146, label: 任務3}
+      quest_item_4:    {x: 0.574, y: 0.720, w: 0.792, h: 0.137, label: 任務4}
+      quest_item_5:    {x: 0.574, y: 0.859, w: 0.792, h: 0.141, label: 任務5}
+
+  # ── 演習 ──────────────────────────────────────────────────────────────────
+  practice:
+    name: 演習
+    detect_hint: "api_get_member/practice — always fires on entry"
+    api_events:
+      - api_get_member/practice
+    elements:
+      enemy_1:         {x: 0.250, y: 0.210, w: 0.440, h: 0.080, label: 相手1}
+      enemy_2:         {x: 0.250, y: 0.300, w: 0.440, h: 0.080, label: 相手2}
+      enemy_3:         {x: 0.250, y: 0.390, w: 0.440, h: 0.080, label: 相手3}
+      enemy_4:         {x: 0.250, y: 0.480, w: 0.440, h: 0.080, label: 相手4}
+      enemy_5:         {x: 0.250, y: 0.570, w: 0.440, h: 0.080, label: 相手5}
+      challenge_btn:   {x: 0.875, y: 0.906, w: 0.100, h: 0.063, label: 挑戦}
+
+  # ── 遠征 ──────────────────────────────────────────────────────────────────
+  expedition_select:
+    name: 遠征選択
+    detect_hint: "api_get_member/mission — fires on entry"
+    api_events:
+      - api_get_member/mission
+      - api_req_mission/start
+    elements:
+      go_btn:          {x: 0.875, y: 0.906, w: 0.100, h: 0.063, label: 決定}
+      fleet_tab_2:     {x: 0.320, y: 0.232, w: 0.160, h: 0.085, label: 第二艦隊}
+      fleet_tab_3:     {x: 0.510, y: 0.232, w: 0.160, h: 0.085, label: 第三艦隊}
+      fleet_tab_4:     {x: 0.700, y: 0.232, w: 0.160, h: 0.085, label: 第四艦隊}
+      area_1:          {x: 0.094, y: 0.390, w: 0.125, h: 0.130, label: 鎮守府}
+      area_2:          {x: 0.094, y: 0.520, w: 0.125, h: 0.130, label: 南西諸島}
+      area_3:          {x: 0.094, y: 0.650, w: 0.125, h: 0.130, label: 北方}
+      area_4:          {x: 0.094, y: 0.780, w: 0.125, h: 0.130, label: 西方}
+      exp_item_1:      {x: 0.575, y: 0.265, w: 0.650, h: 0.090, label: 遠征1}
+      exp_item_2:      {x: 0.575, y: 0.368, w: 0.650, h: 0.090, label: 遠征2}
+      exp_item_3:      {x: 0.575, y: 0.470, w: 0.650, h: 0.090, label: 遠征3}
+      exp_item_4:      {x: 0.575, y: 0.573, w: 0.650, h: 0.090, label: 遠征4}
+      exp_item_5:      {x: 0.575, y: 0.675, w: 0.650, h: 0.090, label: 遠征5}
+      exp_item_6:      {x: 0.575, y: 0.778, w: 0.650, h: 0.090, label: 遠征6}
+      scroll_down:     {x: 0.950, y: 0.750, w: 0.050, h: 0.100, label: 下}
+
+  expedition_result:
+    name: 遠征帰投
+    detect_hint: "api_req_mission/result event"
+    api_events:
+      - api_req_mission/result
+    elements:
+      confirm:         {x: 0.850, y: 0.906, w: 0.100, h: 0.063, label: 確認}
+
+  # ── 出撃 ──────────────────────────────────────────────────────────────────
+  # 出撃種別選択 — the 3-circle chooser after clicking 出撃 from port (no API)
+  sortie_type:
+    name: 出撃種別選択
+    detect_hint: "no API — infer from clicking sortie_nav at port"
+    elements:
+      sortie_btn:      {x: 0.225, y: 0.570, w: 0.220, h: 0.400, shape: circle, label: 出撃}
+      exercise_btn:    {x: 0.500, y: 0.570, w: 0.220, h: 0.400, shape: circle, label: 演習}
+      expedition_btn:  {x: 0.775, y: 0.570, w: 0.220, h: 0.400, shape: circle, label: 遠征}
+
+  sortie_world:
+    name: 海域選択
+    detect_hint: "api_get_member/mapinfo — fires on entry"
+    api_events:
+      - api_get_member/mapinfo
+    elements:
+      world_1:         {x: 0.247, y: 0.400, w: 0.440, h: 0.560, label: 鎮守府海域}
+      world_2:         {x: 0.753, y: 0.400, w: 0.440, h: 0.560, label: 南西諸島海域}
+      world_3:         {x: 0.247, y: 0.720, w: 0.440, h: 0.560, label: 北方海域}
+      world_4:         {x: 0.753, y: 0.720, w: 0.440, h: 0.560, label: 西方海域}
+
+  sortie_map:
+    name: 出撃海図
+    detect_hint: "after selecting world — api_req_map/start on sortie confirm"
+    api_events:
+      - api_req_map/start
+    elements:
+      sortie_btn:      {x: 0.875, y: 0.906, w: 0.100, h: 0.063, label: 出撃}
+
+  formation_select:
+    name: 陣形選択
+    detect_hint: "api_req_map/start or map/next with battle event_id"
+    api_events:
+      - api_req_map/start
+      - api_req_map/next
+    elements:
+      formation_1:     {x: 0.150, y: 0.700, w: 0.150, h: 0.160, label: 単縦陣}
+      formation_2:     {x: 0.313, y: 0.700, w: 0.150, h: 0.160, label: 複縦陣}
+      formation_3:     {x: 0.475, y: 0.700, w: 0.150, h: 0.160, label: 輪形陣}
+      formation_4:     {x: 0.638, y: 0.700, w: 0.150, h: 0.160, label: 梯形陣}
+      formation_5:     {x: 0.800, y: 0.700, w: 0.150, h: 0.160, label: 単横陣}
+
+  sortie_routing:
+    name: 途中経過（羅針盤）
+    detect_hint: "api_req_map/next with non-battle event_id"
+    api_events:
+      - api_req_map/next
+
+  battle:
+    name: 戦闘中
+    detect_hint: "api_req_sortie/battle or combined_battle/battle"
+    api_events:
+      - api_req_sortie/battle
+      - api_req_combined_battle/battle
+
+  night_battle:
+    name: 夜戦中
+    detect_hint: "api_req_battle_midnight/battle or sp_midnight"
+    api_events:
+      - api_req_battle_midnight/battle
+      - api_req_battle_midnight/sp_midnight
+
+  battle_result:
+    name: 戦闘結果
+    detect_hint: "api_req_sortie/battleresult or combined_battle/battleresult"
+    api_events:
+      - api_req_sortie/battleresult
+      - api_req_combined_battle/battleresult
+    elements:
+      next:            {x: 0.850, y: 0.906, w: 0.100, h: 0.063, label: 次へ}
+
+  night_battle_select:
+    name: 夜戦選択
+    detect_hint: "after battle result with midnight_flag==1"
+    elements:
+      night_battle:    {x: 0.731, y: 0.906, w: 0.150, h: 0.063, label: 夜戦突入}
+      no_night:        {x: 0.269, y: 0.906, w: 0.150, h: 0.063, label: 撤退}
+
+  post_battle:
+    name: 戦闘後
+    detect_hint: "after battle result dismissed"
+    elements:
+      advance:         {x: 0.800, y: 0.906, w: 0.150, h: 0.063, label: 進撃}
+      retreat:         {x: 0.200, y: 0.906, w: 0.150, h: 0.063, label: 撤退}

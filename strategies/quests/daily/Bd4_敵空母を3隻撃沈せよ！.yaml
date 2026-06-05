@@ -1,0 +1,8 @@
+quest_id: Bd4
+quest_name: 敵空母を3隻撃沈せよ！
+category: daily
+requirement: 击沉3艘空母
+maps:
+- map_id: 2-1
+  fleet_hint: 6SS系
+  synergy_quests: []

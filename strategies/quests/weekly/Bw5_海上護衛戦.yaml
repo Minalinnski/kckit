@@ -1,0 +1,11 @@
+quest_id: Bw5
+quest_name: 海上護衛戦
+category: weekly
+requirement: 击沉15艘潜艇
+maps:
+- map_id: 1-5
+  fleet_hint: 4DE/DD
+  synergy_quests:
+  - Bd8
+  - Bw10
+  - Bm5

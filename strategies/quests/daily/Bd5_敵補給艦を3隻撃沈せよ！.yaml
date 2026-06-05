@@ -1,0 +1,8 @@
+quest_id: Bd5
+quest_name: 敵補給艦を3隻撃沈せよ！
+category: daily
+requirement: 击沉3艘补给舰
+maps:
+- map_id: 2-2
+  fleet_hint: 3CVL+3SS/DD
+  synergy_quests: []

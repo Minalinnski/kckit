@@ -1,0 +1,33 @@
+quest_id: Bq12
+quest_name: 発令！'西方海域作戦'
+category: quarterly
+requirement: 4-1、4-2、4-3、4-4、4-5各1次S胜，战果+330
+maps:
+- map_id: 4-1
+  fleet_hint: 1BB系/CV系+1CL+2DD+2CA系
+  notes: boss点72空确
+  synergy_quests:
+  - Bw6
+- map_id: 4-2
+  fleet_hint: 2CV系+1CA系/CL系+1CL+2DD
+  notes: boss点84空优，168空确
+  synergy_quests:
+  - Bw6
+  - Bm6
+- map_id: 4-3
+  fleet_hint: 2CVL+1CL+3DD
+  notes: boss点155空优或240大概率空确，S胜需对陆装
+  synergy_quests:
+  - Bw6
+- map_id: 4-4
+  fleet_hint: 3CVL+1CL+2DE/DD
+  notes: boss点144空确
+  synergy_quests:
+  - Bw6
+  - Bw8
+- map_id: 4-5
+  fleet_hint: 4CV系/BB系+2CA系/CLT，高速+
+  notes: boss点207空优
+  synergy_quests:
+  - Bw6
+  - Bq13

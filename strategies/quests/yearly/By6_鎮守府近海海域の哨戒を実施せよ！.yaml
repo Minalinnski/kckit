@@ -1,0 +1,15 @@
+quest_id: By6
+quest_name: 鎮守府近海海域の哨戒を実施せよ！
+category: yearly
+requirement: 1-2、1-3、1-4各2次A胜，需要CA/DD旗舰+3DD/DE
+maps:
+- map_id: 1-2
+  fleet_hint: 4DD旗舰+1CL
+  synergy_quests: []
+- map_id: 1-3
+  fleet_hint: 4DD旗舰+2CVL
+  synergy_quests: []
+- map_id: 1-4
+  fleet_hint: 1CA旗舰+3DD+1AS+1CVL
+  notes: boss点60空确
+  synergy_quests: []

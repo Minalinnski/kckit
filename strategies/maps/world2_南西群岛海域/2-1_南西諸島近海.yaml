@@ -1,0 +1,616 @@
+map: 2-1
+source: nga_import
+notes: 南西諸島近海，boss点H，主要路线C-(E)-D-H，BB系+CV系<=4可固定进boss，3CV系会走B
+presets:
+- name: 萌新推图（BB+CV混编）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships:
+      - 扶桑
+      notes: 旗舰
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城
+    - ship_class:
+      - CA
+      - CAV
+      count: 3
+      specific_ships:
+      - 鳥海
+      - 摩耶
+      - 青葉
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳
+  requirements:
+    air_state: supremacy
+    air_power_min: 72
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: 制空79（画面値），D点72空優，H点Lv39以下54空確，Lv40以上81空優/162空確。BBは双主砲+水偵、優先度：徹甲弾>水偵>電探>機銃。CVは艦爆+艦攻混載。BBV=0
+    かつ CV系<=2 かつ BB系+CV系<=4。
+  example:
+  - ship: 扶桑
+    equips:
+    - 41cm連装砲
+    - 35.6cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 赤城
+    equips:
+    - 九九式艦爆
+    - 九七式艦攻
+    - 九七式艦攻
+    - 九六式艦戦
+  - ship: 鳥海
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 摩耶
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 青葉
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 瑞鳳
+    equips:
+    - 九七式艦攻
+    - 九九式艦爆
+    - 九六式艦戦
+  tags:
+  - 萌新推图
+  - BB+CV混編
+  special_attacks: []
+- name: 南西（6SS編成）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SS
+      - SSV
+      count: 6
+      specific_ships:
+      - 伊58
+      notes: 6隻全て潜水艦，潜母は連れない
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: 制空不要。6隻未満はG逸れリスクあり。潜母は使わず消耗を抑える。
+  example:
+  - ship: 伊58
+    equips: []
+  - ship: 伊58
+    equips: []
+  - ship: 伊58
+    equips: []
+  - ship: 伊58
+    equips: []
+  - ship: 伊58
+    equips: []
+  - ship: 伊58
+    equips: []
+  tags:
+  - 南西諸島海域の制海権を握れ！
+  - い号作戦
+  - 6SS
+  special_attacks: []
+- name: 捞喷火/空母季常（AV+SS+CVL構成）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships:
+      - 塔斯特司令官改
+      notes: 旗舰，水上機母艦，試製晴嵐搭載で制空稼ぎ
+    - ship_class:
+      - SS
+      - SSV
+      count: 3
+      specific_ships:
+      - 伊168改
+      - 伊504
+      - 呂500
+    - ship_class:
+      - CVL
+      count: 2
+      specific_ships:
+      - 鈴谷航改二
+      - 熊野航改二
+      notes: CVL<=2，3CVL以上は左ルートへ逸れ
+  requirements:
+    air_state: supremacy
+    air_power_min: 162
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: 制空164~166（画面値），H点162空確。E点でF5すると晴嵐捕獲可能。CVL最大2隻。SS雷撃CIあり（伊168改：試制FaT規格九五式酸素魚雷改×2，伊504/呂500：後期型艦首魚雷(6門)×2）。彩雲(東加ロ林空)搭載で丁字不利回避。
+  example:
+  - ship: 塔斯特司令官改
+    equips:
+    - 試製晴嵐
+    - 試製晴嵐
+    - 試製晴嵐
+    - 晴嵐(六三一空)
+  - ship: 伊168改
+    equips:
+    - 試製FaT仕様九五式酸素魚雷改
+    - 試製FaT仕様九五式酸素魚雷改
+  - ship: 伊504
+    equips:
+    - 後期型艦首魚雷(6門)
+    - 後期型艦首魚雷(6門)
+  - ship: 呂500
+    equips:
+    - 後期型艦首魚雷(6門)
+    - 後期型艦首魚雷(6門)
+  - ship: 鈴谷航改二
+    equips:
+    - F4U-1D
+    - 天山一二型(村田隊)
+    - 天山一二型(友永隊)
+    - 零式艦戦53型(岩本隊)
+  - ship: 熊野航改二
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 天山一二型(村田隊)
+    - 九七式艦攻(友永隊)
+    - 彩雲
+  tags:
+  - 捞喷火
+  - 空母戦力の投入による兵站線戦闘哨戒
+  - F5
+  - 晴嵐
+  special_attacks: []
+- name: B29（軽空母戦隊）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。BBV不可。
+  example: []
+  tags:
+  - B29
+  - 軽空母戦隊出撃せよ
+  special_attacks: []
+- name: B82（夜戦灯火任務）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - BB
+      - FBB
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。BBV不可。代替案：2CVL+4SS。
+  example: []
+  tags:
+  - B82
+  - 夜の海を照らす灯り
+  special_attacks: []
+- name: B124（第七駆逐隊）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 曙
+      - 潮
+      - 漣
+      - 朧
+      notes: 4選2
+    - ship_class:
+      - BB
+      - FBB
+      - CA
+      - CAV
+      - CL
+      - AV
+      count: 2
+      specific_ships: []
+      notes: AV同伴でE固定
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。BBV不可。AV同伴でE固定ルート。
+  example: []
+  tags:
+  - B124
+  - 第七駆逐隊
+  special_attacks: []
+- name: B125（近海警戒監視）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 旗舰
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - BB
+      - FBB
+      - CLT
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。BBV不可。
+  example: []
+  tags:
+  - B125
+  - 近海の警戒監視と哨戒活動を強化せよ
+  special_attacks: []
+- name: SB44（三一駆長波）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 長波
+      notes: 旗舰
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships:
+      - 高波
+      - 沖波
+      - 岸波
+      - 朝霜
+      notes: 4選3
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。S勝利×2。
+  example: []
+  tags:
+  - SB44
+  - 春！三一駆旗艦長波出撃せよ
+  special_attacks: []
+- name: B135（近海哨戒）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。
+  example: []
+  tags:
+  - B135
+  - 近海哨戒を実施せよ
+  special_attacks: []
+- name: B138（羽黒・神風）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 羽黒
+      notes: 旗舰
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 神風
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。CV系別途持込推奨。
+  example: []
+  tags:
+  - B138
+  - 羽黒神風出撃せよ
+  special_attacks: []
+- name: B156（静かな海を護る鯨）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AS
+      count: 1
+      specific_ships: []
+      notes: 旗舰
+    - ship_class:
+      - SS
+      - SSV
+      count: 3
+      specific_ships: []
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。S勝利×1。
+  example: []
+  tags:
+  - B156
+  - 静かな海を護る鯨動き出す
+  special_attacks: []
+- name: B159（艦隊司令部強化）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 大淀
+      - 丹陽
+      notes: 旗舰
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。S勝利×2。
+  example: []
+  tags:
+  - B159
+  - 艦隊旗艦出撃せよ
+  special_attacks: []
+- name: B171（第二段階任務）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships: []
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。S勝利×1。
+  example: []
+  tags:
+  - B171
+  - 作戦準備第二段階任務
+  special_attacks: []
+- name: B175（基地航空隊開設）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships: []
+      notes: AV同伴でE固定・晴嵐捕獲可
+    - ship_class:
+      - SS
+      - SSV
+      count: 3
+      specific_ships: []
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。S勝利×1。AV不要でも可，小船代替可。
+  example: []
+  tags:
+  - B175
+  - 南西海域基地航空隊開設
+  special_attacks: []
+- name: B201（哨戒部隊近海警戒）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DE
+      count: 3
+      specific_ships: []
+      notes: DE不足時は4DD代替可
+  requirements:
+    air_state: supremacy
+    air_power_min: 81
+    enemy_air_power: 36
+    routing_nodes:
+    - C
+    - E
+    - D
+    - H
+  equip_notes: boss点81空優，162空確。A勝利以上×1。DE不足の場合2CV系+4DDも可。
+  example: []
+  tags:
+  - B201
+  - 哨戒部隊で近海及び南西諸島を警戒せよ
+  special_attacks: []

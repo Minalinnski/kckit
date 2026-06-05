@@ -1,0 +1,10 @@
+quest_id: Bw8
+quest_name: 敵東方中枢艦隊を撃破せよ！
+category: weekly
+requirement: 4-4，B胜
+maps:
+- map_id: 4-4
+  fleet_hint: 3CVL+1CL+2DE/DD
+  notes: boss点144空确，平均每圈0.25空母、0.6补给、4.4潜艇
+  synergy_quests:
+  - Bw6

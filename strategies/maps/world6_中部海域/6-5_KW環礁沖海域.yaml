@@ -1,0 +1,640 @@
+map: 6-5
+source: nga_import
+notes: KW環礁沖海域、boss点M是6v12夜战、主流四路线：下路/中路/上路/下转上
+presets:
+- name: 下路空均流
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 長門改二
+      - 陸奥改二
+      notes: 旗舰、nagato_touch发动位、门神J点特殊攻击
+    - ship_class:
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 携带双夜間瑞雲、提供制空与开幕、夜战CI
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 最上改二特
+      notes: 6号位、警戒阵时置于末位、水上侦察机/水战
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: 开幕雷击重要、提供输出
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - フレッチャーMk.II
+      - 時雨改三
+      - 雪風改二
+      notes: 先制対潜或魚雷CI、钢板优先
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 雪風改二
+      - 時雨改三
+      notes: 先制対潜或魚雷CI
+  requirements:
+    air_state: parity
+    air_power_min: 158
+    enemy_air_power: 212
+    los_formula: 3
+    los_min: 35.0
+    routing_nodes:
+    - B
+    - F
+    - I
+    - J
+    - M
+  equip_notes: 制空169(本队)、M点约158均势、索敌分歧点系数3>=35、伊勢改二携带双試製夜間瑞雲(攻撃装備)不与探照灯/照明弾共存、陆航一队M点106空劣、二队M点约95空劣、门神J单横→单纵→梯形/复纵/警戒阵、boss单纵
+  example:
+  - ship: 長門改二
+    equips:
+    - 51cm連装砲
+    - 51cm連装砲
+    - 零式水上偵察機11型乙改(夜偵)
+    - 一式徹甲弾改
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 試製 夜間瑞雲(攻撃装備)
+    - 試製 夜間瑞雲(攻撃装備)
+    - 震電改
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 甲標的 丙型
+    - 強風改二
+    - 零式水上偵察機11型乙(熟練)
+    - 8cm高角砲改+増設機銃
+  - ship: フレッチャーMk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 対潜短魚雷(試作初期型)
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 12.7cm連装砲C型改三
+    - HF/DF + Type144/147 ASDIC
+    - 艦本新設計 増設バルジ(中型艦)
+  tags:
+  - 下路
+  - 空均
+  - 低铝耗
+  - 夜瑞云
+  special_attacks:
+  - type: nagato_touch
+    ships:
+    - 長門改二
+    - 伊勢改二
+    flagship: 長門改二
+    positions:
+    - 1
+    - 2
+    equip_hint: 電探+徹甲弾
+    notes: 门神J点夜战发动、boss点单纵阵
+- name: 下路空均流(纳尔逊版)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - ネルソン改
+      - ロドニー改
+      notes: 旗舰、nelson_touch、省油复纵
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 携带双夜間瑞雲
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改二特
+      notes: 6号位置于末位
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 开幕雷击
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - フレッチャーMk.II
+      - 時雨改三
+      - 雪風改二
+      notes: 先制対潜
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 雪風改二
+      - 時雨改三
+      notes: 先制対潜
+  requirements:
+    air_state: parity
+    air_power_min: 158
+    enemy_air_power: 212
+    los_formula: 3
+    los_min: 35.0
+    routing_nodes:
+    - B
+    - F
+    - I
+    - J
+    - M
+  equip_notes: 纳尔逊可复纵省油、门神J点nelson_touch、运低时发动率低、boss单纵、制空约158均势
+  example: []
+  tags:
+  - 下路
+  - 空均
+  - 省油
+  special_attacks:
+  - type: nelson_touch
+    ships:
+    - ネルソン改
+    flagship: ネルソン改
+    positions:
+    - 1
+    - 3
+    - 5
+    equip_hint: ''
+    notes: 门神J点夜战复纵省油版
+- name: 下路空均流(萌新版/夕张)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰、魚雷CI
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改二
+      notes: 携带瑞云/夜瑞云、立体攻击
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 携带夜瑞云、制空
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - フレッチャーMk.II
+      notes: 先制対潜
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 雪風改二
+      notes: 对空
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 由良改二
+      notes: 任务Bq13兼容用、开幕雷击
+  requirements:
+    air_state: parity
+    air_power_min: 158
+    enemy_air_power: 212
+    los_formula: 3
+    los_min: 35.0
+    routing_nodes:
+    - B
+    - F
+    - I
+    - J
+    - M
+  equip_notes: 制空182~183、索敌39.93、总消耗320~405、门神J梯形/警戒阵、boss单纵、夕张改二特旗舰魚雷CI、陆航两队空劣炸boss
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 照明弾
+    - 22号対水上電探改四(後期調整型)
+  - ship: 日向改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瑞雲(六三四空/熟練)
+    - 瑞雲改二(六三四空/熟練)
+    - 一式徹甲弾改
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 彗星二二型(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+  - ship: フレッチャーMk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - 対潜短魚雷(試作初期型)
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - GFCS Mk.37
+  - ship: 由良改二
+    equips:
+    - 甲標的 丙型
+    - 強風改
+    - 20.3cm(3号)連装砲
+  tags:
+  - 下路
+  - 空均
+  - 萌新
+  - Bq13任务兼容
+  special_attacks: []
+- name: 下路空均流(萌新版/熊野)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰、魚雷CI
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改二
+      notes: 携带瑞云
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 携带夜瑞云
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 如月改二
+      notes: 对空
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 熊野改二
+      notes: 水战制空
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 睦月改二
+      notes: 先制対潜
+  requirements:
+    air_state: parity
+    air_power_min: 158
+    enemy_air_power: 212
+    los_formula: 3
+    los_min: 35.0
+    routing_nodes:
+    - B
+    - F
+    - I
+    - J
+    - M
+  equip_notes: 制空188~189、索敌45.48、总消耗340~415、门神J梯形/警戒阵、boss单纵
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - RUR-4A Weapon Alpha改
+    - 22号対水上電探改四(後期調整型)
+  - ship: 日向改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瑞雲(六三四空/熟練)
+    - 瑞雲改二(六三四空/熟練)
+    - 一式徹甲弾改
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 彗星二二型(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+  - ship: 如月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 熊野改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 強風改
+    - 零式水上偵察機11型乙(熟練)
+  - ship: 睦月改二
+    equips:
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - 照明弾
+  tags:
+  - 下路
+  - 空均
+  - 萌新
+  - Bq13任务兼容
+  special_attacks: []
+- name: 中路炸鱼流
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 初月改二
+      notes: 旗舰、先制対潜+强力对空CI
+    - ship_class:
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 携带瑞雲/夜瑞雲、制空、立体攻击
+    - ship_class:
+      - CV
+      - CVL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 赤城改二戊
+      - 飛鷹改
+      - 隼鷹改二
+      notes: 装甲空母/五格空母/夜间空母、制空、彩雲防T字不利
+    - ship_class:
+      - CV
+      - CVL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 瑞鶴改二甲
+      - 翔鶴改二甲
+      notes: 制空、开幕空袭
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: 开幕雷击重要
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改二
+      notes: 或BB系提供额外炮击轮
+  requirements:
+    air_state: superiority
+    air_power_min: 468
+    enemy_air_power: 208
+    los_formula: 3
+    los_min: 50.0
+    routing_nodes:
+    - A
+    - C
+    - E
+    - H
+    - G
+    - M
+  equip_notes: 制空660、G点468空优、H点尽量630空确、索敌>=50(系数3)、E点最多6只金红so级需4东海、本队另配两件套反潜单位、大船孔里塞喷二防二连空袭、陆航一队炸E点(航程3制空0)、二队炸M点106空劣、A单纵C单纵E单横H轮形G轮形M单纵
+  example:
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - 電探装備マスト(13号改+22号電探改四)
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瑞雲改二(六三四空/熟練)
+    - 震電改
+    - 一式徹甲弾改
+    - 12cm30連装噴進砲改二
+  - ship: 赤城改二戊
+    equips:
+    - 零戦62型(爆戦/岩井隊)
+    - 烈風改二戊型(一航戦/熟練)
+    - 天山一二型甲
+    - 烈風改二戊型
+    - 彩雲(東カロリン空)
+    - 12cm30連装噴進砲改二
+  - ship: 瑞鶴改二甲
+    equips:
+    - AU-1
+    - 流星改(一航戦/熟練)
+    - 彗星(江草隊)
+    - 震電改
+    - 12cm30連装噴進砲改二
+  - ship: 翔鶴改二甲
+    equips:
+    - F4U-7
+    - 流星改(一航戦/熟練)
+    - 震電改
+    - 零式艦戦53型(岩本隊)
+    - 12cm30連装噴進砲改二
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機
+    - 甲標的 丁型改(蛟龍改)
+    - 艦本新設計 増設バルジ(中型艦)
+  tags:
+  - 中路
+  - 空优
+  - 炸鱼
+  - 4东海
+  special_attacks: []
+- name: 上路喷二流
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 初月改二
+      notes: 旗舰、强力对空CI
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      - 日向改二
+      notes: 携带喷二、制空
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城改二戊
+      - 飛鷹改
+      notes: 装甲空母/五格空母/夜间空母、喷二
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改二特
+      - 三隈改二特
+      notes: 最上改二特+三隈改二特组合、喷二
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 三隈改二特
+      - 最上改二特
+      notes: 与上位配对
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 先制対潜DD
+  requirements:
+    air_state: superiority
+    air_power_min: 468
+    enemy_air_power: 208
+    los_formula: 3
+    los_min: 50.0
+    routing_nodes:
+    - A
+    - C
+    - D
+    - G
+    - M
+  equip_notes: G点468空优、全员僚舰装喷二防G门神空袭(喷二对CV系/BBV/CAV/AV有效)、矢矧改二乙可替代三隈、陆航两队均炸M点(一队106空劣/二队95空劣)、A单纵C单纵D单纵G轮形M单纵
+  example: []
+  tags:
+  - 上路
+  - 空优
+  - 喷二
+  - 主任罚站率高
+  special_attacks: []
+- name: 下转上水打流
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - ネルソン改
+      - ロドニー改
+      - 長門改二
+      - 陸奥改二
+      - Colorado
+      - Maryland
+      notes: 旗舰、C点特殊攻击(纳尔逊最适合)、nelson_touch
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 水战+彻甲弹、制空
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改二
+      notes: 水战+彻甲弹
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 强力对空CI、钢板
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 开幕雷击
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改二特
+      notes: 高改修水战制空
+  requirements:
+    air_state: superiority
+    air_power_min: 368
+    enemy_air_power: 212
+    los_formula: 3
+    los_min: 50.0
+    routing_nodes:
+    - B
+    - C
+    - D
+    - G
+    - M
+  equip_notes: boss点约368空优、BB系=3、CL>=1、DD>=1、无CV/CLT、陆航一队炸M点106空劣、二队分C点204空优+M点各一波、C点纳尔逊复纵特殊攻击、D点DD单听先反、B单横C复纵D单纵G轮形M单纵、油耗较高
+  example: []
+  tags:
+  - 下转上
+  - 水打
+  - 高油耗
+  special_attacks:
+  - type: nelson_touch
+    ships:
+    - ネルソン改
+    flagship: ネルソン改
+    positions:
+    - 1
+    - 3
+    - 5
+    equip_hint: ''
+    notes: C点发动最合适、复纵阵

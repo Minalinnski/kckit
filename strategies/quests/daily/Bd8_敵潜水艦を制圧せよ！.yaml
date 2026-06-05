@@ -1,0 +1,8 @@
+quest_id: Bd8
+quest_name: 敵潜水艦を制圧せよ！
+category: daily
+requirement: 击沉6艘潜艇
+maps:
+- map_id: 1-5
+  fleet_hint: 4DE/DD
+  synergy_quests: []

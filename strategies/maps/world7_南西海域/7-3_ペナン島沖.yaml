@@ -1,0 +1,413 @@
+map: 7-3
+source: nga_import
+notes: ペナン島沖、两段血条，常用水雷战队以重巡(羽黑/足柄)为核心周回捞船，多条路线可选
+presets:
+- name: P1 A-C-E 平民版 (羽黑+3DD)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 羽黒改二
+      notes: 史实带路旗舰
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships: []
+      notes: 普通DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+    - E
+  equip_notes: 制空0、索敌0；P1简单，4船即可完成
+  example: []
+  tags:
+  - P1
+  - 最短路线
+  - 捞船
+  special_attacks: []
+- name: P1 A-C-E 带开幕版 (羽黑+神風+1DD+1自由)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 羽黒改二
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 神風改
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 普通DD
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 自由位，开幕舰
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+    - E
+  equip_notes: 多神風带路可多带一开幕舰，战损较低
+  example: []
+  tags:
+  - P1
+  - 捞船
+  special_attacks: []
+- name: P2 A-C-D-G-P 均衡版 (羽黑+足柄+神風+2DD+1CL系/AV)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 羽黒改二
+      notes: 史实带路
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 足柄改二
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 神風改
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 普通DD
+    - ship_class:
+      - CL
+      - CLT
+      - AV
+      count: 1
+      specific_ships:
+      - 最上改二特
+      - 最上改二
+      - 矢矧改二乙
+      notes: CL系/AV，建议携带水战/水爆拿制空
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+    - D
+    - G
+    - P
+  equip_notes: 高速编制；CL系/AV带水战/水爆拿制空，让CA打昼战二连；boss点斩杀率接近100%
+  example:
+  - ship: 日進甲
+    equips:
+    - 14cm連装砲改
+    - 14cm連装砲改
+    - 瑞雲改二(六三四空/熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 羽黒改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 足柄改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - 22号対水上電探改四(後期調整型)
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改三
+    - 12.7cm連装砲D型改二
+    - 22号対水上電探改四(後期調整型)
+  - ship: 神風改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 探照灯
+  tags:
+  - P2
+  - 主力
+  - 战果
+  - 高速
+  - 捞船
+  special_attacks: []
+- name: P2 A-C-D-G-P 精简版 (羽黒+神風+2CA系/CL系/AV)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 羽黒改二
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 神風改
+      notes: 史实带路
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      - AV
+      count: 2
+      specific_ships: []
+      notes: 自由CA系/CL系/AV，减少脆皮DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+    - D
+    - G
+    - P
+  equip_notes: 4船编成；boss点夜战面对更多敌人，CA也较脆
+  example: []
+  tags:
+  - P2
+  - 精简
+  special_attacks: []
+- name: P2 A-C-I-J-P 炸鱼流 (羽黒+足柄+神風+1CA系+1DD)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 羽黒改二
+      notes: 史实带路
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 足柄改二
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 神風改
+      notes: 史实带路
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 自由CA系
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 普通DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+    - I
+    - J
+    - P
+  equip_notes: 5船炸鱼流；经过J点潜水节点，boss点全体回避较高，弹药消耗较低；注意低概率被J点鱼雷射爆
+  example: []
+  tags:
+  - P2
+  - 炸鱼
+  - 弹药节省
+  special_attacks: []
+- name: P2 A-C-D-G-J-P 开幕最足版 (羽黒+足柄+神風+1DD+2CA系/CL系/AV)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 羽黒改二
+      notes: 史实带路
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 足柄改二
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 神風改
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 普通DD
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      - AV
+      count: 2
+      specific_ships: []
+      notes: 自由CA系/CL系/AV，若4CA系需用妙高+高雄带路
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+    - D
+    - G
+    - J
+    - P
+  equip_notes: 开幕输出最足，桶耗相对较低；道中较长，每圈花费时间多；若4CA系需妙高+高雄史实带路
+  example: []
+  tags:
+  - P2
+  - 开幕最强
+  - 长路线
+  special_attacks: []
+- name: P2 稳定6船版 (日進甲+羽黒+足柄+雪風+長波+神風)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 日進甲
+      notes: 水上机母舰，制空
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 羽黒改二
+      notes: 史实带路
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 足柄改二
+      notes: 史实带路
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 雪風改二
+      notes: 夜战DD
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 長波改二
+      notes: 夜战DD
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 神風改
+      notes: 史实带路，携照明弹
+  requirements:
+    air_state: none
+    air_power_min: 26
+    los_min: 53.0
+    routing_nodes:
+    - A
+    - C
+    - D
+    - G
+    - P
+  equip_notes: 制空26，索敌53.01；高速编成；boss点不知道怎么输；高速周回DD疲劳不好控制，适合碎片时间偶尔打；神風携探照灯
+  example:
+  - ship: 日進甲
+    equips:
+    - 14cm連装砲改
+    - 14cm連装砲改
+    - 瑞雲改二(六三四空/熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 羽黒改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 足柄改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - 22号対水上電探改四(後期調整型)
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改三
+    - 12.7cm連装砲D型改二
+    - 22号対水上電探改四(後期調整型)
+  - ship: 神風改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 探照灯
+  tags:
+  - P2
+  - 稳定
+  - 6船
+  - 战果
+  special_attacks: []

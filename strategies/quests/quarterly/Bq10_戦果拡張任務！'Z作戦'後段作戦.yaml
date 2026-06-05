@@ -1,0 +1,22 @@
+quest_id: Bq10
+quest_name: 戦果拡張任務！'Z作戦'後段作戦
+category: quarterly
+requirement: 7-2P2、5-5、6-2、6-5各1次S胜，战果+400
+maps:
+- map_id: 7-2
+  fleet_hint: P1:2CVL+3DE；P2:1BB系+1BB系/CV系+1CVL+1CLT/CAV+2DD，高速
+  notes: P2 boss点359空优，分歧点系数=4，索敌>=69
+  synergy_quests:
+  - Bq8
+- map_id: 5-5
+  fleet_hint: 见海域详细配置
+  synergy_quests: []
+- map_id: 6-2
+  fleet_hint: 1BB系+1CV系+2CA系/CL系+2DD
+  notes: 分歧点系数=3，索敌>=40；索敌40-43走I boss点126空优，索敌50+走J boss点153空优
+  synergy_quests: []
+- map_id: 6-5
+  fleet_hint: 夕张改二旗舰+2BB系+1CL+2DD
+  notes: 分歧点系数=3，索敌>=40
+  synergy_quests:
+  - Bq13

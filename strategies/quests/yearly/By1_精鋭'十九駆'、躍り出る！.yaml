@@ -1,0 +1,27 @@
+quest_id: By1
+quest_name: 精鋭'十九駆'、躍り出る！
+category: yearly
+requirement: 2-5、3-4、4-5、5-3各1次S胜，需要绫波改二+敷波改二
+maps:
+- map_id: 2-5
+  fleet_hint: 1CV+1CVL+1CL+3DD高速
+  notes: boss点84空确，索敌>=34
+  synergy_quests:
+  - Bm1
+  combo_fleets:
+    Bm1: 1BBV+妙高+那智+羽黑+绫波改二+敷波改二
+- map_id: 3-4
+  fleet_hint: 2CV+1CVL+1AV+绫波改二+敷波改二
+  notes: boss点168空确
+  synergy_quests: []
+- map_id: 4-5
+  fleet_hint: 2CV系/BB系+1CL+1DD+绫波改二+敷波改二
+  notes: boss点207空优，需小船对陆装，别忘高速
+  synergy_quests: []
+- map_id: 5-3
+  fleet_hint: 1BB/FBB+2CAV/CLT+1CL+2DD
+  notes: boss点140空优
+  synergy_quests:
+  - Bq7
+  combo_fleets:
+    Bq7: 3CA+1CL+绫波改二+敷波改二

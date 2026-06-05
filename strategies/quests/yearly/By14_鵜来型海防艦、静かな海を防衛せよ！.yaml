@@ -1,0 +1,15 @@
+quest_id: By14
+quest_name: 鵜来型海防艦、静かな海を防衛せよ！
+category: yearly
+requirement: 1-1各3次S胜，1-2、1-5各2次A胜，需要鹈来型旗舰+1~3DE
+maps:
+- map_id: 1-1
+  fleet_hint: 3~4DE
+  notes: 换好夜战二连配装
+  synergy_quests: []
+- map_id: 1-2
+  fleet_hint: 4DE
+  synergy_quests: []
+- map_id: 1-5
+  fleet_hint: 4DE
+  synergy_quests: []

@@ -1,0 +1,57 @@
+map: "5-4"
+source: "https://bbs.nga.cn/..."
+notes: "鎮守府海域 5-4 ボス撃破周回。最短B-E-H(ボス)ルート。"
+
+presets:
+  - name: "標準編成（重巡×2+航巡×2+DD×2）"
+    fleet:
+      type: single
+      slots:
+        - ship_class: [CA]
+          count: 2
+          notes: "火力要員"
+        - ship_class: [CAV]
+          count: 2
+          notes: "水戦搭載で制空補助"
+        - ship_class: [DD]
+          count: 2
+          notes: "索敵+対潜"
+    requirements:
+      air_state: none
+      los_formula: 33
+      los_min: 145.0
+      routing_nodes: ["B", "E", "H"]
+    equip_notes: "航巡は水戦+水偵で索敵稼ぎ。DDは主砲+魚雷+電探。"
+    example:
+      - ship: "利根改二"
+        equips: ["20.3cm(3号)連装砲", "夜間瑞雲", "九八式水上偵察機(夜偵)", "32号対水上電探"]
+      - ship: "筑摩改二"
+        equips: ["20.3cm(3号)連装砲", "夜間瑞雲", "九八式水上偵察機(夜偵)", "32号対水上電探"]
+      - ship: "高雄改"
+        equips: ["20.3cm(2号)連装砲", "20.3cm(2号)連装砲", "夜間瑞雲", "32号対水上電探"]
+      - ship: "摩耶改二"
+        equips: ["20.3cm(2号)連装砲", "20.3cm(2号)連装砲", "夜間瑞雲", "32号対水上電探"]
+      - ship: "雪風改"
+        equips: ["12.7cm連装砲D型改三", "12.7cm連装砲D型改三", "93式水中聴音機", "22号対水上電探改四"]
+      - ship: "時雨改二"
+        equips: ["12.7cm連装砲D型改二", "12.7cm連装砲D型改二", "93式水中聴音機", "22号対水上電探改四"]
+    tags: ["standard"]
+
+  - name: "低コスト編成（軽巡×1+DD×5）"
+    fleet:
+      type: single
+      slots:
+        - ship_class: [CL]
+          count: 1
+          specific_ships: ["大淀改"]
+          notes: "索敵艦隊旗艦"
+        - ship_class: [DD]
+          count: 5
+          notes: "魚雷×2+索敵電探"
+    requirements:
+      air_state: none
+      los_formula: 33
+      los_min: 120.0
+      routing_nodes: ["B", "E", "H"]
+    equip_notes: "資源消費を最小化。DDは対潜装備も可。"
+    tags: ["low_cost"]

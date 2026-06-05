@@ -1,0 +1,21 @@
+quest_id: By11
+quest_name: 日英米合同水上艦隊、抜錨せよ！
+category: yearly
+requirement: 3-1、3-3、4-3、7-3P2各1次A胜，需要美英船*3，不能带空母
+maps:
+- map_id: 3-1
+  fleet_hint: 2BB系+2CA系/CL系+2DD
+  notes: boss点42空优，84空确
+  synergy_quests: []
+- map_id: 3-3
+  fleet_hint: 1BB系+1CL+4DD
+  notes: 门神78空优，156空确
+  synergy_quests: []
+- map_id: 4-3
+  fleet_hint: 2BB系+1CL+3DD
+  notes: boss点155空优，240大概率空确
+  synergy_quests: []
+- map_id: 7-3
+  fleet_hint: 羽黑+足柄+1CA系+3DD
+  notes: P2
+  synergy_quests: []

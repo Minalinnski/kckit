@@ -1,0 +1,12 @@
+quest_id: Bw9
+quest_name: 南方海域珊瑚諸島沖の制空権を握れ！
+category: weekly
+requirement: 5-2，2次S胜
+maps:
+- map_id: 5-2
+  fleet_hint: 2CV+1~2BB+2~3CA/CAV
+  notes: boss点351空确，分歧点系数=2，索敌>=70
+  synergy_quests:
+  - Bd5
+  combo_fleets:
+    Bd5: 翔鹤+瑞鹤+1高速BB系+1CAV+2对空对潜DD

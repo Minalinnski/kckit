@@ -1,0 +1,24 @@
+quest_id: Bq2
+quest_name: 戦果拡張任務！'Z作戦'前段作戦
+category: quarterly
+requirement: 2-4、6-1、6-3各1次A胜，6-4 S胜，战果+350
+maps:
+- map_id: 2-4
+  fleet_hint: 2CVL+BB系/CA系/CL系+1CL+2DD
+  notes: 门神84空优，168空确
+  synergy_quests:
+  - Bq1
+- map_id: 6-1
+  fleet_hint: 1AS+矢矧改二乙+4SS系
+  notes: 分歧点系数=4，索敌>=25；或1CV+1CL+1CLT/三隈改二特+3SS系
+  synergy_quests:
+  - Bm2
+- map_id: 6-3
+  fleet_hint: 3CL+2AV+1DD
+  notes: 分歧点系数=3，索敌>=38
+  synergy_quests:
+  - Bq4
+- map_id: 6-4
+  fleet_hint: 见海域详细配置
+  synergy_quests:
+  - Bq13

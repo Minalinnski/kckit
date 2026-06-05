@@ -1,0 +1,15 @@
+quest_id: By7
+quest_name: 南西方面の兵站航路の安全を図れ！
+category: yearly
+requirement: 1-5、2-1各2次A胜，1-6到达终点2次，需要CL/CT/DD旗舰+3DD/DE
+maps:
+- map_id: 1-5
+  fleet_hint: 1CL/CT/DD旗舰+3DD/DE
+  synergy_quests: []
+- map_id: 2-1
+  fleet_hint: 1CL旗舰+3DD+2CV系
+  notes: boss点81空优，162空确
+  synergy_quests: []
+- map_id: 1-6
+  fleet_hint: 1CL旗舰+5DD
+  synergy_quests: []

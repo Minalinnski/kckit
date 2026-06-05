@@ -1,0 +1,10 @@
+quest_id: Bm2
+quest_name: '''潜水艦隊''出撃せよ！'
+category: monthly
+requirement: 6-1，3次S胜
+maps:
+- map_id: 6-1
+  fleet_hint: 1AS+矢矧改二乙+4SS系
+  notes: 分歧点系数=4，索敌>=25，AS旗舰双炮水爆，矢矧双炮水爆甲标
+  synergy_quests:
+  - Bq2

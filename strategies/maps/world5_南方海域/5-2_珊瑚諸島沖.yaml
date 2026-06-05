@@ -1,0 +1,537 @@
+map: 5-2
+source: nga_import
+notes: 珊瑚諸島沖，boss点O，主要路线1-B-C-E-F-O或1-B-C-D-F-O，boss点最强编制含空母棲鬼(制空351空确)
+presets:
+- name: 新手重型编制 B-C-E-F-O (舰战质量低)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城改
+      notes: 正规航母，旗舰
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - 長門改
+      notes: 低速戦列艦
+    - ship_class:
+      - FBB
+      count: 1
+      specific_ships:
+      - 金剛改
+      notes: 高速戦列巡洋艦
+    - ship_class:
+      - CA
+      count: 1
+      specific_ships:
+      - 鳥海改
+      notes: 重巡洋艦
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改
+      notes: 航空巡洋艦
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 加賀改
+      notes: 正规航母
+  requirements:
+    air_state: none
+    air_power_min: 200
+    enemy_air_power: 176
+    los_formula: 2
+    los_min: 70.0
+    routing_nodes:
+    - B
+    - C
+    - E
+    - F
+    - O
+  equip_notes: 出門制空200+可在boss点O拿空优(176)，E/F点均势問題なし。制空294~296、索敵39.51。可带2CV+2BB+2CA/CAV/CLT，不带CLT生存更高。
+  example:
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 彗星一二型甲
+    - 試製烈風 後期型
+    - 紫電改二
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 金剛改
+    equips:
+    - 41cm連装砲
+    - 35.6cm連装砲
+    - 零式水上偵察機
+  - ship: 鳥海改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 加賀改
+    equips:
+    - 流星改
+    - 彗星一二型甲
+    - 試製烈風 後期型
+    - 紫電改二
+  tags:
+  - beginner
+  - B-C-E-F-O
+  - 低制空
+  special_attacks: []
+- name: 史実翔鶴瑞鶴編制 B-C-D-F-O (空确)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BBV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 伊勢改二
+      notes: 改装航空戦列艦、高速化、旗舰
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 翔鶴改二甲
+      notes: 装甲空母、史実带路
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 瑞鶴改二甲
+      notes: 装甲空母、史実带路
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 最上改二特
+      notes: 改装航空巡洋艦、水战补制空
+    - ship_class:
+      - DD
+      count: 1
+      min_asw: 100
+      speed: fast
+      specific_ships:
+      - Johnston改
+      notes: 先制対潜、対空CI
+    - ship_class:
+      - DD
+      count: 1
+      min_asw: 100
+      speed: fast
+      specific_ships:
+      - Fletcher Mk.II
+      notes: 先制対潜
+  requirements:
+    air_state: none
+    air_power_min: 351
+    enemy_air_power: 176
+    los_formula: 2
+    los_min: 70.0
+    routing_nodes:
+    - B
+    - C
+    - D
+    - F
+    - O
+  equip_notes: boss点O空确351。D点有潜水艦、建议DD带先制対潜(ASW≥100)。D点偷窥：有魚雷单横阵，无魚雷单縦阵。伊勢改二带16inch三連装砲Mk.7+GFCS+41cm三連装砲+瑞雲改二(六三四空/熟練)+零式艦戦53型(岩本隊)+新型高温高圧鍋炉提速。翔鶴带流星改(一航戦/熟練)+天山一二型(村田隊)+零式艦戦62型(爆戦/岩井隊)+烈風改二。瑞鶴带流星改(一航戦/熟練)+天山一二型(村田隊)+彗星(江草隊)+烈風改二戊型(一航戦/熟練)。制空370~373、索敵54.23。
+  example:
+  - ship: 伊勢改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 41cm三連装砲改
+    - 瑞雲改二(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 新型高温高圧缶
+  - ship: 翔鶴改二甲
+    equips:
+    - 流星改(一航戦/熟練)
+    - 天山一二型(村田隊)
+    - 零戦62型(爆戦/岩井隊)
+    - 烈風改二
+  - ship: 瑞鶴改二甲
+    equips:
+    - 流星改(一航戦/熟練)
+    - 天山一二型(村田隊)
+    - 彗星(江草隊)
+    - 烈風改二戊型(一航戦/熟練)
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 甲標的 丁型改(蛟龍改)
+    - 零式水上偵察機11型乙(熟練)
+    - 二式水戦改(熟練)
+  - ship: Johnston改
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - GFCS Mk.37
+  - ship: Fletcher Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改
+    - 5inch単装砲 Mk.30改
+    - HF/DF + Type144/147 ASDIC
+  tags:
+  - 翔鶴瑞鶴
+  - 史実
+  - B-C-D-F-O
+  - 先制対潜
+  - 空确
+  special_attacks: []
+- name: ネルソン摸 B-C-E-F-O (装甲空母+対空)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - ネルソン改
+      notes: 低速戦列艦、旗舰、ネルソンタッチ用
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 赤城改二戊
+      notes: 正规航母
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 最上改二特
+      notes: 改装航空巡洋艦
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 加賀改二
+      notes: 正规航母
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 鈴谷改二
+      notes: 航空巡洋艦、水战补制空
+    - ship_class:
+      - BB
+      count: 1
+      speed: fast
+      specific_ships:
+      - Atlanta改
+      notes: 防空戦列艦、対空CI
+  requirements:
+    air_state: none
+    air_power_min: 351
+    enemy_air_power: 176
+    los_formula: 2
+    los_min: 70.0
+    routing_nodes:
+    - B
+    - C
+    - E
+    - F
+    - O
+  equip_notes: boss点O空确351。ネルソン摸主要用于E点击打塔姐。Atlanta改(亚特兰大)対空CI强力。没有亚棍可用摩耶改二替代。如输出不足可再加一BB。制空379~381、索敵60.29。赤城改二戊带零式艦戦62型(爆戦/岩井隊)+天山一二型(村田隊)+流星改(一航戦/熟練)+烈風改二戊型(一航戦/熟練)x2。加賀改二带彗星(江草隊)+天山一二型(村田隊)+流星改(一航戦/熟練)+零式艦戦53型(岩本隊)+烈風改二。
+  example:
+  - ship: ネルソン改
+    equips:
+    - 46cm三連装砲改
+    - 16inch Mk.I三連装砲改+FCR type284
+    - 零式水上偵察機11型乙(熟練)
+    - 一式徹甲弾改
+  - ship: 赤城改二戊
+    equips:
+    - 零戦62型(爆戦/岩井隊)
+    - 天山一二型(村田隊)
+    - 流星改(一航戦/熟練)
+    - 烈風改二戊型(一航戦/熟練)
+    - 烈風改二戊型
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 加賀改二
+    equips:
+    - 彗星(江草隊)
+    - 天山一二型(村田隊)
+    - 流星改(一航戦/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 烈風改二
+  - ship: 鈴谷改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 二式水戦改(熟練)
+    - 瑞雲改二(六三四空/熟練)
+  - ship: Atlanta改
+    equips:
+    - GFCS Mk.37+5inch連装両用砲(集中配備)
+    - 5inch連装両用砲(集中配備)
+    - GFCS Mk.37
+  tags:
+  - nelson_touch
+  - 装甲空母
+  - 対空CI
+  - B-C-E-F-O
+  - 空确
+  special_attacks:
+  - type: nelson_touch
+    ships:
+    - ネルソン改
+    flagship: ネルソン改
+    positions:
+    - 1
+    - 3
+    - 5
+    equip_hint: 46cm三連装砲改+16inch MK.I三連装砲改+FCR type284
+    notes: E点先手摸掉塔姐(軽巡ツ級elite)；编队需6艘，位置3和5为非空母
+- name: C点练级 拉烟流
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      - DE
+      - BB
+      - BBV
+      - CV
+      - CVL
+      - CAV
+      count: 1
+      specific_ships: []
+      notes: 旗舰，任意需练级舰种
+    - ship_class:
+      - DD
+      - DE
+      count: 4
+      specific_ships: []
+      notes: 带発煙装置(煙幕)，可轮换低等级DD/DE泡澡；如有喷二(対空CI)可带血多BBV/CV
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - C
+  equip_notes: C点单向空袭练级。拉烟流：DD带発煙装置(煙幕)，10 10 10 10公式配3个発煙装置。注意CV+CVB<=2且BB系+CV系<=4避免走漩涡。拉烟降低対空击坠及喷二发动率，需多堆发动率。可带额外烟或钢板提高生存。
+  example: []
+  tags:
+  - C点练级
+  - 拉烟流
+  - 発煙装置
+  special_attacks: []
+- name: C点练级 空确流
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      - BB
+      - BBV
+      - CAV
+      count: 1
+      specific_ships: []
+      notes: 旗舰，需练级舰
+    - ship_class:
+      - CV
+      - CVL
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: 空母带18格以上机枪+舰战，堆制空到504+空确
+    - ship_class:
+      - CA
+      - CAV
+      - DD
+      - CL
+      count: 3
+      specific_ships: []
+      notes: 带対空CI，CAV/AV可带水戦补足制空
+  requirements:
+    air_state: none
+    air_power_min: 504
+    enemy_air_power: 252
+    routing_nodes:
+    - B
+    - C
+  equip_notes: C点空确需504+制空。空母18格以上带机枪，小格带舰战。制空足够时尽量不补给舰载机(防妖精跳海)。油低于75%补油。配合対空CI进一步降低损伤。
+  example: []
+  tags:
+  - C点练级
+  - 空确流
+  - 対空CI
+  special_attacks: []
+- name: C点练级 喷二(対空CI)空丧流
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      - DE
+      - BB
+      - BBV
+      - CV
+      - CVL
+      - CAV
+      - CA
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 旗舰，可带回避装备或钢板
+    - ship_class:
+      - DD
+      - DE
+      - BB
+      - BBV
+      - CV
+      - CVL
+      - CAV
+      count: 4
+      specific_ships: []
+      notes: 各带100%发动率对空CI装备，轮形阵保护旗舰
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - C
+  equip_notes: 4个僚舰各配100%対空CI发动率免疫空袭伤害。轮形阵5船保护旗舰；有警戒阵可只带3僚舰效果更佳。旗舰带回避锅或钢板。不推荐对空CI动画(浪费时间)。
+  example: []
+  tags:
+  - C点练级
+  - 対空CI
+  - 空丧流
+  - 轮形阵
+  special_attacks: []
+- name: 任务B25 新編第二航空戦隊
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 飛龍改二
+      notes: 旗舰
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 蒼龍
+      notes: 任务要求
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      count: 2
+      specific_ships: []
+      notes: BB系
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 任务要求2DD
+  requirements:
+    air_state: none
+    air_power_min: 176
+    enemy_air_power: 176
+    los_formula: 2
+    los_min: 70.0
+    routing_nodes:
+    - B
+    - C
+    - E
+    - F
+    - O
+  equip_notes: boss点176空优，351空确。索敵分歧点系数=2，>=70。
+  example: []
+  tags:
+  - 任务
+  - B25
+  special_attacks: []
+- name: 任务B50/B143 第五航空戦隊
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 翔鶴
+      notes: 任务要求
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 瑞鶴
+      notes: 任务要求
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 朧
+      notes: 任务要求
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 秋雲
+      notes: 任务要求
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      - CAV
+      count: 2
+      speed: fast
+      specific_ships: []
+      notes: 高速BB系或CAV
+  requirements:
+    air_state: none
+    air_power_min: 176
+    enemy_air_power: 176
+    los_formula: 2
+    los_min: 70.0
+    routing_nodes:
+    - B
+    - C
+    - E
+    - F
+    - O
+  equip_notes: boss点176空优，351空确。高速编制。分歧点系数=2，索敵>=70。
+  example: []
+  tags:
+  - 任务
+  - B50
+  - B143
+  - 翔鶴
+  - 瑞鶴
+  special_attacks: []

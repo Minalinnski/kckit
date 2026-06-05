@@ -1,0 +1,28 @@
+quest_id: Bq7
+quest_name: 新編成'三川艦隊'、鉄底海峡に突入せよ！
+category: quarterly
+requirement: 5-1、5-3、5-4各1次S胜，需要鸟海/青叶/衣笠/加古/古鹰/天龙/夕张7选4
+maps:
+- map_id: 5-1
+  fleet_hint: 2CV+3CA+1CL，高速+
+  notes: boss点85%概率126空优，100%概率252空优
+  synergy_quests:
+  - Bq13
+  combo_fleets:
+    Bq13: 夕张改二旗舰+由良改二+1CAV+鸟海/青叶/衣笠/加古/古鹰5选3，高速
+- map_id: 5-3
+  fleet_hint: 3CA+2CAV+1CL
+  notes: boss点141大概率空确，小概率空优
+  synergy_quests:
+  - By1
+  combo_fleets:
+    By1: 3CA+1CL+绫波改二+敷波改二
+- map_id: 5-4
+  fleet_hint: 1CL+3CA+2CV
+  notes: G点309空优，分歧点系数=2，索敌>=60
+  synergy_quests:
+  - Bq6
+  - Bq13
+  combo_fleets:
+    Bq6: 4CA/CL+2DD，DD位长波改二+高波改/冲波改/朝霜改(二)3选1
+    Bq13: 夕张改二旗舰+由良改二+1CV+鸟海/青叶/衣笠/加古/古鹰/天龙6选3

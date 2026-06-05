@@ -1,0 +1,1100 @@
+map: 6-4
+source: nga_import
+notes: 中部北海域ピーコック島沖，左路（高速/低速）和右路三条主路线汇聚至boss点N，boss点含离岛棲姫、砲台小鬼、集積地棲姫等陆基目标，需陆航+对陆装备配合
+presets:
+- name: 高速流（推荐）- 矢矧+伊势+最上+3DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      - 夕張改二特
+      notes: 旗舰，开幕雷+二连对陆
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 伊勢改二
+      - 大和改二
+      notes: 双舰爆立体攻击或高火力BB
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 万能对陆巡洋舰，开幕雷+一拳+二连
+    - ship_class:
+      - DD
+      count: 3
+      speed: 高速
+      specific_ships:
+      - 霞改二
+      - 響改二
+      - 清霜改二丁
+      - 満潮改二
+      - 浜風乙改
+      - Fletcher Mk.II
+      notes: 对陆DD，兼顾对空CI；需高速
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 制空168（图示），至少1水戦辅助制空；C点44空優或87空確（陆航）；伊势改二双舰爆（彗星一二型/彗星二二型）；DJ一拳阈值730火力；对离岛夜战二连阈值360；陆航目标C点3航程44空優或87空確
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 61cm五連装(酸素)魚雷
+    - 大発動艇
+    - 特二式内火艇
+    - 22号対水上電探改四
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 試製41cm三連装砲
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 彗星二二型(六三四空/熟練)
+    - 強化型艦本式缶
+  - ship: 霞改二
+    equips:
+    - 艦載型 四式20cm対地噴進砲
+    - 艦載型 四式20cm対地噴進砲
+    - 大発動艇
+  - ship: 満潮改二
+    equips:
+    - 二式12cm迫撃砲改
+    - 二式12cm迫撃砲改
+    - 大発動艇
+  - ship: 浜風乙改
+    equips:
+    - 12.7cm連装高角砲(後期型)
+    - 13号対空電探改
+    - 艦載型 四式20cm対地噴進砲
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 三式弾
+    - 二式水戦改
+    - 大発動艇
+  tags:
+  - 高速流
+  - 左路
+  - 立体攻击
+  special_attacks: []
+- name: 高速流（长陆改二）- 矢矧+长门改二+陆奥改二+3DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 旗舰
+    - ship_class:
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 長門改二
+      notes: 长门touch旗舰位或槽位1
+    - ship_class:
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 陸奥改二
+      notes: 长门touch搭档
+    - ship_class:
+      - DD
+      count: 3
+      speed: 高速
+      specific_ships:
+      - 信頼
+      - Fletcher Mk.II
+      - 満潮改二
+      notes: 对陆DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 全队高速；至少1水戦；长门改二带大発動艇(八九式中戦車&陸戦隊)+一式穿甲弾改；陆奥改二带特二式内火艇+一式穿甲弾改；陆航目标C点；胸热可选但当前版本提升有限
+  example:
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 二式水戦改(熟練)
+    - 特二式内火艇
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 長門改二
+    equips:
+    - 試製51cm連装砲
+    - 試製51cm連装砲
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 新型高温高圧缶
+  - ship: 陸奥改二
+    equips:
+    - 51cm連装砲
+    - 16inch三連装砲 Mk.7+GFCS
+    - 特二式内火艇
+    - 新型高温高圧缶
+  - ship: 信頼
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - GFCS Mk.37
+  - ship: Fletcher Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - WG42 (Wurfgerät 42)
+  - ship: 満潮改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - M4A1 DD
+  tags:
+  - 高速流
+  - 左路
+  - 长陆改二
+  special_attacks:
+  - type: nagato_touch
+    ships:
+    - 長門改二
+    - 陸奥改二
+    flagship: 長門改二
+    positions:
+    - 2
+    - 3
+    equip_hint: 徹甲弾+大発系
+    notes: 高速流带长陆，胸热可选；当前版本对斩杀率提升有限
+- name: 低速流（不热）- 秋津洲+长门改二+陆奥改二+最上改二特+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 秋津洲改
+      notes: 旗舰，带路水戦；保护脆皮
+    - ship_class:
+      - BB
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 長門改二
+      notes: 2号位
+    - ship_class:
+      - BB
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 陸奥改二
+      notes: 3号位
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 信頼
+      notes: 对陆DD
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - Fletcher Mk.II
+      notes: 对陆DD
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 万能对陆巡洋舰
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 秋津洲背水戦辅助制空；长门改二试制51cm×2+大発動艇(八九式中戦車&陸戦隊)+一式穿甲弾改；陆奥改二51cm+16inch三連装砲Mk.7+GFCS+特二式内火艇+一式穿甲弾改；最上改二特20.3cm(3号)+大発動艇(八九式中戦車&陸戦隊)+特二式内火艇+甲標的
+    丁型改；索敌13.55；陆航目标C点44空優或87空確3航程
+  example:
+  - ship: 秋津洲改
+    equips:
+    - 強風改
+    - M4A1 DD
+    - WG42 (Wurfgerät 42)
+  - ship: 長門改二
+    equips:
+    - 試製51cm連装砲
+    - 試製51cm連装砲
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 一式徹甲弾改
+  - ship: 陸奥改二
+    equips:
+    - 51cm連装砲
+    - 16inch三連装砲 Mk.7+GFCS
+    - 特二式内火艇
+    - 一式徹甲弾改
+  - ship: 信頼
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - GFCS Mk.37
+  - ship: Fletcher Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - WG42 (Wurfgerät 42)
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - 甲標的 丁型改(蛟龍改)
+  tags:
+  - 低速流
+  - 左路
+  - 秋津洲带路
+  - 不热
+  special_attacks: []
+- name: 低速流（胸热）- 秋津洲+长门改二+陆奥改二+最上改二特+2DD（梯形胸热）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 秋津洲改
+      notes: 旗舰，至少背2水战
+    - ship_class:
+      - BB
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 長門改二
+      notes: 2号位，触发胸热
+    - ship_class:
+      - BB
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 陸奥改二
+      notes: 3号位，触发胸热
+    - ship_class:
+      - DD
+      count: 2
+      speed: 高速
+      specific_ships:
+      - 信頼
+      - Fletcher Mk.II
+      - 満潮改二
+      notes: 对陆DD，建议全力对空配装
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 万能对陆巡洋舰
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - C
+    - F
+    - N
+  equip_notes: boss点梯形阵胸热；秋津洲至少背2水战+孔带喷二；DD建议全力对空；陆航目标C点；胸热当前版本S胜率提升有限
+  example: []
+  tags:
+  - 低速流
+  - 左路
+  - 秋津洲带路
+  - 胸热
+  - 长陆改二
+  special_attacks:
+  - type: nagato_touch
+    ships:
+    - 長門改二
+    - 陸奥改二
+    flagship: 秋津洲改
+    positions:
+    - 2
+    - 3
+    equip_hint: 徹甲弾+大発系
+    notes: boss点梯形阵触发胸热；秋津洲旗舰保护；当前版本提升有限
+- name: 高速立体流（萌新）- 夕张改二特+伊势改二+最上改二特+3DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰，开幕雷+二连对陆
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 伊勢改二
+      notes: 双舰爆立体攻击
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 万能对陆
+    - ship_class:
+      - DD
+      count: 3
+      speed: 高速
+      specific_ships:
+      - 霞改二
+      - 満潮改二
+      - 浜風乙改
+      notes: 对陆DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 制空57~58（图示）；伊势改二双彗星一二型/彗星二二型立体攻击；最上改二特20.3cm(3号)+大発動艇(八九式中戦車&陸戦隊)+二式水戦改+甲標的
+    丁型改；陆航目标C点（对陆装够）或N点（不够）；索敌13.64
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 61cm五連装(酸素)魚雷
+    - 大発動艇
+    - 特二式内火艇
+    - 22号対水上電探改四
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 試製41cm三連装砲
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 彗星二二型(六三四空/熟練)
+    - 強化型艦本式缶
+  - ship: 霞改二
+    equips:
+    - 艦載型 四式20cm対地噴進砲
+    - 艦載型 四式20cm対地噴進砲
+    - 大発動艇
+  - ship: 満潮改二
+    equips:
+    - 二式12cm迫撃砲改
+    - 二式12cm迫撃砲改
+    - 大発動艇
+  - ship: 浜風乙改
+    equips:
+    - 12.7cm連装高角砲(後期型)
+    - 13号対空電探改
+    - 艦載型 四式20cm対地噴進砲
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 三式弾
+    - 二式水戦改
+    - 大発動艇
+  tags:
+  - 高速流
+  - 立体流
+  - 萌新
+  - 左路
+  special_attacks: []
+- name: 高速立体流（咸鱼）- 伊势改二+最上改二特+霞改二+信頼+Fletcher Mk.II+満潮改二
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 伊勢改二
+      notes: 旗舰，双舰爆立体攻击
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 万能对陆
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      specific_ships:
+      - 霞改二
+      - 信頼
+      - Fletcher Mk.II
+      - 満潮改二
+      notes: 对陆DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 制空67；索敌19.68；伊势改二41cm三連装砲改二+16inch三連装砲Mk.7+GFCS+双彗星；最上改二特20.3cm(3号)+大発動艇(八九式中戦車&陸戦隊)+二式水戦改(熟練)+甲標的
+    丁型改；霞改二大発動艇(八九式中戦車&陸戦隊)+特二式内火艇+GFCS Mk.37；陆航目标一般炸C
+  example:
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 彗星二二型(六三四空/熟練)
+    - 新型高温高圧缶
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 二式水戦改(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 霞改二
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - GFCS Mk.37
+  - ship: 信頼
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - GFCS Mk.37
+  - ship: Fletcher Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - WG42 (Wurfgerät 42)
+  - ship: 満潮改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - M4A1 DD
+  tags:
+  - 高速流
+  - 立体流
+  - 咸鱼
+  - 左路
+  - B130任务
+  special_attacks: []
+- name: 高速胸热流（无秋津洲）- 长门改二+陆奥改二+满潮改二+霞改二+Fletcher改+荒潮改二
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 長門改二
+      notes: 旗舰，触发胸热
+    - ship_class:
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 陸奥改二
+      notes: 2号位，胸热搭档
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      specific_ships:
+      - 満潮改二
+      - 霞改二
+      - Fletcher改
+      - 荒潮改二
+      notes: 对陆DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 制空37；索敌17.33；长门改二一式穿甲弾改+大発動艇(八九式中戦車&陸戦隊)+二式水戦改(熟練)+新型高温高圧缶；陆奥改二16inch三連装砲Mk.7+GFCS×2+艦載型
+    四式20cm対地噴進砲+新型高温高圧缶；荒潮改二12.7cm連装砲C型改二×2+特二式内火艇；陆航一般炸C
+  example:
+  - ship: 長門改二
+    equips:
+    - 一式徹甲弾改
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 二式水戦改(熟練)
+    - 新型高温高圧缶
+  - ship: 陸奥改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 艦載型 四式20cm対地噴進砲
+    - 新型高温高圧缶
+  - ship: 満潮改二
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - GFCS Mk.37
+  - ship: 霞改二
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - GFCS Mk.37
+  - ship: Fletcher改
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - GFCS Mk.37
+  - ship: 荒潮改二
+    equips:
+    - 12.7cm連装砲C型改二
+    - 12.7cm連装砲C型改二
+    - 特二式内火艇
+  tags:
+  - 高速流
+  - 胸热
+  - 长陆改二
+  - 左路
+  - B130任务
+  special_attacks:
+  - type: nagato_touch
+    ships:
+    - 長門改二
+    - 陸奥改二
+    flagship: 長門改二
+    positions:
+    - 1
+    - 2
+    equip_hint: 水戦+大発系
+    notes: 无秋津洲高速胸热；B130任务用
+- name: 低速立体流（伊势旗舰）- 伊势改二旗舰+最上改二特+信頼+秋津洲+Fletcher Mk.II+矢矧改二乙
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 伊勢改二
+      notes: 旗舰，B118任务要求
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 万能对陆
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 信頼
+      notes: 对陆DD
+    - ship_class:
+      - AV
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 秋津洲改
+      notes: 带路水戦
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - Fletcher Mk.II
+      notes: 对陆DD
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 对陆CL
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 制空158；索敌18.54；伊势改二16inch三連装砲Mk.7+GFCS+41cm三連装砲改二+双彗星；最上改二特20.3cm(3号)+甲標的
+    丁型改+大発動艇(八九式中戦車&陸戦隊)+特二式内火艇；秋津洲改强风改+M4A1 DD+WG42；陆航一般炸C
+  example:
+  - ship: 伊勢改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 41cm三連装砲改二
+    - 彗星二二型(六三四空/熟練)
+    - 彗星二二型(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 甲標的 丁型改(蛟龍改)
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+  - ship: 信頼
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - GFCS Mk.37
+  - ship: 秋津洲改
+    equips:
+    - 強風改
+    - M4A1 DD
+    - WG42 (Wurfgerät 42)
+  - ship: Fletcher Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - WG42 (Wurfgerät 42)
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 甲標的 丙型
+    - 二式水戦改(熟練)
+    - 特二式内火艇
+  tags:
+  - 低速流
+  - 立体流
+  - 左路
+  - B118任务
+  - 秋津洲带路
+  special_attacks: []
+- name: 右路最短（活动甲难度）- 赤城改二戊+伊势改二+朝潮改二丁+神州丸改+亚特兰大改+塔什干改
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改二戊
+      notes: 爆战岩井+夜攻，夜间CI
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 伊勢改二
+      notes: 双舰爆立体攻击
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 朝潮改二丁
+      notes: 对潜+对陆一拳
+    - ship_class:
+      - LHA
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 神州丸改
+      notes: 水战辅助制空
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 亜特蘭大改
+      notes: 対空CI，CL固定
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - タシュケント改
+      notes: 对潜或对陆
+  requirements:
+    air_state: none
+    air_power_min: 396
+    enemy_air_power: 396
+    routing_nodes:
+    - M
+    - K
+    - J
+    - N
+  equip_notes: J点制空396空確；制空414~416；索敌30.83；赤城改二戊零式艦戦62型(爆戦/岩井隊)+烈風改二戊型(一航戦/熟練)+TBM-3D+烈風改二戊型+F6F-5N；伊势改二16inch三連装砲Mk.7+GFCS+41cm三連装砲改二+瑞雲改二(六三四空/熟練)+零式艦戦53型(岩本隊)+一式穿甲弾改；神州丸改大発動艇(八九式中戦車&陸戦隊)+特二式内火艇+強風改+二式水戦改(熟練)；亜特蘭大改GFCS
+    Mk.37+5inch連装両用砲(集中配備)×2+GFCS Mk.37；陆航目标N(boss)神风5航程
+  example:
+  - ship: 赤城改二戊
+    equips:
+    - 零戦62型(爆戦/岩井隊)
+    - 烈風改二戊型(一航戦/熟練)
+    - TBM-3D
+    - 烈風改二戊型
+    - F6F-5N
+  - ship: 伊勢改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 41cm三連装砲改二
+    - 瑞雲改二(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 一式徹甲弾改
+  - ship: 朝潮改二丁
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - Type144/147 ASDIC
+  - ship: 神州丸改
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - 強風改
+    - 二式水戦改(熟練)
+  - ship: 亜特蘭大改
+    equips:
+    - GFCS Mk.37+5inch連装両用砲(集中配備)
+    - 5inch連装両用砲(集中配備)
+    - GFCS Mk.37
+  - ship: タシュケント改
+    equips:
+    - HF/DF + Type144/147 ASDIC
+    - 二式12cm迫撃砲改 集中配備
+    - 二式12cm迫撃砲改 集中配備
+    - WG42 (Wurfgerät 42)
+  tags:
+  - 右路
+  - 最短路线
+  - By10任务
+  - 高难度
+  special_attacks: []
+- name: 右路二航（纳尔逊）- 纳尔逊+赤城改二戊+満潮改二+翔鶴改二甲+朝潮改二丁+亚特兰大改
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      speed: 低速
+      specific_ships:
+      - ネルソン改
+      notes: 旗舰，纳尔逊touch
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改二戊
+      notes: 爆战岩井
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 満潮改二
+      notes: 对潜+对陆
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 翔鶴改二甲
+      notes: 装甲空母
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 朝潮改二丁
+      notes: 对潜+对陆
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 亜特蘭大改
+      notes: 対空CI
+  requirements:
+    air_state: none
+    air_power_min: 396
+    enemy_air_power: 396
+    routing_nodes:
+    - M
+    - K
+    - J
+    - L
+    - I
+    - N
+  equip_notes: J点制空396空確；制空407~409；索敌41.88；纳尔逊改16inch Mk.I三連装砲改+FCR type284+16inch三連装砲Mk.7+GFCS+零式水上偵察機11型乙(熟練)+三式弾改；赤城改二戊零式艦戦62型(爆戦/岩井隊)+烈風改二戊型+烈風改二戊型(一航戦/熟練)+F6F-5N+彩雲(東加ロ林空)；翔鶴改二甲天山一二型(村田隊)+彗星一二型(六三四空/三号爆弾搭載機)+零式艦戦53型(岩本隊)+烈風改二；陆航目标N(boss)神风5航程；弹药惩罚较高
+  example:
+  - ship: ネルソン改
+    equips:
+    - 16inch Mk.I三連装砲改+FCR type284
+    - 16inch三連装砲 Mk.7+GFCS
+    - 零式水上偵察機11型乙(熟練)
+    - 三式弾改
+  - ship: 赤城改二戊
+    equips:
+    - 零戦62型(爆戦/岩井隊)
+    - 烈風改二戊型
+    - 烈風改二戊型(一航戦/熟練)
+    - F6F-5N
+    - 彩雲
+  - ship: 満潮改二
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - Type144/147 ASDIC
+  - ship: 翔鶴改二甲
+    equips:
+    - 天山一二型(村田隊)
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 零式艦戦53型(岩本隊)
+    - 烈風改二
+  - ship: 朝潮改二丁
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 特二式内火艇
+    - HF/DF + Type144/147 ASDIC
+  - ship: 亜特蘭大改
+    equips:
+    - GFCS Mk.37+5inch連装両用砲(集中配備)
+    - 5inch連装両用砲(集中配備)
+    - GFCS Mk.37
+  tags:
+  - 右路
+  - 二航
+  - By10任务
+  - 高难度
+  - 纳尔逊touch
+  special_attacks:
+  - type: nelson_touch
+    ships:
+    - ネルソン改
+    flagship: ネルソン改
+    positions:
+    - 1
+    - 3
+    - 5
+    equip_hint: 三式弾改+水偵
+    notes: 6船阵容，3号位満潮，5号位朝潮触发纳尔逊touch
+- name: 右路长陆（胸热）- 长门改二+陆奥改二+赤城改二戊+亚特兰大改+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 長門改二
+      notes: 旗舰，胸热触发
+    - ship_class:
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 陸奥改二
+      notes: 2号位，胸热搭档
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改二戊
+      notes: 爆战岩井+夜攻
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 亜特蘭大改
+      notes: 対空CI
+    - ship_class:
+      - DD
+      count: 2
+      speed: 高速
+      specific_ships:
+      - 満潮改二
+      - 朝潮改二丁
+      notes: 对潜+对陆DD
+  requirements:
+    air_state: none
+    air_power_min: 198
+    routing_nodes:
+    - M
+    - K
+    - H
+    - J
+    - I
+    - N
+  equip_notes: K点198空優；JK两点难拿空確，经常爆炸；boss点梯形阵胸热；陆航目标N(boss)神风5航程；爆炸率高
+  example: []
+  tags:
+  - 右路
+  - 长陆改二
+  - 胸热
+  - 高难度
+  special_attacks:
+  - type: nagato_touch
+    ships:
+    - 長門改二
+    - 陸奥改二
+    flagship: 長門改二
+    positions:
+    - 1
+    - 2
+    equip_hint: 大発系+徹甲弾
+    notes: 右路长陆胸热，梯形阵boss点触发；JK制空难保
+- name: By10年常（周回）- 加贺改二+日向改二+最上改二特+矢矧改二乙+初月改二+时雨改三
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 加賀改二
+      notes: 旗舰，CV旗舰满足By10任务
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 日向改二
+      notes: 双舰爆辅助制空
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 对陆
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 对陆+对空
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 初月改二
+      notes: 対空CI
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 時雨改三
+      notes: 对陆DD，电探
+  requirements:
+    air_state: none
+    air_power_min: 417
+    routing_nodes:
+    - B
+    - D
+    - C
+    - F
+    - N
+  equip_notes: 制空417；索敌综合；加贺改二彗星(江草隊)+F4U-7+天山一二型甲改二(村田隊/電探装備)+震電改+零式艦戦53型(岩本隊)+熟練甲板要員+航空整備員；日向改二16inch三連装砲Mk.7+GFCS×2+瑞雲改二(六三四空/熟練)+震電改+S-51J+三式弾改二；初月改二10cm連装高角砲+高射装置改×2+HF/DF+Type144/147
+    ASDIC+対潜短魚雷(試作初期型)+電探装備槍；时雨改三三式水中探信儀改+特四式内火艇+艦本新設計 増設装甲板(中型艦)×2；高速流左路
+  example:
+  - ship: 加賀改二
+    equips:
+    - 彗星(江草隊)
+    - F4U-7
+    - 天山一二型甲
+    - 震電改
+    - 零式艦戦53型(岩本隊)
+  - ship: 日向改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瑞雲改二(六三四空/熟練)
+    - 震電改
+    - S-51J
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 大発動艇
+    - 強風改二
+    - 強風改
+  - ship: 矢矧改二乙
+    equips:
+    - 特四式内火艇改
+    - 甲標的 丁型改(蛟龍改)
+    - 強風改
+    - HF/DF + Type144/147 ASDIC
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - 電探装備マスト(13号改+22号電探改四)
+  - ship: 時雨改三
+    equips:
+    - 三式水中探信儀改
+    - 特四式内火艇改
+    - 艦本新設計 増設バルジ(中型艦)
+    - 艦本新設計 増設バルジ(中型艦)
+  tags:
+  - 高速流
+  - 左路
+  - By10任务
+  - 周回
+  special_attacks: []

@@ -1,0 +1,269 @@
+map: 1-3
+source: nga_import
+notes: 製油所地帯沿岸。敵方全程0制空。主要路线为*-F-J打boss，或1-A-D-B-E捞油。
+presets:
+- name: 萌新推图
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳
+      notes: 旗舰，装备舰攻/舰爆
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上
+      notes: 重巡洋艦
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships:
+      - 白露
+      - 時雨
+      - 満潮
+      - 霞
+      notes: DD×4で带路条件を满たす
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - F
+    - J
+  equip_notes: 制空0、索敌0。CVLに舰攻×2+舰爆で制空9。DD双主砲、第3砲や魚雷は装備しないこと。
+  example:
+  - ship: 瑞鳳
+    equips:
+    - 九七式艦攻
+    - 九七式艦攻
+    - 九九式艦爆
+  - ship: 最上
+    equips:
+    - 20.3cm連装砲
+    - 15.5cm三連装砲
+    - 零式水上偵察機
+  - ship: 白露
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  - ship: 時雨
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  - ship: 満潮
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  - ship: 霞
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  tags:
+  - 推图
+  - 萌新
+  special_attacks: []
+- name: 捞油编成（神威+大発DD+潜水艦）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AO
+      count: 1
+      specific_ships:
+      - 神威改母
+      notes: 旗舰。大発動艇（八九式中戦車&陸戦隊）×1＋大発動艇×2
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships:
+      - 睦月改二
+      - 如月改二
+      - 文月改二
+      - 皐月改二
+      notes: 各3スロット大発動艇装備
+    - ship_class:
+      - SS
+      count: 1
+      specific_ships:
+      - 呂500
+      notes: 低速潜水艦。特二式内火艇×2装備
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - B
+    - E
+  equip_notes: 制空-、索敵-1.33。神威で100%D点捞油。大発系を大量装備して资源回収効率を最大化。DD赤疲劳で大発装備も可。Luigi Torelli改は消耗がより低い。
+  example:
+  - ship: 神威改母
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 大発動艇
+    - 大発動艇
+  - ship: 睦月改二
+    equips:
+    - 大発動艇
+    - 大発動艇
+    - 大発動艇
+  - ship: 如月改二
+    equips:
+    - 大発動艇
+    - 大発動艇
+    - 大発動艇
+  - ship: 文月改二
+    equips:
+    - 大発動艇
+    - 大発動艇
+    - 大発動艇
+  - ship: 皐月改二
+    equips:
+    - 大発動艇
+    - 大発動艇
+    - 大発動艇
+  - ship: 呂500
+    equips:
+    - 特二式内火艇
+    - 特二式内火艇
+  tags:
+  - 捞油
+  - 大発
+  - 神威
+  special_attacks: []
+- name: 捞油编成（宗谷单舰偷油）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AO
+      count: 1
+      specific_ships:
+      - 宗谷
+      notes: 南極観測形態・未婚・打孔。装甲82以上（大型钢板×2）。单舰出击。
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - B
+    - E
+  equip_notes: 宗谷装甲82以上が必要（任务报酬の大型钢板×2装备）。不足分は改修した通常钢板で補う（改修加成0.3×★数）。未婚26HP、中破7HPで擦弾機制により被ダメ0維持。弾耗が非常に低い。D点で大発系装備で火力補強推奨。
+  example: []
+  tags:
+  - 捞油
+  - 宗谷
+  - 单舰
+  - 永动机
+  special_attacks: []
+- name: 期间限定掉落打捞·基础版（AV+CVL+4DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 旗舰。80%确率でD点捞油。短射程推奨。
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 大鷹
+      notes: MVPを取りやすい。一改大鹰推奨（消耗低）
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: DD×4で带路。赤疲劳で大発装備も可
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - B
+    - E
+    - F
+    - J
+  equip_notes: 制空0、索敵0。CVLに对空射击回避なし飞机装备の場合J点で1/10确率で喪失。攻击机18格以内の场合3/14确率で喪失。開幕空袭+開幕雷撃+先手砲撃で低损伤周回。
+  example: []
+  tags:
+  - 期间限定
+  - 打捞
+  - 捞油
+  - AV
+  special_attacks: []
+- name: 期间限定掉落打捞·山汐丸版（AO+CAV+2DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships:
+      - 山汐丸
+      notes: 旗舰。脆いため旗舰保护。短射程。
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上
+      notes: MVPを取りやすい高火力枠。長射程推奨。
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 1CAV+2DDで带路。高质量大発DD推奨
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - B
+    - E
+    - F
+    - J
+  equip_notes: AO（山汐丸）で100%D点捞油。道中は開幕雷撃後に決着が多い。DDに大発3枚装備で捞油量アップ（DD1隻全消耗9油12弹、大発3枚で9油回収のため枚数増やすほど赤字）。長射程CVL追加も可。
+  example: []
+  tags:
+  - 期间限定
+  - 打捞
+  - 捞油
+  - 山汐丸
+  - AO
+  special_attacks: []
+- name: 期间限定掉落打捞·DE版（CL/CLT+4DD/DE）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      - CLT
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      - 由良
+      notes: 矢矧はより安定。CL/CTで带路条件を満たす。
+    - ship_class:
+      - DD
+      - DE
+      count: 4
+      specific_ships: []
+      notes: DE可。低弾耗路线で新しく捞ったDEの练习も兼ねる。
+  requirements:
+    air_state: none
+    routing_nodes:
+    - F
+    - J
+  equip_notes: D点捞油なし。低弾耗周回。1CL/CT+4DD/DEで带路F-J。
+  example: []
+  tags:
+  - 期间限定
+  - 打捞
+  - DE
+  - 低消耗
+  special_attacks: []

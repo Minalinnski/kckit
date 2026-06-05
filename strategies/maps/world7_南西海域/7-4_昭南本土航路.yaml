@@ -1,0 +1,403 @@
+map: 7-4
+source: nga_import
+notes: 昭南本土航路，boss点为ヒ船団棲姫，道中有空袭和潜水舰，存在大鹰级史实带路
+presets:
+- name: 萌新斩杀：伊势改二+北上改二+最上改二特
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 旗舰，大口径主炮+三式弹+高射装置触发6号对空CI，不带瑞云
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 北上改二
+      notes: 夜战主力
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改二特
+      notes: 夜战二连破甲收尾
+    - ship_class:
+      - DD
+      count: 3
+      min_asw: 100
+      specific_ships: []
+      notes: 3个先制对潜单位，带路DD
+  requirements:
+    air_state: none
+    air_power_min: 52
+    los_formula: 4
+    los_min: 37.0
+    routing_nodes:
+    - A
+    - B
+    - E
+    - J
+    - L
+    - P
+  equip_notes: boss点52~103空劣触发夜间接触；索敌>=37(系数4)；伊势不带瑞云，携带大口径主炮+三式弹+高射装置触发对空CI；陆航1东海+3陆攻神风不带舰战；E点轮形阵，其余单横阵；boss点单纵阵
+  example: []
+  tags:
+  - 萌新
+  - 斩杀
+  special_attacks: []
+- name: 高配捞船/斩后：矢矧改二乙+4格高火雷DD（C-E路线）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 旗舰，刷闪用，先制对潜
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 吹雪改二
+      - 秋月改
+      - 初月改
+      notes: 对空CI，两件套先反
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改三
+      - 吹雪改二
+      - 秋月改
+      - 初月改
+      notes: 打孔爆雷，先反两件套
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 時雨改三
+      - 吹雪改二
+      - タシュケント
+      - 初月改
+      - 雪風改二
+      notes: 高运鱼雷CI，先反两件套
+  requirements:
+    air_state: none
+    air_power_min: 33
+    los_formula: 4
+    los_min: 37.0
+    routing_nodes:
+    - C
+    - E
+    - J
+    - L
+    - P
+  equip_notes: boss点33空劣触发夜间接触；索敌>=37(系数4)；陆航E集中，航程5，制空144空均；C单横，E轮形，J梯形，L梯形，P单纵；斩杀阶段旗舰换成另一个4格先反鱼雷CI的DD
+  example: []
+  tags:
+  - 捞船
+  - 低消耗
+  - 无BBV
+  special_attacks: []
+- name: 最新锐捞船：龙凤改二戊+矢矧改二乙（A-B-E-J-L-P）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 旗舰，先制对潜
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 龍鳳改二戊
+      notes: 夜母，先制对潜，携带夜间作战航空要员
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 初月改二
+      notes: 对空CI，两件套先反
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - タシュケント
+      notes: 鱼雷CI，先反两件套
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改三
+      notes: 鱼雷CI，先反两件套
+  requirements:
+    air_state: none
+    air_power_min: 147
+    los_formula: 4
+    los_min: 37.0
+    routing_nodes:
+    - A
+    - B
+    - E
+    - J
+    - L
+    - P
+  equip_notes: boss点147空优；索敌>=37(系数4)；陆航E、P分散，航程5；B单横，E轮形，J单横，L单横，P梯形；龙凤面板ASW>=65；彩云防T字不利；斩杀阶段可换伊势改二+解放矢矧打鱼雷CI
+  example:
+  - ship: 矢矧改二乙
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 61cm四連装(酸素)魚雷後期型
+    - 61cm四連装(酸素)魚雷後期型
+    - HF/DF + Type144/147 ASDIC
+    - 水雷戦隊 熟練見張員
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 瓮電改
+    - 瓮電改
+    - 零式水上偵察機11型乙
+    - 三式弾改二
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - HF/DF + Type144/147 ASDIC
+    - Mk.32 対潜魚雷(Mk.2落射機)
+    - 電探装備マスト(13号改+22号電探改四)
+  - ship: タシュケント改
+    equips:
+    - 試製61cm六連装(酸素)魚雷
+    - 533mm 三連装魚雷(53-39型)
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - 水雷戦隊 熟練見張員
+  - ship: 時雨改三
+    equips:
+    - 61cm四連装(酸素)魚雷後期型
+    - 61cm四連装(酸素)魚雷後期型
+    - 三式水中探信儀改
+    - 二式爆雷改二
+  - ship: 龍鳳改二戊
+    equips:
+    - 天山一二型甲
+    - 烈風改二戊型(一航戦/熟練)
+    - 烈風改二戊型
+    - 彩雲(東カロリン空)
+    - 12cm30連装噴進砲改二
+  tags:
+  - 捞船
+  - 最新锐
+  - 夜母
+  - 高S率
+  special_attacks: []
+- name: 标准捞船：1BBV+1CVL+1CL+3DD（A-B-E-J-L-P）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      - 日向改二
+      notes: 提供制空、炮击、对空CI
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: 夜战输出，携带夜间作战航空要员
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 先制对潜
+    - ship_class:
+      - DD
+      count: 3
+      min_asw: 100
+      specific_ships: []
+      notes: 3个先制对潜，高运高火雷
+  requirements:
+    air_state: none
+    air_power_min: 321
+    los_formula: 4
+    los_min: 37.0
+    routing_nodes:
+    - A
+    - B
+    - E
+    - J
+    - L
+    - P
+  equip_notes: E点321空优或393概率空确；索敌>=37(系数4)；陆航压boss 1烈风；B单横，E轮形，J单横，L单横，P梯形
+  example: []
+  tags:
+  - 捞船
+  - 均衡
+  - 推荐
+  special_attacks: []
+- name: 标准捞船：2CVL+1CL+3DD（省资源）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: 夜战输出，携带夜间作战航空要员
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 先制对潜
+    - ship_class:
+      - DD
+      count: 3
+      min_asw: 100
+      specific_ships: []
+      notes: 3个先制对潜
+  requirements:
+    air_state: none
+    air_power_min: 321
+    los_formula: 4
+    los_min: 37.0
+    routing_nodes:
+    - A
+    - B
+    - E
+    - J
+    - L
+    - P
+  equip_notes: E点321空优；索敌>=37(系数4)；省资源，高配时捞船性价比高，硬件不足易失败
+  example: []
+  tags:
+  - 捞船
+  - 省资源
+  special_attacks: []
+- name: 史实最短路线：CT+3DE+大鹰级（A-B-E-J-P）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 北上改二
+      - 大井改二
+      notes: 史实舰
+    - ship_class:
+      - DE
+      count: 3
+      specific_ships: []
+      notes: 史实海防舰
+    - ship_class:
+      - CVL
+      - DD
+      - DE
+      count: 1
+      specific_ships:
+      - 雲鷹
+      - 八幡丸
+      notes: 大鹰级史实带路，或DD/DE
+  requirements:
+    air_state: none
+    los_formula: 4
+    los_min: 37.0
+    routing_nodes:
+    - A
+    - B
+    - E
+    - J
+    - P
+  equip_notes: 5船编制；史实最短路线；索敌>=37(系数4)
+  example: []
+  tags:
+  - 史实
+  - 最短路线
+  special_attacks: []
+- name: 史实次短路线：AO/LHA+大鹰级+CT+3DE（A-B-E-G-L-P）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      - LHA
+      count: 2
+      specific_ships: []
+      notes: 1~2艘AO/LHA史实带路
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 雲鷹
+      - 八幡丸
+      notes: 大鹰级，0~1艘
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 北上改二
+      - 大井改二
+      notes: 史实舰
+    - ship_class:
+      - DE
+      count: 2
+      specific_ships: []
+      notes: 史实海防舰
+  requirements:
+    air_state: none
+    los_formula: 4
+    los_min: 37.0
+    routing_nodes:
+    - A
+    - B
+    - E
+    - G
+    - L
+    - P
+  equip_notes: 索敌>=37(系数4)；史实次短路线
+  example: []
+  tags:
+  - 史实
+  - 次短路线
+  special_attacks: []
+- name: 偷油铝：纯SS（C-D-F-J-K-M-O）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SS
+      - SSV
+      count: 3
+      specific_ships:
+      - 伊504
+      notes: 携带内火艇提升资源；水侦放0搭载格避免索敌动画；旗舰轮换保持闪
+  requirements:
+    air_state: none
+    los_formula: 4
+    los_min: 47.0
+    routing_nodes:
+    - C
+    - D
+    - F
+    - J
+    - K
+    - M
+    - O
+  equip_notes: O点油=40+8*桶+7*大发系，上限200；铝=20+6*桶+10*大发系，上限120；索敌>=47(系数4)；3船自动单纵无需选阵；陆航可带对潜>=7水侦炸C、K鱼点；E、M空袭点纯SS自动S
+  example: []
+  tags:
+  - 资源
+  - 潜水舰
+  - 偷铝偷油
+  special_attacks: []

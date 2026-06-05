@@ -1,0 +1,17 @@
+quest_id: By5
+quest_name: 歴戦'第十方面艦隊'、全力出撃！
+category: yearly
+requirement: 7-3P2、7-2P2、4-2各2次S胜，需要羽黑/足柄/妙高/高雄/神风5选2
+maps:
+- map_id: 7-3
+  fleet_hint: 羽黑+足柄+神风+2DD+1CL系/AV高速
+  notes: P2
+  synergy_quests: []
+- map_id: 7-2
+  fleet_hint: 1CV+1CVL+1BB系+1CA+2DD高速
+  notes: P2，boss点359空优，索敌>=69
+  synergy_quests: []
+- map_id: 4-2
+  fleet_hint: 2CV系+1CA系/CL系+1CL+2DD
+  notes: 道中84空优，168空确
+  synergy_quests: []

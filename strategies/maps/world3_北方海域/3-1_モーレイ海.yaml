@@ -1,0 +1,388 @@
+map: 3-1
+source: nga_import
+notes: モーレイ海、主攻略路线C-F-G，难度低于2-4，boss点G需84制空确保
+presets:
+- name: 萌新推图（CV+BB+CA+DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城
+      notes: 旗舰
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - 金剛改
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改
+    - ship_class:
+      - CA
+      count: 1
+      specific_ships:
+      - 摩耶改
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 時雨改
+      - 霞改
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 42
+    routing_nodes:
+    - C
+    - F
+    - G
+  equip_notes: 制空100（全程C-F-G空確保需84以上）。CV搭載天山、彗星、零式艦戦52型。BB装備41cm連装砲、徹甲弾、水上偵察機。
+  example:
+  - ship: 赤城
+    equips:
+    - 天山
+    - 零式艦戦52型
+    - 彗星
+    - 零式艦戦52型
+  - ship: 金剛改
+    equips:
+    - 35.6cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 摩耶改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 時雨改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  - ship: 霞改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  tags:
+  - 萌新推图
+  - 2-4通关
+  special_attacks: []
+- name: 北方警備任務（CVL+CLT+CL+DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 鈴谷航改二
+      notes: 旗舰，長射程
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 熊野航改二
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 北上改二
+      notes: 魚雷CI
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 阿武隈改二
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 天津風改
+      - 時津風改
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 42
+    routing_nodes:
+    - C
+    - F
+    - G
+  equip_notes: 制空94〜95（G点84空確保）、索敵32.07。CVL搭載彗星二二型・天山一二型・九七式艦攻・彩雲。CLT装備61cm五連装魚雷で魚雷CI。任务要求CL时可将CLT换CL。
+  example:
+  - ship: 鈴谷航改二
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 天山一二型(友永隊)
+    - 九七式艦攻(友永隊)
+    - 彩雲(東カロリン空)
+  - ship: 熊野航改二
+    equips:
+    - 彗星二二型(六三四空)
+    - 天山一二型(村田隊)
+    - 天山一二型(村田隊)
+    - F6F-5
+  - ship: 北上改二
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 甲標的 甲型
+  - ship: 阿武隈改二
+    equips:
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 甲標的 甲型
+  - ship: 天津風改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 時津風改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  tags:
+  - 北方海域警備を実施せよ！
+  - 季常任务
+  - CL必須
+  special_attacks: []
+- name: 第五航空戦隊任务（翔鶴+瑞鶴+2CA/CLT+2DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 翔鶴改
+      - 翔鶴改二
+      - 翔鶴改二甲
+      notes: 任务必须
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 瑞鶴改
+      - 瑞鶴改二
+      - 瑞鶴改二甲
+      notes: 任务必须
+    - ship_class:
+      - CA
+      - CLT
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: none
+    air_power_min: 42
+    enemy_air_power: 19
+    routing_nodes:
+    - C
+    - F
+    - G
+  equip_notes: boss点42空优、84空确。任务B15要求翔鶴+瑞鶴编成，B胜利即可。
+  example: []
+  tags:
+  - B15
+  - 第五航空戦隊
+  special_attacks: []
+- name: 第十八/二一駆逐隊任务（2CV+4DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: 任务指定駆逐艦编成
+  requirements:
+    air_state: none
+    air_power_min: 42
+    enemy_air_power: 19
+    routing_nodes:
+    - C
+    - F
+    - G
+  equip_notes: boss点42空优、84空确。适用B21（陽炎+不知火+霰+霞）、B37（初春+子日+若葉+初霜）、B58（霞改二(乙)旗舰+3DD）等任务。
+  example: []
+  tags:
+  - B21
+  - B37
+  - B58
+  - 第十八駆逐隊
+  - 第二一駆逐隊
+  special_attacks: []
+- name: 第二一戦隊任务（2CA+1CL+1CLT+2CV）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 2
+      specific_ships:
+      - 足柄改二
+      - 那智改二
+      notes: 任务必须
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 多摩改
+      - 多摩改二
+      notes: 任务必须
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 木曾改
+      - 木曾改二
+      notes: 任务必须
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: none
+    air_power_min: 42
+    enemy_air_power: 19
+    routing_nodes:
+    - C
+    - F
+    - G
+  equip_notes: boss点42空优、84空确。任务B51要求足柄改二+那智改二+多摩+木曾编成，S胜利。
+  example: []
+  tags:
+  - B51
+  - 第二一戦隊
+  special_attacks: []
+- name: 轻巡旗舰任务（2CLT旗舰+2CV系+2DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CLT
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 旗舰，轻巡系旗舰
+    - ship_class:
+      - CLT
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: none
+    air_power_min: 42
+    enemy_air_power: 19
+    routing_nodes:
+    - C
+    - F
+    - G
+  equip_notes: boss点42空优、84空确。适用B127（轻巡系旗舰，S胜2次）、B175（CL/CT/AS/宗谷旗舰，S胜1次）等任务。
+  example: []
+  tags:
+  - B127
+  - B175
+  special_attacks: []
+- name: 潜水艦任务（SS旗舰+2CV系+CA系/CL系+2DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SS
+      count: 1
+      specific_ships:
+      - Salmon
+      - Scamp
+      notes: 旗舰，任务必须
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: none
+    air_power_min: 42
+    enemy_air_power: 19
+    routing_nodes:
+    - C
+    - F
+    - G
+  equip_notes: boss点42空优、84空确。任务B195要求Salmon/Scamp旗舰，S胜1次。亦可用1AS+5SS特殊带路走C-D-G。
+  example: []
+  tags:
+  - B195
+  - 潜水艦任務
+  special_attacks: []
+- name: 大鲸+5SS特殊带路（C-D-G）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AS
+      count: 1
+      specific_ships:
+      - 大鯨
+      notes: 旗舰
+    - ship_class:
+      - SS
+      - SSV
+      count: 5
+      specific_ships: []
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - D
+    - G
+  equip_notes: 神奇带路，实战价值低。走C-D-G路线，D点有軽母ヌ级（制空16均势/36优势/72确保）。
+  example: []
+  tags:
+  - 特殊带路
+  - 潜水艦
+  special_attacks: []

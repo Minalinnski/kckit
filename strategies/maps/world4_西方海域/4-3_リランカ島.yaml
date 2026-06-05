@@ -1,0 +1,441 @@
+map: 4-3
+source: nga_import
+notes: リランカ島 — 对陆倍率测验场，boss港湾棲姫，多条路线，制空目标N点155空优/309空确
+presets:
+- name: 萌新推图最短路线 2CVL+1CL+3DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 隼鷹改
+      notes: 旗舰
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳改
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 五十鈴改
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 満潮改
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 霞改
+  requirements:
+    air_state: none
+    air_power_min: 155
+    enemy_air_power: 309
+    routing_nodes:
+    - D
+    - H
+    - N
+  equip_notes: 制空172~175、索敵8.21。N点155空优目标，9%概率沟I。B胜即可，不需对陆装。CVL搭载流星改/彗星一二型甲/試製烈風後期型等。
+  example:
+  - ship: 隼鷹改
+    equips:
+    - 流星改
+    - 彗星一二型甲
+    - 流星改
+    - 試製烈風 後期型
+  - ship: 瑞鳳改
+    equips:
+    - 流星改
+    - 彗星一二型甲
+    - 試製烈風 後期型
+    - 零式艦戦52型
+  - ship: 五十鈴改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 時雨改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 91式高射装置
+  - ship: 満潮改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  tags:
+  - 推图
+  - 最短路线
+  - 2CVL
+  special_attacks: []
+- name: 捞油捞铝路线（红脸）1-A-B-G-J
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      - CAV
+      - CA
+      count: 1
+      speed: fast
+      specific_ships: []
+      notes: 高速、不带CVL以免走E漩涡；日进更佳；带损管
+    - ship_class:
+      - AV
+      - CAV
+      - CA
+      - CL
+      count: 5
+      speed: fast
+      specific_ships: []
+      notes: 带钢板减损伤；配合警戒阵
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - B
+    - G
+    - J
+  equip_notes: 制空0，索敵0。不能带CVL（低速随机走E漩涡）。使用警戒阵。带损管/钢板减损。G点敌方全员1固定击坠。约20~25%败场。时速油+425
+    弹-960 钢-400 铝+1600。
+  example: []
+  tags:
+  - 捞资源
+  - 捞铝
+  - 捞油
+  - 红脸
+  - 警戒阵
+  special_attacks: []
+- name: 捞油捞铝路线（不红脸）日进/夕张/阿武隈/哥特兰 1-A-B-G-J
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships:
+      - ゴトランドandra
+      notes: 旗舰
+    - ship_class:
+      - AV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 日進甲
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 夕張改二特
+      notes: 大発動艇+甲標的丁型改(蛟龍改)+GFCS Mk.37
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - 風雲改二
+      notes: 特二式内火艇×3
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - 巻雲改二
+      notes: 大発動艇(八九式中戦車&陸戦隊)×3
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 阿武隈改二
+      notes: 甲標的丙型+大発動艇×2
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - B
+    - G
+    - J
+  equip_notes: 制空79，索敵41.07。每场收益约油+25 弹-78 钢-17 铝+99。水爆需带对空射击回避补正（瑞雲系除白板外均有）。夕张/阿武隈以外可带钢板。约打2~3场休息。运输TP
+    A=70/S=101。
+  example:
+  - ship: ゴトランドandra
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 大発動艇
+    - 瑞雲改二(六三四空/熟練)
+  - ship: 日進甲
+    equips:
+    - 瑞雲12型
+    - 瑞雲12型
+    - 瑞雲(六三四空/熟練)
+    - 甲標的 丙型
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 大発動艇
+    - 大発動艇
+    - 大発動艇
+    - GFCS Mk.37
+  - ship: 風雲改二
+    equips:
+    - 特二式内火艇
+    - 特二式内火艇
+    - 特二式内火艇
+  - ship: 巻雲改二
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 大発動艇(八九式中戦車&陸戦隊)
+  - ship: 阿武隈改二
+    equips:
+    - 甲標的 丙型
+    - 大発動艇
+    - 大発動艇
+  tags:
+  - 捞资源
+  - 捞铝
+  - 捞油
+  - 不红脸
+  - 对陆
+  special_attacks: []
+- name: 沟率最低路线 1CV+1CV系+1CL+3CA系/CLT
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships: []
+      notes: 旗舰
+    - ship_class:
+      - CV
+      - CVL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - CA
+      - CAV
+      - CLT
+      count: 3
+      specific_ships: []
+      notes: 带三式弹对陆
+  requirements:
+    air_state: none
+    air_power_min: 155
+    enemy_air_power: 309
+    routing_nodes:
+    - L
+    - N
+  equip_notes: boss点155空优，240大概率空确，309稳定空确。L点100%进boss。CA带三式弹对陆。H点随机沟无法避免。对陆对水上输出都很足。
+  example: []
+  tags:
+  - 推图
+  - 低沟率
+  - 对陆
+  - 三式弹
+  special_attacks: []
+- name: 史实配置路线 2CV+2CA+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: 带三式弹
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: none
+    air_power_min: 155
+    enemy_air_power: 309
+    routing_nodes: []
+  equip_notes: 多条随机路线，优势不明显。任务要求2DD时使用。boss点155空优，309稳定空确。
+  example: []
+  tags:
+  - 史实
+  - 任务用
+  - 2DD
+  special_attacks: []
+- name: 任务B26 精鋭第二航空戦隊 蒼龍改二旗舰+飛龍改二+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 蒼龍改二
+      notes: 旗舰
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 飛龍改二
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: 带三式弹
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+  requirements:
+    air_state: none
+    air_power_min: 155
+    enemy_air_power: 309
+    routing_nodes: []
+  equip_notes: boss点155空优，240大概率空确，309稳定空确。极低概率沟I。CA带三式弹对陆。需S胜。
+  example: []
+  tags:
+  - 任务
+  - B26
+  - 史实
+  special_attacks: []
+- name: 任务B151/B152 2CV+1CL+3CA系
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 2
+      specific_ships: []
+      notes: B151需含1美国/英国CV系；B152需含2CV/CVB
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - CA
+      - CAV
+      - CLT
+      count: 3
+      specific_ships: []
+      notes: 带三式弹对陆
+  requirements:
+    air_state: none
+    air_power_min: 155
+    enemy_air_power: 309
+    routing_nodes: []
+  equip_notes: boss点155空优，240大概率空确，309稳定空确。极低概率沟I。CA带三式弹对陆。S胜1次。
+  example: []
+  tags:
+  - 任务
+  - B151
+  - B152
+  special_attacks: []
+- name: 任务B190 榛名改二乙/丙+金剛改二丙+1CL+3DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - FBB
+      - BB
+      count: 1
+      speed: fast
+      specific_ships:
+      - 榛名改二乙
+      - 榛名改二丙
+      notes: 旗舰
+    - ship_class:
+      - FBB
+      - BB
+      count: 1
+      speed: fast
+      specific_ships:
+      - 金剛改二丙
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships: []
+      notes: 稍微带对陆装
+  requirements:
+    air_state: none
+    air_power_min: 72
+    enemy_air_power: 72
+    routing_nodes: []
+  equip_notes: H点72空确。BB带徹甲弾道中観測射撃，boss点不需空优。DD带对陆装。30%概率沟I。S胜1次。
+  example: []
+  tags:
+  - 任务
+  - B190
+  - 金刚夜战
+  special_attacks: []
+- name: 任务B208 白雪改二旗舰+1吹雪型 2CVL+1CL+3DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 2
+      specific_ships: []
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 白雪改二
+      notes: 旗舰
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 吹雪型1隻
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+  requirements:
+    air_state: none
+    air_power_min: 155
+    enemy_air_power: 309
+    routing_nodes:
+    - D
+    - H
+    - N
+  equip_notes: boss点155空优，240大概率空确，309稳定空确。S胜1次。
+  example: []
+  tags:
+  - 任务
+  - B208
+  special_attacks: []

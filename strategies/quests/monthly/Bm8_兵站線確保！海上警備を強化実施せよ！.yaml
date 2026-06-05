@@ -1,0 +1,35 @@
+quest_id: Bm8
+quest_name: 兵站線確保！海上警備を強化実施せよ！
+category: monthly
+requirement: 1-2、1-3、1-4、2-1，各1次S胜，需要1CVL/CL/CLT/CT+3DD/DE
+maps:
+- map_id: 1-2
+  fleet_hint: 1CL+4DD
+  synergy_quests:
+  - By2
+  combo_fleets:
+    By2: 1CL+1DD+3DE
+- map_id: 1-3
+  fleet_hint: 2CVL+1CAV+3DD
+  synergy_quests:
+  - Bq9
+  - By2
+  combo_fleets:
+    By2: 1CVL+1AV/CAV+3DE
+- map_id: 1-4
+  fleet_hint: 2CVL+4DD
+  notes: boss点60空确
+  synergy_quests:
+  - Bm3
+  - Bq9
+  - Bq11
+  combo_fleets:
+    Bm3: 2CL(旗舰)+4DD
+- map_id: 2-1
+  fleet_hint: 2CV系+1CLT+3DD
+  notes: boss点162空确
+  synergy_quests:
+  - Bq9
+  - Bq11
+  combo_fleets:
+    Bq9: 2CV系+1CLT+3DD

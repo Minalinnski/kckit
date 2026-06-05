@@ -1,0 +1,12 @@
+# KanColle game canvas position on screen.
+# Auto-detected by tools/calibrate.py on 2026-05-19 10:16:23
+# Re-run calibrate.py if poi window is moved or resized.
+
+canvas:
+  x: 1260    # screen pixel x of top-left corner
+  y: 59    # screen pixel y of top-left corner
+  w: 1600   # canvas width in pixels
+  h: 960   # canvas height in pixels
+  # device_pixel_ratio: 1.7999999523162842
+  # scale_x: 2.0000
+  # scale_y: 2.0000

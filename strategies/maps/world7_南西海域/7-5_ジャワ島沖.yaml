@@ -1,0 +1,705 @@
+map: 7-5
+source: nga_import
+notes: ジャワ島沖、月次EO、3血条+解谜、奖励170战果+勋章
+presets:
+- name: P1主力编成（伊势改二版）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 初月改二
+      notes: 旗舰、对空
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 制空主力
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: CL旗舰候补兼水雷战队
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 最上改二特
+      notes: 倍卡CAV、昼战二连
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 三隈改二特
+      notes: 倍卡CAV、昼战二连
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      min_asw: 100
+      specific_ships:
+      - 時雨改三
+      notes: 先制对潜
+  requirements:
+    air_state: none
+    air_power_min: 123
+    routing_nodes:
+    - A
+    - B
+    - D
+    - G
+    - K
+  equip_notes: 制空146（A点空均123）；A轮形、B单横、D/G/K单纵；伊势带瑞云二(六三四空/熟练)×22+烈风×22；初月10cm连装高角炮改+高射装置×2+FuMO25雷达；矢矧15.2cm连装炮改二×2+零式水上侦察机11型甲改二；最上试制20.3cm(4号)连装炮×2+试制夜间瑞云(攻击装备)；三隈试制20.3cm(4号)连装炮×2+紫云(熟练)；时雨三式水中探信仪×3
+  example:
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - FuMO25雷达
+    - 舰本新设计 增设装甲板（中型舰）
+    - 舰本新设计 增设装甲板（中型舰）
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 震电改
+    - 瑞雲改二(六三四空/熟練)
+    - 一式徹甲弾改
+    - 三式弾改二
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上侦察机11型甲改二
+    - 二式複戦 屠龍 丙型
+    - 精锐水雷战队 司令部
+  - ship: 最上改二特
+    equips:
+    - 试制20.3cm（4号）连装炮
+    - 试制20.3cm（4号）连装炮
+    - 试制 夜间瑞云（攻击装备）
+    - 二式複戦 屠龍 丙型
+    - 三式弾改二
+  - ship: 三隈改二特
+    equips:
+    - 试制20.3cm（4号）连装炮
+    - 试制20.3cm（4号）连装炮
+    - 紫云（熟练）
+    - 甲標的 丁型改(蛟龍改)
+    - 舰本新设计 增设装甲板（中型舰）
+  - ship: 時雨改三
+    equips:
+    - 三式水中探信儀改
+    - 舰本新设计 增设装甲板（中型舰）
+    - 舰本新设计 增设装甲板（中型舰）
+    - 舰本新设计 增设装甲板（中型舰）
+  tags:
+  - P1
+  - 主力版
+  - 伊勢改二
+  special_attacks: []
+- name: P1萌新编成（CVL替换版）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 低速可，制空主力
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改二特
+      notes: 倍卡CAV
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 川内改二
+      notes: CL任意
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 北上改二
+      notes: 开幕雷击
+    - ship_class:
+      - DD
+      count: 1
+      min_asw: 100
+      specific_ships:
+      - 時雨改二
+      - 時雨改三
+      notes: 先制对潜
+    - ship_class:
+      - DD
+      count: 1
+      min_asw: 100
+      specific_ships:
+      - Johnston改
+      notes: 对空对潜一体
+  requirements:
+    air_state: none
+    air_power_min: 123
+    routing_nodes:
+    - A
+    - B
+    - D
+    - G
+    - K
+  equip_notes: 制空136（A点空均）；伊势试制41cm三连装炮×2+零式水上观测机+烈风一型+试制烈风后期型；最上20.3cm(2号)连装炮×2+零式水上观测机+甲标的
+    甲型；川内20.3cm(2号)连装炮×2+零式水上观测机；北上20.3cm(2号)连装炮×2+甲标的 甲型；時雨三式水中探信仪×3；Johnston 5inch单装炮Mk.30改×2+三式水中探信仪
+  example:
+  - ship: 伊勢改二
+    equips:
+    - 試製41cm三連装砲
+    - 試製41cm三連装砲
+    - 零式水上観測機
+    - 烈風 一一型
+    - 試製烈風 後期型
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上観測機
+    - 甲標的 甲型
+  - ship: 川内改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上観測機
+  - ship: 北上改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 甲標的 甲型
+  - ship: 時雨改二
+    equips:
+    - 三式水中探信儀
+    - 三式水中探信儀
+    - 三式水中探信儀
+  - ship: Johnston改
+    equips:
+    - 5inch単装砲 Mk.30改
+    - 5inch単装砲 Mk.30改
+    - 三式水中探信儀
+  tags:
+  - P1
+  - 萌新版
+  - 低速
+  special_attacks: []
+- name: P2主力编成（天雾対陆版）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 天霧改二丁
+      notes: 旗舰、対PT、対陆
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 制空+観測
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 最上改二特
+      notes: 倍卡CAV、夜瑞云
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: 対陆CL
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      min_asw: 100
+      specific_ships:
+      - 時雨改三
+      notes: 先制对潜、対陆
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 初月改二
+      notes: 対空
+  requirements:
+    air_state: none
+    air_power_min: 123
+    routing_nodes:
+    - A
+    - B
+    - D
+    - J
+    - Q
+  equip_notes: 制空146（A点空均123/Q点空优171）；A轮形、B单横、D/J/Q单纵；天霧装甲艇(AB艇)+特二式内火艇+10cm连装高角炮改+高射装置改+水雷战队
+    熟练瞭望员；伊势41cm三连装炮改二×2+震电改+瑞云二(六三四空/熟练)+一式穿甲弾改+三式弹改二；最上试制20.3cm(4号)连装炮×2+试制夜间瑞云(攻击装备)+甲标的
+    丙型+三式弹改二；矢矧15.2cm连装炮改二×2+特四式内火艇+甲标的 丁型改(蛟龙改)+精锐水雷战队 司令部；時雨特四式内火艇改+三式水中探信仪改+舰本新设计×2；初月10cm连装高角炮改+高射装置改×2+FuMO25雷达+WG42+舰本新设计
+  example:
+  - ship: 天霧改二丁
+    equips:
+    - 装甲艇(AB艇)
+    - 特二式内火艇
+    - 10cm連装高角砲+高射装置
+    - 水雷戦隊 熟練見張員
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 41cm三連装砲改二
+    - 震電改
+    - 瑞雲改二(六三四空/熟練)
+    - 一式徹甲弾改
+    - 三式弾改二
+  - ship: 最上改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丙型
+    - 三式弾改二
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 特四式内火艇
+    - 甲標的 丁型改(蛟龍改)
+    - 精鋭水雷戦隊 司令部
+  - ship: 時雨改三
+    equips:
+    - 特四式内火艇改
+    - 三式水中探信儀改
+    - 舰本新設計 増設装甲板（中型艦）
+    - 舰本新設計 増設装甲板（中型艦）
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - FuMO25 レーダー
+    - WG42 (Wurfgerät 42)
+    - 舰本新設計 増設装甲板（中型艦）
+  tags:
+  - P2
+  - 主力版
+  - 天霧改二丁
+  special_attacks: []
+- name: P2萌新编成（CVL対PT版）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 千歳航改二
+      - 龍驤改二
+      notes: 倍卡CVL、双舰爆锁PT
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 伊勢改二
+      notes: 制空+徹甲弹打炮台、需打孔携带强化型舰船锅炉提速
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 最上改二特
+      notes: 倍卡CAV、対陆
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 五十鈴改二
+      notes: 先制对潜、対陆
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - Johnston改
+      notes: 対空対潜、可换迫击炮打炮台
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - 霰改二
+      notes: 対陆DD
+  requirements:
+    air_state: none
+    air_power_min: 123
+    routing_nodes:
+    - A
+    - B
+    - D
+    - J
+    - Q
+  equip_notes: 制空125~126（A点空均）；高速编成；千歳携带长射程非対陆舰爆（彗星二型(六三四空))+対空射击回避舰爆(九九式舰爆(江草队))+烈风一型+12cm30连装喷进炮；伊势试制41cm三连装炮×2+瑞云(六三四空)+九一式穿甲弹+强化型舰船锅炉；最上20.3cm(2号)连装炮+大发动艇+二式水战改+甲标的
+    甲型；五十铃舰舰载型四式20cm対地喷进炮×2+二式12cm迫击炮改；Johnston 5inch单装炮Mk.30改×2+二式12cm迫击炮改；霰10cm连装高角炮×2+大発動艇
+  example:
+  - ship: 千歳航改二
+    equips:
+    - 九九式艦爆(江草隊)
+    - 彗星二二型(六三四空)
+    - 烈風 一一型
+    - 12cm30連装噴進砲
+  - ship: 伊勢改二
+    equips:
+    - 試製41cm三連装砲
+    - 試製41cm三連装砲
+    - 瑞雲(六三四空)
+    - 九一式徹甲弾
+    - 強化型艦本式缶
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(2号)連装砲
+    - 大発動艇
+    - 二式水戦改
+    - 甲標的 甲型
+  - ship: 五十鈴改二
+    equips:
+    - 艦載型 四式20cm対地噴進砲
+    - 艦載型 四式20cm対地噴進砲
+    - 二式12cm迫撃砲改
+  - ship: Johnston改
+    equips:
+    - 5inch単装砲 Mk.30改
+    - 5inch単装砲 Mk.30改
+    - 二式12cm迫撃砲改
+  - ship: 霰改二
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 大発動艇
+  tags:
+  - P2
+  - 萌新版
+  - CVL対PT
+  - 高速
+  special_attacks: []
+- name: P3主力编成（昼战二连+夜战CI版）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 時雨改三
+      notes: 旗舰、魚雷CI
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 制空+観測
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 初月改二
+      notes: 対空
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: 水雷战队
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 三隈改二特
+      notes: 倍卡CAV、昼战二连
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 最上改二特
+      notes: 倍卡CAV、昼战二连+夜瑞云
+  requirements:
+    air_state: none
+    air_power_min: 123
+    los_formula: 4
+    los_min: 59.0
+    routing_nodes:
+    - A
+    - B
+    - D
+    - J
+    - O
+    - P
+    - T
+  equip_notes: 制空146（A点空均123）；分歧点系数=4，索敌>=59；A轮形、B单横、D/J/T单纵；時雨61cm四连装(酸素)鱼雷后期型×2+三式水中探信仪改+水雷战队
+    熟练瞭望员；伊势41cm三连装炮改二+16inch三连装炮Mk.7+GFCS+震电改+瑞云二(六三四空/熟练)+新型高温高压锅炉+改良型舰船涡轮机；初月10cm连装高角炮改+高射装置改×2+FuMO25雷达+舰本新设计×2；矢矧15.2cm连装炮改二×2+零式水上侦察机11型甲改二+甲标的
+    丙型+精锐水雷战队 司令部；三隈试制20.3cm(4号)连装炮×2+紫云+甲标的 丁型改(蛟龙改)+舰本新设计；最上20.3cm(3号)连装炮×2+试制夜间瑞云(攻击装备)+甲标的
+    丙型+三式弹改二；田中带路需CVL+CA系×2+CL+2DD或高速BB系代替CVL
+  example:
+  - ship: 時雨改三
+    equips:
+    - 61cm四連装(酸素)魚雷後期型
+    - 61cm四連装(酸素)魚雷後期型
+    - 三式水中探信儀改
+    - 水雷戦隊 熟練見張員
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 震電改
+    - 瑞雲改二(六三四空/熟練)
+    - 新型高温高圧缶
+    - 改良型艦本式タービン
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - FuMO25 レーダー
+    - 舰本新設計 増設装甲板（中型艦）
+    - 舰本新設計 増設装甲板（中型艦）
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機
+    - 甲標的 丙型
+    - 精鋭水雷戦隊 司令部
+  - ship: 三隈改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 紫雲
+    - 甲標的 丁型改(蛟龍改)
+    - 舰本新設計 増設装甲板（中型艦）
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丙型
+    - 三式弾改二
+  tags:
+  - P3
+  - 主力版
+  - 昼战二连
+  - 魚雷CI
+  special_attacks: []
+- name: P3萌新编成（CVL+CA系）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast
+      specific_ships: []
+      notes: 高速CVL
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      speed: fast
+      specific_ships:
+      - 最上改二特
+      - 三隈改二特
+      notes: 倍卡CAV×2优先，高速
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 任意CL，注意高速
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 任意DD
+  requirements:
+    air_state: none
+    air_power_min: 123
+    los_formula: 4
+    los_min: 59.0
+    routing_nodes:
+    - A
+    - B
+    - D
+    - J
+    - O
+    - P
+    - T
+  equip_notes: 1CVL+2CAV+1CL+2DD高速不限速带路；分歧点系数=4，索敌>=59；A点空均123
+  example: []
+  tags:
+  - P3
+  - 萌新版
+  - CVL
+  - 高速
+  - 不限速
+  special_attacks: []
+- name: P3任务编成（B190 榛名+金刚版）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 時雨改三
+      notes: 旗舰、魚雷CI
+    - ship_class:
+      - FBB
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 金剛改二丙
+      notes: 任务必须
+    - ship_class:
+      - FBB
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 榛名改二丙
+      notes: 任务必须
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 初月改二
+      notes: 対空、発煙装置
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: 水雷战队
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 制空、夜母
+  requirements:
+    air_state: none
+    air_power_min: 160
+    los_formula: 4
+    los_min: 68.0
+    routing_nodes:
+    - A
+    - B
+    - D
+    - J
+    - O
+    - P
+    - R
+    - T
+  equip_notes: 制空185（非斩杀局R点160空均）；带2BB系分歧点系数=4，索敌>=68；金剛改二丙 16inch三连装炮Mk.7+GFCS×2+一式穿甲弾改+零式水上侦察机11型乙(熟练)+逆探(E27)+22号対水上电探改四(后期调整型)；榛名改二丙
+    16inch三连装炮Mk.7+GFCS×2+零式水上侦察机11型乙(熟练)+一式穿甲弾改+42号対空电探改二；初月10cm连装高角炮改×2+HF/DF+Type144/147
+    ASDIC+発煙装置改(烟幕)+电探装备桩(13号改+22号电探四)；矢矧15.2cm连装炮改二×2+零式水上侦察机11型甲改二+甲标的 丙型+精锐水雷战队
+    司令部；時雨61cm四连装(酸素)鱼雷后期型×2+试制61cm六连装(酸素)鱼雷+水雷战队 熟练瞭望员；瑞鳳改二乙流星改(一航战/熟练)+F4U-7+震电改+震电改+熟练甲板要员+航空整备员；门神(初月)拉烟梯形阵，旗舰优先保护脆皮DD
+  example:
+  - ship: 時雨改三
+    equips:
+    - 61cm四連装(酸素)魚雷後期型
+    - 61cm四連装(酸素)魚雷後期型
+    - 試製61cm六連装(酸素)魚雷
+    - 水雷戦隊 熟練見張員
+  - ship: 金剛改二丙
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 一式徹甲弾改
+    - 零式水上偵察機11型乙(熟練)
+    - 逆探(E27)+22号対水上電探改四(後期調整型)
+  - ship: 榛名改二丙
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 零式水上偵察機11型乙(熟練)
+    - 一式徹甲弾改
+    - 42号対空電探改二
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - HF/DF + Type144/147 ASDIC
+    - 発煙装置改(煙幕)
+    - 電探装備マスト(13号改+22号電探改四)
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機
+    - 甲標的 丙型
+    - 精鋭水雷戦隊 司令部
+  - ship: 瑞鳳改二乙
+    equips:
+    - 流星改(一航戦/熟練)
+    - F4U-7
+    - 震電改
+    - 震電改
+    - 熟練甲板要員+航空整備員
+  tags:
+  - P3
+  - 任务B190
+  - 榛名改二丙
+  - 金剛改二丙
+  - 発煙装置
+  special_attacks:
+  - type: kongou_night_raid
+    ships:
+    - 金剛改二丙
+    - 榛名改二丙
+    positions:
+    - 2
+    - 3
+    equip_hint: 16inch三連装砲Mk.7+GFCS
+    notes: B190任务要求榛名改二丙+金剛改二丙+2DD编成

@@ -1,0 +1,12 @@
+quest_id: Bm4
+quest_name: '''水上打撃部隊''南方へ！'
+category: monthly
+requirement: 5-1，S胜，需要大和/武藏/长门/陆奥/伊势/日向/扶桑/山城 8选3 和1个CL
+maps:
+- map_id: 5-1
+  fleet_hint: 3BB/BBV+1CL+2DD
+  notes: D点287空优
+  synergy_quests:
+  - Bq13
+  combo_fleets:
+    Bq13: 夕张改二旗舰+2DD+3BB/BBV

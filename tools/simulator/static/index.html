@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kckit Simulator</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #0a0e1a;
+  --panel:    #141926;
+  --border:   #1e2d4a;
+  --accent:   #4a9eff;
+  --accent2:  #22b8cf;
+  --success:  #51cf66;
+  --warn:     #f59f00;
+  --error:    #ff6b6b;
+  --text:     #c9d1d9;
+  --dim:      #6e7f96;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+#header {
+  height: 40px;
+  min-height: 40px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+#header-logo {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.hdot-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+  color: var(--dim);
+}
+.sdot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dim);
+  flex-shrink: 0;
+}
+.sdot.green { background: var(--success); box-shadow: 0 0 5px var(--success); }
+.sdot.red   { background: var(--error);   box-shadow: 0 0 5px var(--error); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+.sdot.green { animation: pulse 2.5s infinite; }
+
+#header-screen {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  overflow: hidden;
+}
+#header-screen-label {
+  color: var(--dim);
+  white-space: nowrap;
+}
+#header-screen-val {
+  font-weight: 700;
+  color: var(--accent2);
+  white-space: nowrap;
+}
+#header-screen-src {
+  font-size: 11px;
+  color: var(--dim);
+  background: #1e2d4a;
+  border-radius: 3px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+.hbtn {
+  background: #1e2d4a;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 3px 9px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.hbtn:hover { background: #273a56; }
+.hbtn:active { background: #1a2a40; }
+.hbtn.active { background: #1e3a5f; border-color: var(--accent); color: var(--accent); }
+#overlay-screen-select {
+  background: #1e2d4a; border: 1px solid var(--border);
+  color: var(--text); border-radius: 4px; padding: 3px 6px;
+  font-size: 12px; cursor: pointer;
+}
+#overlay-screen-select:focus { outline: none; border-color: var(--accent); }
+#overlay-svg { opacity: 1; transition: opacity .2s; }
+#overlay-svg.hidden { opacity: 0; pointer-events: none; }
+
+/* ── MAIN COLUMNS ── */
+#main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── LEFT: SCREENSHOT + OVERLAY ── */
+#left-col {
+  /* Fill remaining height; width determined by 889:533 aspect ratio of screenshot */
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--border);
+  background: #060911;
+  overflow: hidden;
+}
+#screenshot-wrap {
+  /* Maintain exact KC screenshot aspect ratio so overlay coords map 1:1 */
+  position: relative;
+  width: 100%;
+  aspect-ratio: 889 / 533;
+  max-height: 100%;
+  overflow: hidden;
+  background: #04080f;
+}
+/* If width would exceed height constraint, shrink to fit height */
+@supports (aspect-ratio: 1) {
+  #screenshot-wrap {
+    max-width: calc(100vh * 889 / 533 - 40px);
+  }
+}
+#screenshot-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;  /* container is already correct ratio */
+  display: block;
+}
+#screenshot-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--dim);
+}
+#screenshot-placeholder .ph-icon { font-size: 48px; opacity: .4; }
+#screenshot-placeholder .ph-text { font-size: 13px; }
+
+/* ── OVERLAY SVG ── */
+#overlay-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.ov-rect {
+  fill: none;
+  stroke-width: 2;
+  rx: 3;
+}
+.ov-circle {
+  fill: none;
+  stroke-width: 2;
+}
+.ov-label {
+  font-size: 9px;
+  font-family: monospace;
+  font-weight: 600;
+  dominant-baseline: hanging;
+  paint-order: stroke fill;
+  stroke-width: 3;
+  stroke: rgba(0,0,0,0.8);
+}
+/* Color scheme per screen section */
+.ov-nav    { stroke: #4af; }  /* navigation buttons */
+.ov-action { stroke: #4f8; }  /* action/confirm buttons */
+.ov-item   { stroke: #fa4; }  /* list items */
+.ov-tab    { stroke: #c8f; }  /* tabs */
+.ov-close  { stroke: #f66; stroke-dasharray: 6 3; }  /* dismiss/close areas */
+.ov-nav    .ov-label { fill: #4af; }
+.ov-action .ov-label { fill: #4f8; }
+.ov-item   .ov-label { fill: #fa4; }
+.ov-tab    .ov-label { fill: #c8f; }
+.ov-close  .ov-label { fill: #f66; }
+
+/* ── RIGHT COL ── */
+#right-col {
+  width: 40%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Section header bar */
+.sec-hdr {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dim);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  padding: 5px 10px 4px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  flex-shrink: 0;
+}
+
+/* ── RESOURCES ── */
+#resources-panel {
+  flex-shrink: 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+#resources-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 6px 8px;
+}
+.res-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px 2px 0;
+  white-space: nowrap;
+}
+.res-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+.res-label {
+  font-size: 11px;
+  color: var(--dim);
+}
+.res-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 38px;
+  text-align: right;
+}
+.res-val.bucket { color: var(--accent2); }
+.res-hq {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--dim);
+  padding-left: 8px;
+}
+.res-hq span { color: var(--accent); font-weight: 700; }
+
+/* ── FLEET ── */
+#fleet-panel {
+  flex-shrink: 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+#fleet-list {
+  padding: 5px 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ship-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0d1220;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 7px;
+  min-height: 32px;
+}
+.ship-stype {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dim);
+  width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.ship-name {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ship-lv {
+  font-size: 11px;
+  color: var(--dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ship-hp-wrap {
+  width: 70px;
+  flex-shrink: 0;
+}
+.ship-hp-bar-bg {
+  height: 5px;
+  background: #0a0e1a;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+.ship-hp-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width .3s;
+}
+.ship-hp-bar-fill.hp-green  { background: var(--success); }
+.ship-hp-bar-fill.hp-yellow { background: var(--warn); }
+.ship-hp-bar-fill.hp-orange { background: #e8750a; }
+.ship-hp-bar-fill.hp-red    { background: var(--error); }
+.ship-hp-text {
+  font-size: 10px;
+  color: var(--dim);
+  text-align: center;
+}
+.ship-cond {
+  font-size: 13px;
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+}
+.ship-cond.tired { color: #f59f00; }
+
+/* ── EXPEDITIONS ── */
+#expd-panel {
+  flex-shrink: 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+#expd-list {
+  padding: 5px 10px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.expd-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.expd-fleet {
+  color: var(--dim);
+  width: 36px;
+  flex-shrink: 0;
+}
+.expd-name {
+  color: var(--accent2);
+  font-weight: 600;
+  flex: 1;
+}
+.expd-timer {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+}
+.expd-timer.done { color: var(--success); }
+.expd-standby {
+  color: var(--dim);
+  font-style: italic;
+}
+
+/* ── EVENT LOG ── */
+#log-panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+#log-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+  font-family: monospace;
+  font-size: 12px;
+}
+#log-list::-webkit-scrollbar { width: 5px; }
+#log-list::-webkit-scrollbar-track { background: transparent; }
+#log-list::-webkit-scrollbar-thumb { background: #1e2d4a; border-radius: 3px; }
+
+.log-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 2px 10px;
+  border-bottom: 1px solid transparent;
+}
+.log-entry:hover { background: #0d1421; }
+.log-ts {
+  color: var(--dim);
+  flex-shrink: 0;
+  font-size: 11px;
+  padding-top: 1px;
+}
+.log-body { flex: 1; min-width: 0; word-break: break-all; }
+.log-screen-name { font-weight: 700; color: var(--accent2); }
+.log-src-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: #1e2d4a;
+  color: var(--dim);
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.log-pixi { color: var(--dim); padding-left: 14px; font-style: italic; }
+.log-unknown { color: var(--warn); }
+.log-photo { color: var(--dim); }
+.log-inject { color: var(--accent); }
+.log-error-entry { color: var(--error); }
+.log-info { color: var(--dim); }
+
+/* ── FINGERPRINT PANEL ── */
+#fp-panel {
+  display: none;
+  flex-shrink: 0;
+  background: #0d1220;
+  border-top: 1px solid var(--border);
+}
+#fp-panel.visible { display: block; }
+#fp-content {
+  padding: 8px 10px;
+}
+#fp-stage-info {
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 6px;
+  font-family: monospace;
+}
+#fp-input-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+#fp-screen-select {
+  flex: 1;
+  background: #0a0e1a;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 4px 8px;
+  font-size: 12px;
+  outline: none;
+}
+#fp-screen-select:focus { border-color: var(--accent); }
+#fp-save-btn {
+  background: var(--accent);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+#fp-save-btn:hover { background: #3a8ee0; }
+#fp-known {
+  font-size: 11px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+#fp-known span { color: var(--accent2); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header">
+  <div id="header-logo">kckit</div>
+
+  <div class="hdot-group">
+    <span class="sdot" id="dot-poi"></span><span>poi</span>
+  </div>
+  <div class="hdot-group">
+    <span class="sdot" id="dot-bridge"></span><span>bridge</span>
+  </div>
+
+  <div id="header-screen">
+    <span id="header-screen-label">現在画面:</span>
+    <span id="header-screen-val">—</span>
+    <span id="header-screen-src" style="display:none"></span>
+  </div>
+
+  <!-- Overlay controls -->
+  <button class="hbtn" id="btn-overlay-toggle" title="Toggle overlay">⬡ Overlay</button>
+  <select id="overlay-screen-select" title="Force overlay for screen">
+    <option value="">overlay: auto</option>
+    <option value="port">母港</option>
+    <option value="hensei">編成①主画面</option>
+    <option value="hensei_ship_select">編成②艦選択</option>
+    <option value="hensei_ship_confirm">編成③確認</option>
+    <option value="supply">補給</option>
+    <option value="equipment">改装①1-4艦隊</option>
+    <option value="equipment_other">改装②他艦隊リスト</option>
+    <option value="equipment_select">改装③装備選択popup</option>
+    <option value="equipment_confirm">改装④変更確認</option>
+    <option value="repair">入渠①主画面</option>
+    <option value="repair_ship_select">入渠②艦選択</option>
+    <option value="repair_ship_confirm">入渠③用桶確認</option>
+    <option value="repair_confirm">入渠④最終確認</option>
+    <option value="factory">工廠</option>
+    <option value="quest_list">任務</option>
+    <option value="sortie_type">出撃種別</option>
+    <option value="sortie_world">海域選択</option>
+    <option value="sortie_map">出撃海図</option>
+    <option value="formation_select">陣形選択</option>
+    <option value="practice">演習</option>
+    <option value="expedition_select">遠征選択</option>
+    <option value="battle">戦闘</option>
+    <option value="battle_result">戦闘結果</option>
+  </select>
+
+  <button class="hbtn" id="btn-inject">Inject Spy</button>
+  <button class="hbtn" id="btn-probe">Probe</button>
+  <button class="hbtn" id="btn-refresh">↺</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- LEFT: SCREENSHOT + OVERLAY -->
+  <div id="left-col">
+    <div id="screenshot-wrap">
+      <img id="screenshot-img" src="" alt="screenshot">
+      <div id="screenshot-placeholder">
+        <div class="ph-icon">📷</div>
+        <div class="ph-text">No screenshot</div>
+      </div>
+      <!-- Overlay SVG: draws element boxes from screen_layout.yaml -->
+      <svg id="overlay-svg" viewBox="0 0 889 533" preserveAspectRatio="none"></svg>
+    </div>
+  </div>
+
+  <!-- RIGHT COL -->
+  <div id="right-col">
+
+    <!-- RESOURCES -->
+    <div id="resources-panel">
+      <div class="sec-hdr">Resources</div>
+      <div id="resources-grid">
+        <div class="res-item">
+          <span class="res-icon">⛽</span>
+          <span class="res-label">燃料</span>
+          <span class="res-val" id="res-fuel">—</span>
+        </div>
+        <div class="res-item">
+          <span class="res-icon">💣</span>
+          <span class="res-label">弾薬</span>
+          <span class="res-val" id="res-ammo">—</span>
+        </div>
+        <div class="res-item">
+          <span class="res-icon">⚙️</span>
+          <span class="res-label">鋼材</span>
+          <span class="res-val" id="res-steel">—</span>
+        </div>
+        <div class="res-item">
+          <span class="res-icon">✈️</span>
+          <span class="res-label">ボーキ</span>
+          <span class="res-val" id="res-bauxite">—</span>
+        </div>
+        <div class="res-item">
+          <span class="res-icon">🪣</span>
+          <span class="res-label">バケツ</span>
+          <span class="res-val bucket" id="res-bucket">—</span>
+        </div>
+        <div class="res-hq">Lv.<span id="res-hq">—</span></div>
+      </div>
+    </div>
+
+    <!-- FLEET 1 -->
+    <div id="fleet-panel">
+      <div class="sec-hdr">Fleet 1</div>
+      <div id="fleet-list">
+        <div class="ship-chip" style="justify-content:center;color:var(--dim);font-style:italic;font-size:12px;">—</div>
+      </div>
+    </div>
+
+    <!-- EXPEDITIONS -->
+    <div id="expd-panel">
+      <div class="sec-hdr">Expeditions</div>
+      <div id="expd-list">
+        <div class="expd-row"><span class="expd-fleet">—</span></div>
+      </div>
+    </div>
+
+    <!-- EVENT LOG -->
+    <div id="log-panel">
+      <div class="sec-hdr">Event Log</div>
+      <div id="log-list"></div>
+    </div>
+
+    <!-- FINGERPRINT PANEL -->
+    <div id="fp-panel">
+      <div class="sec-hdr">未知画面 — PIXI stage <span id="fp-stage-n"></span></div>
+      <div id="fp-content">
+        <div id="fp-stage-info" style="font-family:monospace;font-size:10px;word-break:break-all;margin-bottom:6px;color:var(--dim)"></div>
+        <div id="fp-input-row">
+          <select id="fp-screen-select">
+            <option value="">— 选择画面 —</option>
+            <option value="port">母港 (port)</option>
+            <option value="hensei">編成 (hensei)</option>
+            <option value="supply">補給 (supply)</option>
+            <option value="repair">入渠 (repair)</option>
+            <option value="factory">工廠 (factory)</option>
+            <option value="equipment">改装 (equipment)</option>
+            <option value="quest_list">任務 (quest_list)</option>
+            <option value="sortie_world">出撃海域 (sortie_world)</option>
+            <option value="formation_select">陣形選択 (formation_select)</option>
+            <option value="practice">演習 (practice)</option>
+            <option value="expedition_select">遠征選択 (expedition_select)</option>
+            <option value="expedition_select_w1">遠征世界1 (expd_w1)</option>
+            <option value="expedition_select_w2">遠征世界2 (expd_w2)</option>
+            <option value="expedition_select_w3">遠征世界3 (expd_w3)</option>
+            <option value="battle">戦闘 (battle)</option>
+            <option value="night_battle">夜戦 (night_battle)</option>
+            <option value="battle_result">戦闘結果 (battle_result)</option>
+            <option value="expedition_result">遠征結果 (expedition_result)</option>
+            <option value="lbas">基地航空 (lbas)</option>
+            <option value="sortie_eo">出撃EO (sortie_eo)</option>
+          </select>
+          <button id="fp-save-btn">保存</button>
+        </div>
+        <div id="fp-known" style="margin-top:6px;font-size:10px;color:var(--dim)"></div>
+        <button onclick="saveFingerprints([]);renderFpKnown();logInject('All fingerprints cleared.')" style="margin-top:4px;background:none;border:1px solid var(--border);color:var(--dim);border-radius:3px;padding:2px 7px;font-size:10px;cursor:pointer">全部清除</button>
+      </div>
+    </div>
+
+  </div><!-- /right-col -->
+</div><!-- /main -->
+
+<script>
+'use strict';
+
+// ── Constants ──────────────────────────────────────────────────────────────
+const SCREEN_JP = {
+  port:               '母港',
+  hensei:             '編成',
+  supply:             '補給',
+  repair:             '入渠',
+  factory:            '工廠',
+  equipment:          '改装',
+  quest_list:         '任務',
+  sortie_world:       '出撃海域',
+  formation_select:   '陣形選択',
+  practice:           '演習',
+  expedition_select:  '遠征選択',
+  battle:             '戦闘中',
+  night_battle:       '夜戦',
+  battle_result:      '戦闘結果',
+  expedition_result:  '遠征結果',
+};
+
+const STYPE = {
+  2:'DD', 3:'CL', 4:'CLT', 5:'CA', 6:'CAV',
+  7:'CVL', 8:'FBB', 9:'BB', 11:'CV', 13:'SS',
+  18:'CL', 21:'AO',
+};
+
+const FP_KEY = 'kckit_fingerprints';
+const LOG_MAX = 60;
+
+// ── State ──────────────────────────────────────────────────────────────────
+let state = {
+  poiConnected: null,   // null=never received, true/false
+  bridgeConnected: false,
+  currentScreen: null,
+  currentSource: null,
+  lastApiScreenTime: 0, // ms timestamp when last game_response screen_change arrived
+  resources: null,
+  hqLevel: null,
+  fleet1: [],
+  fleets: {},
+  lastPixiData: null,   // { ts, n, children, sig }
+  screenshotOk: false,
+};
+
+// ── DOM refs ───────────────────────────────────────────────────────────────
+const dotPoi      = document.getElementById('dot-poi');
+const dotBridge   = document.getElementById('dot-bridge');
+const hScreenVal  = document.getElementById('header-screen-val');
+const hScreenSrc  = document.getElementById('header-screen-src');
+
+const ssImg         = document.getElementById('screenshot-img');
+const ssPlaceholder = document.getElementById('screenshot-placeholder');
+const overlaySvg    = document.getElementById('overlay-svg');
+
+const resFuel     = document.getElementById('res-fuel');
+const resAmmo     = document.getElementById('res-ammo');
+const resSteel    = document.getElementById('res-steel');
+const resBauxite  = document.getElementById('res-bauxite');
+const resBucket   = document.getElementById('res-bucket');
+const resHq       = document.getElementById('res-hq');
+
+const fleetList   = document.getElementById('fleet-list');
+const expdList    = document.getElementById('expd-list');
+const logList     = document.getElementById('log-list');
+
+const fpPanel     = document.getElementById('fp-panel');
+const fpStageInfo = document.getElementById('fp-stage-info');
+const fpStageN    = document.getElementById('fp-stage-n');
+const fpSelect    = document.getElementById('fp-screen-select');
+const fpSaveBtn   = document.getElementById('fp-save-btn');
+const fpKnown     = document.getElementById('fp-known');
+
+// ── Fingerprint storage ────────────────────────────────────────────────────
+function loadFingerprints() {
+  try { return JSON.parse(localStorage.getItem(FP_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveFingerprints(fps) {
+  localStorage.setItem(FP_KEY, JSON.stringify(fps));
+}
+function lookupFingerprint(sig) {
+  const fps = loadFingerprints();
+  return fps.find(f => f.sig === sig) || null;
+}
+function addFingerprint(n, sig, screen) {
+  const fps = loadFingerprints().filter(f => f.sig !== sig);
+  fps.push({ n, sig, screen });
+  saveFingerprints(fps);
+  renderFpKnown();
+}
+function renderFpKnown() {
+  const fps = loadFingerprints();
+  if (!fps.length) { fpKnown.innerHTML = '<span style="color:var(--dim)">No saved fingerprints.</span>'; return; }
+  fpKnown.innerHTML = fps.map(f =>
+    `<span style="display:inline-flex;align-items:center;gap:4px;margin:1px 3px 1px 0">` +
+    `<span style="color:var(--accent2)">${esc(f.screen)}</span>` +
+    `<span style="color:var(--dim)">(n=${f.n})</span>` +
+    `<button onclick="deleteFingerprint(${JSON.stringify(f.sig)})" style="background:none;border:none;color:var(--error);cursor:pointer;font-size:10px;padding:0 2px" title="Delete">×</button>` +
+    `</span>`
+  ).join('');
+}
+function deleteFingerprint(sig) {
+  saveFingerprints(loadFingerprints().filter(f => f.sig !== sig));
+  renderFpKnown();
+  logInject('Fingerprint deleted.');
+}
+
+// ── Status dots ────────────────────────────────────────────────────────────
+// ── Overlay: draw element boxes from screen_layout.yaml ────────────────────
+// SVG viewBox is 889×533 (KC screenshot reference size).
+// Coordinates in layout are fractions (0–1) of that reference → multiply by 889/533.
+
+let _layoutCache = null;
+let _overlayScreen = null;
+
+async function loadLayout() {
+  if (_layoutCache) return _layoutCache;
+  try {
+    const r = await fetch('/api/layout?t=' + Date.now());  // no cache
+    _layoutCache = await r.json();
+  } catch { _layoutCache = {}; }
+  return _layoutCache;
+}
+
+// Classify element label → color class
+function ovClass(key) {
+  if (/close_area|dismiss/.test(key)) return 'ov-close';
+  if (/nav|back_port|sortie_btn|exercise_btn|expedition_btn/.test(key)) return 'ov-nav';
+  if (/tab/.test(key)) return 'ov-tab';
+  // release/bulk_release/slot_ex_release → action (green) regardless of "slot" in name
+  if (/release|bulk_release/.test(key)) return 'ov-action';
+  if (/item|equip_slot|ship|dock|enemy|quest|exp_item|world|map_|slot_ex$/.test(key)) return 'ov-item';
+  return 'ov-action';
+}
+
+async function renderOverlay(screenName) {
+  if (!overlaySvg) return;
+  // If forced to a specific screen, ignore auto updates
+  const target = _overlayForced || screenName;
+  // Only skip if target is non-null AND hasn't changed (null===null would wrongly skip)
+  if (target !== null && target === _overlayScreen) return;
+  _overlayScreen = target;
+  overlaySvg.innerHTML = '';  // clear
+
+  const layout = await loadLayout();
+  const screens = layout.screens || layout;
+
+  // Collect elements: common + current screen
+  // Screens that show NO common poi-nav / back_port (completely clean overlays)
+  const NO_COMMON = new Set([
+    'repair_confirm',       // 最終確認 YES/NO popup — clean, no chrome
+    'expedition_result',    // 遠征帰投 result — clean popup
+    'battle', 'night_battle', 'battle_result', 'night_battle_select',
+    'sortie_routing', 'formation_select', 'post_battle',
+  ]);
+  // Screens that show popup dismiss area (level 2 = list popup)
+  const HAS_LIST_DISMISS = new Set([
+    'repair_ship_select', 'hensei_ship_select', 'equipment_select',
+  ]);
+  // Screens that show popup dismiss area (level 3 = confirm popup)
+  const HAS_CONFIRM_DISMISS = new Set([
+    'repair_ship_confirm', 'hensei_ship_confirm', 'equipment_confirm',
+  ]);
+
+  // Screens that show NO left sidebar
+  const NO_LEFT_NAV = new Set([
+    'port',
+    'quest_list',           // 任務 — has its own tab bar, no left nav
+    'expedition_result',    // clean result popup
+    'repair_confirm',       // clean YES/NO popup only
+    'battle', 'night_battle', 'battle_result', 'night_battle_select',
+    'sortie_routing', 'formation_select', 'post_battle',
+    null,
+    // NOTE: repair_ship_select/confirm, hensei_ship_select/confirm are overlays
+    // on top of screens that DO have left nav — left nav shows through.
+  ]);
+
+  const elements = {};
+  if (!NO_COMMON.has(target) && layout.common && layout.common.elements) {
+    Object.assign(elements, layout.common.elements);
+  }
+  if (!NO_LEFT_NAV.has(target) && layout.left_nav && layout.left_nav.elements) {
+    Object.assign(elements, layout.left_nav.elements);
+  }
+  if (target && screens[target] && screens[target].elements) {
+    Object.assign(elements, screens[target].elements);
+  }
+  // Add popup dismiss regions
+  if (HAS_LIST_DISMISS.has(target) && layout.popups?.list_dismiss?.elements) {
+    Object.assign(elements, layout.popups.list_dismiss.elements);
+  }
+  if (HAS_CONFIRM_DISMISS.has(target) && layout.popups?.confirm_dismiss?.elements) {
+    Object.assign(elements, layout.popups.confirm_dismiss.elements);
+  }
+  if (!Object.keys(elements).length) return;
+
+  const W = 889, H = 533;
+
+  for (const [key, el] of Object.entries(elements)) {
+    const cx = el.x * W, cy = el.y * H;
+    const hw = (el.w * W) / 2, hh = (el.h * H) / 2;
+    const cls = ovClass(key);
+    const label = el.label || key;
+
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', cls);
+
+    if (el.shape === 'circle') {
+      const r = Math.min(hw, hh);
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r);
+      c.setAttribute('class', 'ov-circle');
+      g.appendChild(c);
+    } else {
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', cx - hw); rect.setAttribute('y', cy - hh);
+      rect.setAttribute('width', hw * 2); rect.setAttribute('height', hh * 2);
+      rect.setAttribute('class', 'ov-rect');
+      g.appendChild(rect);
+    }
+
+    const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    txt.setAttribute('x', cx - hw + 2);
+    txt.setAttribute('y', cy - hh + 1);
+    txt.setAttribute('class', 'ov-label');
+    txt.textContent = label;
+    g.appendChild(txt);
+
+    overlaySvg.appendChild(g);
+  }
+}
+
+function updateDots() {
+  // bridge dot
+  dotBridge.className = 'sdot ' + (state.bridgeConnected ? 'green' : 'red');
+  // poi dot
+  if (state.poiConnected === null) {
+    dotPoi.className = 'sdot';  // gray = never received
+  } else {
+    dotPoi.className = 'sdot ' + (state.poiConnected ? 'green' : 'red');
+  }
+}
+
+// ── Screen display ─────────────────────────────────────────────────────────
+function updateHeaderScreen(screen, source) {
+  if (screen) {
+    const jp = SCREEN_JP[screen] || screen;
+    hScreenVal.textContent = jp;
+    hScreenVal.style.color = 'var(--accent2)';
+  } else if (source === 'pixi_change') {
+    hScreenVal.textContent = '? 不明';
+    hScreenVal.style.color = 'var(--warn)';
+  } else {
+    hScreenVal.textContent = '—';
+    hScreenVal.style.color = 'var(--dim)';
+  }
+  if (source) {
+    const srcMap = {
+      'game_response': 'API',
+      'snapshot': 'snap',
+      'pixi_fingerprint': 'FP',
+      'pixi_change': 'PIXI',
+      'spy_poll': 'spy',
+      'navigation': 'nav',
+    };
+    hScreenSrc.textContent = srcMap[source] || source;
+    hScreenSrc.style.display = '';
+    hScreenSrc.style.color = source === 'pixi_change' ? 'var(--warn)' : '';
+  } else {
+    hScreenSrc.style.display = 'none';
+  }
+}
+
+// ── Resources ──────────────────────────────────────────────────────────────
+function updateResources(r, hq) {
+  const fmt = v => (v == null ? '—' : v.toLocaleString());
+  resFuel.textContent    = fmt(r && r.fuel);
+  resAmmo.textContent    = fmt(r && r.ammo);
+  resSteel.textContent   = fmt(r && r.steel);
+  resBauxite.textContent = fmt(r && r.bauxite);
+  resBucket.textContent  = fmt(r && r.bucket);
+  resHq.textContent      = hq != null ? hq : '—';
+}
+
+// ── Fleet chips ────────────────────────────────────────────────────────────
+function hpClass(ratio) {
+  if (ratio >= 0.75) return 'hp-green';
+  if (ratio >= 0.50) return 'hp-yellow';
+  if (ratio >= 0.25) return 'hp-orange';
+  return 'hp-red';
+}
+function condIcon(cond) {
+  if (cond == null) return '';
+  if (cond >= 49) return '<span class="ship-cond">✦</span>';
+  if (cond >= 40) return '<span class="ship-cond">·</span>';
+  return '<span class="ship-cond tired">💤</span>';
+}
+
+function renderFleet(ships) {
+  if (!ships || !ships.length) {
+    fleetList.innerHTML = '<div class="ship-chip" style="justify-content:center;color:var(--dim);font-style:italic;font-size:12px;">—</div>';
+    return;
+  }
+  fleetList.innerHTML = ships.map(s => {
+    const ratio   = s.hp_ratio != null ? s.hp_ratio : (s.max_hp ? s.now_hp / s.max_hp : 1);
+    const cls     = hpClass(ratio);
+    const pct     = Math.max(0, Math.min(100, ratio * 100)).toFixed(0);
+    const stype   = STYPE[s.stype] || '?';
+    const cond    = condIcon(s.cond);
+    const hp_txt  = (s.now_hp != null && s.max_hp != null) ? `${s.now_hp}/${s.max_hp}` : '—';
+    return `
+      <div class="ship-chip">
+        <span class="ship-stype">${stype}</span>
+        <span class="ship-name">${esc(s.name || '—')}</span>
+        <span class="ship-lv">Lv.${s.lv != null ? s.lv : '—'}</span>
+        <div class="ship-hp-wrap">
+          <div class="ship-hp-bar-bg">
+            <div class="ship-hp-bar-fill ${cls}" style="width:${pct}%"></div>
+          </div>
+          <div class="ship-hp-text">${hp_txt}</div>
+        </div>
+        ${cond}
+      </div>`;
+  }).join('');
+}
+
+// ── Expedition timers ──────────────────────────────────────────────────────
+let expdInterval = null;
+
+function fmtTimer(return_time) {
+  const now  = Date.now();
+  const diff = return_time - now;
+  if (diff <= 0) return null; // done
+  const h   = Math.floor(diff / 3600000);
+  const m   = Math.floor((diff % 3600000) / 60000);
+  const s   = Math.floor((diff % 60000) / 1000);
+  return [h, m, s].map(x => String(x).padStart(2, '0')).join(':');
+}
+
+function renderExpd(fleets) {
+  // fleets: { "2": {in_expedition, expedition_id, return_time}, ... }
+  const rows = [];
+  for (let i = 2; i <= 4; i++) {
+    const fl = fleets && fleets[String(i)];
+    const label = `艦隊${i}`;
+    if (!fl || !fl.in_expedition) {
+      rows.push({ label, standby: true });
+    } else {
+      rows.push({ label, id: fl.expedition_id, return_time: fl.return_time });
+    }
+  }
+  state._expdRows = rows;
+  tickExpd();
+}
+
+function tickExpd() {
+  const rows = state._expdRows || [];
+  if (!rows.length) {
+    expdList.innerHTML = '<div class="expd-row"><span class="expd-fleet" style="color:var(--dim);font-style:italic">—</span></div>';
+    return;
+  }
+  expdList.innerHTML = rows.map(r => {
+    if (r.standby) {
+      return `<div class="expd-row">
+        <span class="expd-fleet">${r.label}</span>
+        <span class="expd-standby">待機中</span>
+      </div>`;
+    }
+    const timer = r.return_time ? fmtTimer(r.return_time) : null;
+    if (timer === null) {
+      return `<div class="expd-row">
+        <span class="expd-fleet">${r.label}</span>
+        <span class="expd-name">遠征${r.id || ''}</span>
+        <span class="expd-timer done">帰投済</span>
+      </div>`;
+    }
+    return `<div class="expd-row">
+      <span class="expd-fleet">${r.label}</span>
+      <span class="expd-name">遠征${r.id || ''}</span>
+      <span class="expd-timer">${timer}</span>
+    </div>`;
+  }).join('');
+}
+
+function startExpdTimer() {
+  if (expdInterval) clearInterval(expdInterval);
+  expdInterval = setInterval(tickExpd, 1000);
+}
+
+// ── Screenshot ─────────────────────────────────────────────────────────────
+let ssDebounceTimer = null;
+let ssPoiInterval  = null;
+
+function refreshScreenshot() {
+  const url = `/api/screenshot?t=${Date.now()}`;
+  const img = new Image();
+  img.onload = () => {
+    ssImg.src = url;
+    ssImg.style.display = '';
+    ssPlaceholder.style.display = 'none';
+    state.screenshotOk = true;
+  };
+  img.onerror = () => {
+    ssImg.style.display = 'none';
+    ssPlaceholder.style.display = 'flex';
+    state.screenshotOk = false;
+  };
+  img.src = url;
+}
+
+function scheduleScreenshot(delay = 0) {
+  if (ssDebounceTimer) clearTimeout(ssDebounceTimer);
+  ssDebounceTimer = setTimeout(refreshScreenshot, delay);
+}
+
+function startPoiScreenshotInterval() {
+  if (ssPoiInterval) clearInterval(ssPoiInterval);
+  // Refresh every 5s regardless of poi status — the endpoint handles unavailability gracefully
+  ssPoiInterval = setInterval(refreshScreenshot, 5000);
+}
+
+// ── Event log ──────────────────────────────────────────────────────────────
+let logEntries = [];
+let lastPhotoLog = 0;
+
+function ts() {
+  return new Date().toTimeString().slice(0, 8);
+}
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+
+function appendLog(html, extraClass = '') {
+  const time = ts();
+  const div = document.createElement('div');
+  div.className = 'log-entry' + (extraClass ? ' ' + extraClass : '');
+  div.innerHTML = `<span class="log-ts">${time}</span><span class="log-body">${html}</span>`;
+  logList.appendChild(div);
+
+  // trim
+  logEntries.push(div);
+  if (logEntries.length > LOG_MAX) {
+    const old = logEntries.shift();
+    old.remove();
+  }
+  // auto-scroll
+  logList.scrollTop = logList.scrollHeight;
+}
+
+function logScreenChange(screen, source, api) {
+  const jp  = screen ? (SCREEN_JP[screen] || screen) : '(null)';
+  const src = esc(source || '');
+  const apiStr = api ? ` <span style="color:var(--dim);font-size:11px;">${esc(api)}</span>` : '';
+  appendLog(
+    `<span class="log-screen-name">[${jp}]</span>` +
+    `<span class="log-src-badge">${src}</span>` +
+    apiStr
+  );
+}
+
+function logPixi(n) {
+  appendLog(`<span class="log-pixi">↳ PIXI n=${n}</span>`);
+}
+
+function logUnknownApi(api) {
+  appendLog(`<span class="log-unknown">? unknown: ${esc(api)}</span>`);
+}
+
+function logPhoto() {
+  const now = Date.now();
+  if (now - lastPhotoLog < 2000) return;
+  lastPhotoLog = now;
+  appendLog('<span class="log-photo">📷 screenshot_needed</span>');
+}
+
+function logInject(text) {
+  appendLog(`<span class="log-inject">${esc(text)}</span>`);
+}
+
+function logInfo(text) {
+  appendLog(`<span class="log-info">${esc(text)}</span>`);
+}
+
+function logErr(text) {
+  appendLog(`<span class="log-error-entry">${esc(text)}</span>`);
+}
+
+// ── PIXI Fingerprinting ────────────────────────────────────────────────────
+// Built-in fingerprint map: stable 15-bit c1 vis pattern → screen name.
+// Collected via data session navigating each screen with stable render hook.
+// mc.children[1].children[0..14].visible pattern, stabilised over 500ms.
+const BUILTIN_FP = {
+  // PORT (game_response already handles this, fingerprint is a backup)
+  '111110111011101': 'port',
+  '111110111011111': 'port',  // port with notification/popup open
+  // SORTIE WORLD — unique c1 pattern (containers 8-11 hidden vs menus)
+  '001011010001100': 'sortie_world',
+  '001010010001100': 'sortie_world',
+  // ALL MENU SCREENS (supply/repair/equipment/hensei) — indistinguishable at c1
+  // '001010011111100': ???  needs deeper c2 analysis to split
+  // TRANSITIONS — don't add (500ms stable but they're animation states, not screens)
+  // '001011011111100': transition_out
+  // '101011011011100': transition_in
+};
+
+function handlePixiStage(msg) {
+  // msg.sig is now a 15-bit stable c1 vis pattern string (from render hook)
+  const sig = msg.sig || '';
+  const ts  = msg.ts  || 0;
+  state.lastPixiData = { ts, sig };
+
+  // game_response is authoritative — never override with PIXI fingerprint
+  if (state.currentSource === 'game_response') {
+    fpPanel.classList.remove('visible');
+    return;
+  }
+
+  // 1. Built-in pattern → screen mapping (hardcoded after data collection)
+  const builtinScreen = BUILTIN_FP[sig];
+  if (builtinScreen) {
+    if (state.currentScreen !== builtinScreen) {
+      state.currentScreen = builtinScreen;
+      state.currentSource = 'pixi_fingerprint';
+      updateHeaderScreen(builtinScreen, 'pixi_fingerprint');
+      logScreenChange(builtinScreen, 'pixi_fingerprint', null);
+    }
+    fpPanel.classList.remove('visible');
+    return;
+  }
+
+  // 2. User-saved fingerprint (sig-keyed, from fingerprint panel)
+  const match = lookupFingerprint(sig);
+  if (match) {
+    if (state.currentScreen !== match.screen) {
+      state.currentScreen = match.screen;
+      state.currentSource = 'pixi_fingerprint';
+      updateHeaderScreen(match.screen, 'pixi_fingerprint');
+      logScreenChange(match.screen, 'pixi_fingerprint', null);
+    }
+    fpPanel.classList.remove('visible');
+    return;
+  }
+
+  // 3. Unknown → show "?" and offer labeling panel
+  if (state.currentScreen !== null || state.currentSource !== 'pixi_change') {
+    state.currentScreen = null;
+    state.currentSource = 'pixi_change';
+    updateHeaderScreen(null, 'pixi_change');
+  }
+  if (sig) {
+    fpStageN.textContent = `sig=${sig}`;
+    fpStageInfo.textContent = sig;
+    fpSelect.value = '';
+    fpPanel.classList.add('visible');
+    renderFpKnown();
+    logPixi(sig);
+  }
+}
+
+fpSaveBtn.addEventListener('click', () => {
+  const screen = fpSelect.value;
+  if (!screen || !state.lastPixiData) return;
+  const { sig } = state.lastPixiData;
+  addFingerprint(0, sig, screen);
+  fpPanel.classList.remove('visible');
+  state.currentScreen = screen;
+  state.currentSource = 'pixi_fingerprint';
+  updateHeaderScreen(screen, 'pixi_fingerprint');
+  logScreenChange(screen, 'pixi_fingerprint', null);
+  logInject(`Fingerprint saved: ${screen} (n=${n})`);
+});
+
+// ── REST: load initial state ───────────────────────────────────────────────
+async function fetchState() {
+  try {
+    const r = await fetch('/api/state');
+    if (!r.ok) return;
+    const d = await r.json();
+    applyState(d);
+  } catch {}
+}
+
+// Map API path (short) → screen name — mirrors KC2_API_SCREEN in plugin
+const API_TO_SCREEN = {
+  'api_port/port': 'port',
+  'api_get_member/deck': 'hensei',
+  'api_get_member/ship2': 'supply',
+  'api_get_member/ndock': 'repair',
+  'api_get_member/kdock': 'factory',
+  'api_get_member/questlist': 'quest_list',
+  'api_get_member/mapinfo': 'sortie_world',
+  'api_get_member/practice': 'practice',
+  'api_get_member/mission': 'expedition_select',
+  'api_req_sortie/battle': 'battle',
+  'api_req_sortie/battleresult': 'battle_result',
+  'api_req_battle_midnight/battle': 'night_battle',
+  'api_req_combined_battle/battle': 'battle',
+  'api_req_combined_battle/battleresult': 'battle_result',
+  'api_req_mission/result': 'expedition_result',
+  'api_req_hokyu/charge': 'supply',
+  'api_req_nyukyo/start': 'repair',
+};
+
+function applyState(d) {
+  if (d.resources)  updateResources(d.resources, d.hq_level);
+  if (d.fleet1)     renderFleet(d.fleet1);
+  if (d.fleets)     renderExpd(d.fleets);
+  state.resources = d.resources;
+  state.hqLevel   = d.hq_level;
+  state.fleet1    = d.fleet1 || [];
+  state.fleets    = d.fleets || {};
+
+  // If no screen detected yet, infer from snapshot's last_event
+  if (!state.currentScreen && d.last_event) {
+    const short = d.last_event.replace('/kcsapi/', '');
+    const inferred = API_TO_SCREEN[short] || null;
+    if (inferred) {
+      state.currentScreen = inferred;
+      state.currentSource = 'snapshot';
+      updateHeaderScreen(inferred, 'snapshot');
+      renderOverlay(inferred);
+    }
+  }
+}
+
+// ── Controls ───────────────────────────────────────────────────────────────
+document.getElementById('btn-inject').addEventListener('click', async () => {
+  logInfo('Injecting spy…');
+  try {
+    const r = await fetch('/api/inject_spy', { method: 'POST' });
+    const d = await r.json();
+    logInject('inject_spy: ' + JSON.stringify(d).slice(0, 120));
+  } catch(e) {
+    logErr('inject_spy error: ' + e.message);
+  }
+});
+
+document.getElementById('btn-probe').addEventListener('click', async () => {
+  logInfo('Probing KC globals…');
+  try {
+    const r = await fetch('/api/probe_kc_globals', { method: 'POST' });
+    const d = await r.json();
+    // show summary
+    const keys = Object.keys(d).slice(0, 8).join(', ');
+    logInject('probe: ' + (keys || JSON.stringify(d).slice(0, 120)));
+  } catch(e) {
+    logErr('probe error: ' + e.message);
+  }
+});
+
+document.getElementById('btn-refresh').addEventListener('click', () => {
+  _layoutCache = null;   // clear layout cache so YAML changes take effect
+  _overlayScreen = null; // force overlay re-render
+  refreshScreenshot();
+  renderOverlay(state.currentScreen);
+});
+
+// ── Overlay toggle & screen selector ──────────────────────────────────────
+let _overlayVisible = true;
+let _overlayForced = '';   // '' = auto (follows detected screen), else forced screen name
+
+const btnOverlay = document.getElementById('btn-overlay-toggle');
+const overlaySelect = document.getElementById('overlay-screen-select');
+
+btnOverlay.classList.add('active');  // on by default
+
+btnOverlay.addEventListener('click', () => {
+  _overlayVisible = !_overlayVisible;
+  overlaySvg.classList.toggle('hidden', !_overlayVisible);
+  btnOverlay.classList.toggle('active', _overlayVisible);
+});
+
+overlaySelect.addEventListener('change', () => {
+  _overlayForced = overlaySelect.value;
+  // Clear cache so it re-renders even if same screen
+  _overlayScreen = null;
+  if (_overlayForced) {
+    renderOverlay(_overlayForced);
+  } else {
+    // Revert to auto: render current detected screen
+    renderOverlay(state.currentScreen);
+  }
+});
+
+// ── WebSocket ──────────────────────────────────────────────────────────────
+let ws = null;
+let wsRetryDelay = 1000;
+
+function connectWs() {
+  ws = new WebSocket('ws://localhost:8765/ws');
+
+  ws.addEventListener('open', () => {
+    state.bridgeConnected = true;
+    wsRetryDelay = 1000;
+    updateDots();
+    logInfo('Bridge connected');
+    fetchState();
+    refreshScreenshot();
+  });
+
+  ws.addEventListener('close', () => {
+    state.bridgeConnected = false;
+    updateDots();
+    logErr('Bridge disconnected — reconnecting…');
+    setTimeout(connectWs, wsRetryDelay);
+    wsRetryDelay = Math.min(wsRetryDelay * 2, 15000);
+  });
+
+  ws.addEventListener('error', () => {
+    // close will fire too
+  });
+
+  ws.addEventListener('message', evt => {
+    let msg;
+    try { msg = JSON.parse(evt.data); }
+    catch { return; }
+    handleWsMessage(msg);
+  });
+}
+
+function handleWsMessage(msg) {
+  switch (msg.type) {
+    case 'connected':
+      logInfo('Server says: connected');
+      break;
+
+    case 'poi_status':
+      state.poiConnected = msg.connected;
+      updateDots();
+      if (msg.connected) {
+        refreshScreenshot();
+      } else {
+        ssImg.style.display = 'none';
+        ssPlaceholder.style.display = 'flex';
+      }
+      break;
+
+    case 'screen_change': {
+      const { screen, source, api } = msg;
+      state.currentScreen = screen;
+      state.currentSource = source;
+      if (source === 'game_response') state.lastApiScreenTime = Date.now();
+      updateHeaderScreen(screen, source);
+      logScreenChange(screen, source, api);
+      fpPanel.classList.remove('visible');
+      renderOverlay(screen);  // update element overlay
+      break;
+    }
+
+    case 'pixi_stage':
+      handlePixiStage(msg);
+      break;
+
+    case 'screenshot_needed':
+      logPhoto();
+      scheduleScreenshot(500);
+      break;
+
+    case 'spy_result': {
+      const auto = msg.auto ? '(auto) ' : '';
+      const p = msg.payload || {};
+      if (p.ok) {
+        logInject(`${auto}spy injected — screen=${p.initialScreen || '?'} pixi=${p.pixi ? '✓' : '✗'}`);
+        refreshScreenshot();
+      } else {
+        appendLog(`<span style="color:var(--dim)">${auto}spy: ${JSON.stringify(p).slice(0,80)}</span>`);
+      }
+      break;
+    }
+
+    case 'unknown_api':
+      logUnknownApi(msg.api || '');
+      break;
+
+    case 'game_event': {
+      // Treat as a screen hint, log it
+      const { event, screen } = msg;
+      const jp = screen ? (SCREEN_JP[screen] || screen) : '';
+      const note = jp ? `[${jp}]` : '';
+      appendLog(`<span style="color:var(--dim)">game_event: ${esc(event)} ${note}</span>`);
+      break;
+    }
+
+    case 'state':
+      if (msg.payload) applyState(msg.payload);
+      break;
+
+    default:
+      break;
+  }
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+// Clear any fingerprints saved during the broken auto-save period.
+// Safe to wipe because fingerprint coverage is still incomplete anyway.
+localStorage.removeItem(FP_KEY);
+
+updateDots();
+updateHeaderScreen(null, null);
+updateResources(null, null);
+renderFleet([]);
+renderExpd({});
+renderFpKnown();
+startExpdTimer();
+startPoiScreenshotInterval();
+refreshScreenshot();
+fetchState();
+connectWs();
+</script>
+</body>
+</html>

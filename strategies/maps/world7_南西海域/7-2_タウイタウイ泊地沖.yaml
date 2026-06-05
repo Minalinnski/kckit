@@ -1,0 +1,424 @@
+map: 7-2
+source: nga_import
+notes: タウイタウイ泊地沖、双血条设计，P1路线C-E-G，P2路线B-C-D-I-M，boss点M有制空要求
+presets:
+- name: 萌新推图 P1 (3DD+1CVL)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships:
+      - 白露改
+      - 霞改
+      - 満潮改
+      notes: 全员配对潜装备
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 隼鷹改
+      notes: 低速可，负责水上目标
+  requirements:
+    air_state: none
+    air_power_min: 0
+    routing_nodes:
+    - C
+    - E
+    - G
+  equip_notes: 制空0，索敌0。DD配三式水中探信儀+三式爆雷投射機+九五式爆雷等対潜装备。CVL配舰攻为主。若有先制対潜DD可一艘改配双炮打夜战提升S胜率。
+  example:
+  - ship: 白露改
+    equips:
+    - 三式水中探信儀
+    - 三式爆雷投射機
+    - 九五式爆雷
+  - ship: 霞改
+    equips:
+    - 三式水中探信儀
+    - 三式水中探信儀
+    - 三式爆雷投射機
+  - ship: 満潮改
+    equips:
+    - 三式水中探信儀
+    - 三式爆雷投射機
+    - 九五式爆雷
+  - ship: 隼鷹改
+    equips:
+    - 九七式艦攻
+    - 九七式艦攻
+    - 九七式艦攻
+    - 九九式艦爆
+  tags:
+  - P1
+  - 萌新
+  - 低速可
+  special_attacks: []
+- name: 泊地任务 P1 (2CVL+3DE)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 2
+      specific_ships:
+      - 大鷹改二
+      - 神鷹改二
+      notes: 低速可，负责水上目标，带最强舰攻
+    - ship_class:
+      - DE
+      count: 3
+      specific_ships:
+      - 佐渡改
+      - 対馬改
+      - 福江改
+      notes: 负责水下目标，配对潜装备
+  requirements:
+    air_state: none
+    air_power_min: 0
+    routing_nodes:
+    - C
+    - E
+    - G
+  equip_notes: 制空约48~50，索敌25.17。一路无对空射击，CVL带最强舰攻。DE配四式水中聴音機+三式爆雷投射機+二式爆雷。
+  example:
+  - ship: 大鷹改二
+    equips:
+    - 天山一二型(村田隊)
+    - 流星改(一航戦)
+    - 天山一二型(友永隊)
+    - Ju87C改二(KMX搭載機/熟練)
+  - ship: 神鷹改二
+    equips:
+    - 流星改(一航戦/熟練)
+    - 天山一二型(村田隊)
+    - 彩雲
+    - 彗星(江草隊)
+  - ship: 佐渡改
+    equips:
+    - 四式水中聴音機
+    - 三式爆雷投射機
+    - 二式爆雷
+  - ship: 対馬改
+    equips:
+    - 四式水中聴音機
+    - 三式爆雷投射機
+    - 二式爆雷
+  - ship: 福江改
+    equips:
+    - 四式水中聴音機
+    - 三式爆雷投射機
+    - 二式爆雷
+  tags:
+  - P1
+  - 任务
+  - 低速可
+  - 2CVL3DE
+  special_attacks: []
+- name: 萌新推图 P2 (B-C-D-I-M)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改
+      notes: 高速正规空母
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 金剛改
+      notes: 高速战列
+    - ship_class:
+      - CLT
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 北上改二
+    - ship_class:
+      - DD
+      count: 2
+      speed: 高速
+      specific_ships:
+      - 満潮改
+      - 霞改
+      notes: 对空CI
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 瑞鳳改
+      notes: 带彩雲避T字不利
+  requirements:
+    air_state: none
+    air_power_min: 266
+    enemy_air_power: 359
+    los_formula: 4
+    los_min: 69.0
+    routing_nodes:
+    - B
+    - C
+    - D
+    - I
+    - M
+  equip_notes: 制空287~289。索敌14.97。司令部等级98以下或斩杀后需266空优，等级99以上斩杀前需359空优。全队高速。CVL带彩雲避T字不利。DD配10cm连装高角炮+94式高射装置对空CI。
+  example:
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 試製烈風 後期型
+    - 彗星一二型甲
+    - 零式艦戦52型
+  - ship: 金剛改
+    equips:
+    - 35.6cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 北上改二
+    equips:
+    - 15.5cm三連装副砲
+    - 15.5cm三連装副砲
+    - 甲標的 甲型
+  - ship: 満潮改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 91式高射装置
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  - ship: 瑞鳳改
+    equips:
+    - 試製烈風 後期型
+    - 紫電改二
+    - 零式艦戦53型(岩本隊)
+    - 彩雲
+  tags:
+  - P2
+  - 萌新
+  - 高速
+  - BB<=1
+  - CV<=1
+  special_attacks: []
+- name: 泊地任务 P2 (装甲空母编成)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - ビスマルク drei
+      notes: 旗舰，高速战列
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - サラトガ Mk.II Mod.2
+      notes: 装甲空母
+    - ship_class:
+      - DD
+      count: 2
+      speed: 高速
+      specific_ships:
+      - 夕雲改二
+      - 陽炎改二
+      notes: D型砲対空CI
+    - ship_class:
+      - CLT
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 北上改二
+      notes: 魚雷CI
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 熊野航改二
+      notes: 带彩雲
+  requirements:
+    air_state: none
+    air_power_min: 266
+    enemy_air_power: 359
+    los_formula: 4
+    los_min: 69.0
+    routing_nodes:
+    - B
+    - C
+    - D
+    - I
+    - M
+  equip_notes: 制空366~368，索敌39.78。斩杀后固定266空优。重点放在输出和道中通过率，对空CI意思一下即可。CLT北上改二配61cm五連装(酸素)魚雷×2+甲標的
+    丙型魚雷CI。
+  example:
+  - ship: ビスマルク drei
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 一式徹甲弾
+    - 零式水上偵察機11型乙(熟練)
+  - ship: サラトガ Mk.II Mod.2
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 天山一二型(村田隊)
+    - 零式艦戦53型(岩本隊)
+    - Re.2005 改
+  - ship: 夕雲改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+  - ship: 陽炎改二
+    equips:
+    - 12.7cm連装砲C型改二
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+  - ship: 北上改二
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 甲標的 丙型
+  - ship: 熊野航改二
+    equips:
+    - F6F-5
+    - 烈風(六〇一空)
+    - 紫電改四
+    - 彩雲
+  tags:
+  - P2
+  - 任务
+  - 高速
+  - 装甲空母
+  special_attacks: []
+- name: 期间限定捞船 P2 (空确编成)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 旗舰，魚雷CI，配寿司水上侦察机11型乙改(夜侦)+精鋭水雷戦隊 司令部
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - Fletcher Mk.II
+      notes: 对空CI，艦本新設計 増設装甲板(中型艦)
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 雪風改二
+      notes: 对空CI，艦本新設計 増設装甲板(中型艦)
+    - ship_class:
+      - CL
+      - CLT
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 強風改二×3+三式弾改二
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 熟練甲板要員+航空整備員，夜母
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 超高速
+      specific_ships:
+      - 加賀改二護
+      notes: 熟練甲板要員+航空整備員，夜母
+  requirements:
+    air_state: none
+    air_power_min: 531
+    los_formula: 4
+    los_min: 69.0
+    routing_nodes:
+    - B
+    - C
+    - D
+    - I
+    - M
+  equip_notes: 制空552（斩杀后boss点531空确）。索敌：制空1=38.76，制空2=75.36，制空3=111.96，制空4=148.56。不带系BB降低油弹消耗，boss点少一轮炮击降低桶耗。加賀改二護放旗舰打夜战时铝耗提升。如制空差一点可把矢矧或最上换成高速伊势带舰战。
+  example:
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 甲標的 丙型
+    - 零式水上偵察機11型乙改(夜偵)
+    - 精鋭水雷戦隊 司令部
+  - ship: Fletcher Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - GFCS Mk.37
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - GFCS Mk.37
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 最上改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 強風改
+    - 強風改二
+    - 強風改
+    - 三式弾改二
+  - ship: 瑞鳳改二乙
+    equips:
+    - 流星改(一航戦/熟練)
+    - F4U-7
+    - 零式艦戦53型(岩本隊)
+    - 烈風改二戊型(一航戦/熟練)
+    - 熟練甲板要員+航空整備員
+  - ship: 加賀改二護
+    equips:
+    - AU-1
+    - 震電改
+    - 流星改(一航戦/熟練)
+    - 烈風改二
+    - 試製 陣風
+    - 熟練甲板要員+航空整備員
+  tags:
+  - P2
+  - 捞船
+  - 高速
+  - 空确
+  - 夜母
+  - 无BB
+  special_attacks: []

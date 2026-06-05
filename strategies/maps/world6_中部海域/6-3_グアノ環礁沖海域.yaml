@@ -1,0 +1,270 @@
+map: 6-3
+source: nga_import
+notes: グアノ環礁沖海域：DD/CL/CLT/AV限定、各艦種最低1隻必要、敵制空0、boss=駆逐棲姫
+presets:
+- name: 上路（A-C-E-G-H-J）萌新推图
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 川内改二
+      notes: 旗舰、水上偵察機搭載
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 千代田甲
+      notes: 瑞雲搭載で制空確保
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      specific_ships:
+      - 時雨改二
+      - 雪風改
+      - 満潮改
+      - 霞改
+      notes: 高火力雷装DD推奨、魚雷CI装備
+  requirements:
+    air_state: none
+    los_formula: 3
+    los_min: 38.0
+    routing_nodes:
+    - A
+    - C
+    - E
+    - G
+    - H
+    - J
+  equip_notes: 制空16（A-C-E-G-H-J全程空確には制空15以上）、索敵分岐点係数×3>=38、時雨改二は61cm五連装(酸素)魚雷×2+熟練見張員で魚雷CI、雪風改は61cm四連装(酸素)魚雷×2+照明弾、川内改二は20.3cm(2号)連装砲×2+九八式水上偵察機(夜偵)、千代田甲は瑞雲(六三四空)×12+甲標的
+    丙型+探照灯
+  example:
+  - ship: 川内改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm連装砲
+    - 九八式水上偵察機(夜偵)
+  - ship: 満潮改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 22号対水上電探
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 22号対水上電探改四
+  - ship: 千代田甲
+    equips:
+    - 瑞雲(六三四空)
+    - 甲標的 丙型
+    - 探照灯
+  - ship: 時雨改二
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 熟練見張員
+  - ship: 雪風改
+    equips:
+    - 61cm四連装(酸素)魚雷
+    - 61cm四連装(酸素)魚雷
+    - 照明弾
+  tags:
+  - 萌新推图
+  - 上路
+  - 道中5戦
+  - G点航空偵察
+  special_attacks: []
+- name: 下路（A-C-E-F-H-J）我格子多・多重CL構成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 日進甲
+      notes: 旗舰、4格AV、瑞雲改二搭載
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 能代改二
+      notes: 先制対潜、4格CL、水上偵察機搭載
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 4格CL
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - Sheffield改
+      notes: 4格CL、先制対潜可能
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - Tashkent改
+      notes: 先制対潜推奨
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 雪風改二
+      notes: 対空CI装備可
+  requirements:
+    air_state: none
+    los_formula: 3
+    los_min: 38.0
+    routing_nodes:
+    - A
+    - C
+    - E
+    - F
+    - H
+    - J
+  equip_notes: 制空0、索敵分岐点係数×3>=38。日進甲は14cm連装砲改×2+瑞雲改二(六三四空/熟練)×12+甲標的 丙型。能代改二は15.2cm連装砲改二×2+零式水上偵察機11型乙(熟練)+Type144/147
+    ASDIC。矢矧改二乙は15.2cm連装砲改二×2+零式水上偵察機11型乙(熟練)+甲標的 丁型改(蛟龍改)。Sheffieldは20.3cm(3号)連装砲×2+HF/DF+Type144/147
+    ASDIC+零式水上偵察機11型乙(熟練)。Tashkent改は130mm B-13連装砲×2+Type144/147 ASDIC+対潜短魚雷(試製初期型)。雪風改二は10cm連装高角砲+94式高射装置+現地改装10cm連装高角砲+22号対水上電探改四(後期調整型)。下路ではF点重巡ネ級elite含む敵艦隊と交戦。昼戦S勝は航行次第。
+  example:
+  - ship: 日進甲
+    equips:
+    - 14cm連装砲改
+    - 14cm連装砲改
+    - 瑞雲改二(六三四空/熟練)
+    - 甲標的 丙型
+  - ship: 能代改二
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機11型乙(熟練)
+    - Type144/147 ASDIC
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: Sheffield改
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - HF/DF + Type144/147 ASDIC
+    - 零式水上偵察機11型乙(熟練)
+  - ship: Tashkent改
+    equips:
+    - 130mm B-13連装砲
+    - 130mm B-13連装砲
+    - Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - 22号対水上電探改四(後期調整型)
+  tags:
+  - 下路
+  - 任務向け
+  - 1AV+2CL以上必須
+  - F点経由
+  special_attacks: []
+- name: 上路（A-C-E-G-H-J）野崎流・資材収集
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 野埼改
+      - 日進甲
+      notes: 旗舰、高級瑞雲3個搭載推奨、15分毎に52疲労まで回復させる運用
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 能代改二
+      - 矢矧改二乙
+      notes: 先制対潜可能な4格CL推奨
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      specific_ships: []
+      notes: 先制対潜DD推奨、生存重視、秋月改改砲+4装甲推奨、魚雷CI1~2隻
+  requirements:
+    air_state: none
+    los_formula: 3
+    los_min: 38.0
+    routing_nodes:
+    - A
+    - C
+    - E
+    - G
+    - H
+    - J
+  equip_notes: 制空0（資材収集特化）、索敵分岐点係数×3>=38。AV旗艦に高級瑞雲3個搭載で航空偵察100%大成功を狙う（航空偵察値>=35.2必要、E点での被撃落後の残機数で計算）。DD主炮は秋月改改砲（装甲+4）推奨、対潜不足時は対潜加算主砲に変更。C点潜水艦対策に1~2隻先制対潜推奨。魚雷CI1~2隻でboss削り。
+  example: []
+  tags:
+  - 資材収集
+  - 上路
+  - 野埼流
+  - 低消費
+  - 航空偵察大成功狙い
+  special_attacks: []
+- name: 上路（A-C-E-G-H-J）矢矧流・資材収集兼捕獲
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 日進甲
+      - 野埼改
+      notes: 旗舰、高級瑞雲複数搭載
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      notes: 4格CL、水上偵察機1個搭載
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      specific_ships:
+      - Tashkent改
+      notes: 先制対潜DD推奨、Tashkent改が二種先制対潜に最適、魚雷CI装備
+  requirements:
+    air_state: none
+    los_formula: 3
+    los_min: 38.0
+    routing_nodes:
+    - A
+    - C
+    - E
+    - G
+    - H
+    - J
+  equip_notes: 制空0、索敵分岐点係数×3>=38。AV旗艦に高級瑞雲3個+水侦1個で航空偵察値安定化。矢矧改二乙は水上偵察機1個搭載。C点の赤ソ対策として二種先制対潜DD（Tashkent改）推奨、その他は単種先制対潜。先制対潜強行のため火力が下がる場合は非推奨。boss点B胜以上で資材獲得。
+  example: []
+  tags:
+  - 資材収集
+  - 上路
+  - 矢矧流
+  - 艦娘捕獲兼用
+  special_attacks: []

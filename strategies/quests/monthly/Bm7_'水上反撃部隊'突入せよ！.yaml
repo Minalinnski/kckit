@@ -1,0 +1,10 @@
+quest_id: Bm7
+quest_name: '''水上反撃部隊''突入せよ！'
+category: monthly
+requirement: 2-5，S胜，需要4DD+1CL+1CA，DD旗舰，不能用CAV
+maps:
+- map_id: 2-5
+  fleet_hint: 4DD(旗舰)+1CA+1CL
+  notes: boss点42空优，索敌>=34
+  synergy_quests:
+  - Bd7

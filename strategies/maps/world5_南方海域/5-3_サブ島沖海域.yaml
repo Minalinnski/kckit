@@ -1,0 +1,509 @@
+map: 5-3
+source: nga_import
+notes: サブ島沖海域：夜戦主体の海域、ルートD-G-I-O-K-E-Q、boss点Qは昼戦入場後夜戦、南方棲戦姫が守るboss点
+presets:
+- name: 雷巡流（不拿制空）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships: []
+      notes: 旗舰、低回避のBBを旗舰に
+    - ship_class:
+      - CLT
+      count: 2
+      specific_ships:
+      - 北上改二
+      - 大井改二
+      notes: 夜战二连または魚雷CI
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 川内改二
+      notes: 照明弾担当
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 時雨改二
+      - 雪風改
+      notes: 魚雷CI、高運DD推奨
+  requirements:
+    air_state: none
+    los_formula: 33
+    routing_nodes:
+    - D
+    - G
+    - I
+    - O
+    - K
+    - E
+    - Q
+  equip_notes: 制空不要。BB旗舰に夜侦+照明弹。CLTは15.5cm三連装副砲×2で夜战二连。DDは61cm魚雷×3で魚雷CI。道中梯形陣、boss点単縦陣。
+  example:
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 九一式徹甲弾
+    - 九八式水上偵察機(夜偵)
+  - ship: 川内改二
+    equips:
+    - 20.3cm連装砲
+    - 15.5cm三連装副砲
+    - 照明弾
+  - ship: 北上改二
+    equips:
+    - 15.5cm三連装副砲
+    - 15.5cm三連装副砲
+    - 甲標的 甲型
+  - ship: 大井改二
+    equips:
+    - 15.5cm三連装副砲
+    - 15.5cm三連装副砲
+    - 甲標的 甲型
+  - ship: 時雨改二
+    equips:
+    - 61cm四連装(酸素)魚雷
+    - 61cm四連装(酸素)魚雷
+    - 61cm四連装(酸素)魚雷
+  - ship: 雪風改
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 61cm四連装(酸素)魚雷
+  tags:
+  - 夜戦
+  - CLT
+  - 魚雷CI
+  - 制空なし
+  special_attacks: []
+- name: 制空あり（BB+CAV+CL+DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships: []
+      notes: 旗舰
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: 水戦搭載でboss点制空優勢確保、夜战二连
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 带路CL、照明弾
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 高運DD推奨、魚雷CI
+  requirements:
+    air_state: superiority
+    air_power_min: 140
+    enemy_air_power: 62
+    los_formula: 33
+    routing_nodes:
+    - D
+    - G
+    - I
+    - O
+    - K
+    - E
+    - Q
+  equip_notes: boss点Q制空優勢140必要。CAVに水戦約4機搭載。瑞雲（熟練）も可。CAVの夜战二连配装は維持（熊野改二は副砲可）。道中梯形陣、boss点単縦陣。
+  example: []
+  tags:
+  - 制空優勢
+  - CAV
+  - 水戦
+  - 夜戦
+  special_attacks: []
+- name: 三川艦隊（CL+CA系5隻）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 天龍改
+      - 夕張改二特
+      notes: 带路CL旗舰または6号位
+    - ship_class:
+      - CA
+      - CAV
+      count: 5
+      specific_ships:
+      - 鳥海改二
+      - 青葉改二
+      - 衣笠改二
+      - 加古改二
+      - 古鷹改二
+      notes: 三川艦隊メンバー7隻から4隻選択、夜間瑞雲搭載推奨
+  requirements:
+    air_state: none
+    los_formula: 33
+    routing_nodes:
+    - D
+    - G
+    - I
+    - O
+    - K
+    - E
+    - Q
+  equip_notes: 任務「新編成'三川艦隊'、鉄底海峡に突入せよ！」対応。制空不要。CA系に夜間瑞雲搭載でCI狙い。高火力CA6号位に主副副副で夜战二连も可。道中梯形陣、boss点単縦陣。
+  example:
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丁型改(蛟龍改)
+    - 13号対空電探改(後期型)
+  - ship: 最上改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丙型
+    - 熟練艦載機整備員
+  - ship: 衣笠改二
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上偵察機11型乙
+    - FuMO25 レーダー
+  - ship: 古鷹改二
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 20.3cm(2号)連装砲
+    - 新型高温高圧缶
+    - FuMO25 レーダー
+  - ship: 加古改二
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 20.3cm(2号)連装砲
+    - 新型高温高圧缶
+    - FuMO25 レーダー
+  - ship: 鳥海改二
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 20.3cm(3号)連装砲
+    - 新型高温高圧缶
+    - FuMO25 レーダー
+  tags:
+  - 三川艦隊
+  - 任務
+  - 夜間瑞雲
+  - 夜戦CI
+  special_attacks: []
+- name: 三川艦隊（旧・制空あり）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰、照明弾+魚雷CI
+    - ship_class:
+      - CA
+      - CAV
+      count: 4
+      specific_ships:
+      - 古鷹改二
+      - 加古改二
+      - 鈴谷改二
+      - 熊野改二
+      - 鳥海改二
+      notes: 三川艦隊メンバー、水戦搭載で制空確保
+    - ship_class:
+      - CA
+      count: 1
+      specific_ships:
+      - 鳥海改二
+      notes: 6号位、夜战CI担当
+  requirements:
+    air_state: superiority
+    air_power_min: 140
+    enemy_air_power: 62
+    los_formula: 33
+    routing_nodes:
+    - D
+    - G
+    - I
+    - O
+    - K
+    - E
+    - Q
+  equip_notes: boss点Q制空優勢140。夕張改二特旗舰に甲標的丁型改+61cm魚雷×2+照明弾+水上電探でCI。CAVに水戦（零式水上偵察機11型乙熟練など）で制空。CAには双主砲+水偵+電探で夜战二连。道中梯形陣、boss点単縦陣。
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 照明弾
+    - GFCS Mk.37
+  - ship: 古鷹改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 加古改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 鈴谷改二
+    equips:
+    - 強風改
+    - 20.3cm(3号)連装砲
+    - 8inch三連装砲 Mk.9 mod.2
+    - 九八式水上偵察機(夜偵)
+  - ship: 熊野改二
+    equips:
+    - 強風改
+    - 二式水戦改(熟練)
+    - 二式水戦改(熟練)
+    - 20.3cm(3号)連装砲
+  - ship: 鳥海改二
+    equips:
+    - 試製61cm六連装(酸素)魚雷
+    - OTO 152mm三連装速射砲
+    - OTO 152mm三連装速射砲
+    - OTO 152mm三連装速射砲
+  tags:
+  - 三川艦隊
+  - 制空優勢
+  - 水戦
+  - 旧編成
+  special_attacks: []
+- name: ネルソンtouch（ナルソン旗舰）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      specific_ships:
+      - ネルソン改
+      - ネルソン
+      notes: 旗舰、ネルソンtouch発動、低速
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 大井改二
+      notes: 2号位
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 夕張改二特
+      notes: 3号位、照明弾+魚雷CI
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 敷波改二
+      notes: 4号位
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 綾波改二
+      notes: 5号位
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 北上改二
+      notes: 6号位
+  requirements:
+    air_state: none
+    los_formula: 33
+    routing_nodes:
+    - D
+    - G
+    - I
+    - O
+    - K
+    - E
+    - Q
+  equip_notes: ネルソンtouch発動条件：旗舰ネルソン、3号位と5号位に非空母艦。制空不要。夜侦+照明弾携帯。道中複縦陣（ネルソン旗舰）、boss点単縦陣。DDは61cm魚雷×3で魚雷CI。
+  example:
+  - ship: ネルソン改
+    equips:
+    - 46cm三連装砲改
+    - 16inch Mk.I三連装砲改+FCR type284
+    - 九八式水上偵察機(夜偵)
+    - 一式徹甲弾改
+  - ship: 大井改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 甲標的 丙型
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 照明弾
+    - 22号対水上電探改四(後期調整型)
+  - ship: 敷波改二
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+  - ship: 綾波改二
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+  - ship: 北上改二
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 甲標的 丙型
+  tags:
+  - ネルソンtouch
+  - 夜戦
+  - CLT
+  - 制空なし
+  special_attacks:
+  - type: nelson_touch
+    ships:
+    - ネルソン改
+    - 夕張改二特
+    - 綾波改二
+    flagship: ネルソン改
+    positions:
+    - 1
+    - 3
+    - 5
+    equip_hint: 主砲+徹甲弾+夜侦
+    notes: 3号位と5号位に非空母艦配置必須、道中複縦陣
+- name: 水雷戦隊司令部（矢矧改二乙旗舰）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 矢矧改二乙
+      - 矢矧改二
+      - 能代改二
+      notes: 旗舰、夜間瑞雲×2搭載で夜戦CI、水雷戦隊司令部装備
+    - ship_class:
+      - CLT
+      - DD
+      count: 5
+      specific_ships: []
+      notes: DD人手に電探+見張員で夜戦回避率向上、4N血量DD（綾波など）推奨
+  requirements:
+    air_state: none
+    los_formula: 33
+    routing_nodes:
+    - D
+    - G
+    - I
+    - O
+    - K
+    - E
+    - Q
+  equip_notes: 水雷戦隊司令部装備必須。旗舰に夜間瑞雲×2でCI発動率向上（単艦2積み推奨）。DD全員に水上電探+見張員で夜戦回避強化。時雨はC3H砲×2搭載も可。大井に高命中副砲2門で夜战二连可。道中梯形陣、boss点単縦陣。
+  example: []
+  tags:
+  - 水雷戦隊司令部
+  - 夜間瑞雲CI
+  - CL旗舰
+  - 制空なし
+  special_attacks: []
+- name: 長門/陸奥改二touch（高速統一）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      speed: fast
+      specific_ships:
+      - 長門改二
+      - 陸奥改二
+      notes: 旗舰、長門touch発動
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      speed: fast
+      specific_ships:
+      - 陸奥改二
+      - 長門改二
+      notes: 2号位、touchパートナー
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships: []
+      notes: 水戦搭載で制空確保、高速必須
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships: []
+      notes: 带路CL、照明弾
+    - ship_class:
+      - DD
+      count: 2
+      speed: fast
+      specific_ships: []
+      notes: 魚雷CI、高運DD推奨、全艦高速必須
+  requirements:
+    air_state: superiority
+    air_power_min: 140
+    enemy_air_power: 62
+    los_formula: 33
+    routing_nodes:
+    - D
+    - G
+    - I
+    - O
+    - K
+    - E
+    - Q
+  equip_notes: 全艦高速必須（長門改二は高速）。boss点Q制空優勢140。長門touchに電探+徹甲弾で威力強化。道中梯形陣、boss点単縦陣。CAVに水戦搭載。
+  example: []
+  tags:
+  - 長門touch
+  - 制空優勢
+  - 高速統一
+  - 夜戦
+  special_attacks:
+  - type: nagato_touch
+    ships:
+    - 長門改二
+    - 陸奥改二
+    flagship: 長門改二
+    positions:
+    - 1
+    - 2
+    equip_hint: 電探(索敵≥5)+徹甲弾
+    notes: 全艦高速統一必須、道中梯形陣

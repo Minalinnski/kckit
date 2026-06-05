@@ -1,0 +1,934 @@
+map: 3-5
+source: nga_import
+notes: 北方AL海域，多路线攻略：下路固定F-G-K、随机B/F-G-K、上路B-D-H-K，boss为北方棲姫
+presets:
+- name: 矢矧水雷魂（固定F-G-K）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 旗舰，携带精锐水雷战队 司令部
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 時雨改三
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 雪風改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 天津風改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 長波改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 陽炎改二
+      notes: 携带発煙装置（煙幕），G点拉烟
+  requirements:
+    air_state: none
+    los_formula: 4
+    los_min: 28.0
+    routing_nodes:
+    - F
+    - G
+    - K
+  equip_notes: 带路条件：DD>=5且BB系+CV系+CA系+CLT+LHA=0；制空5，磨血0制空，斩杀/斩后G点16空均；索敌分歧点系数=4，索敌>=28；G点阵型：单纵+拉烟；K点单纵；矢矧带试制夜間瑞雲（攻击装备）+甲标的丁型改+精锐水雷战队司令部；DD孔里塞增设装甲板提高生存；陽炎改二带発煙装置
+  example:
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丁型改(蛟龍改)
+    - 精鋭水雷戦隊 司令部
+  - ship: 時雨改三
+    equips:
+    - 12.7cm連装砲C型改三
+    - 12.7cm連装砲D型改三
+    - 電探装備マスト(13号改+22号電探改四)
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - SG レーダー(後期型)
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 天津風改二
+    equips:
+    - 12.7cm連装砲C型改二
+    - 12.7cm連装砲C型改二
+    - GFCS Mk.37
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改二
+    - GFCS Mk.37
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 陽炎改二
+    equips:
+    - 12.7cm連装砲C型改二
+    - 12.7cm連装砲C型改二
+    - 発煙装置(煙幕)
+    - 艦本新設計 増設バルジ(中型艦)
+  tags:
+  - 水雷戦隊
+  - 固定最短路线
+  - 消耗低
+  special_attacks: []
+- name: 下路随机流（日进+矢矧+夕张/阿武隈+DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 日進甲
+      notes: 旗舰可选，带双14cm连装炮改+瑞云+甲标
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 双15.2cm连装炮改二+甲标的丁型改+水侦
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 雪風改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 長波改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 弗萊徹 Mk.II
+      notes: ''
+    - ship_class:
+      - CL
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 夕張改二特
+      notes: 魚雷CI，带甲标的丁型改+试制61cm六连装鱼雷+61cm五连装鱼雷+防雷鼓包+22号对水上电探
+  requirements:
+    air_state: none
+    los_formula: 4
+    los_min: 28.0
+    routing_nodes:
+    - B
+    - F
+    - G
+    - K
+  equip_notes: 带路条件：BB系+CV系+CA系+CLT+LHA=0且CL<=2；制空26，索敌38.43；磨血0制空，斩杀/斩后G点16空均；索敌分歧点系数=4，索敌>=28；出门50%走B，55开随机路线；夕張改二特带魚雷CI装备
+  example:
+  - ship: 日進甲
+    equips:
+    - 14cm連装砲改
+    - 14cm連装砲改
+    - 瑞雲改二(六三四空/熟練)
+    - 甲標的 丙型
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 甲標的 丁型改(蛟龍改)
+    - 零式水上偵察機11型乙(熟練)
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - GFCS Mk.37
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改三
+    - GFCS Mk.37
+  - ship: 弗萊徹 Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - GFCS Mk.37
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 艦本新設計 増設バルジ(中型艦)
+    - 22号対水上電探改四(後期調整型)
+  tags:
+  - 水雷戦隊
+  - 随机路线
+  - 夕張CI
+  special_attacks: []
+- name: 上路亚棍流（B-D-H-K，摩耶+CV+SS）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 摩耶改二
+      notes: 旗舰，对空CI+三式弹改，调整射程
+    - ship_class:
+      - SS
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 伊47改
+      notes: 封印北方酱炮击
+    - ship_class:
+      - SSV
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 伊13改
+      notes: 封印北方酱炮击
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 加賀改二
+      notes: 正规空母
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 翔鶴改二甲
+      notes: 装甲空母
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改二戊
+      notes: 正规空母，带彩雲
+  requirements:
+    air_state: superiority
+    air_power_min: 381
+    enemy_air_power: 381
+    los_formula: 4
+    los_min: 40.0
+    routing_nodes:
+    - B
+    - D
+    - H
+    - K
+  equip_notes: 带路条件：BB系+CV系<=3且SS系<=3且LHA=0；H点381空优，制空414~417；索敌分歧点系数=4，索敌>=40；摩耶改二对空CI（20.3cm(3号)连装炮+GFCS
+    Mk.37+5inch连装两用炮+零式水上侦察机11型乙+三式弹改）；SS封印北方酱炮击；CV孔里带喷二（12cm30連装噴進炮改二）；赤城带彩雲避T字不利；全程单纵阵
+  example:
+  - ship: 摩耶改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - GFCS Mk.37+5inch連装両用砲(集中配備)
+    - 零式水上偵察機11型乙(熟練)
+    - 三式弾改
+  - ship: 伊47改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 後期型艦首魚雷(6門)
+  - ship: 伊13改
+    equips:
+    - 強風改
+    - 試製FaT仕様九五式酸素魚雷改
+    - 試製FaT仕様九五式酸素魚雷改
+  - ship: 加賀改二
+    equips:
+    - 彗星(江草隊)
+    - 天山一二型(村田隊)
+    - 流星改(一航戦/熟練)
+    - 烈風改二
+    - XF5U
+  - ship: 翔鶴改二甲
+    equips:
+    - Ju87C改二(KMX搭載機/熟練)
+    - 天山一二型(村田隊)
+    - 零式艦戦53型(岩本隊)
+    - 烈風 一一型
+  - ship: 赤城改二戊
+    equips:
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 天山一二型(村田隊)
+    - 流星改(一航戦/熟練)
+    - 烈風改二戊型(一航戦/熟練)
+    - 彩雲
+  tags:
+  - 上路
+  - H点捞油
+  - 対空CI
+  - SS封印
+  special_attacks: []
+- name: 上路拉烟流（B-D-H-K，3CV+CA带烟）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 飛龍改
+      notes: 正规空母
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 赤城改
+      notes: 正规空母
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 加賀改
+      notes: 正规空母
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 鳥海改
+      notes: 带発煙装置（煙幕）×2
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 摩耶改
+      notes: 带発煙装置（煙幕）×2
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 最上改
+      notes: 带発煙装置（煙幕）×2+零式水上侦察机
+  requirements:
+    air_state: superiority
+    air_power_min: 381
+    enemy_air_power: 381
+    los_formula: 4
+    los_min: 40.0
+    routing_nodes:
+    - B
+    - D
+    - H
+    - K
+  equip_notes: 带路条件：BB系+CV系<=3且SS系<=3且LHA=0；H点381空优，制空424；索敌分歧点系数=4，索敌>=40；H点单纵+拉烟（至少2个発煙装置，旗舰运>=26；3个时旗舰无硬性运要求）；H点拉烟基本不求胜算，三式弹意义不大；摩耶改二时配对空CI效果更佳
+  example:
+  - ship: 飛龍改
+    equips:
+    - 彗星一二型甲
+    - 流星改
+    - 試製烈風 後期型
+    - 試製烈風 後期型
+  - ship: 赤城改
+    equips:
+    - 彗星一二型甲
+    - 試製烈風 後期型
+    - 流星改
+    - 試製烈風 後期型
+  - ship: 加賀改
+    equips:
+    - 彗星一二型甲
+    - 烈風 一一型
+    - 流星改
+    - 試製烈風 後期型
+  - ship: 鳥海改
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 発煙装置(煙幕)
+    - 零式水上偵察機
+  - ship: 摩耶改
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 発煙装置(煙幕)
+    - 零式水上偵察機
+  - ship: 最上改
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 発煙装置(煙幕)
+    - 零式水上偵察機
+  tags:
+  - 上路
+  - 拉烟
+  - H点通过率
+  - 水雷不爱好者
+  special_attacks: []
+- name: 三凤三喷流（B-D-H-K，捞弹）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 鳳翔改二
+      notes: 旗舰，带12cm30連装噴進炮改二
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 带12cm30連装噴進炮改二
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 龍鳳改二戊
+      notes: 带12cm30連装噴進炮改二
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 伊58改
+      notes: 封印北方酱炮击
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 伊36改
+      notes: 封印北方酱炮击，带特四式内火艇改
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 伊47改
+      notes: 封印北方酱炮击，带特四式内火艇改
+  requirements:
+    air_state: superiority
+    air_power_min: 381
+    enemy_air_power: 381
+    los_formula: 4
+    los_min: 40.0
+    routing_nodes:
+    - B
+    - D
+    - H
+    - K
+  equip_notes: 带路条件：CV系<=3且SS系<=3；H点381空优，制空425；索敌分歧点系数=4，索敌>=40；三凤各带12cm30連装噴進炮改二×2（免疫空袭）；SS带特四式内火艇/特四改提高对陆输出和J点捞弹量；无对空CI，喷二为主要防空手段；进boss飞机有被打空风险；特四式内火艇改为捞弹必备
+  example:
+  - ship: 鳳翔改二
+    equips:
+    - 天山一二型(村田隊)
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 彗星(江草隊)
+    - 試製 陣風
+    - 12cm30連装噴進砲改二
+  - ship: 瑞鳳改二乙
+    equips:
+    - 天山一二型(村田隊)
+    - F4U-7
+    - AU-1
+    - 零式艦戦53型(岩本隊)
+    - 12cm30連装噴進砲改二
+  - ship: 龍鳳改二戊
+    equips:
+    - 零戦62型(爆戦/岩井隊)
+    - 天山一二型甲
+    - 烈風改二戊型
+    - 烈風改二戊型
+    - 12cm30連装噴進砲改二
+  - ship: 伊58改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 強風改二
+    - 特四式内火艇
+  - ship: 伊36改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 強風改二
+    - 特四式内火艇改
+  - ship: 伊47改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 特二式内火艇
+    - 特四式内火艇改
+  tags:
+  - 上路
+  - 捞弹
+  - 低铝耗
+  - 三凤
+  special_attacks: []
+- name: 双凤五喷流（B-D-H，压索敌捞弹）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 鳳翔改二
+      notes: 旗舰，带12cm30連装噴進炮改二×2
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 带12cm30連装噴進炮改二×2
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 伊47改
+      notes: ''
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 伊36改
+      notes: ''
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - 伊58改
+      notes: ''
+    - ship_class:
+      - CVL
+      - AV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 带甲标的丙型+特大発動艇+三式弹改二+12cm30連装噴進炮改二×2
+  requirements:
+    air_state: superiority
+    air_power_min: 170
+    enemy_air_power: 170
+    los_formula: 4
+    routing_nodes:
+    - B
+    - D
+    - H
+  equip_notes: 带路条件：CV系<=3且SS系<=3；H点170空优，制空190；索敌分歧点系数=4，索敌<35（压索敌防止进boss）；最上改二特带甲标的丙型+特大発動艇+三式弲改二×2+12cm30連装噴進炮改二×2（捞弹+对陆）；僚舰各带两门喷二免疫空袭；0索敌装备（31光电管等）防止指数过高
+  example:
+  - ship: 鳳翔改二
+    equips:
+    - 天山一二型(村田隊)
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 彗星一二型(三一号光電管爆弾搭載機)
+    - 震電改
+    - 12cm30連装噴進砲改二
+  - ship: 瑞鳳改二乙
+    equips:
+    - F4U-7
+    - AU-1
+    - 天山一二型(村田隊)
+    - 12cm30連装噴進砲改二
+    - 12cm30連装噴進砲改二
+  - ship: 伊47改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 熟練聴音員+後期型艦首魚雷(4門)
+    - 特四式内火艇
+  - ship: 伊36改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 強風改
+    - 特四式内火艇改
+  - ship: 伊58改
+    equips:
+    - 後期型53cm艦首魚雷(8門)
+    - 特二式内火艇
+    - 特四式内火艇改
+  - ship: 最上改二特
+    equips:
+    - 甲標的 丙型
+    - 特大発動艇
+    - 三式弾改二
+    - 12cm30連装噴進砲改二
+    - 12cm30連装噴進砲改二
+  tags:
+  - 上路
+  - 压索敌
+  - 捞弹
+  - 不进boss
+  special_attacks: []
+- name: 双线空丧流（B/F-E-H-K，纳尔逊+三隈+矢矧）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - ネルソン改
+      notes: 旗舰，低速，超射程；46cm連装砲改+16inch Mk.I三連装砲改+FCR type284+Fairey Seafox改+一式穿甲弾改+三式弾改二
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 双15.2cm连装炮改二+瑞云改二+甲标的丙型+増設装甲板
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 三隈改二特
+      notes: 试制20.3cm(4号)×2+試制夜間瑞雲+甲标的丁型改+増設装甲板
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 天津風改二
+      notes: 反潜两件套，复纵E点炸鱼
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 试制20.3cm(4号)×2+試制夜間瑞雲+甲标的丙型+三式弲改二
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 初月改二
+      notes: 10cm连装高角炮改+高射装置改×3+阻塞气球+増設装甲板；E点复纵反潜
+  requirements:
+    air_state: superiority
+    air_power_min: 35
+    enemy_air_power: 35
+    los_formula: 4
+    los_min: 40.0
+    routing_nodes:
+    - B
+    - F
+    - E
+    - H
+    - K
+  equip_notes: 带路条件：BB系+LHA=1且CV系=0且CLT=0且CL=1且DD>=2；E点35空优，制空53；索敌分歧点系数=4，索敌>=40；E点复纵（撸爷+潜艇，反潜两件套必备）；H点单纵；矢矧/三隈/最上带瑞云提供E点制空+开幕对陆；H点空丧可带陆基气球减战损；纳尔逊需调整射程为超
+  example:
+  - ship: ネルソン改
+    equips:
+    - 46cm三連装砲改
+    - 16inch Mk.I三連装砲改+FCR type284
+    - Fairey Seafox改
+    - 一式徹甲弾改
+    - 三式弾改二
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 瑞雲改二(六三四空/熟練)
+    - 甲標的 丙型
+    - 増設バルジ(中型艦)
+  - ship: 三隈改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丁型改(蛟龍改)
+    - 増設バルジ(中型艦)
+  - ship: 天津風改二
+    equips:
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  - ship: 最上改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丙型
+    - 三式弾改二
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 阻塞気球
+    - 電探装備マスト(13号改+22号電探改四)
+  tags:
+  - 双线
+  - 上路
+  - 下路
+  - 空丧
+  - 对陆
+  special_attacks:
+  - type: nelson_touch
+    ships:
+    - ネルソン改
+    flagship: ネルソン改
+    positions:
+    - 1
+    - 3
+    - 5
+    equip_hint: 46cm三連装砲改+16inch Mk.I三連装砲改+FCR type284+一式徹甲弾改+三式弾改二
+    notes: E点复纵对潜+地面目标，H点单纵
+- name: 双线特四流（B/F-E-H，压索敌捞弹）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      min_level: 99
+      speed: 低速
+      specific_ships:
+      - ネルソン改
+      notes: 旗舰，低速，超射程；46cm×2+16inch Mk.I+一式穿甲弾改+三式弲改二
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 初月改二
+      notes: 10cm连装高角炮×3+阻塞气球+増設装甲板；E点复纵反潜
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 试制20.3cm(4号)×2+試制夜間瑞雲+甲标的丙型+三式弲改二
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 15.2cm×2+特四内火艇×2+甲标的丙型+8cm高角炮改+増設機銃
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 三隈改二特
+      notes: 试制20.3cm(4号)×2+試制夜間瑞雲+甲标的丙型+12cm30連装噴進炮改二
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 時雨改三
+      notes: 特四内火艇×2+三水中探信儀改+二式爆雷改；反潜
+  requirements:
+    air_state: none
+    air_power_min: 16
+    enemy_air_power: 16
+    los_formula: 4
+    routing_nodes:
+    - B
+    - F
+    - E
+    - H
+    - K
+  equip_notes: 带路条件：BB系+LHA=1且CV系=0且CLT=0且CL=1且DD>=2；E点16空均，制空19；索敌分歧点系数=4，索敌<35（压索敌防止进boss）；E点复纵；H点单纵；无水侦/电探束缚，大量格子带特四内火艇提高对陆输出和J点捞弹量；時雨改三反潜两件套；纳尔逊调超射程
+  example:
+  - ship: ネルソン改
+    equips:
+    - 46cm三連装砲改
+    - 46cm三連装砲改
+    - 16inch Mk.I三連装砲改+FCR type284
+    - 一式徹甲弾改
+    - 三式弾改二
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 阻塞気球
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 最上改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丙型
+    - 三式弾改二
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 特四式内火艇改
+    - 特四式内火艇
+    - 甲標的 丙型
+    - 8cm高角砲改+増設機銃
+  - ship: 三隈改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 試製 夜間瑞雲(攻撃装備)
+    - 甲標的 丙型
+    - 12cm30連装噴進砲改二
+  - ship: 時雨改三
+    equips:
+    - 特四式内火艇改
+    - 特四式内火艇
+    - 三式水中探信儀改
+    - 二式爆雷改二
+  tags:
+  - 双线
+  - 压索敌
+  - 捞弹
+  - 特四
+  - 低铝耗
+  special_attacks:
+  - type: nelson_touch
+    ships:
+    - ネルソン改
+    flagship: ネルソン改
+    positions:
+    - 1
+    - 3
+    - 5
+    equip_hint: 46cm三連装砲改×2+16inch Mk.I三連装砲改+FCR type284+一式徹甲弾改+三式弾改二
+    notes: E点复纵对潜；压索敌不进boss，主要目标H点捞弹
+- name: 普通水雷魂萌新阵容（固定F-G-K）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 磨血阶段可用CL；斩杀阶段换AV旗舰带双瑞云+甲标拿制空
+    - ship_class:
+      - DD
+      count: 5
+      specific_ships: []
+      notes: 双主炮+电探/机枪+钢板；不带第三门主炮和鱼雷
+  requirements:
+    air_state: none
+    los_formula: 4
+    los_min: 28.0
+    routing_nodes:
+    - F
+    - G
+    - K
+  equip_notes: 带路条件：DD>=5且BB系+CV系+CA系+CLT+LHA=0；磨血0制空；斩杀/斩后G点16空均或35空优；索敌分歧点系数=4，索敌>=28；刷闪提升很大；不够索敌CL带水侦；AV斩杀阵容示例：神通/最上/川内/那珂带20.3cm(2号/3号)连装炮+零式水上观测机/瑞云；DD带10cm连装高角炮×2+91式高射装置
+  example:
+  - ship: 神通改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上観測機
+  - ship: 最上改
+    equips:
+    - 20.3cm(3号)連装砲
+    - 瑞雲
+    - 20.3cm(3号)連装砲
+    - 瑞雲(六三四空)
+  - ship: 川内改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上観測機
+  - ship: 那珂改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上観測機
+  - ship: 夕立改二
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 91式高射装置
+  - ship: 時雨改二
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 91式高射装置
+  tags:
+  - 萌新
+  - 固定最短路线
+  - 水雷戦隊
+  - 低消耗
+  special_attacks: []

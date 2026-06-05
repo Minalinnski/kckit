@@ -1,0 +1,172 @@
+source: nga_import
+quests:
+- quest_id: Bd1
+  quest_name: 敵艦隊を撃破せよ！
+  category: daily
+  requirement: 1次胜利
+  maps: []
+- quest_id: Bd2
+  quest_name: 敵艦隊主力を撃滅せよ！
+  category: daily
+  requirement: 1次战斗
+  maps: []
+- quest_id: Bd3
+  quest_name: 敵艦隊を10回邀撃せよ！
+  category: daily
+  requirement: 10次战斗
+  maps: []
+- quest_id: Bd4
+  quest_name: 敵空母を3隻撃沈せよ！
+  category: daily
+  requirement: 击沉3艘空母
+  maps:
+  - map_id: 2-1
+    fleet_hint: 6SS系
+    synergy_quests: []
+- quest_id: Bd5
+  quest_name: 敵補給艦を3隻撃沈せよ！
+  category: daily
+  requirement: 击沉3艘补给舰
+  maps:
+  - map_id: 2-2
+    fleet_hint: 3CVL+3SS/DD
+    synergy_quests:
+    - Bw6
+    - Bw8
+    - Bw9
+- quest_id: Bd6
+  quest_name: 敵輸送船団を叩け！
+  category: daily
+  requirement: 击沉5艘补给舰
+  maps: []
+- quest_id: Bd7
+  quest_name: 南西諸島海域の制海権を握れ！
+  category: daily
+  requirement: 2-1~2-5任选,5次B胜
+  maps:
+  - map_id: 2-1
+    fleet_hint: 6SS系
+    synergy_quests:
+    - Bw2
+- quest_id: Bd8
+  quest_name: 敵潜水艦を制圧せよ！
+  category: daily
+  requirement: 击沉6艘潜艇
+  maps:
+  - map_id: 1-5
+    fleet_hint: 4DE/DD
+    synergy_quests:
+    - Bw5
+    - Bw10
+- quest_id: Bw1
+  quest_name: あ号作戦
+  category: weekly
+  requirement: 出击36次/S胜6次/boss点到达24次/boss点胜利12次
+  maps:
+  - map_id: 1-1
+    fleet_hint: 刷闪配置
+    synergy_quests: []
+- quest_id: Bw2
+  quest_name: い号作戦
+  category: weekly
+  requirement: 击沉20艘空母
+  maps:
+  - map_id: 2-1
+    fleet_hint: 6SS系
+    synergy_quests:
+    - Bd7
+- quest_id: Bw3
+  quest_name: 海上通商破壊作戦
+  category: weekly
+  requirement: 击沉20艘补给舰
+  maps:
+  - map_id: 2-2
+    fleet_hint: 3CVL+3SS/DD
+    synergy_quests: []
+  - map_id: 4-2
+    fleet_hint: 2CV系+1CA系/CL系+1CL+2DD
+    synergy_quests:
+    - Bw6
+  - map_id: 4-4
+    fleet_hint: 3CVL+1CL+2DE/DD
+    synergy_quests:
+    - Bw6
+- quest_id: Bw4
+  quest_name: ろ号作戦
+  category: weekly
+  requirement: 击沉50艘补给舰
+  maps:
+  - map_id: 4-2
+    fleet_hint: 2CV系+1CA系/CL系+1CL+2DD
+    synergy_quests: []
+  - map_id: 3-3
+    fleet_hint: 1CV+1CVL/BB系+2CLT/CA系+2DD
+    synergy_quests: []
+- quest_id: Bw5
+  quest_name: 海上護衛戦
+  category: weekly
+  requirement: 击沉15艘潜艇
+  maps:
+  - map_id: 1-5
+    fleet_hint: 4DE/DD
+    synergy_quests:
+    - Bd8
+    - Bw10
+- quest_id: Bw6
+  quest_name: 敵東方艦隊を撃滅せよ！
+  category: weekly
+  requirement: 4-1~4-5任选,12次B胜
+  maps:
+  - map_id: 4-4
+    fleet_hint: 3CVL+1CL+2DE/DD
+    synergy_quests:
+    - Bw8
+  - map_id: 4-2
+    fleet_hint: 2CV系+1CA系/CL系+1CL+2DD
+    synergy_quests:
+    - Bm6
+  - map_id: 4-5
+    fleet_hint: 4CV系/BB系+2CA系/CLT高速+
+    synergy_quests: []
+- quest_id: Bw7
+  quest_name: 敵北方艦隊主力を撃滅せよ！
+  category: weekly
+  requirement: 3-3~3-5任选,5次B胜
+  maps:
+  - map_id: 3-3
+    fleet_hint: 1CV+1CVL/BB系+2CLT/CA系+2DD
+    synergy_quests: []
+  - map_id: 3-4
+    fleet_hint: 2CV+2CVL+1CL+1AV
+    synergy_quests: []
+  - map_id: 3-5
+    fleet_hint: 见海域详细配置
+    synergy_quests: []
+- quest_id: Bw8
+  quest_name: 敵東方中枢艦隊を撃破せよ！
+  category: weekly
+  requirement: 4-4,B胜
+  maps:
+  - map_id: 4-4
+    fleet_hint: 3CVL+1CL+2DE/DD
+    synergy_quests:
+    - Bw6
+- quest_id: Bw9
+  quest_name: 南方海域珊瑚諸島沖の制空権を握れ！
+  category: weekly
+  requirement: 5-2,2次S胜
+  maps:
+  - map_id: 5-2
+    fleet_hint: 翔鹤+瑞鹤+1高速BB系+1CAV+2DD
+    synergy_quests:
+    - Bd5
+- quest_id: Bw10
+  quest_name: 海上輸送路の安全確保に努めよ！
+  category: weekly
+  requirement: 1-5,3次A胜
+  maps:
+  - map_id: 1-5
+    fleet_hint: 4DE/DD
+    synergy_quests:
+    - Bd8
+    - Bw5

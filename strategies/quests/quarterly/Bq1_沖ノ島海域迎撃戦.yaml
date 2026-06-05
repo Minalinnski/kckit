@@ -1,0 +1,10 @@
+quest_id: Bq1
+quest_name: 沖ノ島海域迎撃戦
+category: quarterly
+requirement: 2-4，2次S胜
+maps:
+- map_id: 2-4
+  fleet_hint: 2CVL+BB系/CA系/CL系+1CL+2DD
+  notes: 门神84空优，168空确
+  synergy_quests:
+  - Bq2

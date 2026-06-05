@@ -1,0 +1,31 @@
+quest_id: By2
+quest_name: '''海防艦''、海を護る！'
+category: yearly
+requirement: 1-1、1-2、1-3、1-5各1次A胜以上，1-6到达终点1次，需要3DE且舰队船数<=5
+maps:
+- map_id: 1-1
+  fleet_hint: 3DE+0~2任意
+  synergy_quests: []
+- map_id: 1-2
+  fleet_hint: 1CL+1DD+3DE
+  synergy_quests:
+  - Bm8
+- map_id: 1-3
+  fleet_hint: 1CVL+1AV/CAV+3DE
+  notes: AV走A，CAV走C
+  synergy_quests:
+  - Bm8
+  - Bq9
+  combo_fleets:
+    Bq9: 1CVL+1AV/CAV+3DE
+- map_id: 1-5
+  fleet_hint: 3DE+1任意
+  notes: 不带BB/FBB/CV/CVB/SS/SSV/AO
+  synergy_quests: []
+- map_id: 1-6
+  fleet_hint: 3DE+1DD+1AV
+  notes: F点83空优，25%沟K，5船
+  synergy_quests:
+  - Bq3
+  combo_fleets:
+    Bq3: 3DE+2BBV

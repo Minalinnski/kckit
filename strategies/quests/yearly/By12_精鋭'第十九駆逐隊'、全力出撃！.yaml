@@ -1,0 +1,20 @@
+quest_id: By12
+quest_name: 精鋭'第十九駆逐隊'、全力出撃！
+category: yearly
+requirement: 1-5、2-3、3-2、5-3各1次S胜，需要矶波改二+浦波改二+绫波改二+敷波改二
+maps:
+- map_id: 1-5
+  fleet_hint: 矶波改二+浦波改二+绫波改二+敷波改二
+  synergy_quests: []
+- map_id: 2-3
+  fleet_hint: 2CV系+矶波改二+浦波改二+绫波改二+敷波改二
+  notes: boss点81空优，162空确
+  synergy_quests: []
+- map_id: 3-2
+  fleet_hint: 1CL+1DD+矶波改二+浦波改二+绫波改二+敷波改二
+  notes: 1电探，尽量高速+
+  synergy_quests: []
+- map_id: 5-3
+  fleet_hint: 夜战特殊攻击+矶波改二+浦波改二+绫波改二+敷波改二
+  notes: 纳尔逊配CLT或长门配FBB
+  synergy_quests: []

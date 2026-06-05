@@ -1,0 +1,427 @@
+map: 4-2
+source: nga_import
+notes: カレー洋海域。出発点から複数ルート(A-C-L/A-E-G-L/B-D-C-L)。Bに潜水艦あり、Dに空母あり(制空84空優/168確保)。CL1隻必須。
+presets:
+- name: 萌新推图・通用編成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改
+      notes: 旗舰。制空担当。流星改+彗星一二型甲+試製烈風後期型×2
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships:
+      - 長門改
+      notes: 41cm連装砲×2+九一式徹甲弾+零式水上偵察機
+    - ship_class:
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改
+      notes: 20.3cm連装砲×2+瑞雲×2
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 五十鈴改
+      notes: 20.3cm連装砲×2+零式水上偵察機。帯路用CL
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 時雨改二
+      notes: 10cm連装高角砲×2+91式高射装置
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 霞改
+      notes: 10cm連装高角砲×2+13号対空電探
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - L
+    - E
+    - G
+    - B
+    - D
+  equip_notes: 制空値172~175。D点84で空優、168で確保。索敵23.88。2BB/CV+1CL+1CLT/CA/CAV+2DD構成が安定。
+  example:
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 彗星一二型甲
+    - 試製烈風 後期型
+    - 試製烈風 後期型
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 九一式徹甲弾
+    - 零式水上偵察機
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 瑞雲
+    - 20.3cm連装砲
+    - 瑞雲
+  - ship: 五十鈴改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 時雨改二
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 91式高射装置
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  tags:
+  - 初心者向け
+  - 汎用
+  special_attacks: []
+- name: 任務対応・2CVL編成(空母機動部隊任務等)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      min_asw: 65
+      speed: 高速
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 旗舰。先制対潜可(対潜≥65)。流星改(一航戦/熟練)+天山一二型(村田隊)+彗星(江草隊)+烈風改二
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 千代田航改二
+      notes: 流星改(一航戦/熟練)+天山一二型(村田隊)+彗星二二型(六三四空/熟練)+零式艦戦53型(岩本隊)
+    - ship_class:
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 20.3cm(3号)連装砲×2+零式水上偵察機11型乙(熟練)+甲標的丁型改(蛟龍改)
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      - 夕張改二特
+      notes: 帯路必須CL。15.2cm連装砲改二×2+零式水上偵察機11型乙(熟練)+甲標的丙型
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 雪風改二
+      notes: 10cm連装高角砲+94式高射装置+GFCS Mk.37+増設防雷鼓包(中型艦)
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 弗萊彻Mk.II
+      notes: 5inch単装砲Mk.30改+GFCS Mk.37+5inch単装砲Mk.30改+増設防雷鼓包(中型艦)
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - L
+    - E
+    - G
+    - B
+    - D
+  equip_notes: 制空値169~173。索敵57.78。瑞鳳は対潜≥65で先制対潜可能。道中B点(潜水艦)対策に対潜≥7の艦攻搭載推奨。CL必須(矢矧改二乙推奨、なければ夕張改二特)。
+  example:
+  - ship: 瑞鳳改二乙
+    equips:
+    - 流星改(一航戦/熟練)
+    - 天山一二型(村田隊)
+    - 彗星(江草隊)
+    - 烈風改二
+  - ship: 千代田航改二
+    equips:
+    - 流星改(一航戦/熟練)
+    - 天山一二型(村田隊)
+    - 彗星二二型(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丙型
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+    - 増設バルジ(中型艦)
+  - ship: 弗萊彻Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - 増設バルジ(中型艦)
+  tags:
+  - 2CVL
+  - 任務
+  - 空母機動部隊西へ
+  - 敵東方艦隊を撃滅せよ
+  - ろ号作戦
+  special_attacks: []
+- name: 任務B18・2BBV+2CAV編成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BBV
+      count: 2
+      specific_ships: []
+      notes: 任務B18必須。伊勢改二/日向改二推奨
+    - ship_class:
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: 任務B18必須
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - L
+    - E
+    - G
+    - B
+    - D
+  equip_notes: D点84で空優、168で確保。任務B18(航空水上打撃艦隊)B勝利達成用。2BBV+2CAV+2DD。
+  example: []
+  tags:
+  - 任務B18
+  - 2BBV+2CAV
+  special_attacks: []
+- name: 任務B31・長門+陸奥+扶桑+山城編成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships:
+      - 長門改二
+      - 長門改
+      notes: 任務B31必須
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships:
+      - 陸奥改二
+      - 陸奥改
+      notes: 任務B31必須
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 扶桑改二
+      - 扶桑改
+      notes: 任務B31必須
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 山城改二
+      - 山城改
+      notes: 任務B31必須
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - L
+    - E
+    - G
+    - B
+    - D
+  equip_notes: D点84で空優、168で確保。任務B31(第二戦隊抜錨)S勝利×2達成用。2BB+2BBV+2DD。
+  example: []
+  tags:
+  - 任務B31
+  - 長門
+  - 陸奥
+  - 扶桑
+  - 山城
+  special_attacks: []
+- name: 任務B115・4DD編成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: 制空担当
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: 任務B115必須。精鋭駆逐隊4隻
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - L
+    - E
+    - G
+    - B
+    - D
+  equip_notes: D点84で空優、168で確保。任務B115(精鋭駆逐隊獅子奮迅)A勝利達成用。2CV系+4DD。
+  example: []
+  tags:
+  - 任務B115
+  - 4DD
+  special_attacks: []
+- name: 任務B117・阳炎/夕云级旗舰编成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 陽炎改二
+      - 不知火改二
+      - 黒潮改二
+      notes: 旗舰。任務B117必須
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 陽炎型/夕雲型2隻。任務B117必須
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 帯路CL
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: 制空担当
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - L
+    - E
+    - G
+    - B
+    - D
+  equip_notes: D点84で空優、168で確保。任務B117(最精鋭甲型駆逐艦突入)S勝利×2。3DD+1CL+2CV系。
+  example: []
+  tags:
+  - 任務B117
+  - 陽炎改二
+  - 不知火改二
+  - 黒潮改二
+  special_attacks: []
+- name: 任務B145・Gotland andra旗舰编成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - Gotland andra
+      notes: 旗舰。任務B145必須
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: 制空担当
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 1隻は任務B145必須DD
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - L
+    - E
+    - G
+    - B
+    - D
+  equip_notes: 道中84空優、168確保。任務B145(改装航空軽巡Gotland andra出撃)S勝利×1。Gotland andra(旗舰)+2CV系+1CLT+2DD。
+  example: []
+  tags:
+  - 任務B145
+  - Gotland andra
+  special_attacks: []

@@ -1,0 +1,18 @@
+quest_id: Bq5
+quest_name: 北方海域警備を実施せよ！
+category: quarterly
+requirement: 3-1、3-2、3-3各1次A胜，需要1个CL
+maps:
+- map_id: 3-1
+  fleet_hint: 2CV系/BB系+1CL+1CLT/CA系+2DD
+  notes: boss点84空确，不要带BBV
+  synergy_quests: []
+- map_id: 3-2
+  fleet_hint: 1CL+5DD，尽量高速+，1电探
+  notes: 高速65%走H，低速100%走H
+  synergy_quests: []
+- map_id: 3-3
+  fleet_hint: 1CV+1CVL+1CLT+1CL+2DD
+  notes: 78道中空优boss空确，或156道中空确
+  synergy_quests:
+  - Bw7

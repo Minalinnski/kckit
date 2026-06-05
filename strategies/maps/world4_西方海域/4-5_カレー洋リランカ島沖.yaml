@@ -1,0 +1,477 @@
+map: 4-5
+source: nga_import
+notes: カレー洋リランカ島沖; boss T点(港湾棲姫); 主路线A/C-D-H-T(高速+)、双线流(DD+CL)、大船流(经K点)、双凤流
+presets:
+- name: 高速+流（低配）磨血
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - FBB
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 金剛改二
+      notes: 旗舰
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 瑞鳳改二乙
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 瑞鶴改二甲
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 翔鶴改二甲
+    - ship_class:
+      - CA
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 摩耶改二
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 熊野改二
+  requirements:
+    air_state: none
+    air_power_min: 207
+    routing_nodes:
+    - D
+    - H
+    - T
+  equip_notes: 全队高速+; BB系+CV系<=4; T点磨血207空优(斩杀167空优); 制空253~258; 索敌33.20; BB旗舰斩杀时水侦换三式弹;
+    斩杀时翔鶴舰战可换舰攻
+  example:
+  - ship: 金剛改二
+    equips:
+    - 試製41cm三連装砲
+    - 試製41cm三連装砲
+    - 零式水上観測機
+    - 強化型艦本式缶
+  - ship: 瑞鳳改二乙
+    equips:
+    - 天山一二型(村田隊)
+    - 彗星(江草隊)
+    - 零式艦戦53型(岩本隊)
+    - 強化型艦本式缶
+  - ship: 瑞鶴改二甲
+    equips:
+    - 天山一二型(友永隊)
+    - 彗星一二型甲
+    - 烈風 一一型
+    - 強化型艦本式缶
+  - ship: 翔鶴改二甲
+    equips:
+    - 流星改
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 試製烈風 後期型
+    - 強化型艦本式缶
+  - ship: 摩耶改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 三式弾
+    - 強化型艦本式缶
+  - ship: 熊野改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 三式弾
+    - 強化型艦本式缶
+  tags:
+  - 高速+
+  - 磨血
+  - 低配
+  special_attacks: []
+- name: 双线流（DD+CL）磨血
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 赤城改
+      notes: 前排昼战清僚舰
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 加賀改
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 川内改二
+      notes: 可换夕張
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - 霞改
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - 満潮改
+    - ship_class:
+      - FBB
+      count: 1
+      speed: fast
+      specific_ships:
+      - 金剛改
+      notes: 可放1号位或6号位
+  requirements:
+    air_state: none
+    air_power_min: 207
+    routing_nodes:
+    - B
+    - E
+    - M
+    - R
+    - N
+    - T
+  equip_notes: DD>=2且CL>=1且全队高速; 上路FJ能动，下路B能动; T点磨血207空优; 制空223~228; 索敌15.54; R点旋涡掉油，多带电探减少油耗;
+    BB无闪建议带一门35.6cm提命中; CL可换夕張配甲標+双魚雷+水聴+電探
+  example:
+  - ship: 赤城改
+    equips:
+    - 彗星一二型甲
+    - 烈風 一一型
+    - 流星改
+    - 試製烈風 後期型
+  - ship: 加賀改
+    equips:
+    - 流星改
+    - 彗星一二型甲
+    - 流星改
+    - 試製烈風 後期型
+  - ship: 川内改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 九八式水上偵察機(夜偵)
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  - ship: 満潮改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 三式水中探信儀
+  - ship: 金剛改
+    equips:
+    - 41cm連装砲
+    - 35.6cm連装砲
+    - 零式水上観測機
+    - 三式弾
+  tags:
+  - 双线流
+  - 磨血
+  - 低配
+  - DD+CL
+  special_attacks: []
+- name: 大船流（经K点）斩杀
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - FBB
+      count: 1
+      speed: fast
+      specific_ships:
+      - 金剛改
+      notes: 旗舰
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 赤城改
+      notes: 带彩云凑索敌
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 加賀改
+    - ship_class:
+      - CA
+      count: 1
+      speed: fast
+      specific_ships:
+      - 鳥海改
+      notes: 双炮+三式弹+夜侦
+    - ship_class:
+      - CA
+      count: 1
+      speed: fast
+      specific_ships:
+      - 摩耶改
+      notes: 双炮+三式弹
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 最上改
+      notes: 双炮+三式弹+瑞雲
+  requirements:
+    air_state: none
+    air_power_min: 252
+    los_formula: 33
+    los_min: 70.0
+    routing_nodes:
+    - D
+    - H
+    - K
+    - T
+  equip_notes: BB系+CV+CVB<=3且BB系+CV系<=4且SS系=0; 能动选D; K点252空优; 分歧点系数×2索敌>=70; 制空270~274;
+    索敌34.18; 三式弹×4; 彩云凑索敌(或二式艦偵); 夜战4个二连对陆; CAV带水战/水爆对港湾1.2倍补正; 磨血不推荐此配置
+  example:
+  - ship: 金剛改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上観測機
+    - 三式弾
+  - ship: 赤城改
+    equips:
+    - 彗星一二型甲
+    - 試製烈風 後期型
+    - 流星改
+    - 彩雲
+  - ship: 加賀改
+    equips:
+    - 彗星一二型甲
+    - 流星改
+    - 烈風 一一型
+    - 試製烈風 後期型
+  - ship: 鳥海改
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 三式弾
+    - 九八式水上偵察機(夜偵)
+  - ship: 摩耶改
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 三式弾
+    - 零式水上偵察機
+  - ship: 最上改
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 三式弾
+    - 瑞雲(六三四空)
+  tags:
+  - 大船流
+  - 斩杀
+  - 经K点
+  special_attacks: []
+- name: 高速+流（高配）加賀護版
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 伊勢改二
+      notes: 旗舰; 磨血最适合的BB
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 赤城改二戊
+      notes: 护航兼顾反潜
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 加賀改二戊
+      notes: 加賀护形态兼顾反潜
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 99级需喂对潜才能单听先反
+    - ship_class:
+      - CLT
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 北上改二
+      notes: 单听先反
+    - ship_class:
+      - CLT
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 大井改二
+      notes: 单听先反
+  requirements:
+    air_state: none
+    air_power_min: 207
+    routing_nodes:
+    - D
+    - H
+    - T
+  equip_notes: '全队高速+且BB系+CV系<=4; T点磨血414空确/斩杀167空优; 先制対潜; 斩杀低配调整: 一个CLT换成CA系/BB系配双炮+三式弹/战车;
+    熊野可换最上带一式炮战车'
+  example: []
+  tags:
+  - 高速+
+  - 高配
+  - 全阶段
+  - 先制対潜
+  special_attacks: []
+- name: 高速+流（高配）凤翔改二版
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 伊勢改二
+      notes: 旗舰; 带对陆舰爆
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 赤城改二戊
+      notes: 僚舰带非对陆舰爆清水上舰
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 鳳翔改二
+      notes: 美国3爆战撑制空; 改修+7高压锅可高速+
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 先制対潜
+    - ship_class:
+      - CLT
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 北上改二
+      notes: 单听先反
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast+
+      specific_ships:
+      - 最上改
+      notes: 三式弾收尾; 改修+7高压锅可高速+
+  requirements:
+    air_state: none
+    air_power_min: 207
+    routing_nodes:
+    - D
+    - H
+    - T
+  equip_notes: '全队高速+且BB系+CV系<=4; T点磨血414空确/斩杀167空优; 旗舰带对陆舰爆第二轮炮击先手攻击港湾; 僚舰带非对陆舰爆清水上;
+    最上双炮+三式弹收尾; 凤翔孔里带超长射程扳手; T不利输出足够无需彩云; 气球增加昼战阈值后炮击输出; 斩杀: CLT换CA系/BB系'
+  example: []
+  tags:
+  - 高速+
+  - 高配
+  - 全阶段
+  - 凤翔改二
+  special_attacks: []
+- name: 双凤流（二连流）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 龍鳳改二戊
+      - 鳳翔改二
+      - 瑞鳳改二乙
+      notes: 三选一
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 龍鳳改二戊
+      - 鳳翔改二
+      - 瑞鳳改二乙
+      notes: 三选一(与上位不同)
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 矢矧改二乙
+      notes: 开幕雷+炮击配装; 不带对陆装
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      notes: 大発&钢板; 先制対潜; 可带一式炮战车
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      notes: 大発&钢板; 先制対潜; 可带一式炮战车
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      notes: 先制対潜+对空CI(弗莱彻); 大発DD
+  requirements:
+    air_state: none
+    air_power_min: 207
+    routing_nodes:
+    - D
+    - H
+    - T
+  equip_notes: 'CL>=1且DD+DE>=3; 能动选D; T点磨血207空优; 二连流: DD带大発+一式炮战车; CVL使用非对陆舰爆; 矢矧开幕雷+炮击不带对陆装;
+    警戒阵站位时矢矧与4号位DD互换; 先反建议5船; DD对空CI(弗莱彻)保护CVL; 旧版龙凤配置: CVL带6攻击机(非对陆舰爆)+超长射程扳手; 凤球流:
+    3气球增加昼战阈值后炮击1.06倍卡; 斩杀: 5/6号位DD换双炮+战车; CVL换龙凤打夜战'
+  example: []
+  tags:
+  - 双凤流
+  - 全阶段
+  - 低消耗
+  - 捞油
+  special_attacks: []

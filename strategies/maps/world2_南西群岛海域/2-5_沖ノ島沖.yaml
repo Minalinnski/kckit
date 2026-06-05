@@ -1,0 +1,478 @@
+map: 2-5
+source: nga_import
+notes: 沖ノ島沖：上路(B-F-J-O)戦艦巡洋艦編成、下路(C-E-I-O)空母駆逐編成、制空目標はbossO点84空確
+presets:
+- name: 下路 C-E-I-O 空母編成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: fast
+      specific_ships: []
+      notes: 中射程以上空母、高速、前列配置推奨
+    - ship_class:
+      - CVL
+      count: 1
+      speed: fast
+      specific_ships: []
+      notes: 高速空母
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 矢矧改二乙
+      - 夕張改二特
+      notes: 矢矧推奨、水偵+二連装砲+開幕雷撃装備
+    - ship_class:
+      - DD
+      count: 3
+      speed: fast
+      specific_ships: []
+      notes: 全高速、自己保護優先、対DD撃破火力も確保
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 42
+    los_formula: 1
+    los_min: 34.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - O
+  equip_notes: O点84空確。空母は艦攻主体、旗艦に艦爆1枚でCI補正推奨。矢矧は水偵1枚でF4接触開始率100%確保。夕張使用時は搭載>=6格に10索敵彩雲か搭載>=9格に8索敵彩雲が必要。制空値84以上目標。索敵係数=1で34以上必要。
+  example: []
+  tags:
+  - 下路
+  - 空母編成
+  - 毎月勲章
+  special_attacks: []
+- name: 上路 B-F-J-O 戦艦BBV/CAV瑞雲編成（萌新向け）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 30
+      specific_ships:
+      - 扶桑改
+      - 山城改
+      notes: 低速可、35.6cm連装砲×2+瑞雲×2
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 30
+      specific_ships:
+      - 伊勢改
+      notes: 低速可、35.6cm連装砲×2+瑞雲×2
+    - ship_class:
+      - BB
+      - BBV
+      count: 1
+      min_level: 30
+      specific_ships: []
+      notes: 低速可能、BBまたはBBV
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 30
+      speed: fast
+      specific_ships:
+      - 最上改
+      notes: 高速CAV、20.3cm連装砲×2+鼓缶(運輸用)+瑞雲。桶2隻のうち1隻
+    - ship_class:
+      - CL
+      - CAV
+      count: 1
+      min_level: 30
+      speed: fast
+      specific_ships:
+      - 川内改
+      notes: 高速CL、20.3cm連装砲×2+鼓缶(運輸用)。桶2隻のうち1隻
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 30
+      speed: fast
+      specific_ships:
+      - 妙高改
+      notes: 高速CA、20.3cm連装砲×2+零式水上偵察機×2
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 42
+    los_formula: 1
+    los_min: 49.0
+    routing_nodes:
+    - B
+    - F
+    - J
+    - O
+  equip_notes: O点84空確。2隻に鼓缶(運輸用)搭載必須（ルート固定）。低速船1隻必須でF→J固定。瑞雲は熟練度MAX推奨。制空84超・索敵49超なら
+    BB装備を双主砲+飛行機+徹甲弾に変更可能。索敵係数=1で49以上必要。制空値106~108（例示編成）。
+  example:
+  - ship: 扶桑改
+    equips:
+    - 35.6cm連装砲
+    - 35.6cm連装砲
+    - 瑞雲
+    - 瑞雲
+  - ship: 山城改
+    equips:
+    - 35.6cm連装砲
+    - 35.6cm連装砲
+    - 瑞雲
+    - 瑞雲
+  - ship: 伊勢改
+    equips:
+    - 35.6cm連装砲
+    - 35.6cm連装砲
+    - 瑞雲
+    - 瑞雲
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - ドラム缶(輸送用)
+    - 瑞雲
+  - ship: 川内改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - ドラム缶(輸送用)
+  - ship: 妙高改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  tags:
+  - 上路
+  - 萌新向け
+  - 低速可
+  - 桶必須
+  - 毎月勲章
+  special_attacks: []
+- name: 上路 B-F-J-O 第五戦隊任務編成（妙高+那智+羽黒）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 羽黒改二
+      notes: 高速重巡、20.3cm(3号)連装砲×2+零式水上偵察機11型乙(熟練)+FuMO25レーダー
+    - ship_class:
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 低速航改、41cm三連装砲改二+16inch三連装砲Mk.7+GFCS+一式徹甲弾改+瑞雲改二(六三四空/熟練)+零式艦戦53型(岩本隊)
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 妙高改二
+      notes: 高速重巡、20.3cm(3号)連装砲×2+零式水上偵察機11型乙(熟練)+紫雲
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 那智改二
+      notes: 高速重巡、20.3cm(3号)連装砲×2+零式水上偵察機11型乙(熟練)+紫雲
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 最上改二特
+      notes: 高速改航空巡洋艦、鼓缶(運輸用)+61cm五連装(酸素)魚雷+試製61cm六連装(酸素)魚雷+甲標的 丙型。桶搭載
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 矢矧改二乙
+      notes: 高速軽巡、鼓缶(運輸用)+61cm四連装(酸素)魚雷後期型×2+甲標的 丁型改(蛟龍改). 桶搭載
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 42
+    los_formula: 1
+    los_min: 49.0
+    routing_nodes:
+    - B
+    - F
+    - J
+    - O
+  equip_notes: O点84空確。制空値93。索敵51.05。2隻に鼓缶搭載でルート固定。低速船（伊勢改二）1隻でF→J固定。電探装備で蒼字火力ボーナス。索敵係数=1で49以上必要。
+  example:
+  - ship: 羽黒改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 伊勢改二
+    equips:
+    - 41cm三連装砲改二
+    - 16inch三連装砲 Mk.7+GFCS
+    - 一式徹甲弾改
+    - 瑞雲改二(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+  - ship: 妙高改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - 紫雲
+  - ship: 那智改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - 紫雲
+  - ship: 最上改二特
+    equips:
+    - ドラム缶(輸送用)
+    - 61cm五連装(酸素)魚雷
+    - 試製61cm六連装(酸素)魚雷
+    - 甲標的 丙型
+  - ship: 矢矧改二乙
+    equips:
+    - ドラム缶(輸送用)
+    - 61cm四連装(酸素)魚雷後期型
+    - 61cm四連装(酸素)魚雷後期型
+    - 甲標的 丁型改(蛟龍改)
+  tags:
+  - 上路
+  - 第五戦隊任務
+  - 桶必須
+  - 低速船必須
+  - 毎月勲章
+  special_attacks: []
+- name: 上路 B-F-E-I-O 水上反撃部隊編成（水反）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 長波改二
+      notes: 旗舰DD、12.7cm連装砲D型改二+12.7cm連装砲D型改三+GFCS Mk.37
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - Zara due
+      notes: 重巡洋艦、瑞雲12型×6+瑞雲(六三四空/熟練)×3+20.3cm(3号)連装砲+8inch三連装砲 Mk.9 mod.2。制空担当
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 矢矧改二乙
+      notes: 軽巡旗艦推奨、15.2cm連装砲改二×2+瑞雲改二(六三四空)+甲標的 丁型改(蛟龍改)
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 雪風改二
+      notes: 10cm連装高角砲+94式高射装置+現地改10cm連装高角砲+SG レーダー(初期型)
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 夕雲改二
+      notes: 12.7cm連装砲D型改二+5inch単装砲 Mk.30改+GFCS Mk.37+SG レーダー(初期型)
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - タシュケント改
+      notes: 130mm B-13連装砲×2+SG レーダー(初期型)×2
+  requirements:
+    air_state: none
+    air_power_min: 42
+    enemy_air_power: 19
+    los_formula: 1
+    los_min: 34.0
+    routing_nodes:
+    - B
+    - F
+    - E
+    - I
+    - O
+  equip_notes: O点空優42、空確84。制空値46~47。索敵34.45。Zaraの瑞雲でboss点空優安定（0.6/0.7回避瑞雲2機+3水爆で空優）。DD旗舰必須（任務要求）。CAV不可。索敵係数=1で34以上。警戒陣・閃光・高品質電探・穴あき鋼板等で安定性向上。矢矧改二乙がいない場合は夕張使用でZaraを双水爆配置へ変更。
+  example:
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改三
+    - GFCS Mk.37
+  - ship: Zara due
+    equips:
+    - 瑞雲12型
+    - 瑞雲(六三四空/熟練)
+    - 20.3cm(3号)連装砲
+    - 8inch三連装砲 Mk.9 mod.2
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 瑞雲改二(六三四空)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - SG レーダー(初期型)
+  - ship: 夕雲改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - SG レーダー(初期型)
+  - ship: タシュケント改
+    equips:
+    - 130mm B-13連装砲
+    - 130mm B-13連装砲
+    - SG レーダー(初期型)
+    - SG レーダー(初期型)
+  tags:
+  - 上路
+  - 水上反撃部隊
+  - 水反之神
+  - DD旗舰必須
+  - 任務対応
+  special_attacks: []
+- name: 精鋭第十六戦隊任務 B85（鬼怒改二旗舰）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 鬼怒改二
+      notes: 旗舰、20.3cm(3号)連装砲×2+零式水上偵察機11型乙(熟練)
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 青葉改
+      notes: 20.3cm(2号)連装砲×2+零式水上偵察機11型乙(熟練)+紫雲
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 敷波改二
+      notes: 12.7cm連装砲B型改四(戦時改修)+高射装置+12.7cm連装砲A型改三(戦時改修)+高射装置+鼓缶(運輸用)
+    - ship_class:
+      - CLT
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 球磨改二
+      notes: 二式水戦改×2+鼓缶(運輸用)。制空担当
+    - ship_class:
+      - CLT
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 大井改二
+      notes: 32号対水上電探×2+甲標的 丙型
+    - ship_class:
+      - CLT
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 北上改二
+      notes: 32号対水上電探×2+甲標的 丁型改(蛟龍改)
+  requirements:
+    air_state: none
+    air_power_min: 42
+    enemy_air_power: 19
+    los_formula: 1
+    los_min: 49.0
+    routing_nodes:
+    - B
+    - F
+    - J
+    - O
+  equip_notes: 制空値56。索敵49.60。球磨改二の二式水戦改で制空42空優。索敵不足時はDD/CLTに電探追加。CLT夜戦平A撃破可能。索敵係数=1で49以上必要。下路ランダム沟時はF5リロード可。
+  example:
+  - ship: 鬼怒改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+  - ship: 青葉改
+    equips:
+    - 20.3cm(2号)連装砲
+    - 20.3cm(2号)連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - 紫雲
+  - ship: 敷波改二
+    equips:
+    - 12.7cm連装砲B型改四(戦時改修)+高射装置
+    - 12.7cm連装砲A型改三(戦時改修)+高射装置
+    - ドラム缶(輸送用)
+  - ship: 球磨改二
+    equips:
+    - 二式水戦改
+    - 二式水戦改
+    - ドラム缶(輸送用)
+  - ship: 大井改二
+    equips:
+    - 32号対水上電探
+    - 32号対水上電探
+    - 甲標的 丙型
+  - ship: 北上改二
+    equips:
+    - 32号対水上電探
+    - 32号対水上電探
+    - 甲標的 丁型改(蛟龍改)
+  tags:
+  - 上路
+  - 任務B85
+  - 第十六戦隊
+  - 桶必須
+  special_attacks: []

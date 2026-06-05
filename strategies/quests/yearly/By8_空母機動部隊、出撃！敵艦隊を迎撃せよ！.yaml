@@ -1,0 +1,17 @@
+quest_id: By8
+quest_name: 空母機動部隊、出撃！敵艦隊を迎撃せよ！
+category: yearly
+requirement: 2-2、2-3、2-4各1次S胜，需要CV系旗舰+2CA系
+maps:
+- map_id: 2-2
+  fleet_hint: 1CV系旗舰+2CA系+1AV+2DE
+  notes: boss点41空优，81空确
+  synergy_quests: []
+- map_id: 2-3
+  fleet_hint: 1CV系旗舰+1CAV+1CA系+1AV+2DD
+  notes: boss点81空优，162空确
+  synergy_quests: []
+- map_id: 2-4
+  fleet_hint: 1CV系旗舰+2CA系+1CL+2DD
+  notes: 门神84空优，168空确
+  synergy_quests: []

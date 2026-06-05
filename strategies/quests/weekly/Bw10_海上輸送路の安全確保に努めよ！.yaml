@@ -1,0 +1,11 @@
+quest_id: Bw10
+quest_name: 海上輸送路の安全確保に努めよ！
+category: weekly
+requirement: 1-5，3次A胜
+maps:
+- map_id: 1-5
+  fleet_hint: 4DE/DD
+  synergy_quests:
+  - Bd8
+  - Bw5
+  - Bm5

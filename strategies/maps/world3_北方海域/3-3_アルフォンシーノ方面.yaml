@@ -1,0 +1,405 @@
+map: 3-3
+source: nga_import
+notes: アルフォンシーノ方面、北方周常海域、主路线A-C-G-M需正规空母或装甲空母带路
+presets:
+- name: 萌新推图 A-C-G-M
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - FBB
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 金剛改
+      - 金剛改二
+      - 比叡改
+      - 比叡改二
+      - 榛名改
+      - 榛名改二
+      - 霧島改
+      - 霧島改二
+      notes: 旗舰，BB位
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城改
+      notes: 正规空母带路
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: 可携带电探降低旋涡油耗
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 各带一个电探提高全队回避
+  requirements:
+    air_state: none
+    air_power_min: 156
+    enemy_air_power: 78
+    routing_nodes:
+    - A
+    - C
+    - G
+    - M
+  equip_notes: G点78空优/156空确；DD各带电探；CA可带电探减少旋涡油耗；制空值101~102
+  example:
+  - ship: 金剛改
+    equips:
+    - 35.6cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 零式艦戦52型
+    - 彗星一二型甲
+    - 零式艦戦52型
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 21号対空電探
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 摩耶改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 13号対空電探
+    - 零式水上偵察機
+  - ship: 時雨改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  - ship: 霞改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  tags:
+  - 萌新推图
+  - 周常
+  special_attacks: []
+- name: 周常高开幕雷击配置 (配置1) A-C-G-M
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships: []
+      notes: 长射程正规空母，带彩云防T不利
+    - ship_class:
+      - CLT
+      count: 2
+      specific_ships: []
+      notes: 雷装拉满，先制雷击
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships: []
+      notes: 可带电探
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 对空CI配装+电探
+  requirements:
+    air_state: none
+    air_power_min: 156
+    enemy_air_power: 78
+    routing_nodes:
+    - A
+    - C
+    - G
+    - M
+  equip_notes: G点156空确；CV带彩云(索敌≥10放≥6搭载格或索敌≥8放≥9搭载格)防T不利并提升接触率；CLT雷装180以上；DD对空CI+电探
+  example: []
+  tags:
+  - 周常
+  - 高开幕雷击
+  - 任务
+  special_attacks: []
+- name: 周常防御偏重配置 (配置2) A-C-G-M
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships: []
+      notes: 长射程正规空母，带彩云提升接触率
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: 可选
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      count: 2
+      specific_ships:
+      - 最上改
+      - 矢矧改二乙
+      notes: 硬度高的巡洋，带水偵堆接触开始率，单甲标清小船，昼战二连
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 对空CI+电探+钢板强化生存
+  requirements:
+    air_state: none
+    air_power_min: 156
+    enemy_air_power: 78
+    routing_nodes:
+    - A
+    - C
+    - G
+    - M
+  equip_notes: G点156空确；CA/CL带水偵提升接触率，昼战二连；DD对空CI+电探+钢板；CV彩云提升接触率
+  example: []
+  tags:
+  - 周常
+  - 防御偏重
+  - 任务
+  special_attacks: []
+- name: 捞家具币 A-B-D / A-B-F-H
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 2
+      speed: 低速
+      specific_ships:
+      - 大鷹改二
+      - 鈴谷航改二
+      - 熊野航改二
+      notes: 长射程CVL，道中保证不红脸
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 信頼
+      - 夕雲改二
+      notes: 带路+挡枪，携带増設防雷鼓包
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 熊野航改二
+      notes: 第三CVL可选，带彩云
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - B
+    - D
+  equip_notes: 制空值56~58；钢板优先；大鷹改二带彗星二二型(六三四空/熟练)+天山一二型(村田队)等；CVL带彩云(东加罗林空)；DD全带増設防雷鼓包；总消耗燃料185钢190
+  example:
+  - ship: 大鷹改二
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 天山一二型(村田隊)
+    - 天山一二型(村田隊)
+    - 流星(六〇一空)
+  - ship: 鈴谷航改二
+    equips:
+    - 彗星二二型(六三四空)
+    - 天山一二型(友永隊)
+    - 流星(六〇一空)
+    - 流星改
+  - ship: 信頼
+    equips:
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  - ship: 夕雲改二
+    equips:
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  - ship: 熊野航改二
+    equips:
+    - 彗星(江草隊)
+    - 流星改
+    - 流星改
+    - 彩雲(東カロリン空)
+  tags:
+  - 捞家具币
+  - 低消耗
+  special_attacks: []
+- name: 任务B56 新編成航空戦隊北方進出 A-C-G-M
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships: []
+      notes: 任务需要CV系
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: 任务需要CVL
+    - ship_class:
+      - CAV
+      - BBV
+      count: 2
+      specific_ships: []
+      notes: 任务需要2CAV或BBV
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 带电探
+  requirements:
+    air_state: none
+    air_power_min: 78
+    enemy_air_power: 78
+    routing_nodes:
+    - A
+    - C
+    - G
+    - M
+  equip_notes: G点78空优/156空确；任务需要2CV系+2CAV/BBV+2DD；S胜利
+  example: []
+  tags:
+  - 任务
+  - B56
+  special_attacks: []
+- name: 任务B88 戦艦戦隊出撃 A-C-G-M
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - FBB
+      - BB
+      - BBV
+      count: 2
+      specific_ships: []
+      notes: 旗舰必须为BB系，任务需2BB系
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships: []
+      notes: 带路
+    - ship_class:
+      - CA
+      - CAV
+      count: 3
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 216
+    enemy_air_power: 48
+    routing_nodes:
+    - A
+    - C
+    - G
+    - M
+  equip_notes: E点216空确/G点156空确；任务需2BB系旗舰+1CV+3CA；S胜利
+  example: []
+  tags:
+  - 任务
+  - B88
+  special_attacks: []
+- name: 任务B122 精鋭四戦隊第二小隊 A-C-G-M
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CA
+      count: 1
+      specific_ships:
+      - 摩耶改二
+      notes: 任务必须
+    - ship_class:
+      - CA
+      count: 1
+      specific_ships:
+      - 鳥海改二
+      notes: 任务必须
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships: []
+      notes: 带路
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 带电探
+  requirements:
+    air_state: none
+    air_power_min: 78
+    enemy_air_power: 78
+    routing_nodes:
+    - A
+    - C
+    - G
+    - M
+  equip_notes: G点78空优/156空确；任务需摩耶改二+鸟海改二；S胜利
+  example: []
+  tags:
+  - 任务
+  - B122
+  special_attacks: []
+- name: 任务B127 冬季北方海域作戦 A-C-G-M
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      - CLT
+      count: 2
+      specific_ships: []
+      notes: 旗舰必须为轻巡系，任务需2CL/CLT
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships: []
+      notes: 带路
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 带电探
+  requirements:
+    air_state: none
+    air_power_min: 78
+    enemy_air_power: 78
+    routing_nodes:
+    - A
+    - C
+    - G
+    - M
+  equip_notes: G点78空优/156空确；任务需CL/CLT旗舰；S胜2次
+  example: []
+  tags:
+  - 任务
+  - B127
+  special_attacks: []

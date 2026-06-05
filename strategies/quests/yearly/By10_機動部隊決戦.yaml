@@ -1,0 +1,21 @@
+quest_id: By10
+quest_name: 機動部隊決戦
+category: yearly
+requirement: 5-2、5-5、6-5各2次S胜，6-4各2次A胜，需要CV系旗舰
+maps:
+- map_id: 5-2
+  fleet_hint: 翔鹤旗舰+瑞鹤+1BB系+1BB系/CAV+2DD高速
+  notes: boss点351空确，索敌>=70
+  synergy_quests: []
+- map_id: 5-5
+  fleet_hint: 2CV旗舰+1BB系+1AO(宗谷)+2DD
+  notes: boss点斩前392空优，斩后356空优，索敌>=66
+  synergy_quests: []
+- map_id: 6-5
+  fleet_hint: 3CV旗舰+1BB系+1CL+1DD
+  notes: G点468空优，索敌>=50
+  synergy_quests: []
+- map_id: 6-4
+  fleet_hint: 1CV旗舰+1BB系+1LHA/CAV+1CL+2DD
+  notes: J点198空优，396空确，任务只需A胜
+  synergy_quests: []

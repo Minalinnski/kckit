@@ -1,0 +1,14 @@
+quest_id: Bq6
+quest_name: 精鋭'三一駆'、鉄底海域に突入せよ！
+category: quarterly
+requirement: 5-4，2次S胜，需要长波改二+高波改/冲波改/朝霜改(二)3选1
+maps:
+- map_id: 5-4
+  fleet_hint: 1FBB+提速伊势改二+1CL+3DD
+  notes: boss点62空均，140空优，分歧点系数=2，索敌>=45
+  synergy_quests:
+  - Bq7
+  - Bq13
+  combo_fleets:
+    Bq7: 4CA/CL+2DD，DD位长波改二+高波改/冲波改/朝霜改(二)3选1
+    Bq13: 夕张改二旗舰+2BB系+由良改二+2DD

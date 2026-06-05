@@ -1,0 +1,367 @@
+map: 3-4
+source: nga_import
+notes: 北方海域全域，boss点P需制空确保168，主要路线有A-C-E-G-J-P、A-C-F-J-P（高速+）、D-H-L-J-P（水雷魂）三条
+presets:
+- name: 大船流（萌新推图）A-C-E-G-J-P
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 神通改二
+      notes: 旗舰
+    - ship_class:
+      - FBB
+      count: 2
+      specific_ships:
+      - 榛名改二
+      - 金剛改二
+    - ship_class:
+      - CV
+      count: 2
+      specific_ships:
+      - 赤城改
+      - 加賀改
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 千歳甲
+      notes: AV水上機母艦
+  requirements:
+    air_state: none
+    air_power_min: 168
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - E
+    - G
+    - J
+    - P
+  equip_notes: boss点P制空確保168。制空戦力209~212。索敵能力36.82。BBに41cm連装砲×2+九一式徹甲弾+零式水上偵察機。CVに流星改+烈風+彗星一二型甲+彩雲(赤城)。AV千歳に甲標的甲型×3。
+  example:
+  - ship: 神通改二
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 榛名改二
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 九一式徹甲弾
+    - 零式水上偵察機
+  - ship: 金剛改二
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 九一式徹甲弾
+    - 零式水上偵察機
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 烈風改二
+    - 彗星一二型甲
+    - 彩雲(偵四)
+  - ship: 加賀改
+    equips:
+    - 流星改
+    - 烈風改二
+    - 彗星一二型甲
+    - 烈風改二
+  - ship: 千歳甲
+    equips:
+    - 甲標的 甲型
+    - 甲標的 甲型
+    - 甲標的 甲型
+  tags:
+  - 大船流
+  - 萌新向
+  - 回避漩涡
+  - 捞铝
+  special_attacks: []
+- name: 平衡型洗地流（A-C-E-G-J-P）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 旗舰，長射程戦爆CI
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改二
+      notes: 長射程戦爆CI
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 飛鷹改
+      notes: 戦爆CI
+    - ship_class:
+      - CLT
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 北上改二
+      notes: 雷撃
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 日進甲
+      notes: 索敵≥7の水偵搭載
+    - ship_class:
+      - CL
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 夕張改二特
+      notes: 対空CI
+  requirements:
+    air_state: none
+    air_power_min: 168
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - E
+    - G
+    - J
+    - P
+  equip_notes: 制空戦力177~179。索敵能力52.54。日進に索敵≥7の水上偵察機（紫雲または零式水上偵察機11型乙熟練）搭載。CVに長射程で戦爆CI（赤青赤赤）、非長射程CVLに舰攻堆積。夕張に対空≥9機銃+対空≥3機銃+対空≥1電探で対空CI。
+  example:
+  - ship: 瑞鳳改二乙
+    equips:
+    - 天山一二型(村田隊)
+    - 天山一二型(村田隊)
+    - 彗星(江草隊)
+    - 烈風改二
+  - ship: 赤城改二
+    equips:
+    - 九七式艦攻(友永隊)
+    - 彗星二二型(六三四空/熟練)
+    - 天山一二型(友永隊)
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 零式艦戦53型(岩本隊)
+  - ship: 飛鷹改
+    equips:
+    - 九七式艦攻(友永隊)
+    - 九七式艦攻(友永隊)
+    - 九九式艦爆(江草隊)
+    - 九九式艦爆(江草隊)
+  - ship: 北上改二
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 甲標的 甲型
+  - ship: 日進甲
+    equips:
+    - 甲標的 丙型
+    - 甲標的 丙型
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丙型
+  - ship: 夕張改二特
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 試製61cm六連装(酸素)魚雷
+    - 甲標的 丁型改(蛟龍改)
+    - Bofors 40mm四連装機関砲
+    - GFCS Mk.37
+  tags:
+  - 洗地流
+  - 省铝
+  - 戦爆CI
+  - 平衡型
+  special_attacks: []
+- name: 飙船流高速+（A-C-F-J-P）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      speed: 高速+
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 旗舰，高速+
+    - ship_class:
+      - CV
+      count: 2
+      speed: 高速+
+      specific_ships:
+      - 赤城改二
+      - 加賀改二
+      notes: 装甲空母高速+、戦爆CI
+    - ship_class:
+      - DD
+      count: 2
+      speed: 高速+
+      specific_ships:
+      - 塔什干改
+      - 雪風改二
+      notes: 高速+駆逐、電探搭載で漩涡耗油軽減
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速+
+      specific_ships:
+      - 矢矧改二乙
+      notes: 高速+軽巡
+  requirements:
+    air_state: none
+    air_power_min: 168
+    enemy_air_power: 168
+    routing_nodes:
+    - A
+    - C
+    - F
+    - J
+    - P
+  equip_notes: 全員高速+必須。制空戦力180~181。索敵能力53.16。F点漩涡対策に電探を多めに積む。長射程CVに戦爆CI（彩雲で発動率向上）、非長射程CVに舰攻堆積。F点大漩涡時はboss点で撃沈リスクあり。
+  example:
+  - ship: 瑞鳳改二乙
+    equips:
+    - 天山一二型(村田隊)
+    - 彗星(江草隊)
+    - 彗星(江草隊)
+    - 新型高温高圧缶
+  - ship: 赤城改二
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 流星改(一航戦/熟練)
+    - 彩雲
+    - 新型高温高圧缶
+  - ship: 加賀改二
+    equips:
+    - 流星改(一航戦/熟練)
+    - 天山一二型(村田隊)
+    - 天山一二型(友永隊)
+    - 天山一二型(村田隊)
+    - 新型高温高圧缶
+  - ship: 塔什干改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+    - 新型高温高圧缶
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+    - 新型高温高圧缶
+  - ship: 矢矧改二乙
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 61cm四連装(酸素)魚雷後期型
+    - 試製61cm六連装(酸素)魚雷
+    - 新型高温高圧缶
+  tags:
+  - 高速+
+  - 飙船
+  - 漩涡路线
+  - 装甲空母
+  - 戦爆CI
+  special_attacks: []
+- name: 水雷魂（D-H-L-J-P）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - ゴトランドandra
+      notes: 旗舰、軽航空巡洋艦、水爆搭載
+    - ship_class:
+      - DD
+      count: 3
+      speed: 高速
+      specific_ships:
+      - 夕雲改二
+      - 長波改二
+      - 弗莱彻Mk.II
+      notes: 高火力高装甲DD、道中電探搭載推奨
+    - ship_class:
+      - CL
+      count: 1
+      speed: 低速
+      specific_ships:
+      - 夕張改二特
+      notes: 魚雷CI
+    - ship_class:
+      - CAV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 最上改
+      notes: 航空巡洋艦、水爆搭載で制空担当
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 84
+    routing_nodes:
+    - D
+    - H
+    - L
+    - J
+    - P
+  equip_notes: 制空戦力84（boss点P空優）。索敵能力65.85。旗舰哥特兰以外の制空担当以外の船は漩涡点通過時に全員電探推奨。最上に試製晴嵐×2+晴嵐（六三一空）+瑞雲12型で制空。夕張に魚雷CI（61cm五連装+試製61cm六連装+甲標的丁型改+北方迷彩+GFCS
+    Mk.37）。S勝率低め、捞船には不向き。最上を能代/矢矧に換えると勝率向上。
+  example:
+  - ship: ゴトランドandra
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 瑞雲(六三四空/熟練)
+    - 瑞雲改二(六三四空/熟練)
+  - ship: 夕雲改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改三
+    - GFCS Mk.37
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改二
+    - GFCS Mk.37
+  - ship: 弗莱彻Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - GFCS Mk.37
+  - ship: 夕張改二特
+    equips:
+    - 61cm五連装(酸素)魚雷
+    - 試製61cm六連装(酸素)魚雷
+    - 甲標的 丁型改(蛟龍改)
+    - 北方迷彩(+北方装備)
+    - GFCS Mk.37
+  - ship: 最上改
+    equips:
+    - 試製晴嵐
+    - 試製晴嵐
+    - 晴嵐(六三一空)
+    - 瑞雲12型
+  tags:
+  - 水雷魂
+  - 下路
+  - 小船流
+  - D-H-L-J-P
+  - 低制空
+  special_attacks: []

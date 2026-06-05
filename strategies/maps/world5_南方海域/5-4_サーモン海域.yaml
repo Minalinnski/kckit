@@ -1,0 +1,753 @@
+map: 5-4
+source: nga_import
+notes: サーモン海域。上路(B-C-G-L-P)昼战带空母，下路(B-E-H-I-J-M-P或A-D-E-H-I-J-M-P)夜战。boss点为轮形阵补给舰队，强度不高。
+presets:
+- name: 萌新推图・下路夜战
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      min_level: 60
+      specific_ships:
+      - 長門改
+      notes: 旗舰，低速
+    - ship_class:
+      - FBB
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 金剛改
+      notes: 高速戦列巡洋艦
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 最上改
+      notes: 航空巡洋艦，搭载水战拿制空
+    - ship_class:
+      - CLT
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 北上改二
+      notes: 重雷装巡洋艦
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 満潮改
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 霞改
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 63
+    los_formula: 2
+    los_min: 45.0
+    routing_nodes:
+    - A
+    - D
+    - E
+    - H
+    - I
+    - J
+    - M
+    - P
+  equip_notes: boss点P制空63均勢。最上搭载2個水戦拿均勢，水戦不足可用水戦+熟練瑞雲補。索敵分歧点系数=2，索敵>=45。CLT不够索敵可换CA(双主炮+水侦+電探)。全队高速(长门低速导致航速低速)。
+  example:
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 金剛改
+    equips:
+    - 35.6cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 二式水戦改
+    - 20.3cm連装砲
+    - 二式水戦改
+  - ship: 北上改二
+    equips:
+    - 15.5cm三連装副砲
+    - 15.5cm三連装砲
+    - 甲標的 甲型
+  - ship: 満潮改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  tags:
+  - 萌新
+  - 下路
+  - 夜战
+  special_attacks: []
+- name: 上路昼战・前方核潜艇预警
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      min_level: 60
+      specific_ships:
+      - 長門改
+      notes: 旗舰，低速
+    - ship_class:
+      - FBB
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 金剛改
+      notes: ''
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 赤城改
+      notes: 正規航母
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 摩耶改
+      notes: 対空CI可能(改二形態時)
+    - ship_class:
+      - CL
+      count: 1
+      min_asw: 100
+      speed: 高速
+      specific_ships:
+      - 五十鈴改二
+      notes: 先制対潜旗舰，防空軽巡洋艦
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 60
+      speed: 高速
+      specific_ships:
+      - 蒼龍改
+      notes: 正規航母
+  requirements:
+    air_state: none
+    air_power_min: 309
+    los_formula: 2
+    los_min: 60.0
+    routing_nodes:
+    - B
+    - C
+    - G
+    - L
+    - P
+  equip_notes: G点空優309需要，索敵分歧点系数=2，索敵>=60。制空328~329。五十铃改二先制対潜(三式水中探信儀+三式爆雷投射機+12.7cm連装高角砲)。C点使用単横陣対潜。摩耶改二可配対空CI(高角砲+対空機銃+対空電探)。
+  example:
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 金剛改
+    equips:
+    - 35.6cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 試製烈風 後期型
+    - 彗星一二型甲
+    - 紫電改二
+  - ship: 摩耶改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 五十鈴改二
+    equips:
+    - 三式水中探信儀
+    - 三式爆雷投射機
+    - 12.7cm連装高角砲
+  - ship: 蒼龍改
+    equips:
+    - 流星改
+    - 試製烈風 後期型
+    - 試製烈風 後期型
+    - 紫電改二
+  tags:
+  - 上路
+  - 先制対潜
+  - 対空CI
+  special_attacks: []
+- name: 拡張'六水戦'＋精鋭'三一駆'・下路夜战
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰，低速，兵装実験軽巡洋艦
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 由良改二
+      notes: 軽巡洋艦
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 長波改二
+      notes: 三一駆，D型砲CI
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 朝霜改二
+      notes: 三一駆(高波改/沖波改/朝霜改 3選1)，D型砲CI
+    - ship_class:
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 低速，改装航空戦艦，夜瑞雲搭載
+    - ship_class:
+      - CAV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 最上改二特
+      notes: 水上偵察機11型甲改二搭載
+  requirements:
+    air_state: none
+    air_power_min: 141
+    los_formula: 2
+    los_min: 45.0
+    routing_nodes:
+    - A
+    - D
+    - E
+    - H
+    - I
+    - J
+    - M
+    - P
+  equip_notes: boss点P制空141空優。制空162，分歧点系数=2，索敵>=45。夕張旗舰照明弾搭載。伊勢改二・最上に夜間瑞雲多搭載推奨。DD配電探+見張員で夜戦回避向上。長波改二はD型砲CI(12.7cm連装砲D型改三×2+GFCS
+    Mk.37+水雷戦隊 熟練見張員)。
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 照明弾
+    - GFCS Mk.37
+    - 水雷戦隊 熟練見張員
+  - ship: 由良改二
+    equips:
+    - 15.5cm三連装副砲改二
+    - 強風改二
+    - 甲標的 丙型
+    - 8cm高角砲改+増設機銃
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改三
+    - 12.7cm連装砲D型改二
+    - GFCS Mk.37
+    - 水雷戦隊 熟練見張員
+  - ship: 朝霜改二
+    equips:
+    - 12.7cm連装砲D型改三
+    - 12.7cm連装砲D型改二
+    - 逆探(E27)+22号対水上電探改四(後期調整型)
+    - 水雷戦隊 熟練見張員
+  - ship: 伊勢改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 41cm三連装砲改二
+    - 試製 夜間瑞雲(攻撃装備)
+    - 瑞雲改二(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 一式徹甲弾改
+  - ship: 最上改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 零式水上偵察機
+    - 甲標的 丙型
+    - 艦本新設計 増設バルジ(中型艦)
+  tags:
+  - 六水戦
+  - 三一駆
+  - 下路
+  - 夜战
+  - 任务
+  special_attacks: []
+- name: 新三川艦隊＋精鋭三一駆・下路夜战
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰，低速，夜戦回避最低のため旗舰で保護
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 古鷹改二
+      notes: 新三川(鳥海/青葉/衣笠/加古/古鷹/天龍/夕張 7選4)
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 加古改二
+      notes: 新三川
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 長波改二
+      notes: 三一駆
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 朝霜改二
+      notes: 三一駆(高波改/沖波改/朝霜改 3選1)
+    - ship_class:
+      - CA
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 鳥海改二
+      notes: 新三川
+  requirements:
+    air_state: none
+    air_power_min: 0
+    los_formula: 2
+    los_min: 45.0
+    routing_nodes:
+    - A
+    - D
+    - E
+    - H
+    - I
+    - J
+    - M
+    - P
+  equip_notes: 制空0。索敵分歧点系数=2，索敵>=45。CA系と電探+見張員のDDは夜戦回避補正あり。道中支援推奨。決戦支援はT不利時のみ必要。古鷹/加古に照明弾搭載推奨。
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - 水雷戦隊 熟練見張員
+    - GFCS Mk.37
+    - 熟練見張員
+  - ship: 古鷹改二
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 20.3cm(2号)連装砲
+    - FuMO25 レーダー
+    - 照明弾
+  - ship: 加古改二
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 20.3cm(2号)連装砲
+    - FuMO25 レーダー
+    - 照明弾
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改三
+    - 12.7cm連装砲D型改二
+    - GFCS Mk.37
+    - 水雷戦隊 熟練見張員
+  - ship: 朝霜改二
+    equips:
+    - 12.7cm連装砲D型改三
+    - 12.7cm連装砲D型改二
+    - 逆探(E27)+22号対水上電探改四(後期調整型)
+    - 水雷戦隊 熟練見張員
+  - ship: 鳥海改二
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 20.3cm(3号)連装砲
+    - FuMO25 レーダー
+    - 零式水上偵察機
+  tags:
+  - 新三川
+  - 三一駆
+  - 下路
+  - 夜战
+  - 任务
+  special_attacks: []
+- name: 精鋭三一駆単独・下路夜战(big7)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 長門改二
+      notes: 旗舰，Big7
+    - ship_class:
+      - FBB
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 霧島改二
+      notes: 工具人FBB
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 水战CL，搭载水戦拿boss点空均
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 朝霜改二
+      notes: 三一駆(高波改/沖波改/朝霜改 3選1)
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 長波改二
+      notes: 三一駆旗艦船，D型砲CI
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 雪風改二
+      notes: DD
+  requirements:
+    air_state: none
+    air_power_min: 63
+    los_formula: 2
+    los_min: 45.0
+    routing_nodes:
+    - B
+    - E
+    - H
+    - I
+    - J
+    - M
+    - P
+  equip_notes: boss点P制空63空均。制空64。索敵分歧点系数=2，索敵>=45。矢矧改二乙に水戦2個搭載でboss点空均確保。長門改二は51cm連装砲+試製51cm連装砲+零式水上偵察機11型乙(熟練)+新型高温高圧缶。霧島改二は16inch三連装砲Mk.7+GFCS×2+九八式水上偵察機(夜偵)+一式徹甲弾改。
+  example:
+  - ship: 長門改二
+    equips:
+    - 51cm連装砲
+    - 試製51cm連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - 新型高温高圧缶
+  - ship: 霧島改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 16inch三連装砲 Mk.7+GFCS
+    - 九八式水上偵察機(夜偵)
+    - 一式徹甲弾改
+  - ship: 矢矧改二乙
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 15.2cm連装砲改二
+    - 強風改
+    - 強風改
+  - ship: 朝霜改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改二
+    - GFCS Mk.37
+    - 水雷戦隊 熟練見張員
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改三
+    - 照明弾
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - GFCS Mk.37
+  tags:
+  - 三一駆
+  - 下路
+  - 夜战
+  - big7
+  - 任务
+  special_attacks: []
+- name: 拡張'六水戦'・上路昼战
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 夕張改二特
+      notes: 旗舰，低速，先制対潜
+    - ship_class:
+      - BB
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 長門改二
+      notes: 低速，51cm砲
+    - ship_class:
+      - BBV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊勢改二
+      notes: 低速，改装航空戦艦，瑞雲搭載で制空
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 翔鶴改二甲
+      notes: 装甲空母
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 瑞鶴改二甲
+      notes: 装甲空母
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: 高速
+      specific_ships:
+      - 由良改二
+      notes: 六水戦，魚雷CI
+  requirements:
+    air_state: none
+    air_power_min: 309
+    los_formula: 2
+    los_min: 60.0
+    routing_nodes:
+    - B
+    - C
+    - G
+    - L
+    - P
+  equip_notes: G点309空優。制空317~321。索敵分歧点系数=2，索敵>=60。夕張改二特に先制対潜装備(HF/DF+Type144/147 ASDIC+対潜短魚雷(試製初期型)+22号対水上電探改四(後期調整型))。長門改二に51cm連装砲+試製51cm連装砲。伊勢改二に瑞雲改二(六三四空/熟練)等搭載。C点は単横陣か梯形陣。
+  example:
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - 22号対水上電探改四(後期調整型)
+  - ship: 長門改二
+    equips:
+    - 51cm連装砲
+    - 試製51cm連装砲
+    - 零式水上偵察機11型乙(熟練)
+    - 一式徹甲弾改
+  - ship: 伊勢改二
+    equips:
+    - 16inch三連装砲 Mk.7+GFCS
+    - 41cm三連装砲改二
+    - 瑞雲改二(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 一式徹甲弾改
+  - ship: 翔鶴改二甲
+    equips:
+    - 天山一二型(村田隊)
+    - 零戦62型(爆戦/岩井隊)
+    - 烈風改二
+    - 艦本新設計 増設バルジ(大型艦)
+  - ship: 瑞鶴改二甲
+    equips:
+    - 天山一二型(村田隊)
+    - 彗星(江草隊)
+    - 烈風改二戊型(一航戦/熟練)
+    - 艦本新設計 増設バルジ(大型艦)
+  - ship: 由良改二
+    equips:
+    - 甲標的 丙型
+    - 61cm五連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+  tags:
+  - 六水戦
+  - 上路
+  - 昼战
+  - 任务
+  special_attacks: []
+- name: 新三川艦隊・上路昼战(一航戦改二)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 赤城改二戊
+      notes: 旗舰，一航戦改二
+    - ship_class:
+      - CV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 加賀改二
+      notes: 一航戦改二
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 鳥海改二
+      notes: 新三川(鳥海/青葉/衣笠/加古/古鷹/天龍/夕張 7選4)
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 加古改二
+      notes: 新三川
+    - ship_class:
+      - CA
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 古鷹改二
+      notes: 新三川
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 夕張改二特
+      notes: 低速，先制対潜
+  requirements:
+    air_state: none
+    air_power_min: 309
+    los_formula: 2
+    los_min: 60.0
+    routing_nodes:
+    - B
+    - C
+    - G
+    - L
+    - P
+  equip_notes: G点309空優。制空325。索敵分歧点系数=2，索敵>=60。CA系に対空CI可能(主砲+GFCS/5inch両用砲+水上偵察機+FuMO25電探)。CA系は夜戦回避補正あり。一航戦改二で制空確保容易，攻撃機を多めに搭載可能。
+  example:
+  - ship: 赤城改二戊
+    equips:
+    - 天山一二型(村田隊)
+    - 烈風改二戊型(一航戦/熟練)
+    - 彗星二二型(六三四空/熟練)
+    - 烈風改二戊型
+    - F6F-5N
+  - ship: 加賀改二
+    equips:
+    - 天山一二型(村田隊)
+    - 彗星(江草隊)
+    - 彗星二二型(六三四空/熟練)
+    - 零式艦戦53型(岩本隊)
+    - 烈風改二
+  - ship: 鳥海改二
+    equips:
+    - 20.3cm(3号)連装砲
+    - GFCS Mk.37+5inch連装両用砲(集中配備)
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 加古改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 5inch連装両用砲(集中配備)
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 古鷹改二
+    equips:
+    - 20.3cm(2号)連装砲
+    - 5inch連装両用砲(集中配備)
+    - 零式水上偵察機11型乙(熟練)
+    - FuMO25 レーダー
+  - ship: 夕張改二特
+    equips:
+    - 甲標的 丁型改(蛟龍改)
+    - 試製61cm六連装(酸素)魚雷
+    - 61cm五連装(酸素)魚雷
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - 22号対水上電探改四(後期調整型)
+  tags:
+  - 新三川
+  - 上路
+  - 昼战
+  - 任务
+  - 一航戦
+  special_attacks: []

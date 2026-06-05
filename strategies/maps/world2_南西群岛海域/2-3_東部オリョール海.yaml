@@ -1,0 +1,250 @@
+map: 2-3
+source: nga_import
+notes: 東部オリョール海。Boss N点（戦艦ル級flagship+空母ヲ級elite×2）。ランダム分岐多数、編成次第で沟率が変化。
+presets:
+- name: 萌新推图：BB+CV重型阵容
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - BBV
+      count: 2
+      specific_ships:
+      - 山城
+      - 扶桑
+      notes: 低速戦列艦
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城
+      notes: 正規航母、制空主力
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      specific_ships:
+      - 摩耶
+      - 最上
+      notes: 重巡洋艦
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳
+      notes: 軽空母
+  requirements:
+    air_state: supremacy
+    air_power_min: 162
+    enemy_air_power: 162
+    routing_nodes: []
+  equip_notes: 制空79（実装例）、N点司令部Lv89以下77空優/153空確、Lv90以上81空優/162空確。BB×2搭載零式水上偵察機。CV主力艦爆艦攻混載。CVL艦爆+艦攻混載。
+  example:
+  - ship: 山城
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 扶桑
+    equips:
+    - 41cm連装砲
+    - 35.6cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 赤城
+    equips:
+    - 九九式艦爆
+    - 九七式艦攻
+    - 九七式艦攻
+    - 九六式艦戦
+  - ship: 摩耶
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 最上
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 瑞鳳
+    equips:
+    - 九七式艦攻
+    - 九九式艦爆
+    - 九六式艦戦
+  tags:
+  - 初心者向け
+  - 重型
+  special_attacks: []
+- name: 期間限定掉落捞船：1CV+1CVL+1AV+1CL+2DD低沟率阵容
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 神鷹改二
+      notes: 正規航母、制空+艦攻主力
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 軽空母、低消費・格子補助
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships:
+      - 日進甲
+      notes: 水上機母艦、夜間瑞雲+水偵で接触・夜戦補助
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships:
+      - 吹雪改二
+      - 曙改二
+      notes: 駆逐艦、経験値稼ぎ兼用可
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 綾波改二
+      notes: 駆逐艦
+  requirements:
+    air_state: supremacy
+    air_power_min: 162
+    enemy_air_power: 162
+    routing_nodes: []
+  equip_notes: 制空181。N点162空確。CVには天山一二型(村田隊)・天山一二型甲改二(村田隊/電探装備)・F4U-7・AU-1搭載、熟練甲板要員+航空整備員。CVLには流星改(一航戦/熟練)×2+零式艦戦62型改(熟練/夜間爆戦)+彗星(江草隊)+熟練甲板要員+航空整備員。AVには瑞雲改二(六三四空/熟練)+試製夜間瑞雲(攻撃装備)+零式水上偵察機11型乙(熟練)+甲標的丁型改(蛟龍改)。DDは10cm連装高角砲改+高射装置改×2+GFCS
+    Mk.37。索敵28.21。AV水偵1機で接触確保（索敵≤6なら2機推奨）。CV複数空確保で開幕洗光、艦爆補完は中抗艦爆（彗星江草/岩井/暗黒岩井）推奨。
+  example:
+  - ship: 神鷹改二
+    equips:
+    - 天山一二型(村田隊)
+    - 天山一二型甲
+    - F4U-7
+    - AU-1
+    - 熟練甲板要員+航空整備員
+  - ship: 瑞鳳改二乙
+    equips:
+    - 流星改(一航戦/熟練)
+    - 流星改(一航戦/熟練)
+    - 零式艦戦64型(熟練爆戦)
+    - 彗星(江草隊)
+    - 熟練甲板要員+航空整備員
+  - ship: 日進甲
+    equips:
+    - 瑞雲改二(六三四空/熟練)
+    - 試製 夜間瑞雲(攻撃装備)
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 吹雪改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+  - ship: 綾波改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+  - ship: 曙改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - GFCS Mk.37
+  tags:
+  - 低沟率
+  - 捞船
+  - 低消費
+  special_attacks: []
+- name: 完全避沟：1CL旗舰+4DD+1CV系
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 旗舰、完全避沟必须
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CV
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: 制空確保
+  requirements:
+    air_state: supremacy
+    air_power_min: 162
+    enemy_air_power: 162
+    routing_nodes: []
+  equip_notes: N点81空優/162空確。1CL+4DD編成で全分岐沟を完全回避。CV系1隻で制空確保。
+  example: []
+  tags:
+  - 完全避沟
+  - 後期推奨
+  special_attacks: []
+- name: 汎用標準：2CV系+1CAV+1AV+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: 制空主力
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships: []
+      notes: 沟率低減
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 沟率低減+水偵接触
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: supremacy
+    air_power_min: 162
+    enemy_air_power: 162
+    routing_nodes: []
+  equip_notes: N点81空優/162空確。BB系+CV系最多4隻でJ-L沟回避。AV水偵1機で接触。各種任務対応汎用編成。
+  example: []
+  tags:
+  - 汎用
+  - 任務対応
+  special_attacks: []
+- name: 6SS編成（南西任務低消費）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SS
+      - SSV
+      count: 6
+      specific_ships: []
+      notes: 1AS+2SS系でD-F沟回避可
+  requirements:
+    air_state: none
+    routing_nodes: []
+  equip_notes: 消費極小。沟率は比較的高め。南西任務周回向け。1AS+2SS構成でD-F沟回避推奨。
+  example: []
+  tags:
+  - 低消費
+  - 南西任務
+  - 潜水艦
+  special_attacks: []

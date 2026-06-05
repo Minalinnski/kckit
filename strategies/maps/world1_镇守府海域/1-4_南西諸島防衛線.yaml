@@ -1,0 +1,326 @@
+map: 1-4
+source: nga_import
+notes: 南西諸島防衛線，boss点L需60制空确保，AS带路可回避J点撸爷
+presets:
+- name: 萌新推图（空母编成）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳
+      notes: 軽母，搭载舰攻舰爆
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城
+      notes: 正規航母，搭载舰攻舰爆
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships:
+      - 白露
+      - 時雨
+      - 満潮
+      - 霞
+      notes: 装备主炮
+  requirements:
+    air_state: none
+    air_power_min: 60
+    enemy_air_power: 30
+    routing_nodes:
+    - B
+    - C
+    - F
+    - E
+    - H
+    - L
+  equip_notes: 制空值需达到60以上确保boss点L空确；CVL/CV搭载九七式艦攻、九九式艦爆、九六式艦戦；DD装备12.7cm連装砲×2
+  example:
+  - ship: 瑞鳳
+    equips:
+    - 九七式艦攻
+    - 九九式艦爆
+    - 九六式艦戦
+  - ship: 赤城
+    equips:
+    - 九七式艦攻
+    - 九七式艦攻
+    - 九九式艦爆(熟練)
+    - 九六式艦戦
+  - ship: 白露
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  - ship: 時雨
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  - ship: 満潮
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  - ship: 霞
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+  tags:
+  - 初心者
+  - 空母
+  special_attacks: []
+- name: 水雷戦隊南西へ（哥特兰+阿贺野+4DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - ゴトランド
+      notes: 旗舰，軽航空巡洋艦，搭载水上偵察機
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 阿賀野改
+      notes: 搭载試製晴嵐×3
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: 对空CI编成，装备10cm連装高角砲+94式高射装置×2+13号対空電探改
+  requirements:
+    air_state: none
+    air_power_min: 60
+    enemy_air_power: 30
+    routing_nodes:
+    - B
+    - C
+    - F
+    - E
+    - H
+    - L
+  equip_notes: 制空値68~69，索敵37.25；任务要求CL旗舰；2CL+4DD保证100%进boss；DD装备10cm連装高角砲+94式高射装置×2+13号対空電探改实现对空CI；全图只有J点会击坠1架飞机
+  example:
+  - ship: ゴトランド
+    equips:
+    - 晴嵐(六三一空)
+    - 瑞雲12型
+    - 瑞雲(六三四空/熟練)
+  - ship: 阿賀野改
+    equips:
+    - 試製晴嵐
+    - 試製晴嵐
+    - 試製晴嵐
+  - ship: 朧改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 曙改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 漣改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 潮改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  tags:
+  - 任务
+  - 水雷戦隊
+  - 対空CI
+  - B93
+  special_attacks: []
+- name: 期间限定掉落打捞（大鯨+AS带路，配置1）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AS
+      count: 1
+      specific_ships:
+      - 大鯨
+      notes: 潜水母艦，低速，装对空CI
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - ジョンストン改
+      notes: 装5inch单装砲+GFCS Mk.37×2+GFCS Mk.37，对空CI
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 大鷹改二
+      notes: 低速CVL，搭载彗星/流星+彩雲
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 高速CVL，搭载天山/九七式艦攻+流星改
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 巻雲改二
+      notes: 背大発動艇（八九式中戦車＆陸戦隊）×3降低消耗
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 黒潮改二
+      notes: 背特二式内火艇×3降低消耗
+  requirements:
+    air_state: none
+    air_power_min: 60
+    enemy_air_power: 30
+    routing_nodes:
+    - B
+    - C
+    - F
+    - E
+    - H
+    - L
+  equip_notes: 制空值64~67，索敵42.55；AS带路回避J点；对空CI至少2个单位；大鷹改二带彩雲（東加ロ林空）避免T字不利；背大発/特二式内火艇降低消耗；运输TP
+    A=36/S=52
+  example:
+  - ship: 大鯨
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: ジョンストン改
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - GFCS Mk.37
+  - ship: 大鷹改二
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 流星改(一航戦/熟練)
+    - 彩雲
+    - 天山一二型(村田隊)
+  - ship: 瑞鳳改二乙
+    equips:
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 天山一二型(友永隊)
+    - 流星改(一航戦)
+    - 天山一二型(村田隊)
+  - ship: 巻雲改二
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 大発動艇(八九式中戦車&陸戦隊)
+  - ship: 黒潮改二
+    equips:
+    - 特二式内火艇
+    - 特二式内火艇
+    - 特二式内火艇
+  tags:
+  - 打捞
+  - AS带路
+  - 大発
+  - 低速
+  special_attacks: []
+- name: 期间限定掉落打捞（无大鯨，配置2）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 大鷹改二
+      notes: 低速CVL，搭载彗星/天山+彩雲
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 高速CVL，搭载天山/九七式艦攻+零式艦戦62型
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 照月改
+      notes: 対空CI，装备10cm連装高角砲+94式高射装置×2+13号対空電探改
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 秋月改
+      notes: 対空CI，装备10cm連装高角砲+94式高射装置×2+13号対空電探改
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 巻雲改二
+      notes: 背大発動艇（八九式中戦車＆陸戦隊）×3降低消耗
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 黒潮改二
+      notes: 背特二式内火艇×3降低消耗
+  requirements:
+    air_state: none
+    air_power_min: 60
+    enemy_air_power: 30
+    routing_nodes:
+    - B
+    - C
+    - F
+    - E
+    - H
+    - L
+  equip_notes: 制空値58~60，索敵34.17；无AS可能随机走J点撸爷；大鷹改二带彩雲避免T字不利；対空CI2个单位；运输TP A=35/S=50
+  example:
+  - ship: 大鷹改二
+    equips:
+    - 彗星一二型(六三四空/三号爆弾搭載機)
+    - 天山一二型(村田隊)
+    - 彩雲
+    - 天山一二型(村田隊)
+  - ship: 瑞鳳改二乙
+    equips:
+    - 天山一二型(友永隊)
+    - 九七式艦攻(友永隊)
+    - 九七式艦攻(友永隊)
+    - 零戦62型(爆戦/岩井隊)
+  - ship: 照月改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 秋月改
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 巻雲改二
+    equips:
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 大発動艇(八九式中戦車&陸戦隊)
+    - 大発動艇(八九式中戦車&陸戦隊)
+  - ship: 黒潮改二
+    equips:
+    - 特二式内火艇
+    - 特二式内火艇
+    - 特二式内火艇
+  tags:
+  - 打捞
+  - 无AS
+  - 大発
+  - 低速随机路线
+  special_attacks: []

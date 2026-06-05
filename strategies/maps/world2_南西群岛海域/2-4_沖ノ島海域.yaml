@@ -1,0 +1,630 @@
+map: 2-4
+source: nga_import
+notes: 沖ノ島海域，boss点P（戦艦ル级×3），主要路线B-(C)-G-H-I-K-L-P或B-C-F-J-M-P，L/M点空优84，空确168
+presets:
+- name: 萌新推图：2CVL+1BB系+1CL+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 瑞鳳改
+      notes: 旗舰，高速
+    - ship_class:
+      - FBB
+      - BB
+      count: 1
+      specific_ships:
+      - 金剛改
+      notes: 长射程，先手炮击
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 飛鷹改
+      notes: 低速CVL
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 五十鈴改
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改
+      notes: 带电探降低漩涡消耗
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 霞改
+      notes: 带电探降低漩涡消耗
+  requirements:
+    air_state: none
+    air_power_min: 84
+    enemy_air_power: 168
+    routing_nodes:
+    - B
+    - G
+    - H
+    - I
+    - K
+    - L
+    - P
+  equip_notes: L点空优84，空确168；DD喂满装甲，双主炮+电探；CVL带舰攻；BB带徹甲弾；全员一改喂满火力装甲
+  example:
+  - ship: 瑞鳳改
+    equips:
+    - 天山
+    - 天山
+    - 彗星
+    - 零式艦戦52型
+  - ship: 金剛改
+    equips:
+    - 35.6cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 飛鷹改
+    equips:
+    - 天山
+    - 天山
+    - 彗星
+    - 零式艦戦52型
+  - ship: 五十鈴改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 時雨改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  - ship: 霞改
+    equips:
+    - 12.7cm連装砲
+    - 12.7cm連装砲
+    - 13号対空電探
+  tags:
+  - 萌新推图
+  - 主线攻略
+  special_attacks: []
+- name: 水雷魂：矢矧+最上+4DD（最短路线）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: fast
+      specific_ships:
+      - 矢矧改二乙
+      notes: 旗舰
+    - ship_class:
+      - CAV
+      count: 1
+      speed: fast
+      specific_ships:
+      - 最上改二特
+      - 最上改二
+      notes: 双炮+水爆+水侦
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - 雪風改二
+      notes: 魚雷CI
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - 長波改二
+      notes: D型砲魚雷CI
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - タシュケント改
+      notes: 4×130mm B-13連装砲 炮击CI
+    - ship_class:
+      - DD
+      count: 1
+      speed: fast
+      specific_ships:
+      - Fletcher Mk.II
+      notes: D型砲魚雷CI
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - G
+    - H
+    - L
+    - P
+  equip_notes: 固定B-G-H-L-P最短路线；矢矧：15.2cm連装砲改二×2+水侦+丁型改（蛟龍改）；最上：20.3cm(3号)×2+瑞雲改二+丙型；雪風：10cm連装高角砲+94式+現地改装10cm+GFCS
+    Mk.37；長波：12.7cm D型改二+D型改三+GFCS；タシュケント：130mm B-13×4；Fletcher：5inch×2+GFCS；制空22，索敌38.03
+  example:
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 15.2cm連装砲改二
+    - 零式水上偵察機11型乙(熟練)
+    - 甲標的 丁型改(蛟龍改)
+  - ship: 最上改二特
+    equips:
+    - 20.3cm(3号)連装砲
+    - 20.3cm(3号)連装砲
+    - 瑞雲改二(六三四空/熟練)
+    - 甲標的 丙型
+  - ship: 雪風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 現地改装10cm連装高角砲
+    - GFCS Mk.37
+  - ship: 長波改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 12.7cm連装砲D型改三
+    - GFCS Mk.37
+  - ship: タシュケント改
+    equips:
+    - 130mm B-13連装砲
+    - 130mm B-13連装砲
+    - 130mm B-13連装砲
+    - 130mm B-13連装砲
+  - ship: Fletcher Mk.II
+    equips:
+    - 5inch単装砲 Mk.30改+GFCS Mk.37
+    - 5inch単装砲 Mk.30改
+    - GFCS Mk.37
+  tags:
+  - 水雷魂
+  - 最短路线
+  - 水雷司令部
+  special_attacks: []
+- name: 偷资源小船流：矢矧改二乙+3DD（警戒阵）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 矢矧改二乙
+      notes: 旗舰，瑞雲×2+試製夜間瑞雲×2+応急修理要員
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 黒潮改二
+      notes: 增设甲板×4
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 早潮改二
+      notes: 增设甲板×4
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 巻雲改二
+      notes: 增设甲板×4
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - G
+  equip_notes: 4船编制；旗舰开幕炮击，僚舰全增设甲板(中型舰)堆装甲；制空42；索敌38.03；走到G点F5获取资材；警戒阵可大幅降低吃败率
+  example:
+  - ship: 矢矧改二乙
+    equips:
+    - 瑞雲改二(六三四空/熟練)
+    - 甲標的 丁型改(蛟龍改)
+    - 瑞雲
+    - 瑞雲(六三四空/熟練)
+    - 応急修理要員
+  - ship: 黒潮改二
+    equips:
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  - ship: 早潮改二
+    equips:
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  - ship: 巻雲改二
+    equips:
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+    - 増設バルジ(中型艦)
+  tags:
+  - 偷资源
+  - 钢板流
+  - 警戒阵
+  special_attacks: []
+- name: 偷资源：1CL+5DD狗粮（由良改二旗舰）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 由良改二
+      notes: 旗舰，瑞雲×2+甲標的 丙型+応急修理要員
+    - ship_class:
+      - DD
+      count: 5
+      min_level: 99
+      specific_ships: []
+      notes: 狗粮DD，无装备或空槽，中破可继续出击，大破换舰
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - G
+  equip_notes: 6船编制；旗舰低耗CL开幕炮击；只补给旗舰，两场补给一次；狗粮大破换舰；制空27；索敌11.42
+  example:
+  - ship: 由良改二
+    equips:
+    - 瑞雲(六三四空/熟練)
+    - 瑞雲(六三四空/熟練)
+    - 甲標的 丙型
+    - 応急修理要員
+  - ship: 睦月
+    equips: []
+  - ship: 如月
+    equips: []
+  - ship: 弥生
+    equips: []
+  - ship: 卯月
+    equips: []
+  - ship: 水無月
+    equips: []
+  tags:
+  - 偷资源
+  - 狗粮流
+  - 低消耗
+  special_attacks: []
+- name: 偷资源拉烟版：哥特兰andra旗舰+5DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - Gotland andra
+      notes: 旗舰，瑞雲改二+発煙装置改(煙幕)+試製夜間瑞雲×2+応急修理要員
+    - ship_class:
+      - DD
+      count: 5
+      min_level: 99
+      specific_ships: []
+      notes: 狗粮DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - G
+  equip_notes: 6船编制；旗舰携带発煙装置改(煙幕)拉烟降低僚舰损耗；制空51；试製夜間瑞雲(攻击装备)×2提供开幕输出；比不拉烟D败率更低
+  example:
+  - ship: Gotland andra
+    equips:
+    - 瑞雲改二(六三四空/熟練)
+    - 発煙装置改(煙幕)
+    - 瑞雲
+    - 瑞雲
+    - 応急修理要員
+  - ship: 吹雪
+    equips: []
+  - ship: 白雪
+    equips: []
+  - ship: 初雪
+    equips: []
+  - ship: 深雪
+    equips: []
+  - ship: 磯波
+    equips: []
+  tags:
+  - 偷资源
+  - 狗粮流
+  - 发烟装置
+  special_attacks: []
+- name: 偷资源：2AO/AS+CVL+CL+2SS（固定K-N）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - LHA
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 山汐丸改
+      notes: 旗舰，江草队彗星×2+熟練甲板要員+航空整備員+増設装甲板(大型艦)
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 流星改×2+彗星(江草队)+彩雲+増設装甲板(中型艦)
+    - ship_class:
+      - AO
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 宗谷 南極観測
+      notes: FuMO25電探+大発動艇×2+増設装甲板(大型艦)，固定C-G
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - Gotland andra
+      notes: 瑞雲改二+零式水上偵察機11型乙+試製夜間瑞雲×2+増設装甲板(中型艦)
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 呂500
+      notes: 試製FaT規格九五式酸素魚雷改×2
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊504
+      notes: 試製FaT規格九五式酸素魚雷改×2
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - C
+    - G
+    - H
+    - I
+    - K
+    - N
+  equip_notes: AO/AS≥2固定K-N捞弹；CVL+CL降低I-E概率；制空97；宗谷携带大発动艇固定C-G；山汐丸旗舰100%捞资材；SS可红脸轮换
+  example:
+  - ship: 山汐丸改
+    equips:
+    - 彗星
+    - 彗星
+    - 熟練甲板要員+航空整備員
+    - 艦本新設 増設装甲板(中型艦)
+  - ship: 瑞鳳改二乙
+    equips:
+    - 流星改(一航戦/熟練)
+    - 流星改(一航戦/熟練)
+    - 彗星
+    - 彩雲(東カロリン空)
+    - 増設バルジ(中型艦)
+  - ship: 宗谷 南極観測
+    equips:
+    - FuMO25 レーダー
+    - 大発動艇
+    - 大発動艇
+    - 艦本新設 増設装甲板(大型艦)
+  - ship: Gotland andra
+    equips:
+    - 瑞雲改二(六三四空/熟練)
+    - 零式水上偵察機11型乙(熟練)
+    - 瑞雲
+    - 瑞雲
+    - 増設バルジ(中型艦)
+  - ship: 呂500
+    equips:
+    - 試製FaT仕様九五式酸素魚雷改
+    - 試製FaT仕様九五式酸素魚雷改
+  - ship: 伊504
+    equips:
+    - 試製FaT仕様九五式酸素魚雷改
+    - 試製FaT仕様九五式酸素魚雷改
+  tags:
+  - 偷资源
+  - 捞弹
+  - AO带路
+  - 固定K-N
+  special_attacks: []
+- name: 偷资源偷桶：3CV+2~3SS（固定F-A）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 雲龍改
+      notes: 流星改(一航战/熟練)+AU-1+SK+SG電探+彗星(江草队)
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 天城改
+      notes: 流星改(一航战/熟練)+F4U-7+SK+SG電探+彗星(江草队)
+    - ship_class:
+      - CV
+      count: 1
+      min_level: 99
+      speed: fast
+      specific_ships:
+      - 天鷹改
+      notes: 天山一二型(村田队)×3+彩雲+天山一二型(村田队)
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 呂500
+      notes: 特二式内火艇×2
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊504
+      notes: 特二式内火艇×2
+    - ship_class:
+      - SSV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 巫嗯鮪改
+      notes: 21inch艦首魚雷発射管6門(後期型)+試製FaT規格九五式酸素魚雷改
+  requirements:
+    air_state: none
+    air_power_min: 144
+    routing_nodes:
+    - B
+    - C
+    - F
+    - A
+  equip_notes: F点空确144；3CV固定B-C，不带AO/AS有50%走C-G(可F5偷资材)；CVL=0且DD≤1可固定F-A偷桶；带≥4大发系有概率偷到2桶；CV最大格带彩雲避T字不利+高索敌电探提高战爆CI；制空150
+  example:
+  - ship: 雲龍改
+    equips:
+    - 流星改(一航戦/熟練)
+    - AU-1
+    - SK+SG レーダー
+    - 彗星
+  - ship: 天城改
+    equips:
+    - 流星改(一航戦/熟練)
+    - F4U-7
+    - SK+SG レーダー
+    - 彗星
+  - ship: 天鷹改
+    equips:
+    - 天山
+    - 彩雲(東カロリン空)
+    - 天山
+    - 天山
+  - ship: 呂500
+    equips:
+    - 特二式内火艇
+    - 特二式内火艇
+  - ship: 伊504
+    equips:
+    - 特二式内火艇
+    - 特二式内火艇
+  - ship: 巫嗯鮪改
+    equips:
+    - 21inch艦首魚雷発射管6門(後期型)
+    - 試製FaT仕様九五式酸素魚雷改
+  tags:
+  - 偷桶
+  - 偷资源
+  - 3CV
+  - 洗地流
+  special_attacks: []
+- name: 偷资源：6SS系
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - SS
+      - SSV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 丸優
+      notes: 旗舰，无装备
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊47改
+      notes: 特二式内火艇+後期型53cm艦首魚雷(8門)
+    - ship_class:
+      - SSV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 巫嗯鮪改
+      notes: 特二式内火艇+21inch艦首魚雷発射管6門(後期型)
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 呂500
+      notes: 特二式内火艇+試製FaT規格九五式酸素魚雷改
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊504
+      notes: 特二式内火艇+試製FaT規格九五式酸素魚雷改
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 伊168改
+      notes: 試製FaT規格九五式酸素魚雷改×2
+  requirements:
+    air_state: none
+    routing_nodes:
+    - B
+    - G
+  equip_notes: SS练级用；SS菜可不带内火艇；走到G点F5偷资材；制空0
+  example:
+  - ship: 丸優
+    equips: []
+  - ship: 伊47改
+    equips:
+    - 特二式内火艇
+    - 後期型53cm艦首魚雷(8門)
+  - ship: 巫嗯鮪改
+    equips:
+    - 特二式内火艇
+    - 21inch艦首魚雷発射管6門(後期型)
+  - ship: 呂500
+    equips:
+    - 特二式内火艇
+    - 試製FaT仕様九五式酸素魚雷改
+  - ship: 伊504
+    equips:
+    - 特二式内火艇
+    - 試製FaT仕様九五式酸素魚雷改
+  - ship: 伊168改
+    equips:
+    - 試製FaT仕様九五式酸素魚雷改
+    - 試製FaT仕様九五式酸素魚雷改
+  tags:
+  - 偷资源
+  - SS练级
+  special_attacks: []

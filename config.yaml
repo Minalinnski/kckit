@@ -1,0 +1,30 @@
+# kckit user configuration
+
+poi:
+  ws_url: "ws://127.0.0.1:23456"
+  connect_timeout: 15
+
+scheduler:
+  # Sortie maps to cycle through, in order of priority
+  sortie_maps:
+    - "5-4"
+  # When all maps are done, wait this many minutes before cycling again
+  cycle_wait_minutes: 5
+
+  # Expedition fleet assignments: fleet_id -> [exped_id1, exped_id2, ...]
+  # Set to [] to disable expedition management for that fleet
+  expeditions:
+    "2": [41, 5]   # 第二艦隊: 41 (6h20m), 5 (1h30m) by preference
+    "3": [37]      # 第三艦隊: 37 (2h45m)
+    "4": []        # 第四艦隊: no expeditions
+
+  # Dock management
+  repair:
+    use_buckets_below_morale: 0   # use instant repair only for boss fights (0 = never auto)
+    reserve_docks: 1              # keep N docks free at all times
+
+rest:
+  # Must rest at least min_hours every 24h to avoid ban patterns
+  min_hours_per_day: 4
+  # Prefer resting between these hours (24h clock, local time)
+  preferred_window: [3, 7]

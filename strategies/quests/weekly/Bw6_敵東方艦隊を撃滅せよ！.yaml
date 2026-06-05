@@ -1,0 +1,19 @@
+quest_id: Bw6
+quest_name: 敵東方艦隊を撃滅せよ！
+category: weekly
+requirement: 4-1~4-5任选，12次B胜
+maps:
+- map_id: 4-4
+  fleet_hint: 3CVL+1CL+2DE/DD
+  notes: boss点144空确
+  synergy_quests:
+  - Bw4
+- map_id: 4-2
+  fleet_hint: 2CV系+1CA系/CL系+1CL+2DD
+  notes: 道中84空优，168空确
+  synergy_quests:
+  - Bw4
+- map_id: 4-5
+  fleet_hint: 4CV系/BB系+2CA系/CLT，高速+
+  notes: boss点207空优，CV放1/2号位不带对陆舰爆
+  synergy_quests: []

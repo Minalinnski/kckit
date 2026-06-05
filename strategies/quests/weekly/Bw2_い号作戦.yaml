@@ -1,0 +1,10 @@
+quest_id: Bw2
+quest_name: い号作戦
+category: weekly
+requirement: 击沉20艘空母
+maps:
+- map_id: 2-1
+  fleet_hint: 6SS系
+  notes: 5圈正好一起做完
+  synergy_quests:
+  - Bd7

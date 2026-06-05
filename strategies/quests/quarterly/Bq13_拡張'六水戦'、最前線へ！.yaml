@@ -1,0 +1,33 @@
+quest_id: Bq13
+quest_name: 拡張'六水戦'、最前線へ！
+category: quarterly
+requirement: 5-1、5-4、6-4、6-5各1次S胜，战果+390，需要夕张改二(特/丁)旗舰+(睦月/如月/弥生/望月/菊月/卯月6选2或由良改二)
+maps:
+- map_id: 5-1
+  fleet_hint: 夕张改二旗舰+1~2BB系+0~1CVL+2DD+1CA系/CL系/AV
+  notes: 252空优或126大概率空优
+  synergy_quests:
+  - Bm4
+  - Bq7
+  combo_fleets:
+    Bm4: 夕张改二旗舰+2DD+3BB/BBV
+    Bq7: 夕张改二旗舰+由良改二+1CAV+鸟海/青叶/衣笠/加古/古鹰5选3，高速
+- map_id: 5-4
+  fleet_hint: 夕张改二旗舰+1FBB+1BBV+3DD，高速
+  notes: boss点141空优，分歧点系数=2，索敌>=45
+  synergy_quests:
+  - Bq6
+  - Bq7
+  combo_fleets:
+    Bq6: 夕张改二旗舰+2BB系+由良改二+2DD
+    Bq7: 夕张改二旗舰+由良改二+1CV+鸟海/青叶/衣笠/加古/古鹰/天龙6选3
+- map_id: 6-4
+  fleet_hint: 夕张改二旗舰+由良改二+1BB系+3DD，高速
+  notes: 睦月级不推荐，别忘了高速
+  synergy_quests:
+  - Bq2
+- map_id: 6-5
+  fleet_hint: 夕张改二旗舰+2BB系+1CL+2DD
+  notes: 分歧点系数=3，索敌>=40
+  synergy_quests:
+  - Bq10

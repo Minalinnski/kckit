@@ -1,0 +1,243 @@
+map: 7-1
+source: nga_import
+notes: ブルネイ泊地沖、戦果・刷闪・養殖向け対潜マップ、ボスは潜水艦編成
+presets:
+- name: 萌新推图 (1CL+4DD、D-E-G-H-K)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 五十鈴改
+      notes: 旗舰、対潜装備
+    - ship_class:
+      - DD
+      count: 4
+      speed: 高速
+      specific_ships:
+      - 白露改
+      - 霞改
+      - 満潮改
+      - 時雨改
+      notes: 対潜装備、単横陣推奨
+  requirements:
+    air_state: none
+    routing_nodes:
+    - D
+    - E
+    - G
+    - H
+    - K
+  equip_notes: 全員対潜装備。水聴+爆雷投射機+爆雷の2〜3件組み合わせで対潜補正。3件套が最高補正。水聴2+爆雷1も可。ボスには単横陣使用。制空値0、索敵0。
+  example:
+  - ship: 白露改
+    equips:
+    - 三式水中探信儀
+    - 三式爆雷投射機
+    - 九五式爆雷
+  - ship: 五十鈴改
+    equips:
+    - 九三式水中聴音機
+    - 九三式水中聴音機
+    - 三式爆雷投射機
+  - ship: 霞改
+    equips:
+    - 九三式水中聴音機
+    - 九三式水中聴音機
+    - 九四式爆雷投射機
+  - ship: 満潮改
+    equips:
+    - 三式水中探信儀
+    - 三式爆雷投射機
+    - 九五式爆雷
+  - ship: 時雨改
+    equips:
+    - 三式水中探信儀
+    - 九三式水中聴音機
+    - 九四式爆雷投射機
+  tags:
+  - 新手向け
+  - 対潜
+  - D-E-G-H-K
+  special_attacks: []
+- name: 駆逐刷闪＆戦果 矢矧改二乙編成 (1CL+4DD、D-E-G-H-K)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 睦月改二
+      notes: 旗舰、先制対潜装備
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 風雲改二
+      notes: D型砲+水中探信儀×2、高火力
+    - ship_class:
+      - CL
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 矢矧改二乙
+      notes: 3番艦推奨（中射程、開幕対潜・水爆）
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 朝霜改二
+      notes: 先制対潜、双水聴配置
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 夕雲改二
+      notes: 先制対潜、双水聴配置
+  requirements:
+    air_state: none
+    routing_nodes:
+    - D
+    - E
+    - G
+    - H
+    - K
+  equip_notes: 矢矧改二乙：15.2cm三連装砲改二+甲標的丁型改(蛟龍改)+瑞雲改二(六三四空/熟練)+Type144/147 ASDIC。僚艦DDは先制対潜確保しつつ旗舰のMVPを奪わないよう双水聴配置。高改修水聴は炮撃火力・雷撃回避補正あり。矢矧3番艦で旗舰最後出手確率を最低化。制空値16、索敵8.09。
+  example:
+  - ship: 睦月改二
+    equips:
+    - HF/DF + Type144/147 ASDIC
+    - 対潜短魚雷(試作初期型)
+    - RUR-4A Weapon Alpha改
+  - ship: 風雲改二
+    equips:
+    - 12.7cm連装砲D型改三
+    - 三式水中探信儀
+    - 三式水中探信儀
+  - ship: 矢矧改二乙
+    equips:
+    - 15.2cm連装砲改二
+    - 甲標的 丁型改(蛟龍改)
+    - 瑞雲改二(六三四空/熟練)
+    - Type144/147 ASDIC
+  - ship: 朝霜改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 四式水中聴音機
+    - 四式水中聴音機
+  - ship: 夕雲改二
+    equips:
+    - 12.7cm連装砲D型改二
+    - 四式水中聴音機
+    - 四式水中聴音機
+  tags:
+  - 刷闪
+  - 戦果
+  - 矢矧改二乙
+  - D-E-G-H-K
+  special_attacks: []
+- name: 海防養殖＆戦果 水母流 (1AV+1DD+3DE、D-E-G-H-K)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 日進甲
+      notes: 旗舰、晴嵐×3+甲標的丙型、水雷点の開幕主力
+    - ship_class:
+      - DD
+      count: 1
+      speed: 高速
+      specific_ships:
+      - 夕雲改二
+      notes: 先制対潜、高火力・雷撃
+    - ship_class:
+      - DE
+      count: 3
+      specific_ships:
+      - 八丈
+      - 石垣
+      - 御蔵
+      notes: 未改造DE推奨（過剰ダメージで大破なし）、四式水聴+三式爆雷投射機、0缶周回可
+  requirements:
+    air_state: none
+    routing_nodes:
+    - D
+    - E
+    - G
+    - H
+    - K
+  equip_notes: 日進甲：晴嵐(六三一空)+試製晴嵐×2+甲標的丙型。夕雲改二：四式水中聴音機+試製15cm9連装対潜噴進砲+12.7cm連装砲D型改二★4。DE：四式水中聴音機+三式爆雷投射機。制空値27、索敵6.12。未改造DEは血量特性で大破せず修理時間短い。0缶周回可能。
+  example:
+  - ship: 日進甲
+    equips:
+    - 晴嵐(六三一空)
+    - 試製晴嵐
+    - 試製晴嵐
+    - 甲標的 丙型
+  - ship: 夕雲改二
+    equips:
+    - 四式水中聴音機
+    - 試製15cm9連装対潜噴進砲
+    - 12.7cm連装砲D型改二
+  - ship: 八丈
+    equips:
+    - 四式水中聴音機
+    - 三式爆雷投射機
+  - ship: 石垣
+    equips:
+    - 四式水中聴音機
+    - 三式爆雷投射機
+  - ship: 御蔵
+    equips:
+    - 四式水中聴音機
+    - 三式爆雷投射機
+  tags:
+  - 海防養殖
+  - 戦果
+  - 水母流
+  - 日進
+  - D-E-G-H-K
+  - 0缶
+  special_attacks: []
+- name: CL+CLT×4 (F-G-H-K、全船開幕+先制対潜)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      - CLT
+      count: 4
+      speed: 高速
+      specific_ships:
+      - 阿武隈改二
+      - 矢矧改二乙
+      - 夕張改二
+      notes: CL+CLT合計4隻、全船開幕対潜+先制対潜
+  requirements:
+    air_state: none
+    routing_nodes:
+    - F
+    - G
+    - H
+    - K
+  equip_notes: 全船開幕対潜・先制対潜装備。G点が比較的戦いやすい。ただしボス前ノードで低確率でランダム逸れあり。制空0、索敵0。
+  example: []
+  tags:
+  - 戦果
+  - F-G-H-K
+  - CL
+  - CLT
+  - 先制対潜
+  special_attacks: []

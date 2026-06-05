@@ -1,0 +1,17 @@
+{
+  "name": "poi-plugin-kckit-bridge",
+  "version": "0.1.0",
+  "description": "WebSocket data bridge for kckit automation tool",
+  "main": "index.js",
+  "author": "williamgu",
+  "license": "MIT",
+  "poiPlugin": {
+    "id": "poi-plugin-kckit-bridge",
+    "priority": 0,
+    "title": "kckit Bridge",
+    "description": "Local WebSocket bridge for kckit automation"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

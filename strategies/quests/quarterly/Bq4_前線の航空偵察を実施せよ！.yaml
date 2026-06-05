@@ -1,0 +1,10 @@
+quest_id: Bq4
+quest_name: 前線の航空偵察を実施せよ！
+category: quarterly
+requirement: 6-3，2次A胜，需要至少1个AV和2个CL
+maps:
+- map_id: 6-3
+  fleet_hint: 3CL+1AV+2DD
+  notes: 分歧点系数=3，索敌>=38
+  synergy_quests:
+  - Bq2

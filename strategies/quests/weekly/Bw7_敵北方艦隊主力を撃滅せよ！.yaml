@@ -1,0 +1,17 @@
+quest_id: Bw7
+quest_name: 敵北方艦隊主力を撃滅せよ！
+category: weekly
+requirement: 3-3~3-5任选，5次B胜
+maps:
+- map_id: 3-3
+  fleet_hint: 1CV+1CVL/BB系+2CLT/CA系+2DD
+  notes: 78道中空优boss空确，或156道中空确
+  synergy_quests:
+  - Bw4
+- map_id: 3-4
+  fleet_hint: 2CV+2CVL+1CL+1AV
+  notes: boss点168空确
+  synergy_quests: []
+- map_id: 3-5
+  notes: 上路消耗较高可捞油，下路需吃桶，警戒阵安逸
+  synergy_quests: []

@@ -1,0 +1,290 @@
+map: 4-1
+source: nga_import
+notes: 'ジャム島沖: 敵配置は小船主体、BB/CVを1隻混ぜて攻略。ボスJ点は制空均衡36・確保72。推奨ルートA-B-D-H-JまたはC-F-D-H-J。'
+presets:
+- name: 萌新推図・標準編成 (BBV+CA系+CL+DD)
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改
+      notes: 旗舰。41cm連装砲×2+九一式徹甲弾+瑞雲で制空確保
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 摩耶改
+      notes: 20.3cm連装砲×2+零式水上偵察機×2
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改
+      notes: 20.3cm連装砲+瑞雲+20.3cm連装砲+瑞雲
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 五十鈴改
+      notes: 20.3cm連装砲×2+零式水上偵察機
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改二
+      notes: 10cm連装高角砲×2+91式高射装置
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 霞改
+      notes: 10cm連装高角砲×2+13号対空電探
+  requirements:
+    air_state: none
+    air_power_min: 72
+    enemy_air_power: 36
+    routing_nodes:
+    - A
+    - B
+    - D
+    - H
+    - J
+  equip_notes: '制空値: ボスJ点均衡36・確保72。瑞雲(熟練)で制空確保を狙う。水上戦闘機があれば更に安定。D点は水上・水中混合のため適宜陣形選択。'
+  example:
+  - ship: 伊勢改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 九一式徹甲弾
+    - 瑞雲
+  - ship: 摩耶改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 瑞雲
+    - 20.3cm連装砲
+    - 瑞雲
+  - ship: 五十鈴改
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 時雨改二
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 91式高射装置
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  tags:
+  - 萌新推図
+  - BBV編成
+  - A-B-D-H-J
+  - C-F-D-H-J
+  special_attacks: []
+- name: '任務B68: 強行高速輸送部隊 (川内改二+時雨改二+江風改二+2DD)'
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 川内改二
+      notes: 任務必須
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改二
+      notes: 任務必須
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 江風改二
+      notes: 任務必須
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 任意DD×2
+  requirements:
+    air_state: none
+    air_power_min: 36
+    routing_nodes:
+    - A
+    - B
+    - D
+    - H
+    - J
+  equip_notes: ボスJ点制空均衡36・確保72。A勝利が条件。
+  example: []
+  tags:
+  - 任務B68
+  - 1CL+4DD
+  special_attacks: []
+- name: '任務B121: 精鋭二七駆第一小隊 (白露改二+時雨改二+CL+CA系+BB系/CV系)'
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - CV
+      - CVL
+      - BBV
+      count: 1
+      specific_ships: []
+      notes: BB系またはCV系1隻
+    - ship_class:
+      - CA
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: CA系2隻
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: CL1隻
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 白露改二
+      notes: 任務必須
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改二
+      notes: 任務必須
+  requirements:
+    air_state: none
+    air_power_min: 36
+    routing_nodes:
+    - A
+    - B
+    - D
+    - H
+    - J
+  equip_notes: ボスJ点制空均衡36・確保72。S勝利が条件。
+  example: []
+  tags:
+  - 任務B121
+  - 2DD+1CL+2CA系+1BB系/CV系
+  special_attacks: []
+- name: '任務B134: 艦隊司令部強化 (大淀旗舰+AV+DD+CA系/CL系)'
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 大淀
+      notes: 旗艦必須
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships: []
+      notes: AV or 明石
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: DD×2
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      count: 2
+      specific_ships: []
+      notes: CA系またはCL系×2
+  requirements:
+    air_state: none
+    air_power_min: 36
+    routing_nodes:
+    - A
+    - B
+    - D
+    - H
+    - J
+  equip_notes: ボスJ点制空均衡36・確保72。S勝利×2が条件。
+  example: []
+  tags:
+  - 任務B134
+  - 大淀旗舰+AV+2DD+2CA系/CL系
+  special_attacks: []
+- name: '任務B157: 主力オブ主力 (秋雲改二+夕雲改二+巻雲改二+風雲改二+BB系/CV系+CA系/CL系/AV)'
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      - CV
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: BB系またはCV系1隻
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 秋雲改二
+      notes: 任務必須
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 夕雲改二
+      notes: 任務必須
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 巻雲改二
+      notes: 任務必須
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 風雲改二
+      notes: 任務必須
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - AV
+      count: 1
+      specific_ships: []
+      notes: CA系/CL系/AV×1
+  requirements:
+    air_state: none
+    air_power_min: 36
+    routing_nodes:
+    - A
+    - B
+    - D
+    - H
+    - J
+  equip_notes: ボスJ点制空均衡36・確保72。S勝利×1が条件。
+  example: []
+  tags:
+  - 任務B157
+  - 4DD+1BB系/CV系+1CA系/CL系/AV
+  special_attacks: []

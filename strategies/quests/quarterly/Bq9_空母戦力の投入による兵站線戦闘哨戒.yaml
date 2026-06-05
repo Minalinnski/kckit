@@ -1,0 +1,35 @@
+quest_id: Bq9
+quest_name: 空母戦力の投入による兵站線戦闘哨戒
+category: quarterly
+requirement: 1-3、1-4、2-1、2-2、2-3各1次S胜，需要1CV/CVB/CVL
+maps:
+- map_id: 1-3
+  fleet_hint: 2CVL+1CAV+3DD
+  notes: 可走D点捞油
+  synergy_quests:
+  - Bm8
+  - By2
+  combo_fleets:
+    By2: 1CVL+1AV/CAV+3DE
+- map_id: 1-4
+  fleet_hint: 1AS+2CVL+3DD或2CVL+4DD
+  notes: boss点60空确
+  synergy_quests:
+  - Bq11
+  - Bm8
+- map_id: 2-1
+  fleet_hint: 2CV系+1CLT+3DD
+  notes: boss点162空确
+  synergy_quests:
+  - Bm8
+  - Bq11
+- map_id: 2-2
+  fleet_hint: 2CVL+1AV+2DE+1DD
+  notes: boss点81空确
+  synergy_quests:
+  - Bq11
+- map_id: 2-3
+  fleet_hint: 1CV+1CVL+1AV+3DD
+  notes: boss点81空优，162空确
+  synergy_quests:
+  - Bq11

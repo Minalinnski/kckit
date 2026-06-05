@@ -1,0 +1,278 @@
+map: 1-6
+source: nga_import
+notes: 鎮守府近海航路，每月资源采集图，主路线A-E-G-F-B，F点航空战，B点终点
+presets:
+- name: 标准最短路线（1CL+5DD/DE）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 旗舰，建议携带损管
+    - ship_class:
+      - DD
+      - DE
+      count: 5
+      specific_ships: []
+      notes: 尽量多带对空装备，高角炮+高射装置可触发对空CI
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - E
+    - G
+    - F
+    - B
+  equip_notes: F点空优制空值44，空均制空值爆表；E点单横阵对潜，F点轮形阵对空，B点单纵阵；高角炮+高射装置(+对空电探)触发对空CI；可携带発煙装置降低F点空袭命中率（带3个基本保证触发，2个需旗舰运≥26）；旗舰带损管防B点大破
+  example: []
+  tags:
+  - 资源采集
+  - 最短路线
+  special_attacks: []
+- name: 高配路线（秋月级对空+CL制空）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: 旗舰，搭载水爆拿制空，建议携带损管
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 秋月改
+      - 照月改
+      - 初月改
+      - 涼月改
+      notes: 秋月级，搭载对空CI装备
+    - ship_class:
+      - DD
+      - DE
+      count: 4
+      specific_ships: []
+      notes: 1~2艘带先制对潜装备，B点重点携带双炮准备夜战
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - E
+    - G
+    - F
+    - B
+  equip_notes: 秋月级触发对空CI大量击落敌机；CL搭载水爆（如夜間瑞雲改）拿制空防D败；潜水点1~2艘单听先制对潜即可；B点前排带双炮可夜战争S胜
+  example: []
+  tags:
+  - 资源采集
+  - 高配
+  - 对空CI
+  special_attacks: []
+- name: 任务B60/B72：第三十一戦隊
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 五十鈴改二
+      notes: 旗舰，建议携带损管
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 皐月改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 卯月改
+      notes: ''
+    - ship_class:
+      - DD
+      - DE
+      count: 3
+      specific_ships: []
+      notes: 自由枠
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - E
+    - G
+    - F
+    - B
+  equip_notes: 到达终点B即可，旗舰带损管防B点大破后可进击回港
+  example: []
+  tags:
+  - 任务
+  - B60
+  - B72
+  special_attacks: []
+- name: 任务B73：新編第八駆逐隊
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 朝潮改二丁
+      notes: 旗舰
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 満潮改
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 荒潮改
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 大潮改
+      notes: ''
+    - ship_class:
+      - DD
+      - DE
+      count: 2
+      specific_ships: []
+      notes: 自由枠
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - E
+    - G
+    - F
+    - B
+  equip_notes: 到达终点B即可
+  example: []
+  tags:
+  - 任务
+  - B73
+  special_attacks: []
+- name: 任务B114：新編第四航空戦隊（2BBV+1CL+3DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改
+      notes: 旗舰
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改
+      notes: ''
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 大淀改
+      notes: ''
+    - ship_class:
+      - DD
+      count: 3
+      specific_ships: []
+      notes: 最低1DD
+  requirements:
+    air_state: none
+    los_formula: 33
+    los_min: 32.0
+    routing_nodes:
+    - A
+    - E
+    - G
+    - F
+    - B
+  equip_notes: 分歧点系数=3，索敵値≥32
+  example: []
+  tags:
+  - 任务
+  - B114
+  special_attacks: []
+- name: 任务B132：最精鋭第四航空戦隊（伊勢改二+日向改二）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改二
+      notes: 旗舰
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 日向改二
+      notes: ''
+    - ship_class:
+      - DD
+      - DE
+      - CL
+      count: 4
+      specific_ships: []
+      notes: 自由枠
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - E
+    - G
+    - F
+    - B
+  equip_notes: 到达终点B，需2次
+  example: []
+  tags:
+  - 任务
+  - B132
+  special_attacks: []
+- name: 任务B120：精鋭第十八戦隊（天龙改二+龙田改二+4DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 天龍改二
+      notes: 旗舰
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 龍田改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: 自由枠
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - E
+    - G
+    - F
+    - B
+  equip_notes: 注意25%概率沟G-K；到达终点B即可
+  example: []
+  tags:
+  - 任务
+  - B120
+  special_attacks: []

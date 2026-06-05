@@ -1,0 +1,11 @@
+quest_id: Bm3
+quest_name: '''水雷戦隊''南西へ！'
+category: monthly
+requirement: 1-4，S胜，需要1~3个CL(旗舰)和至少1个DD，不能带其它舰种
+maps:
+- map_id: 1-4
+  fleet_hint: 2CL(旗舰)+4DD
+  notes: boss点60空确
+  synergy_quests:
+  - Bm8
+  - Bq11

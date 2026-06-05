@@ -1,0 +1,18 @@
+quest_id: Bq8
+quest_name: 泊地周辺海域の安全確保を徹底せよ！
+category: quarterly
+requirement: 1-5、7-1、7-2P1、7-2P2各3次S胜，战果+300
+maps:
+- map_id: 1-5
+  fleet_hint: 4DE/DD
+  synergy_quests:
+  - Bm5
+  - Bw10
+- map_id: 7-1
+  fleet_hint: 1CL+4DD
+  synergy_quests: []
+- map_id: 7-2
+  fleet_hint: P1:2CVL+3DE或1CVL+3DD；P2:1BB系+1BB系/CV系+1CVL+1CLT/CAV+2DD，高速
+  notes: P2 boss点359空优，分歧点系数=4，索敌>=69
+  synergy_quests:
+  - Bq10

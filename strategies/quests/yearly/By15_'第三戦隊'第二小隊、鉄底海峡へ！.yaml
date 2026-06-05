@@ -1,0 +1,21 @@
+quest_id: By15
+quest_name: '''第三戦隊''第二小隊、鉄底海峡へ！'
+category: yearly
+requirement: 5-1、5-3、5-4、5-5各1次A胜，需要比叡+雾岛+2DD
+maps:
+- map_id: 5-1
+  fleet_hint: 比叡+雾岛+1CAV+1CL+2DD
+  notes: boss点大概率126空优
+  synergy_quests: []
+- map_id: 5-3
+  fleet_hint: 比叡+雾岛+1CA系/CL系+1CL+2DD
+  notes: 最好一个丙形态旗舰
+  synergy_quests: []
+- map_id: 5-4
+  fleet_hint: 比叡+雾岛+1CL+3DD
+  notes: 索敌>=45
+  synergy_quests: []
+- map_id: 5-5
+  fleet_hint: 斩后：比叡+雾岛+2CA系/CL系+2DD
+  notes: H点136空均，索敌>=66
+  synergy_quests: []

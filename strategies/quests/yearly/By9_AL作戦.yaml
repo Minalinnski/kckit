@@ -1,0 +1,21 @@
+quest_id: By9
+quest_name: AL作戦
+category: yearly
+requirement: 3-1、3-3、3-4、3-5各1次S胜，需要2CVL
+maps:
+- map_id: 3-1
+  fleet_hint: 2CVL+2CA系/CL系+2DD
+  notes: boss点42空优，84空确
+  synergy_quests: []
+- map_id: 3-3
+  fleet_hint: 2CVL+1CV+3CA系/CL系
+  notes: E点108空优，216空确，需CV带路
+  synergy_quests: []
+- map_id: 3-4
+  fleet_hint: 2CVL+1CV+1CLT+1AV+1CL
+  notes: boss点168空确
+  synergy_quests: []
+- map_id: 3-5
+  fleet_hint: 2CVL+1CV+CA系/CL系+2SS
+  notes: 门神381空优，索敌>=40
+  synergy_quests: []

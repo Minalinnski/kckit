@@ -1,0 +1,25 @@
+quest_id: By4
+quest_name: 重巡戦隊、西へ！
+category: yearly
+requirement: 4-1、4-2、4-3、4-4各1次A胜以上，需要3CA(不含CAV)+1DD
+maps:
+- map_id: 4-1
+  fleet_hint: 3CA+2DD+1CA系/CL系/AV
+  notes: boss点36空优，72空确
+  synergy_quests:
+  - Bq12
+- map_id: 4-2
+  fleet_hint: 3CA+2DD+1CL
+  notes: D点84空优，168空确
+  synergy_quests:
+  - Bq12
+- map_id: 4-3
+  fleet_hint: 3CA+1DD+2CV
+  notes: boss点155空优，309空确
+  synergy_quests:
+  - Bq12
+- map_id: 4-4
+  fleet_hint: 3CA+2DD+1CL
+  notes: boss点72空优，144空确
+  synergy_quests:
+  - Bq12

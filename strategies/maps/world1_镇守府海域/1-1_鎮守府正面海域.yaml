@@ -1,0 +1,241 @@
+map: 1-1
+source: nga_import
+notes: 鎮守府正面海域，罗盘分歧A→B或C(boss)，常用于刷闪，无法稳定进boss
+presets:
+- name: 刷闪通用（空母/水母型）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 旗舰，刷闪目标，最大搭载格带彩云避免喷铝，其余格带熟练度未满攻击机
+    - ship_class:
+      - SS
+      count: 1
+      specific_ships: []
+      notes: 可开幕非红脸SS，补刀用，可选
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 狗粮挡枪，可选
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+  equip_notes: 旗舰最大搭载格带彩云，其余格带攻击机刷熟练度；低等级舰需僚舰带电探或水侦补索敌；喷气机不建议在此刷熟练
+  example: []
+  tags:
+  - 刷闪
+  - 熟练度
+  special_attacks: []
+- name: 刷闪通用（中射程以上舰）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      - CA
+      - CAV
+      - CL
+      - CLT
+      count: 1
+      specific_ships: []
+      notes: 旗舰，刷闪目标，中射程以上
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 狗粮挡枪
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 1
+      specific_ships: []
+      notes: 10级以下不可开幕SS，挡枪降低消耗，可选
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+  equip_notes: 狗粮无需特殊装备，回港后可不补给
+  example: []
+  tags:
+  - 刷闪
+  special_attacks: []
+- name: 刷闪通用（短射程舰）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      - DE
+      - CL
+      - CLT
+      count: 1
+      specific_ships: []
+      notes: 旗舰，刷闪目标，短射程
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 狗粮挡枪
+    - ship_class:
+      - SS
+      count: 1
+      min_level: 1
+      specific_ships: []
+      notes: 10级以下不可开幕SS，挡枪，可选
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+  equip_notes: 短射程旗舰带1DD会有概率让狗粮先击沉敌舰导致刷闪失败，建议1DD+1不可开幕SS搭配
+  example: []
+  tags:
+  - 刷闪
+  special_attacks: []
+- name: 任务B2 鎮守府正面海域を護れ！
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      - DE
+      - CL
+      - CLT
+      - CA
+      - CAV
+      - BB
+      - FBB
+      - BBV
+      - CV
+      - CVL
+      - AV
+      - SS
+      - SSV
+      count: 1
+      specific_ships: []
+      notes: 随意配置，B胜即可
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+  equip_notes: 无特殊要求，B胜boss点即可完成
+  example: []
+  tags:
+  - 任务
+  - B2
+  special_attacks: []
+- name: 任务B174 鎮守府秋刀魚祭り発動準備！
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      - CLT
+      - AV
+      count: 1
+      specific_ships:
+      - 宗谷
+      notes: 旗舰，CL/CT/AV/宗谷任选其一
+    - ship_class:
+      - DD
+      - DE
+      - CL
+      - CLT
+      - CA
+      - CAV
+      - BB
+      - FBB
+      - BBV
+      - CV
+      - CVL
+      - SS
+      count: 1
+      specific_ships: []
+      notes: 任意僚舰，人越少越容易进boss
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+  equip_notes: S胜boss点1次，人越少越容易进boss（罗盘分歧）
+  example: []
+  tags:
+  - 任务
+  - B174
+  special_attacks: []
+- name: 任务B201 哨戒部隊で近海及び南西諸島を警戒せよ！
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DE
+      count: 3
+      specific_ships: []
+      notes: 3DE，或替换为DD/DE混合共4艘
+    - ship_class:
+      - CV
+      - CVL
+      - BB
+      - FBB
+      - CA
+      - CAV
+      - CL
+      - CLT
+      count: 1
+      specific_ships: []
+      notes: 1名可开幕舰，辅助输出
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+  equip_notes: A胜1次完成，3DE+1开幕舰或4DD/DE，人越少越容易进boss
+  example: []
+  tags:
+  - 任务
+  - B201
+  special_attacks: []
+- name: 任务B210 二等輸送艦の積極运用
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DE
+      count: 1
+      specific_ships:
+      - 百一号型輸送艦
+      notes: 旗舰，百一号型輸送艦
+    - ship_class:
+      - CL
+      - CLT
+      count: 1
+      specific_ships: []
+      notes: 1CL系
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: 2DD
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - C
+  equip_notes: S胜boss点1次完成，共4艘固定编成
+  example: []
+  tags:
+  - 任务
+  - B210
+  special_attacks: []

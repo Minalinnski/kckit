@@ -1,0 +1,195 @@
+map: 1-5
+source: nga_import
+notes: 鎮守府近海，boss点J为4艘潜艇，全程单横阵，路线A-D-F-G-J或A-D-E-J
+presets:
+- name: 新人向·纯反潜小船（司令部34级以下）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 五十鈴
+      notes: 旗舰，装备九三式水中聴音機+九四式爆雷投射機
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨
+      notes: 装备九三式水中聴音機+九四式爆雷投射機
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 白露
+      notes: 装备三式水中探信儀+九四式爆雷投射機
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 満潮
+      notes: 装备九三式水中聴音機+三式爆雷投射機
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - F
+    - G
+    - J
+  equip_notes: 全程单横阵。水听+爆雷投射机有套装加成。反潜装备质量不限，挑面板对潜值高的带即可。无需先制对潜。
+  example:
+  - ship: 五十鈴
+    equips:
+    - 九三式水中聴音機
+    - 九四式爆雷投射機
+  - ship: 時雨
+    equips:
+    - 九三式水中聴音機
+    - 九四式爆雷投射機
+  - ship: 白露
+    equips:
+    - 三式水中探信儀
+    - 九四式爆雷投射機
+  - ship: 満潮
+    equips:
+    - 九三式水中聴音機
+    - 三式爆雷投射機
+  tags:
+  - 新人向
+  - 低司令部等级
+  - Lv34以下
+  special_attacks: []
+- name: BBV补充炮击编成（无先制对潜船时）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships:
+      - 五十鈴改
+      notes: 旗舰，装备九三式水中聴音機+九四式爆雷投射機+九五式爆雷
+    - ship_class:
+      - BBV
+      count: 1
+      specific_ships:
+      - 伊勢改
+      - 日向改
+      - 扶桑改
+      - 山城改
+      notes: 装备瑞雲×4，提供2轮炮击
+    - ship_class:
+      - DE
+      count: 1
+      specific_ships:
+      - 択捉改
+      notes: 装备三式水中探信儀+三式爆雷投射機
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改
+      notes: 4号位，装备最好的反潜装备，提高最后炮击击破旗舰概率。装备三式水中探信儀+三式爆雷投射機+九五式爆雷
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - F
+    - G
+    - J
+  equip_notes: BBV装备4×瑞雲，提供2轮炮击弥补反潜火力不足。CVL可替换非先制对潜小船（需有彩雲）。最好装备优先给4号位。全程单横阵。
+  example:
+  - ship: 五十鈴改
+    equips:
+    - 九三式水中聴音機
+    - 九四式爆雷投射機
+    - 九五式爆雷
+  - ship: 伊勢改
+    equips:
+    - 瑞雲
+    - 瑞雲
+    - 瑞雲
+    - 瑞雲
+  - ship: 択捉改
+    equips:
+    - 三式水中探信儀
+    - 三式爆雷投射機
+  - ship: 時雨改
+    equips:
+    - 三式水中探信儀
+    - 三式爆雷投射機
+    - 九五式爆雷
+  tags:
+  - BBV
+  - 无先制对潜
+  special_attacks: []
+- name: 4艘先制对潜·低消耗编成
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DE
+      count: 1
+      min_asw: 100
+      specific_ships:
+      - 占守改
+      notes: 先制対潜，装备三式水中探信儀×2+三式爆雷投射機
+    - ship_class:
+      - DE
+      count: 1
+      min_asw: 100
+      specific_ships:
+      - 国後改
+      notes: 先制対潜，装备三式水中探信儀×2+三式爆雷投射機
+    - ship_class:
+      - DE
+      count: 1
+      min_asw: 100
+      specific_ships:
+      - 択捉改
+      notes: 先制対潜，装备三式水中探信儀×2+三式爆雷投射機
+    - ship_class:
+      - DE
+      count: 1
+      min_asw: 100
+      specific_ships:
+      - 松輪改
+      notes: 先制対潜，装备三式水中探信儀×2+三式爆雷投射機
+  requirements:
+    air_state: none
+    routing_nodes:
+    - A
+    - D
+    - F
+    - G
+    - J
+  equip_notes: 全员先制対潜（面板対潜≥100），低消耗（40油/40弹）。全程单横阵。时间效率较低，适合低消耗刷勋章。
+  example:
+  - ship: 占守改
+    equips:
+    - 三式水中探信儀
+    - 三式水中探信儀
+    - 三式爆雷投射機
+  - ship: 国後改
+    equips:
+    - 三式水中探信儀
+    - 三式水中探信儀
+    - 三式爆雷投射機
+  - ship: 択捉改
+    equips:
+    - 三式水中探信儀
+    - 三式水中探信儀
+    - 三式爆雷投射機
+  - ship: 松輪改
+    equips:
+    - 三式水中探信儀
+    - 三式水中探信儀
+    - 三式爆雷投射機
+  tags:
+  - 先制対潜
+  - 低消耗
+  - DE×4
+  special_attacks: []

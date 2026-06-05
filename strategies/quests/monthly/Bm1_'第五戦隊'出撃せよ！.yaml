@@ -1,0 +1,12 @@
+quest_id: Bm1
+quest_name: '''第五戦隊''出撃せよ！'
+category: monthly
+requirement: 2-5，S胜，需要妙高+那智+羽黑
+maps:
+- map_id: 2-5
+  fleet_hint: 妙高+那智+羽黑+1BBV+2CAV/CL/AV
+  notes: boss点84空确，索敌>=49，不能带2AV，2船背桶
+  synergy_quests:
+  - By1
+  combo_fleets:
+    By1: 1BBV+妙高+那智+羽黑+绫波改二+敷波改二

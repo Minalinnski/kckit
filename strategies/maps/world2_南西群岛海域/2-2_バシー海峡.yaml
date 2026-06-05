@@ -1,0 +1,335 @@
+map: 2-2
+source: nga_import
+notes: バシー海峡，boss点K有空母ヲ级elite，多路线可选，AV/AS带路可固定C-E-F-H-K最优路线
+presets:
+- name: 萌新推图（随机G路线）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 带路，可放旗舰保护
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - BB
+      - FBB
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 81
+    enemy_air_power: 18
+    routing_nodes:
+    - C
+    - E
+    - G
+    - H
+    - K
+  equip_notes: boss点K司令部等级49以下72空确，50以上81空确。大船越多越容易走G点。
+  example:
+  - ship: 千歳甲
+    equips:
+    - 瑞雲
+    - 瑞雲
+    - 瑞雲
+  - ship: 扶桑
+    equips:
+    - 41cm連装砲
+    - 35.6cm連装砲
+    - 零式水上偵察機
+    - 零式水上偵察機
+  - ship: 赤城
+    equips:
+    - 九九式艦爆
+    - 九七式艦攻
+    - 九七式艦攻
+    - 九六式艦戦
+  - ship: 鳥海
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 摩耶
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  - ship: 最上
+    equips:
+    - 20.3cm連装砲
+    - 20.3cm連装砲
+    - 零式水上偵察機
+  tags:
+  - beginner
+  - random_G
+  special_attacks: []
+- name: 最优路线（AV+2DE+2CVL+1CA/CL/SS）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 带路固定C-E-F-H-K，千歳/千代田甲推荐
+    - ship_class:
+      - DE
+      count: 2
+      specific_ships: []
+      notes: 确保走F点捞铝
+    - ship_class:
+      - CV
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: 制空担当，低耗CVL优先
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      - SS
+      count: 1
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 81
+    enemy_air_power: 18
+    routing_nodes:
+    - C
+    - E
+    - F
+    - H
+    - K
+  equip_notes: boss点K空确需81制空。季常任务南西推荐路线，捞铝+任务一气呵成。C-E-F-H-K路线示例：神鷹改二+大鷹改二+神威改+佐渡+対馬+伊504，制空90~94，消耗130油125弹。
+  example:
+  - ship: 神鷹改二
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 天山一二型(友永隊)
+    - 流星(六〇一空)
+    - 流星(六〇一空)
+  - ship: 大鷹改二
+    equips:
+    - 彗星(江草隊)
+    - 天山一二型(村田隊)
+    - 天山一二型(村田隊)
+    - 彩雲
+  - ship: 伊504
+    equips:
+    - 試製FaT仕様九五式酸素魚雷改
+    - 試製FaT仕様九五式酸素魚雷改
+  - ship: 神威改
+    equips:
+    - 試製晴嵐
+    - 晴嵐(六三一空)
+    - 強風改
+  - ship: 佐渡
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  - ship: 対馬
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 13号対空電探改
+  tags:
+  - recommended
+  - C-E-F-H-K
+  - bauxite_farm
+  - nansei
+  special_attacks: []
+- name: 捞铝路线（3CV系带路）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      count: 3
+      specific_ships:
+      - 大鷹改
+      - 鳳翔改
+      - 甘比爾湾改
+      notes: 低耗CVL优先，每格搭载<=17，选彩云避T字不利
+    - ship_class:
+      - SS
+      count: 1
+      specific_ships:
+      - 伊504
+      notes: 如果红脸连续打补给需换成DD
+    - ship_class:
+      - SS
+      count: 1
+      specific_ships:
+      - 呂500
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 如月改二
+      notes: 大发担当
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - B
+    - A
+  equip_notes: 制空41~43，索敌22.42，消耗120油150弹，运输TP A=30/S=43。SS带鼓筒(运输用)，DD带大发动艇×3。CVL选每格搭载<=17避免喷铝。
+  example:
+  - ship: 大鷹改
+    equips:
+    - 彗星二二型(六三四空)
+    - 流星改
+    - 流星改
+    - 流星改
+  - ship: 鳳翔改
+    equips:
+    - 彗星(江草隊)
+    - 流星改
+    - 流星改
+  - ship: 甘比爾湾改
+    equips:
+    - 彗星二二型(六三四空/熟練)
+    - 流星改
+    - 彩雲
+  - ship: 伊504
+    equips:
+    - ドラム缶(輸送用)
+    - ドラム缶(輸送用)
+  - ship: 呂500
+    equips:
+    - 特二式内火艇
+    - 特二式内火艇
+  - ship: 如月改二
+    equips:
+    - 大発動艇
+    - 大発動艇
+    - 大発動艇
+  tags:
+  - bauxite_farm
+  - C-B-A
+  - low_cost
+  special_attacks: []
+- name: 捞铝拉烟红脸版（AO+CVL+大发DD）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AO
+      count: 1
+      specific_ships:
+      - 宗谷
+      - 神威
+      notes: 带路，高甲高回避，装备发煙装置，运>=26做旗舰(2星大烟运>=17)
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: 低耗CVL，云鹰可兼带大发，搭载<=17
+    - ship_class:
+      - DD
+      count: 4
+      specific_ships: []
+      notes: 高装甲DD，大发担当，红脸周回
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - B
+    - A
+  equip_notes: AO装备発煙装置降低敌命中。红脸时命中达下限，拉烟毫无副作用。旗舰中破/CVL中破/DD大破泡澡。时速：油-800弹-800铝+1700。
+  example: []
+  tags:
+  - bauxite_farm
+  - C-B-A
+  - smoke_generator
+  - red_face
+  special_attacks: []
+- name: 捞铝警戒阵极限版（AO+全大发）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AO
+      count: 1
+      specific_ships:
+      - 宗谷
+      - 神威
+      notes: 带路，警戒阵
+    - ship_class:
+      - DD
+      count: 5
+      specific_ships: []
+      notes: 全员大发，高装甲优先，可用CL替换减少大破概率
+  requirements:
+    air_state: none
+    routing_nodes:
+    - C
+    - B
+    - A
+  equip_notes: 全员装备大发动艇。AO带路防止随机沟。敌闭幕雷比炮击威胁更大故不带SS。没补给舰可用3CVL或2BBV带路但消耗上升。
+  example: []
+  tags:
+  - bauxite_farm
+  - C-B-A
+  - daihatsu
+  - keikai_formation
+  special_attacks: []
+- name: C-E-(F-H)-K 中级配置（AV+2DD+3CA/CL）
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 带路固定进boss
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      count: 3
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 41
+    enemy_air_power: 18
+    routing_nodes:
+    - C
+    - E
+    - F
+    - H
+    - K
+  equip_notes: boss点41空优，81空确。司令部等级80以上会遇到双ル级阵容，小船练度低较难打。凑不齐2DE时的折中方案。
+  example: []
+  tags:
+  - intermediate
+  - C-E-F-H-K
+  special_attacks: []

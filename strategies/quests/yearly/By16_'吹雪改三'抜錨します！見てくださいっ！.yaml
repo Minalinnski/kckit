@@ -1,0 +1,25 @@
+quest_id: By16
+quest_name: '''吹雪改三''抜錨します！見てくださいっ！'
+category: yearly
+requirement: 7-5P3、5-1、5-3、5-4、5-5各1次S胜，吹雪改三/改三护旗舰+吹雪型2号位
+maps:
+- map_id: 7-5
+  fleet_hint: 1BB系+2CA系/CL系/AV+1CL+2DD高速
+  notes: P3，出门空袭123空均，索敌>=58
+  synergy_quests: []
+- map_id: 5-1
+  fleet_hint: 1~2BB系+0~1CVL+1CA系/CL系+1CL+2DD
+  notes: boss点大概率126空优
+  synergy_quests: []
+- map_id: 5-3
+  fleet_hint: 1BB/FBB+0~1FBB+1~2CA系/CL系+1CL+2DD
+  notes: boss点140空优，注意2号位不能退避
+  synergy_quests: []
+- map_id: 5-4
+  fleet_hint: 2CV系+2BB系/CVL/CA系/CL/DD+2DD
+  notes: G点309空优，索敌>=60，C点需先反
+  synergy_quests: []
+- map_id: 5-5
+  fleet_hint: 斩后：2BBV/CVL+2CA系/CL系+2DD
+  notes: 斩后boss点356空优，索敌>=66
+  synergy_quests: []

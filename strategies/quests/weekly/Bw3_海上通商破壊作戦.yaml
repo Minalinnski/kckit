@@ -1,0 +1,10 @@
+quest_id: Bw3
+quest_name: 海上通商破壊作戦
+category: weekly
+requirement: 击沉20艘补给舰
+maps:
+- map_id: 2-2
+  fleet_hint: 3CVL+3SS/DD
+  notes: 4-2补给较多，4-4补给较少
+  synergy_quests:
+  - Bw6

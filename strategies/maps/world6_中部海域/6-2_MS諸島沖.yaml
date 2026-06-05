@@ -1,0 +1,641 @@
+map: 6-2
+source: nga_import
+notes: MS諸島沖；boss点K；主路线C-E-I/J-K；boss掉落燃料补给舰；道中漩涡消耗较大
+presets:
+- name: 萌新推图 C-E-I/J-K
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城改
+      notes: 旗舰，正规航母
+    - ship_class:
+      - BB
+      - FBB
+      count: 1
+      specific_ships:
+      - 長門改
+      notes: 低速戦列艦
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改
+      notes: 航空巡洋艦
+    - ship_class:
+      - CLT
+      count: 1
+      specific_ships:
+      - 北上改二
+      notes: 重雷装巡洋艦；CLTとCA系可互換
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 時雨改二
+      notes: ''
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - 霞改
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - K
+  equip_notes: 制空166~168；索敵12.64(分歧点系数=3)；索敵40~43走I，43~50随机I/J，50以上走J；J点需153空优，K点126空优；司令部等级低于116需适当提高索敵
+  example:
+  - ship: 赤城改
+    equips:
+    - 流星改
+    - 試製烈風 後期型
+    - 彗星一二型甲
+    - 試製烈風 後期型
+  - ship: 長門改
+    equips:
+    - 41cm連装砲
+    - 41cm連装砲
+    - 零式水上偵察機
+    - 九一式徹甲弾
+  - ship: 最上改
+    equips:
+    - 20.3cm連装砲
+    - 零式水上偵察機
+    - 20.3cm連装砲
+    - 二式水戦改
+  - ship: 北上改二
+    equips:
+    - 15.5cm三連装副砲
+    - 15.5cm三連装副砲
+    - 甲標的 甲型
+  - ship: 時雨改二
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 91式高射装置
+  - ship: 霞改
+    equips:
+    - 10cm連装高角砲
+    - 10cm連装高角砲
+    - 13号対空電探
+  tags:
+  - 萌新推图
+  - C-E-I/J-K
+  special_attacks: []
+- name: 打捞马路油 C-E-J-K
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 瑞鳳改二乙
+      notes: 旗舰；可换更强CV
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 最上改二特
+      notes: 巡洋三巨头之一
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 三隈改二特
+      notes: 巡洋三巨头之一
+    - ship_class:
+      - CLT
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 矢矧改二乙
+      notes: 巡洋三巨头之一；可开幕雷+二连或鱼雷CI+水战补制空
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 初月改二
+      notes: 保证能活着进boss
+    - ship_class:
+      - DD
+      count: 1
+      min_level: 99
+      specific_ships:
+      - 天津風改二
+      notes: 保证能活着进boss
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 50.0
+    routing_nodes:
+    - C
+    - E
+    - J
+    - K
+  equip_notes: 制空169；索敵分歧点系数=3，索敵>=50走J；J点153空优，K点126空优；中间巡洋可换伊勢/ネルソン/CLT；旗舰瑞鳳脆但有先手输出
+  example:
+  - ship: 瑞鳳改二乙
+    equips:
+    - F4U-7
+    - AU-1
+    - 天山一二型甲
+    - 震電改
+    - 熟練甲板要員+航空整備員
+  - ship: 最上改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 零式水上偵察機
+    - 甲標的 丙型
+    - 増設バルジ(中型艦)
+  - ship: 三隈改二特
+    equips:
+    - 試製20.3cm(4号)連装砲
+    - 試製20.3cm(4号)連装砲
+    - 紫雲
+    - 甲標的 丁型改(蛟龍改)
+    - 増設バルジ(中型艦)
+  - ship: 矢矧改二乙
+    equips:
+    - 甲標的 丙型
+    - 61cm四連装(酸素)魚雷後期型
+    - 61cm四連装(酸素)魚雷後期型
+    - 強風改二
+    - 増設バルジ(中型艦)
+  - ship: 初月改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - FuMO25 レーダー
+    - 増設バルジ(中型艦)
+    - 艦本新設計 増設バルジ(中型艦)
+  - ship: 天津風改二
+    equips:
+    - 10cm連装高角砲+高射装置
+    - 10cm連装高角砲+高射装置
+    - 増設バルジ(中型艦)
+  tags:
+  - 打捞马路油
+  - Z作戦
+  - C-E-J-K
+  special_attacks: []
+- name: 任务B94 CV/AV旗舰
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      - CVL
+      - AV
+      count: 1
+      specific_ships: []
+      notes: 旗舰
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      - CLT
+      count: 2
+      specific_ships: []
+      notes: CA系/CLT
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - K
+  equip_notes: boss点126空优252空确；分歧点系数=3，索敵40~43走I，50以上走J，J点需153空优
+  example: []
+  tags:
+  - 任务B94
+  - C-E-I/J-K
+  special_attacks: []
+- name: 任务B96 鈴谷航改二旗舰
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships:
+      - 鈴谷航改二
+      notes: 旗舰
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      - CLT
+      count: 2
+      specific_ships: []
+      notes: CA系/CLT
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - K
+  equip_notes: boss点126空优252空确；分歧点系数=3，索敵40~43走I，50以上走J，J点需153空优
+  example: []
+  tags:
+  - 任务B96
+  - C-E-I/J-K
+  special_attacks: []
+- name: 任务B101 第七戦隊 4CAV+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 熊野航改二
+      notes: 旗舰
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 鈴谷航改二
+      notes: 2号位
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships:
+      - 三隈改
+      notes: ''
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - K
+  equip_notes: boss点126空优252空确；分歧点系数=3，索敵40~43走I，50以上走J，J点需153空优
+  example: []
+  tags:
+  - 任务B101
+  - 4CAV+2DD
+  - C-E-I/J-K
+  special_attacks: []
+- name: 任务B101 第七戦隊 1CVL+3CAV+2DD
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 熊野航改二
+      notes: 旗舰
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 鈴谷航改二
+      notes: 2号位
+    - ship_class:
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 最上改
+      - 三隈改
+      notes: 最上改或三隈改
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - K
+  equip_notes: boss点126空优252空确；分歧点系数=3，索敵40~43走I，50以上走J，J点需153空优
+  example: []
+  tags:
+  - 任务B101
+  - 1CVL+3CAV+2DD
+  - C-E-I/J-K
+  special_attacks: []
+- name: 任务B101 上路 4CAV+1CV+1CL系/AV
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 熊野航改二
+      notes: 旗舰
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 鈴谷航改二
+      notes: 2号位
+    - ship_class:
+      - CAV
+      count: 2
+      specific_ships: []
+      notes: 最上改/三隈改等
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CL
+      - CLT
+      - AV
+      count: 1
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 252
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - B
+    - F
+    - I
+    - K
+  equip_notes: F点252空优；分歧点系数=3，索敵>=40；后面4个不能全是CA系
+  example: []
+  tags:
+  - 任务B101
+  - 上路
+  - 4CAV+1CV+1CL/AV
+  special_attacks: []
+- name: 任务B101 上路 2CVL+3CA系+1CL系/AV
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 熊野航改二
+      notes: 旗舰
+    - ship_class:
+      - CAV
+      count: 1
+      specific_ships:
+      - 鈴谷航改二
+      notes: 2号位
+    - ship_class:
+      - CVL
+      count: 2
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CL
+      - CLT
+      - AV
+      count: 1
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 252
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - B
+    - F
+    - I
+    - K
+  equip_notes: F点252空优；分歧点系数=3，索敵>=40
+  example: []
+  tags:
+  - 任务B101
+  - 上路
+  - 2CVL+3CA系+1CL/AV
+  special_attacks: []
+- name: 任务B105 Saratoga旗舰
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - Saratoga Mk.II Mod.2
+      - Saratoga Mk.II
+      notes: 旗舰
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      - CLT
+      count: 1
+      specific_ships: []
+      notes: CA系/CLT
+    - ship_class:
+      - CL
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - DD
+      count: 2
+      specific_ships: []
+      notes: ''
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - K
+  equip_notes: boss点126空优252空确；分歧点系数=3，索敵40~43走I，50以上走J，J点需153空优
+  example: []
+  tags:
+  - 任务B105
+  - C-E-I/J-K
+  special_attacks: []
+- name: 任务B149 Fletcher Mk.II旗舰
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships:
+      - Fletcher Mk.II
+      notes: 旗舰
+    - ship_class:
+      - BB
+      - FBB
+      - BBV
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CV
+      - CVL
+      count: 1
+      specific_ships: []
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      count: 2
+      specific_ships: []
+      notes: CA系/CL系；需含至少2只美/英/澳/荷船
+    - ship_class:
+      - DD
+      count: 1
+      specific_ships: []
+      notes: 美/英/澳/荷船
+  requirements:
+    air_state: none
+    air_power_min: 153
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - E
+    - I
+    - K
+  equip_notes: boss点126空优252空确；分歧点系数=3，索敵40~43走I，50以上走J，J点需153空优；需Fletcher Mk.II旗舰+另2只美/英/澳/荷船共计3只
+  example: []
+  tags:
+  - 任务B149
+  - C-E-I/J-K
+  special_attacks: []
+- name: 任务B154 第一航空戦隊 赤城改二戊+加賀改二
+  fleet:
+    type: single
+    slots:
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 赤城改二戊
+      notes: 旗舰
+    - ship_class:
+      - CV
+      count: 1
+      specific_ships:
+      - 加賀改二戊
+      - 加賀改二護
+      notes: ''
+    - ship_class:
+      - CA
+      - CAV
+      - CL
+      - CLT
+      count: 4
+      specific_ships: []
+      notes: CA系/CL系；后面4个不能全是CA系
+  requirements:
+    air_state: none
+    air_power_min: 252
+    los_formula: 3
+    los_min: 40.0
+    routing_nodes:
+    - C
+    - B
+    - F
+    - I
+    - K
+  equip_notes: F点252空优；分歧点系数=3，索敵>=40；后面4个不能全是CA系
+  example: []
+  tags:
+  - 任务B154
+  - 上路
+  - 2CV+4CA系/CL系
+  special_attacks: []

@@ -1,0 +1,26 @@
+quest_id: Bq11
+quest_name: 南西諸島方面'海上警備行動'発令！
+category: quarterly
+requirement: 1-4、2-1、2-2、2-3各1次S胜，战果+80，需要1CVL/CL/CLT/CT+3DD/DE
+maps:
+- map_id: 1-4
+  fleet_hint: 2CVL+4DD或2CL旗舰+4DD
+  notes: boss点60空确
+  synergy_quests:
+  - Bm3
+  - Bq9
+- map_id: 2-1
+  fleet_hint: 2CV系+1CLT+3DD
+  notes: boss点162空确
+  synergy_quests:
+  - Bq9
+- map_id: 2-2
+  fleet_hint: 2CVL+1AV+2DE+1DD或1AV+3DD+1CL+1CL系/CA系/AV
+  notes: boss点81空确
+  synergy_quests:
+  - Bq9
+- map_id: 2-3
+  fleet_hint: 1CV+1CVL+1AV+3DD
+  notes: boss点81空优，162空确
+  synergy_quests:
+  - Bq9

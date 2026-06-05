@@ -1,0 +1,10 @@
+quest_id: Bm6
+quest_name: '''空母機動部隊''西へ！'
+category: monthly
+requirement: 4-2，S胜，需要2CV系和2DD
+maps:
+- map_id: 4-2
+  fleet_hint: 2CV系+1CA系/CL系+1CL+2DD
+  notes: 84道中空优boss空确，或168道中空确
+  synergy_quests:
+  - Bw6
