@@ -31,3 +31,10 @@ tools/*.tmp
 
 # poi plugin node_modules (installed separately)
 poi-plugin/node_modules/
+
+# Game assets downloaded from server (regenerate: harvest_atlases.py / harvest_maps.py)
+data/ui_atlas/raw/
+data/maps/raw/
+
+# Local archive of Figma-era manual calibration (superseded by git history)
+backup/
