@@ -80,14 +80,20 @@ def detect_from_poi(poi_client) -> ScreenState:
     Detect current screen using best available source from poi client.
 
     Priority:
-      1. Screen spy (DOM-based, ground truth, confidence=1.0)
+      1. Scene tree / screen spy (scene_tree = perception v2 atlas-prefix
+         classification, confidence=0.95; other spy sources claim 1.0)
       2. Last API event (unreliable if KC caches the response, confidence=0.9)
       3. Game state heuristics (confidence≤0.6)
     """
-    # 1. Screen spy — set by the injected DOM observer, no API-event dependency
+    # 1. Scene tree / spy — no API-event dependency
     spy_screen = getattr(poi_client, "current_screen", None)
     if spy_screen:
-        return detect_from_spy(spy_screen) or _fallback_from_state(poi_client)
+        result = detect_from_spy(spy_screen)
+        if result:
+            if getattr(poi_client, "current_screen_source", None) == "scene_tree":
+                result.confidence = 0.95
+            return result
+        return _fallback_from_state(poi_client)
 
     # 2. API event inference
     try:

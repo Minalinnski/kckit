@@ -144,10 +144,56 @@ function broadcast(msg) {
   if (!wss) return
   const data = JSON.stringify(msg)
   wss.clients.forEach(function(client) {
-    if (client.readyState === WebSocket.OPEN) {
+    // kc2 push agents are data SOURCES — don't echo broadcasts back at them
+    if (client.readyState === WebSocket.OPEN && client._kckitRole !== 'kc2') {
       client.send(data)
     }
   })
+}
+
+// ── KC2 in-page push agent state ─────────────────────────────────────────────
+var _kc2PushTs = 0          // last message from any kc2 push agent
+var _lastPushedTree = null  // most recent pushed scene tree (for get_scene_tree)
+var _lastShotHintTs = 0
+
+function pushAgentFresh() {
+  return Date.now() - _kc2PushTs < 15000
+}
+
+function handleKc2Push(ws, cmd) {
+  _kc2PushTs = Date.now()
+  if (cmd.cmd === 'kc2_hello') {
+    ws._kckitRole = 'kc2'
+    console.log('[kckit-bridge] KC2 push agent connected (data plane off remote)')
+    broadcast({ type: 'push_status', connected: true })
+    return true
+  }
+  if (cmd.cmd === 'kc2_scene_tree') {
+    ws._kckitRole = 'kc2'
+    if (cmd.payload && cmd.payload.nodes) {
+      _lastPushedTree = cmd.payload
+      broadcast({ type: 'scene_tree', payload: cmd.payload })
+      // screenshot refresh hint for live view (throttled)
+      if (Date.now() - _lastShotHintTs > 800) {
+        _lastShotHintTs = Date.now()
+        broadcast({ type: 'screenshot_needed', reason: 'kc2_push', ts: Date.now() })
+      }
+    }
+    return true
+  }
+  if (cmd.cmd === 'kc2_click') {
+    ws._kckitRole = 'kc2'
+    var rx = Number(cmd.rx) || 0
+    var ry = Number(cmd.ry) || 0
+    broadcast({ type: 'canvas_click', rx: rx, ry: ry, screen: _lastPolledScreen })
+    var navTarget = inferNavClick(rx, ry, _lastPolledScreen)
+    if (navTarget && navTarget !== _lastPolledScreen) {
+      _lastPolledScreen = navTarget
+      broadcast({ type: 'screen_change', screen: navTarget, source: 'click_nav' })
+    }
+    return true
+  }
+  return false
 }
 
 // ── Handle commands from Python client ──────────────────────────────────────
@@ -191,33 +237,65 @@ function getCanvasInfo() {
 var _GF = "#game_frame, iframe[src*='kcs2'], iframe[src*='kancolle']"
 
 // ── Canvas click navigation inference ────────────────────────────────────────
-// Nav button coordinates from config/screen_layout.yaml (cx, cy = center as fraction,
-// hw/hh = half-width/half-height). Click within the box → infer navigation target.
-// Coordinates are fractions of KC2 canvas (1200×720).
+// Coordinates are fractions of KC2 canvas — same reference as screen_layout.yaml (889×533).
+// Circle entries use r = radius; rect entries use hw/hh = half-width/half-height.
+// Figma-calibrated 2026-06-04 (node 1:13 port wheel, 10:2 left nav).
 var NAV_MAP = {
-  // From port: 6 navigation circle buttons
+  // Port navigation wheel — Figma circles; r = min(w,h)/2 from YAML
   port: [
-    { cx:0.281, cy:0.583, hw:0.050, hh:0.042, to:'supply'    },  // 補給
-    { cx:0.294, cy:0.698, hw:0.050, hh:0.042, to:'repair'    },  // 入渠
-    { cx:0.081, cy:0.698, hw:0.050, hh:0.042, to:'equipment' },  // 改装
-    { cx:0.094, cy:0.583, hw:0.050, hh:0.042, to:'hensei'    },  // 編成
-    { cx:0.188, cy:0.823, hw:0.050, hh:0.042, to:'factory'   },  // 工廠
-    { cx:0.188, cy:0.698, hw:0.060, hh:0.060, to:'sortie_type'}, // 出撃
+    { cx:0.246, cy:0.540, r:0.083, to:'sortie_type' },  // 出撃 (large center)
+    { cx:0.249, cy:0.281, r:0.058, to:'hensei'      },  // 編成
+    { cx:0.098, cy:0.463, r:0.058, to:'supply'      },  // 補給
+    { cx:0.396, cy:0.461, r:0.058, to:'equipment'   },  // 改装
+    { cx:0.155, cy:0.756, r:0.058, to:'repair'      },  // 入渠
+    { cx:0.340, cy:0.756, r:0.058, to:'factory'     },  // 工廠
   ],
-  // From sortie_type (出撃種別選択): 3 large circles
+  // 出撃種別選択 — 3 large circles (r = min(0.220,0.400)/2 = 0.110)
   sortie_type: [
-    { cx:0.225, cy:0.570, hw:0.110, hh:0.200, to:'sortie_world'      }, // 出撃
-    { cx:0.500, cy:0.570, hw:0.110, hh:0.200, to:'practice'          }, // 演習
-    { cx:0.775, cy:0.570, hw:0.110, hh:0.200, to:'expedition_select' }, // 遠征
+    { cx:0.225, cy:0.570, r:0.110, to:'sortie_world'      },  // 出撃
+    { cx:0.500, cy:0.570, r:0.110, to:'practice'           },  // 演習
+    { cx:0.775, cy:0.570, r:0.110, to:'expedition_select'  },  // 遠征
   ],
 }
 
+// Left sidebar present on all menu screens.
+// 母港 button (right side, larger rect) + 5 nav items (left column, small rects).
+var LEFT_NAV_HITS = [
+  { cx:0.092, cy:0.539, hw:0.018, hh:0.075, to:'port'      },  // 母港
+  { cx:0.027, cy:0.319, hw:0.015, hh:0.040, to:'hensei'    },  // 編成
+  { cx:0.027, cy:0.432, hw:0.015, hh:0.040, to:'supply'    },  // 補給
+  { cx:0.027, cy:0.544, hw:0.015, hh:0.040, to:'equipment' },  // 改装
+  { cx:0.027, cy:0.660, hw:0.015, hh:0.040, to:'repair'    },  // 入渠
+  { cx:0.027, cy:0.767, hw:0.015, hh:0.040, to:'factory'   },  // 工廠
+]
+
+// Screens that show the left sidebar (all sub-screens too, since sidebar shows through).
+var LEFT_NAV_SCREENS = {
+  hensei:true, supply:true, equipment:true, equipment_other:true,
+  repair:true, factory:true,
+  repair_ship_select:true, repair_ship_confirm:true,
+  hensei_ship_select:true, hensei_ship_confirm:true,
+  equipment_select:true, equipment_confirm:true,
+}
+
 function inferNavClick(rx, ry, currentScreen) {
-  var buttons = NAV_MAP[currentScreen]
-  if (!buttons) return null
+  // Screen-specific buttons (circle or rect)
+  var buttons = NAV_MAP[currentScreen] || []
   for (var i = 0; i < buttons.length; i++) {
     var b = buttons[i]
-    if (Math.abs(rx - b.cx) <= b.hw && Math.abs(ry - b.cy) <= b.hh) return b.to
+    if (b.r != null) {
+      var dx = rx - b.cx, dy = ry - b.cy
+      if (dx*dx + dy*dy <= b.r*b.r) return b.to
+    } else {
+      if (Math.abs(rx - b.cx) <= b.hw && Math.abs(ry - b.cy) <= b.hh) return b.to
+    }
+  }
+  // Left sidebar (present on all menu screens)
+  if (LEFT_NAV_SCREENS[currentScreen]) {
+    for (var j = 0; j < LEFT_NAV_HITS.length; j++) {
+      var n = LEFT_NAV_HITS[j]
+      if (Math.abs(rx - n.cx) <= n.hw && Math.abs(ry - n.cy) <= n.hh) return n.to
+    }
   }
   return null
 }
@@ -228,11 +306,15 @@ var _CLICK_HOOK_CODE = '(function(){'
   + 'var cv=document.querySelector("canvas");'
   + 'if(!cv) return {err:"no canvas"};'
   + 'cv.addEventListener("pointerdown",function(e){'
-  + '  var w=cv.width||1200,h=cv.height||720;'
-  + '  window._kckit_last_click={rx:e.offsetX/w,ry:e.offsetY/h,ts:Date.now()};'
+  // Use CSS display size (getBoundingClientRect), NOT cv.width (internal pixel resolution).
+  // KC2 canvas is 1200×720 internally but displayed at 889×533 — using cv.width gives
+  // systematically wrong fractions (offsetX/1200 instead of offsetX/889).
+  + '  var rect=cv.getBoundingClientRect();'
+  + '  var w=rect.width||cv.width||1200,h=rect.height||cv.height||720;'
+  + '  window._kckit_last_click={rx:e.offsetX/w,ry:e.offsetY/h,ts:Date.now(),cw:Math.round(w),ch:Math.round(h)};'
   + '},{passive:true,capture:true});'
   + 'window._kckit_click_hooked=true;'
-  + 'return {ok:true};'
+  + 'return {ok:true,cvWidth:cv.width,cvHeight:cv.height};'
   + '})()'
 
 // Map KC2 hash fragments → screen names (updated after probe discovers real values)
@@ -291,13 +373,11 @@ var KC2_API_SCREEN = {
   'api_req_mission/result':                 'expedition_result',
   'api_req_quest/clearitemget':             'quest_list',
   'api_req_quest/start':                    'quest_list',
-  // 編成 / 改装 entry signals (these fire when opening those screens)
+  // 編成 preset action (fires on preset selection within 編成 screen)
   'api_get_member/preset_deck':             'hensei',
   'api_req_hensei/preset_select':           'hensei',
-  'api_get_member/preset_dev_items':        'equipment',
-  'api_req_kaisou/can_preset_slot_select':  'equipment',
-  // Background/status pings — no meaningful screen transition
-  // (intentionally omitted: api_get_member/chart_additional_info, etc.)
+  // Excluded: preset_dev_items, can_preset_slot_select — background loads that fire
+  // at unpredictable times and cause false equipment/factory misidentification.
 }
 
 function getWebContents() {
@@ -419,6 +499,7 @@ var _SPY_CODE = '(function() {'
   + '    }'
   + '  }catch(e){}'
   + '  return null;'
+  + '}'
   // ── PIXI CanvasRenderer render hook ──────────────────────────────────────
   // KC2 uses Canvas renderer (not WebGL). Hook render() to capture the PIXI
   // stage structure immediately after a Container addChild/removeChild event.
@@ -505,6 +586,248 @@ var _WEBGL_HOOK_CODE = '(function(){'
   + 'return {ok:true};'
   + '})()'
 
+// ── Scene tree walk (perception v2) ──────────────────────────────────────────
+// Captures the PIXI stage root via a render() hook, then exposes
+// window._kckit_walk(maxNodes) which returns every visible node with its
+// texture frame name, global bounds (renderer px) and PIXI.Text content.
+// Same logic as tools/scene_dump.py, embedded so the plugin can broadcast
+// the tree on every scene mutation without a Python round-trip.
+// Bump when _SCENE_WALK_SETUP changes shape: stale in-frame walkers get
+// replaced by the self-heal path in runTreeWalk (version mismatch → re-inject).
+// v3: include alpha=0 interactive nodes — KC2 defines its REAL click regions
+// as transparent sprites with interactive+buttonMode (verified on 入渠:
+// dock click zones are alpha-0 repair_main_1 sprites, 252x72, exactly the
+// hand-calibrated nameplate areas). Visible sprites are decoration;
+// the interaction layer is invisible.
+// v4: capture mask bounds (m:[x,y,w,h]) — scroll lists / sliding banners are
+// clipped by PIXI masks in-game; without them the recon draws every off-window
+// item on top of everything (e.g. 編成 ship-banner carousels).
+// v5: raw (non-atlas) textures export the full /kcs2/... pathname so the
+// client can load them through the simulator's resource proxy; Text nodes
+// export fill/stroke colors + font size so recon text is readable.
+// v6: in-page PUSH AGENT — the KC2 frame opens its own WebSocket to
+// 127.0.0.1:23456 and pushes scene trees + clicks directly (verified: no CSP
+// block, localhost exempt from mixed-content). The data plane thereby leaves
+// @electron/remote entirely; remote remains for low-frequency control only
+// (clicks via sendInputEvent, screenshots, self-heal injection).
+var _WALK_VERSION = 6
+
+var _SCENE_WALK_SETUP = '(function(){'
+  + 'if (typeof PIXI === "undefined") return {skip:"no_pixi"};'
+  + 'function hookCap(cls){'
+  + '  if(!cls||!cls.prototype||cls.prototype._kckit_rootcap) return false;'
+  + '  var o=cls.prototype.render;'
+  + '  cls.prototype.render=function(root,rt){'
+  + '    if(!rt&&root&&!root.parent){window._kckit_root=root;window._kckit_renderer=this;}'
+  + '    return o.apply(this,arguments);'
+  + '  };'
+  + '  cls.prototype._kckit_rootcap=true;return true;'
+  + '}'
+  + 'hookCap(PIXI.WebGLRenderer);hookCap(PIXI.CanvasRenderer);'
+  + 'window._kckit_walk=function(maxNodes){'
+  + '  var root=window._kckit_root,rd=window._kckit_renderer;'
+  + '  if(!root) return null;'
+  + '  var RW=(rd&&rd.width)||1200,RH=(rd&&rd.height)||720;'
+  + '  var MAX=maxNodes||800,out=[],trunc=false;'
+  + '  function texId(n){'
+  + '    try{var t=n._texture||n.texture;if(!t)return null;'
+  + '    var ids=t.textureCacheIds||[];'
+  + '    for(var i=0;i<ids.length;i++){if(ids[i]&&ids[i].length<80)return ids[i];}'
+  + '    if(t.baseTexture&&t.baseTexture.imageUrl){'
+  + '      var u=t.baseTexture.imageUrl;'
+  + '      var k=u.indexOf("/kcs2/");'
+  + '      if(k>=0)return "@"+u.slice(k).split("?")[0];'
+  + '      return "@"+u.split("/").slice(-2).join("/").split("?")[0];'
+  + '    }'
+  + '    return null;}catch(e){return null;}'
+  + '  }'
+  + '  function walk(n,path,depth){'
+  + '    if(out.length>=MAX){trunc=true;return;}'
+  + '    if(!n.visible)return;'
+  // alpha=0 nodes are normally skipped EXCEPT interactive ones — those are
+  // the game-defined click regions (invisible by design).
+  + '    var inter=!!n.interactive;'
+  + '    if((n.alpha===0||n.renderable===false)&&!inter)return;'
+  + '    try{var b=n.getBounds();'
+  + '    if(b.width>=1&&b.height>=1&&b.x<RW&&b.y<RH&&b.x+b.width>0&&b.y+b.height>0){'
+  + '      var e={p:path,t:texId(n),x:Math.round(b.x),y:Math.round(b.y),w:Math.round(b.width),h:Math.round(b.height)};'
+  + '      if(inter){e.i=1;if(n.buttonMode)e.btn=1;}'
+  + '      if(n.alpha<0.99)e.a=Math.round(n.alpha*100)/100;'
+  + '      if(typeof n.text==="string"&&n.text){'
+  + '        e.txt=n.text.slice(0,60);'
+  + '        try{var st=n.style||n._style;'
+  + '        if(st){'
+  + '          var fl=st.fill;if(Array.isArray(fl))fl=fl[0];'
+  + '          if(fl!==undefined&&fl!==null)e.fc=String(fl);'
+  + '          if(st.stroke&&st.strokeThickness)e.sc=String(st.stroke);'
+  + '          var fz=parseInt(st.fontSize);if(fz>0)e.fs=fz;'
+  + '        }}catch(e4){}'
+  + '      }'
+  + '      var mk=n._mask||n.mask;'
+  + '      if(mk&&mk.getBounds){try{var mb=mk.getBounds();'
+  + '        e.m=[Math.round(mb.x),Math.round(mb.y),Math.round(mb.width),Math.round(mb.height)];'
+  + '      }catch(e2){}}'
+  // Sprite quad corners in world space (TL,TR,BR,BL) — lets the client draw
+  // rotated/scaled sprites exactly instead of stretching into the AABB.
+  + '      if(n.vertexData&&n.vertexData.length===8){'
+  + '        var vd=n.vertexData,v=[];'
+  + '        for(var k=0;k<8;k++)v.push(Math.round(vd[k]*10)/10);'
+  + '        e.v=v;'
+  + '      }'
+  + '      out.push(e);'
+  + '    }}catch(err){}'
+  + '    if(depth<12&&n.children){for(var i=0;i<n.children.length;i++)walk(n.children[i],path+"."+i,depth+1);}'
+  + '  }'
+  + '  walk(root,"r",0);'
+  + '  return {rw:RW,rh:RH,count:out.length,truncated:trunc,nodes:out,ts:Date.now()};'
+  + '};'
+  + 'window._kckit_walk_version=' + _WALK_VERSION + ';'
+
+  // ── In-page push agent ────────────────────────────────────────────────
+  // Owns the data plane: detects scene changes locally (same triggers the
+  // remote poll used: scene_ts, c1_stable_ts, last_click, 10s idle), walks
+  // the tree IN-PAGE and pushes over its own WebSocket. Zero remote traffic.
+  + 'if (!window._kckit_push) window._kckit_push = (function(){'
+  + '  var ws=null,lastSceneTs=0,lastC1Ts=0,lastClickTs=0,lastWalkTs=0;'
+  + '  var lastDigest="",settle=0,walkTimer=null;'
+  + '  function connect(){'
+  + '    if(ws&&(ws.readyState===0||ws.readyState===1))return;'
+  + '    try{ws=new WebSocket("ws://127.0.0.1:23456");}catch(e){return;}'
+  + '    ws.onopen=function(){ws.send(JSON.stringify({cmd:"kc2_hello"}));pushWalk();};'
+  + '    ws.onclose=function(){setTimeout(connect,3000);};'
+  + '    ws.onerror=function(){};'
+  + '  }'
+  + 'function digest(nodes){'
+  + '    var p=[];'
+  + '    for(var i=0;i<nodes.length;i++){var n=nodes[i];if(n.t)p.push(n.t+":"+(n.x>>3)+":"+(n.y>>3));}'
+  + '    return p.join("|");'
+  + '  }'
+  + '  function pushWalk(){'
+  + '    if(!ws||ws.readyState!==1||!window._kckit_walk)return;'
+  + '    var r=window._kckit_walk(800);'
+  + '    if(!r)return;'
+  + '    lastWalkTs=Date.now();'
+  + '    try{ws.send(JSON.stringify({cmd:"kc2_scene_tree",payload:r}));}catch(e){return;}'
+  + '    var d=digest(r.nodes);'
+  + '    if(d!==lastDigest){lastDigest=d;'
+  + '      if(settle<2){settle++;setTimeout(pushWalk,450);}'
+  + '    } else settle=0;'
+  + '  }'
+  + '  setInterval(function(){'
+  + '    var st=window._kckit_scene_ts||0,c1=window._kckit_c1_stable_ts||0;'
+  + '    var lc=window._kckit_last_click;'
+  + '    if(lc&&lc.ts&&lc.ts!==lastClickTs){lastClickTs=lc.ts;'
+  + '      if(ws&&ws.readyState===1)ws.send(JSON.stringify({cmd:"kc2_click",rx:lc.rx,ry:lc.ry}));'
+  + '    }'
+  + '    var trig=false;'
+  + '    if(st&&st!==lastSceneTs){lastSceneTs=st;trig=true;}'
+  + '    if(c1&&c1!==lastC1Ts){lastC1Ts=c1;trig=true;}'
+  + '    if(trig){settle=0;'
+  + '      if(walkTimer)clearTimeout(walkTimer);'
+  + '      var wait=Math.max(180,700-(Date.now()-lastWalkTs));'
+  + '      walkTimer=setTimeout(function(){walkTimer=null;pushWalk();},wait);'
+  + '    } else if(Date.now()-lastWalkTs>10000) pushWalk();'
+  + '  },300);'
+  + '  connect();'
+  + '  return {connect:connect};'
+  + '})();'
+
+  + 'return {ok:true};'
+  + '})()'
+
+// Throttled tree broadcast: at most one walk per _TREE_MIN_MS, with a short
+// settle delay so we capture the post-transition tree, not mid-animation.
+var _TREE_MIN_MS = 800
+var _treeTimer = null
+var _treeLastWalk = 0
+var _treeInFlightTs = 0   // timestamp guard: auto-expires so a hung walk can't starve broadcasts
+
+// Settle detection: scene_ts fires at the FIRST frame of a transition, but
+// slide/fade-in animations move elements for ~300–500ms after that. After
+// each broadcast we compare a coarse layout digest (texture + position/8px);
+// if it changed, re-walk after 450ms (max 2 retries) so the recon view
+// converges on the settled layout instead of freezing mid-animation.
+// Position rounding ignores idle bobbing; text contents are excluded so
+// ticking clocks/timers don't look like motion.
+var _lastTreeDigest = ''
+var _settleRetries = 0
+
+function _treeDigest(nodes) {
+  var parts = []
+  for (var i = 0; i < nodes.length; i++) {
+    var n = nodes[i]
+    if (n.t) parts.push(n.t + ':' + (n.x >> 3) + ':' + (n.y >> 3))
+  }
+  return parts.join('|')
+}
+
+function scheduleTreeWalk() {
+  if (_treeTimer) return
+  _settleRetries = 0   // new trigger → fresh settle budget
+  var wait = Math.max(150, _TREE_MIN_MS - (Date.now() - _treeLastWalk))
+  _treeTimer = setTimeout(function() {
+    _treeTimer = null
+    runTreeWalk(null)
+  }, wait)
+}
+
+// Walks the tree in the KC2 frame and broadcasts (or replies to one client).
+function runTreeWalk(replyWs) {
+  if (Date.now() - _treeInFlightTs < 6000 && !replyWs) return
+  var wc = getWebContents()
+  var frame = wc ? findKC2Frame(wc) : null
+  if (!frame) {
+    if (replyWs) replyWs.send(JSON.stringify({ type: 'scene_tree', payload: null }))
+    return
+  }
+  _treeInFlightTs = Date.now()
+  _treeLastWalk = Date.now()
+  // JSON.stringify INSIDE the frame: the result crosses @electron/remote as
+  // ONE string instead of thousands of proxied objects. Without this, every
+  // walk leaks ~node-count entries into remote's registry Map, which
+  // overflows after long sessions ("Map maximum size exceeded" — kills ALL
+  // remote calls until poi restarts).
+  var WALK_CALL = 'JSON.stringify((window._kckit_walk && window._kckit_walk_version >= '
+    + _WALK_VERSION + ') ? window._kckit_walk(800) : null)'
+  function parseWalk(s) {
+    try { return (typeof s === 'string' && s) ? JSON.parse(s) : null }
+    catch (e) { return null }
+  }
+  frame.executeJavaScript(WALK_CALL)
+    .then(function(s) {
+      var r = parseWalk(s)
+      if (r !== null) return r
+      // Walker missing (game reloaded, or spy used the script-tag fallback
+      // which can't install it) — self-heal: inject setup, let a frame
+      // render so the root gets captured, then retry once.
+      return frame.executeJavaScript(_SCENE_WALK_SETUP)
+        .then(function() {
+          return new Promise(function(res) { setTimeout(res, 250) })
+        })
+        .then(function() {
+          return frame.executeJavaScript(WALK_CALL)
+        })
+        .then(parseWalk)
+    })
+    .then(function(r) {
+      _treeInFlightTs = 0
+      var msg = { type: 'scene_tree', payload: (r && r.nodes) ? r : null }
+      if (replyWs) replyWs.send(JSON.stringify(msg))
+      else if (msg.payload) broadcast(msg)
+      // settle loop: layout still moving → walk again shortly
+      if (!replyWs && msg.payload) {
+        var dig = _treeDigest(r.nodes)
+        var moved = dig !== _lastTreeDigest
+        _lastTreeDigest = dig
+        if (moved && _settleRetries < 2) {
+          _settleRetries++
+          setTimeout(function() { runTreeWalk(null) }, 450)
+        }
+      }
+    })
+    .catch(function() { _treeInFlightTs = 0 })
+}
+
 function injectWebGLHook(frame) {
   if (!frame) return Promise.resolve({ skip: 'no_frame' })
   return frame.executeJavaScript(_WEBGL_HOOK_CODE).then(function(r) {
@@ -531,11 +854,19 @@ function injectScreenSpy() {
         console.log('[kckit-bridge] spy injected via WebFrameMain, initial:', result.initialScreen)
         // Apply WebGL render hook (stable vis-pattern detection)
         injectWebGLHook(kc2Frame)
+        // Install scene-tree walker (root capture + window._kckit_walk)
+        kc2Frame.executeJavaScript(_SCENE_WALK_SETUP).then(function(r) {
+          console.log('[kckit-bridge] scene walk setup:', JSON.stringify(r))
+        }).catch(function(e) {
+          console.warn('[kckit-bridge] scene walk setup failed:', e)
+        })
         // Inject click hook (canvas pointerdown → operation recording + nav inference)
         kc2Frame.executeJavaScript(_CLICK_HOOK_CODE).then(function(r) {
           console.log('[kckit-bridge] click hook:', JSON.stringify(r))
+          broadcast({ type: 'click_hook_result', payload: r || {} })
         }).catch(function(e) {
           console.warn('[kckit-bridge] click hook failed:', e)
+          broadcast({ type: 'click_hook_result', payload: { error: String(e) } })
         })
       }
       return result || { ok: false }
@@ -586,42 +917,97 @@ var _lastClickTs = 0
 function startSpyPoll() {
   if (_spyPollTimer) return
   _spyPollTimer = setInterval(function() {
+    // Push agent alive → data plane is in-page; skip ALL remote polling
+    // (this poll was the @electron/remote registry-leak driver).
+    if (pushAgentFresh()) return
     var wc = getWebContents()
     if (!wc) return
     var frame = findKC2Frame(wc)
     if (!frame) return
 
+    // Health sentinel: executeJavaScript HANGS (never settles) when
+    // @electron/remote's registry overflows — race a timeout and broadcast
+    // a health alert after sustained failures so the UI shows "restart poi"
+    // instead of silently going black.
+    var pollPromise =
+    // stringified to keep @electron/remote's registry from growing (see
+    // runTreeWalk) — this poll runs every 500ms for the whole session
     frame.executeJavaScript(
-      '({ screen: (typeof _kckit_screen!=="undefined"?_kckit_screen:null),'
+      'JSON.stringify({ screen: (typeof _kckit_screen!=="undefined"?_kckit_screen:null),'
       + '  source: (typeof _kckit_screen_source!=="undefined"?_kckit_screen_source:null),'
       + '  scene_ts: (typeof _kckit_scene_ts!=="undefined"?_kckit_scene_ts:0),'
       + '  c1_stable_ts: (typeof _kckit_c1_stable_ts!=="undefined"?_kckit_c1_stable_ts:0),'
-      + '  c1_stable: (typeof _kckit_c1_stable!=="undefined"?_kckit_c1_stable:null) })'
-    ).then(function(r) {
+      + '  c1_stable: (typeof _kckit_c1_stable!=="undefined"?_kckit_c1_stable:null),'
+      + '  last_click: (typeof _kckit_last_click!=="undefined"?_kckit_last_click:null) })'
+    ).then(function(rs) {
+      var r = null
+      try { r = rs ? JSON.parse(rs) : null } catch (e) {}
       if (!r) return
 
-      // ① Hash-based screen (fallback, KC2 doesn't use hash)
+      // ① Canvas click → navigation inference + raw broadcast for server-side state machine
+      if (r.last_click && r.last_click.ts && r.last_click.ts !== _lastClickTs) {
+        _lastClickTs = r.last_click.ts
+        // Raw click → server does element lookup + full state-machine transition
+        broadcast({ type: 'canvas_click', rx: r.last_click.rx, ry: r.last_click.ry,
+                    screen: _lastPolledScreen })
+        // Immediate local inference for port wheel / sortie_type (no server roundtrip needed)
+        var navTarget = inferNavClick(r.last_click.rx, r.last_click.ry, _lastPolledScreen)
+        if (navTarget && navTarget !== _lastPolledScreen) {
+          _lastPolledScreen = navTarget
+          broadcast({ type: 'screen_change', screen: navTarget, source: 'click_nav' })
+        }
+      }
+
+      // ② Hash-based screen from spy (KC2 hash router — catches cache-miss transitions)
       if (r.screen && r.screen !== _lastPolledScreen) {
         _lastPolledScreen = r.screen
         broadcast({ type: 'screen_change', screen: r.screen, source: r.source || 'spy_poll' })
         broadcast({ type: 'state', payload: buildState() })
       }
 
-      // ② PIXI addChild/removeChild → screenshot refresh hint
+      // ③ PIXI addChild/removeChild → screenshot refresh hint + scene tree broadcast
       if (r.scene_ts && r.scene_ts !== _lastSceneTs && r.scene_ts > 0) {
         _lastSceneTs = r.scene_ts
         broadcast({ type: 'screenshot_needed', reason: 'pixi_scene_change', ts: r.scene_ts })
+        scheduleTreeWalk()
       }
 
-      // ③ Stable vis-pattern changed → new confirmed screen fingerprint
-      // This fires after 500ms of the same container-1 vis pattern — i.e. animation settled.
+      // ④ Stable vis-pattern changed — KC2 switches many screens by toggling
+      // container.visible (no addChild → scene_ts doesn't move), so this is
+      // a REQUIRED scene_tree trigger, not just a fingerprint event.
       if (r.c1_stable_ts && r.c1_stable_ts !== _lastC1StableTs) {
         _lastC1StableTs = r.c1_stable_ts
         broadcast({ type: 'pixi_stage', ts: r.c1_stable_ts, sig: r.c1_stable || '' })
+        scheduleTreeWalk()
       }
+
+      // ⑤ Fallback: animations and in-place updates (HP bars, timers) change
+      // the tree without firing ①–④. Re-walk at most every 10s when idle so
+      // the recon view can never freeze even if all hooks are lost.
+      if (Date.now() - _treeLastWalk > 10000) scheduleTreeWalk()
     }).catch(function() {})
+
+    // Sentinel: if the poll promise doesn't settle within 4s, the remote
+    // channel is likely wedged (registry overflow). After 5 consecutive
+    // timeouts broadcast a health alert (throttled to one per 5 min).
+    var settled = false
+    pollPromise.then(function() { settled = true; _remoteTimeouts = 0 },
+                     function() { settled = true })
+    setTimeout(function() {
+      if (settled) return
+      _remoteTimeouts++
+      if (_remoteTimeouts >= 5 && Date.now() - _lastHealthAlert > 300000) {
+        _lastHealthAlert = Date.now()
+        broadcast({ type: 'health', ok: false, reason: 'remote_channel_dead',
+                    hint: 'executeJavaScript hangs — @electron/remote registry likely overflowed; RESTART POI (Cmd+Q, not page reload)' })
+        console.error('[kckit-bridge] HEALTH: remote channel dead — restart poi')
+      }
+    }, 4000)
   }, 500)
 }
+
+var _remoteTimeouts = 0
+var _lastHealthAlert = 0
 
 function stopSpyPoll() {
   if (_spyPollTimer) { clearInterval(_spyPollTimer); _spyPollTimer = null; }
@@ -789,6 +1175,7 @@ function attachNavWatcher() {
 function handleCommand(ws, msg) {
   try {
     const cmd = JSON.parse(msg)
+    if (cmd.cmd && cmd.cmd.indexOf('kc2_') === 0 && handleKc2Push(ws, cmd)) return
     if (cmd.cmd === 'get_state') {
       ws.send(JSON.stringify({ type: 'state', payload: buildState() }))
     } else if (cmd.cmd === 'get_canvas_info') {
@@ -827,6 +1214,15 @@ function handleCommand(ws, msg) {
           ws.send(JSON.stringify({ type: 'exec_kc2_result', payload: { error: String(e) } }))
         })
       }
+    } else if (cmd.cmd === 'get_scene_tree') {
+      // On-demand scene tree (frontend initial load / Python pull).
+      // Serve the push agent's latest tree when fresh — no remote round-trip;
+      // fall back to a remote walk otherwise (also self-heals the agent).
+      if (_lastPushedTree && pushAgentFresh()) {
+        ws.send(JSON.stringify({ type: 'scene_tree', payload: _lastPushedTree }))
+      } else {
+        runTreeWalk(ws)
+      }
     } else if (cmd.cmd === 'list_frames') {
       // Dump the full WebFrameMain frame tree for debugging
       var wcF = getWebContents()
@@ -859,6 +1255,62 @@ function handleCommand(ws, msg) {
           })
         }
       }
+    } else if (cmd.cmd === 'click_kc2') {
+      // Virtual click on KC2 canvas at fractional (rx, ry) position [0-1].
+      // Uses wc.sendInputEvent() — goes through Electron's normal rendering pipeline.
+      // Coordinates are fractions of the KC2 game frame (same reference as screen_layout.yaml).
+      var wc = getWebContents()
+      if (!wc) {
+        ws.send(JSON.stringify({ type: 'click_result', ok: false, err: 'no webContents' }))
+        return
+      }
+      var clickRx = Number(cmd.rx) || 0
+      var clickRy = Number(cmd.ry) || 0
+      var clickLabel = cmd.label || ''
+
+      // Get KC2 game frame position within the DMM portal page.
+      // getBoundingClientRect() returns viewport-relative CSS pixel coords —
+      // same coordinate space that sendInputEvent() expects.
+      execInDMM(
+        '(function(){'
+        + 'var gf=document.querySelector("' + _GF + '");'
+        + 'if(!gf)return null;'
+        + 'var r=gf.getBoundingClientRect();'
+        + 'return{l:r.left,t:r.top,w:r.width,h:r.height};'
+        + '})()'
+      ).then(function(pos) {
+        if (!pos || !pos.w) {
+          ws.send(JSON.stringify({ type: 'click_result', ok: false, err: 'KC2 game frame not found' }))
+          return
+        }
+        // Convert fraction → DMM portal viewport CSS pixel coords
+        var x = Math.round(pos.l + clickRx * pos.w)
+        var y = Math.round(pos.t + clickRy * pos.h)
+        // Human-like ±2px jitter
+        var jx = x + Math.round((Math.random() - 0.5) * 4)
+        var jy = y + Math.round((Math.random() - 0.5) * 4)
+        try {
+          wc.sendInputEvent({ type: 'mouseMove', x: jx, y: jy, modifiers: [] })
+          setTimeout(function() {
+            try {
+              wc.sendInputEvent({ type: 'mouseDown', x: jx, y: jy, button: 'left', clickCount: 1, modifiers: [] })
+              setTimeout(function() {
+                try {
+                  wc.sendInputEvent({ type: 'mouseUp', x: jx, y: jy, button: 'left', clickCount: 1, modifiers: [] })
+                  ws.send(JSON.stringify({ type: 'click_result', ok: true,
+                    rx: clickRx, ry: clickRy, x: jx, y: jy, label: clickLabel }))
+                } catch(e) {
+                  ws.send(JSON.stringify({ type: 'click_result', ok: false, err: 'mouseUp: ' + String(e) }))
+                }
+              }, 60 + Math.floor(Math.random() * 60))
+            } catch(e) {
+              ws.send(JSON.stringify({ type: 'click_result', ok: false, err: 'mouseDown: ' + String(e) }))
+            }
+          }, 100 + Math.floor(Math.random() * 80))
+        } catch(e) {
+          ws.send(JSON.stringify({ type: 'click_result', ok: false, err: 'mouseMove: ' + String(e) }))
+        }
+      })
     } else if (cmd.cmd === 'reload') {
       // Hot-reload this plugin from its file on disk — no poi UI interaction needed
       ws.send(JSON.stringify({ type: 'reload_ack', message: 'reloading…' }))
@@ -1113,6 +1565,13 @@ function pluginWillUnload() {
   _spyInjected = false
   _lastPolledScreen = null
   if (wss) {
+    // wss.close() only stops LISTENING — existing client sockets stay open,
+    // married to this (now dead) instance: they'd never receive another
+    // message but still answer protocol pings, looking healthy forever.
+    // Terminate them so clients reconnect to the new server instance.
+    try {
+      wss.clients.forEach(function(c) { try { c.terminate() } catch (e) {} })
+    } catch (e) {}
     wss.close(function() { console.log('[kckit-bridge] WebSocket server stopped') })
     wss = null
   }

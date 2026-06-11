@@ -472,29 +472,60 @@ screens:
   sortie_type:
     name: 出撃種別選択
     detect_hint: "no API — infer from clicking sortie_nav at port"
+    # Calibrated from Figma i20AjTciFy99NnxC7iijQY node 1291:3671 (2026-06-09)
+    # canvas frame「出撃 1」offset (67,116), 889×533; circles 206×206 px
     elements:
-      sortie_btn:      {x: 0.225, y: 0.570, w: 0.220, h: 0.400, shape: circle, label: 出撃}
-      exercise_btn:    {x: 0.500, y: 0.570, w: 0.220, h: 0.400, shape: circle, label: 演習}
-      expedition_btn:  {x: 0.775, y: 0.570, w: 0.220, h: 0.400, shape: circle, label: 遠征}
+      sortie_btn:      {x: 0.285, y: 0.452, w: 0.232, h: 0.387, shape: circle, label: 出撃}
+      exercise_btn:    {x: 0.566, y: 0.452, w: 0.232, h: 0.387, shape: circle, label: 演習}
+      expedition_btn:  {x: 0.847, y: 0.452, w: 0.232, h: 0.387, shape: circle, label: 遠征}
 
   sortie_world:
     name: 海域選択
     detect_hint: "api_get_member/mapinfo — fires on entry"
     api_events:
       - api_get_member/mapinfo
+    # Calibrated from Figma 1291:3671 frame「出撃-出撃（海域選択）1」offset (67,790)
     elements:
-      world_1:         {x: 0.247, y: 0.400, w: 0.440, h: 0.560, label: 鎮守府海域}
-      world_2:         {x: 0.753, y: 0.400, w: 0.440, h: 0.560, label: 南西諸島海域}
-      world_3:         {x: 0.247, y: 0.720, w: 0.440, h: 0.560, label: 北方海域}
-      world_4:         {x: 0.753, y: 0.720, w: 0.440, h: 0.560, label: 西方海域}
+      world_1:         {x: 0.354, y: 0.430, w: 0.385, h: 0.270, label: 鎮守府海域}
+      world_2:         {x: 0.773, y: 0.430, w: 0.385, h: 0.270, label: 南西諸島海域}
+      world_3:         {x: 0.354, y: 0.730, w: 0.385, h: 0.270, label: 北方海域}
+      world_4:         {x: 0.773, y: 0.730, w: 0.385, h: 0.270, label: 西方海域}
+      # top-right mode tabs (72×20)
+      tab_sortie:      {x: 0.715, y: 0.250, w: 0.081, h: 0.038, label: 出撃タブ}
+      tab_exercise:    {x: 0.822, y: 0.250, w: 0.081, h: 0.038, label: 演習タブ}
+      tab_expedition:  {x: 0.929, y: 0.250, w: 0.081, h: 0.038, label: 遠征タブ}
+      # bottom world-number chips (50×30, x-spacing 71px); Figma layer names
+      # map1..map7 are NOT in x order — these follow on-screen x order
+      world_chip_1:    {x: 0.186, y: 0.944, w: 0.056, h: 0.056, label: "1"}
+      world_chip_2:    {x: 0.266, y: 0.944, w: 0.056, h: 0.056, label: "2"}
+      world_chip_3:    {x: 0.345, y: 0.940, w: 0.056, h: 0.056, label: "3"}
+      world_chip_4:    {x: 0.425, y: 0.944, w: 0.056, h: 0.056, label: "4"}
+      world_chip_5:    {x: 0.505, y: 0.944, w: 0.056, h: 0.056, label: "5"}
+      world_chip_6:    {x: 0.585, y: 0.940, w: 0.056, h: 0.056, label: "6"}
+      world_chip_7:    {x: 0.665, y: 0.940, w: 0.056, h: 0.056, label: "7"}
+      # EO arrow — Figma polygon 1305:594 extends past the canvas edge; APPROX
+      to_eo:           {x: 0.965, y: 0.580, w: 0.060, h: 0.266, label: EO}
+
+  sortie_map_list:
+    name: 海域リスト
+    detect_hint: "world with row-list layout (e.g. EO/event) — no dedicated API"
+    # Figma 1291:3671 frame「2026-06-05T16.40.26 1」offset (67,1464): 3 rows 714×92
+    elements:
+      map_row_1:       {x: 0.564, y: 0.381, w: 0.803, h: 0.173, label: 海域1}
+      map_row_2:       {x: 0.564, y: 0.582, w: 0.803, h: 0.173, label: 海域2}
+      map_row_3:       {x: 0.564, y: 0.782, w: 0.803, h: 0.173, label: 海域3}
+      nav_arrow:       {x: 0.187, y: 0.743, w: 0.099, h: 0.165, label: 切替}  # APPROX (Figma polygon)
 
   sortie_map:
     name: 出撃海図
     detect_hint: "after selecting world — api_req_map/start on sortie confirm"
     api_events:
       - api_req_map/start
+    # sortie_btn from Figma frame「2026-06-05T16.44.10 1」Rectangle 71 (180×40)
+    # NOTE: Figma frame「…16.44.19 1」(final confirm: 164×36 btn at 0.768,0.931 +
+    # four 16×16 toggles at y 0.242) not yet encoded — verify screen identity first
     elements:
-      sortie_btn:      {x: 0.875, y: 0.906, w: 0.100, h: 0.063, label: 出撃}
+      sortie_btn:      {x: 0.846, y: 0.929, w: 0.203, h: 0.075, label: 出撃}
 
   formation_select:
     name: 陣形選択

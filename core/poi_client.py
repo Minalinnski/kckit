@@ -81,6 +81,37 @@ class PoiClient:
         with self._state_lock:
             return self._last_screen
 
+    @property
+    def current_screen_source(self) -> Optional[str]:
+        """Where current_screen came from: scene_tree / spy_poll / click_nav …"""
+        with self._state_lock:
+            return getattr(self, "_last_screen_source", None)
+
+    @property
+    def scene_tree(self) -> Optional[dict]:
+        """Last received PIXI scene tree (perception v2), or None.
+        Dict with rw/rh/nodes; nodes carry t (texture frame), bounds,
+        i/btn (interactive click zones), txt (PIXI.Text content)."""
+        with self._state_lock:
+            return getattr(self, "_last_scene_tree", None)
+
+    def find_element(self, screen: str, element: str) -> Optional[dict]:
+        """Live click target for a semantic element (data/ui_atlas/semantics.yaml),
+        resolved against the last scene tree. Returns the node dict (with x/y/w/h
+        in renderer px) or None if not currently on screen / no tree yet."""
+        tree = self.scene_tree
+        if not tree:
+            return None
+        from core.scene_perception import find_element as _find
+        return _find(tree["nodes"], screen, element)
+
+    def request_scene_tree(self) -> None:
+        """Ask the plugin for an on-demand scene tree walk (async update)."""
+        if self._loop:
+            asyncio.run_coroutine_threadsafe(
+                self._send_cmd({"cmd": "get_scene_tree"}), self._loop
+            )
+
     def inject_screen_spy(self) -> None:
         """Ask the plugin to inject the persistent DOM screen spy into KC webview."""
         if self._loop:
@@ -233,6 +264,31 @@ class PoiClient:
                         handler(screen, source)
                     except Exception as e:
                         log.error("Screen handler error: %s", e)
+
+            elif msg.get("type") == "scene_tree":
+                # Perception v2: live PIXI scene tree (texture frames, bounds,
+                # interactive click zones, Text contents). Classify and feed
+                # the same screen-state path as the spy, at confidence 0.95.
+                payload = msg.get("payload")
+                if payload and payload.get("nodes"):
+                    from core.scene_perception import classify_screen
+                    cls = classify_screen(payload["nodes"])
+                    with self._state_lock:
+                        self._last_scene_tree = payload
+                    screen = cls.get("screen")
+                    if screen:
+                        changed = False
+                        with self._state_lock:
+                            if screen != self._last_screen:
+                                changed = True
+                            self._last_screen = screen
+                            self._last_screen_source = "scene_tree"
+                        if changed:
+                            for handler in self._screen_handlers:
+                                try:
+                                    handler(screen, "scene_tree")
+                                except Exception as e:
+                                    log.error("Screen handler error: %s", e)
 
             elif msg.get("type") == "spy_screen":
                 payload = msg.get("payload") or {}

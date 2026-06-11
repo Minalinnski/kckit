@@ -82,18 +82,59 @@ python tools/import_nga.py batch       # 批量导入 NGA 攻略 → strategies/
 ## 界面状态检测（优先级顺序）
 
 ```
-1. screen spy（DOM MutationObserver，confidence=1.0）← 主要来源
-   - 插件启动时自动注入到KC webview
-   - 不依赖API事件；KC缓存API响应时也能正常工作
-   - 通过 poi_client.current_screen 读取
-   - broadcast type=screen_change 事件
+1. PIXI 场景树（confidence=0.95）← 主要来源（感知层 v2，2026-06-09）
+   - tools/scene_dump.py 捕获 stage 根并遍历：纹理 frame 名 + 实时 bounds + Text 内容
+   - core/scene_perception.py classify_screen()：可见图集前缀直方图 → 画面名
+   - find_element()：语义元素 → 实时点击坐标（取代手工 screen_layout.yaml）
+   - 注意指纹优先级：battle 排在 sally_jin 之前（战斗 HUD 含阵形图标）
+   - 待办：接入 screen_detector / executor、插件内定时广播
 
-2. API事件推断（confidence=0.9）← 仅作兜底
-   - 仅当spy未注入成功时使用
-   - KC大量缓存api_get_member/* 响应，可靠性差
-
-3. 游戏状态启发式（confidence≤0.6）← 最后手段
+2. screen spy（PIXI hook + hash，poi-plugin 内置）← 兜底
+3. API事件推断（confidence=0.9）← 兜底（KC缓存api_get_member/*，可靠性差）
+4. 游戏状态启发式（confidence≤0.6）← 最后手段
 ```
+
+**感知层 v2 工作流**：
+```bash
+python tools/scene_dump.py                  # 当前画面场景树（--textures/--json）
+python tools/harvest_atlases.py             # 增量采集 UI 图集（路过新画面后重跑）
+python tools/atlas_sheet.py sally_sortie    # 生成标注拼图 → VLM 认图 → semantics.yaml
+```
+
+**交互层发现（2026-06-09，关键）**：KC2 用 **alpha=0 的透明精灵（interactive+buttonMode）定义真实点击区**
+——可见精灵只是装饰（如入渠：整条渠是一张 1005×123 烘焙贴图，真点击区是其上的透明
+`repair_main_1` 精灵 252×72，与 Figma 手工标定一致）。walker v3 起保留 alpha=0 的
+interactive 节点（`i:1/btn:1/a:0`），前端 overlay 青色层显示。**点击坐标的运行时真值
+= interactive 节点 bounds**；手工 screen_layout.yaml 保留为对照/兜底，逐画面验证后切换。
+
+**已知坑：@electron/remote 注册表溢出（2026-06-09 实际发生）**：插件经 remote 跨进程调用
+（executeJavaScript/capturePage），每次调用的返回对象按字段注册进 remote 内部 Map；
+长会话+大对象返回（场景树几百节点）会把它撑到上限 →「Map maximum size exceeded」→
+**所有跨进程调用全挂（截图/exec 全失效），唯一恢复手段是重启 poi**。
+缓解（已实施）：所有大返回值在 frame 内 `JSON.stringify` 成单字符串再跨进程（千倍减漏）。
+若再次出现该报错 → 重启 poi 即可，不是游戏/账号问题。
+
+**海图数据（不需要逐图游玩）**：`python tools/harvest_maps.py` 直接从游戏服务器批量下载
+全部海域的 `_info.json`（**节点 cell 坐标+航线向量**）+ 图集 → `data/maps/raw/`，
+合并节点表 → `data/maps/spots.json`。静态资源、无凭据、0.5s 节流。
+
+**实时数据流（v6 推送架构，2026-06-11）**：KC2 frame 内注入的**推送代理**自己连
+`ws://127.0.0.1:23456`（localhost 豁免混合内容，实测无 CSP 拦截），本地检测场景变化
+（scene_ts/c1_stable/click/10s 空闲）→ 页面内遍历 → 直接推送 `kc2_scene_tree`/`kc2_click`。
+**数据面零 remote 流量**（根治注册表泄露）；remote 仅剩低频控制面（点击注入/截图/自愈）。
+插件收到推送转广播 `scene_tree`；旧的 500ms remote poll 自动静默（push 新鲜时跳过），
+push 断 15s 后 poll 复活作为兜底+自愈（重注入 setup 即恢复 push 代理）。
+触发延迟实测 ~0.3s（旧 remote 路径 0.8-1.3s）。
+→ simulator 附加 `classify_screen` 结果转发，并据此发 `screen_change`（source=scene_tree）；
+未识别画面（夜战弹窗等指纹缺口）自动以 `unknown_<主图集>` 存档到 temp/captures/，
+已知画面每 6h 重采一次（脏样本自愈）。
+WS 命令 `get_scene_tree` / HTTP `POST /api/scene_tree` 按需拉取；
+`GET /api/atlas[/{name}]`、`GET /api/semantics` 供前端重建。
+前端（:8765）三视图：実拍｜重建（图集+场景树数字孪生，截图降级为 30s 兜底）｜叠加
+（绿框=已标语义、灰=未标、橙=图集未采集）；顶部感知条显示分类+置信度+图集直方图，状态条显示转移轨迹。
+- `data/ui_atlas/raw/` — 图集 json+png（已采 35 个，含完整出击链路 sally_*）
+- `data/ui_atlas/semantics.yaml` — frame→语义词典（已标 sally_top/sally_jin）
+- `backup/figma_era_20260609/` — Figma 手工标定时代的成果备份
 
 **发现工具**（首次使用时运行）：
 ```bash

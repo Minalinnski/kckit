@@ -1,0 +1,249 @@
+# UI atlas semantic dictionary — perception layer v2.
+#
+# Maps texture frame names (as seen in scene_dump texture cache ids) to
+# semantic element names. At runtime: walk the scene tree, find a visible
+# node whose texture matches `frames`, click its live bounds center.
+# Multiple frames per element = the button's visual states (normal/hover/
+# active) — all map to the same semantic element.
+#
+# verify: runtime  → labeled from contact sheet, needs one live cross-check
+#                    (scene_dump + screenshot on that screen) before trusting
+# verified: <date> → confirmed against a live screenshot+dump pair
+#
+# Labeled with Claude vision from temp/atlas_sheets/*.png on 2026-06-09.
+# Build sheets: python tools/atlas_sheet.py <atlas>
+
+# Elements present on most screens (left nav sidebar + top tab bar).
+# find_element falls back to this section when the screen section misses.
+# Sidemenu frames: normal/selected variants confirmed by runtime y-order on
+# two screens (repair 2026-06-09: y194=5,y275=13,y356=9,y439=12sel,y517=3;
+# hensei: 6sel,13,9,11,3 — selected item swaps frame).
+common:
+  nav_hensei:                     # 編成
+    frames: [port_sidemenu_5, port_sidemenu_6]
+    verified: 2026-06-09
+  nav_supply:                     # 補給
+    frames: [port_sidemenu_13, port_sidemenu_14]
+    verified: 2026-06-09          # 14 = selected variant, observed on supply screen
+  nav_equipment:                  # 改装
+    frames: [port_sidemenu_9, port_sidemenu_10]
+    verify: runtime
+  nav_repair:                     # 入渠
+    frames: [port_sidemenu_11, port_sidemenu_12]
+    verified: 2026-06-09
+  nav_factory:                    # 工廠
+    frames: [port_sidemenu_3, port_sidemenu_4]
+    verify: runtime
+  nav_port:                       # 母港 (sidebar right column, 66x115)
+    frames: [port_sidemenu_7]
+    verified: 2026-06-09
+  # Top tab bar (poi nav row inside game): observed interactive on repair+hensei
+  tab_record:     {frames: [port_skin_1_40], verified: 2026-06-09}   # 戦績表示
+  tab_friend:     {frames: [port_skin_1_45], verified: 2026-06-09}   # 友軍艦隊
+  tab_album:      {frames: [port_skin_1_47], verified: 2026-06-09}   # 図鑑表示
+  tab_items:      {frames: [port_skin_1_33], verified: 2026-06-09}   # アイテム
+  tab_furniture:  {frames: [port_skin_1_35], verified: 2026-06-09}   # 模様替え
+  tab_quest:      {frames: [port_skin_1_39], verified: 2026-06-09}   # 任務
+  item_shop:      {frames: [port_skin_1_25], verify: runtime}        # 60x56 right of 任務
+
+repair:                           # 入渠 (atlas: repair_main)
+  dock_slot:                      # alpha-0 click zone per dock, 252x72 — use
+                                  # find_all to get all 4, ordered by y
+    frames: [repair_main_1]
+    verified: 2026-06-09
+
+hensei:                           # 編成 (atlas: organize_main)
+  slot_card:                      # whole ship slot card (click = select ship)
+    frames: [organize_main_30]
+    verified: 2026-06-09
+  change_btn:                     # 変更 (green)
+    frames: [organize_main_24]
+    verified: 2026-06-09
+  detail_btn:                     # 詳細 (magnifier)
+    frames: [organize_main_9]
+    verified: 2026-06-09
+  slot_shutter:                   # 247x157 carousel shutter panels per slot
+    frames: [organize_main_31, organize_main_32]
+    verify: runtime
+
+supply:                           # 補給 (atlas: supply_main)
+  # Buttons are 138×43; the interactive flag tracks ENABLED state (a fully
+  # supplied fleet shows まとめて補給 as non-interactive). Frames 12–17 are
+  # three buttons × 2 states; only one state of each observed so far.
+  fleet_supply_all_btn:           # 艦隊全補給 (right of pair at y≈597)
+    frames: [supply_main_13, supply_main_12]
+    verify: runtime
+  aircraft_resupply_btn:          # 艦載機補充 (left of pair)
+    frames: [supply_main_16, supply_main_17]
+    verify: runtime
+  supply_all_btn:                 # まとめて補給 (156×48 bar, bottom right)
+    frames: [supply_main_4, supply_main_5]
+    verify: runtime
+  fleet_tabs:                     # /1 /2 /3 /4 /他 tabs (34×30) — frame varies
+                                  # with selection; use find_all, index by x
+    frames: [common_misc_79, common_misc_80, common_misc_82, common_misc_85,
+             common_misc_86, common_misc_88, common_misc_90]
+    verify: runtime
+
+expedition_select:                # 遠征選択 (mostly texture-less interactive
+                                  # containers → geometry matchers; verified
+                                  # against live screenshot 2026-06-09)
+  expedition_rows:                # 8 rows 655×45 — find_all, index = list order
+    geom: {w: [600, 700], h: [40, 50]}
+    verified: 2026-06-09
+  world_tabs:                     # bottom 海域 chips exactly 56×56 ×6 — find_all by x
+    geom: {w: [54, 58], h: [54, 58]}
+    verified: 2026-06-09
+  action_btn:                     # 遠征開始 / 遠征中止·帰還命令 (262×61 bottom right)
+    geom: {w: [240, 285], h: [55, 68]}
+    verified: 2026-06-09
+  tab_sortie:                     # top-center mode tabs (115×34), x-order 出撃/演習/遠征
+    frames: [sally_common_47]
+    verified: 2026-06-09
+  tab_practice:
+    frames: [sally_common_42]
+    verified: 2026-06-09
+  tab_expedition:
+    frames: [sally_common_46]
+    verified: 2026-06-09
+
+quest_list:                       # 任務 (atlas: duty_main) — from 2026-06-10 capture
+  quest_rows:                     # 945×96 rows ×5 — find_all by y
+    frames: [duty_main_0]
+    verified: 2026-06-10
+  category_tabs:                  # left 165×43 ×7 (全部/編成/出撃/演習/遠征/補給入渠/工廠改装)
+    frames: [duty_main_33, duty_main_34, duty_main_36, duty_main_38,
+             duty_main_40, duty_main_42, duty_main_44]
+    verified: 2026-06-10
+  filter_tabs:                    # top 95×30 ×5 (進行中 filters)
+    frames: [duty_main_56, duty_main_58, duty_main_60, duty_main_62, duty_main_64]
+    verified: 2026-06-10
+  page_prev: {frames: [common_main_8], verified: 2026-06-10}
+  page_next: {frames: [common_main_6], verified: 2026-06-10}
+
+factory:                          # 工廠 (atlas: arsenal_main)
+  # Left column buttons, 2-state pairs; enabled state observed 2026-06-10
+  # (建造 was disabled — all docks busy — confirming interactive=enabled).
+  build_btn:                      # 建造 (336×135)
+    frames: [arsenal_main_101, arsenal_main_102]
+    verify: runtime
+  scrap_btn:                      # 解体 (270×117)
+    frames: [arsenal_main_99, arsenal_main_100]
+    verified: 2026-06-10
+  develop_btn:                    # 開発 (336×135)
+    frames: [arsenal_main_97, arsenal_main_98]
+    verified: 2026-06-10
+  discard_btn:                    # 廃棄 (270×117)
+    frames: [arsenal_main_95, arsenal_main_96]
+    verified: 2026-06-10
+  dock_slots:                     # right column 200×100 ×4 (collect/inspect)
+    geom: {w: [190, 210], h: [95, 105]}
+    verified: 2026-06-10
+
+equipment:                        # 改装 (atlas: remodel_main)
+  modernize_btn:                  # 近代化改修 (165×75 bottom right-left)
+    frames: [remodel_main_4, remodel_main_5]
+    verified: 2026-06-10
+  remodel_btn:                    # 改造 (165×75 bottom right-right)
+    frames: [remodel_main_8, remodel_main_9]
+    verified: 2026-06-10
+  ship_rows:                      # left ship list 240×60 ×5
+    geom: {w: [230, 250], h: [55, 65]}
+    verified: 2026-06-10
+  equip_slots:                    # equipment slot rows 318×47 ×4
+    geom: {w: [305, 330], h: [42, 52]}
+    verified: 2026-06-10
+  preset_tab_1: {frames: [remodel_preset_39], verify: runtime}
+  preset_tab_2: {frames: [remodel_preset_41], verify: runtime}
+
+practice:                         # 演習 (atlas: sally_practice)
+  opponent_rows:                  # 939×79 ×5 — find_all by y
+    geom: {w: [900, 970], h: [74, 84]}
+    verified: 2026-06-10
+  group_btn_1:                    # 新式演習艦隊 第一群 (141×39 @460)
+    frames: [sally_practice_3]
+    verify: runtime               # state variants unobserved; _6 is a different
+                                  # sprite at another position — do NOT pair-guess
+  group_btn_2:                    # 新式演習艦隊 第二群 (@760)
+    frames: [sally_practice_7]
+    verify: runtime
+
+sortie_world:                     # 海域選択 — verified 2026-06-10 from capture
+  world_tiles:                    # 4 tiles, hit zones 476×206 (larger than the
+                                  # visual tile) — find_all: TL,TR,BL,BR order
+    geom: {w: [450, 500], h: [190, 220]}
+    verified: 2026-06-10
+  to_eo:                          # EO arrow zone right edge, 192×216
+    geom: {w: [180, 205], h: [200, 230]}
+    verified: 2026-06-10
+  world_chips:                    # bottom 70×70 chips, world 1-7 by x order;
+                                  # odd/+1 frames presumed selected variants
+    frames: [common_area_icon_1, common_area_icon_2, common_area_icon_4,
+             common_area_icon_6, common_area_icon_8, common_area_icon_10,
+             common_area_icon_12]
+    verified: 2026-06-10
+  decide_btn:                     # 288×60 bottom-right (sally_common_4)
+    frames: [sally_common_4, sally_common_5]
+    verify: runtime
+  # mode tabs (shared sally_common group; selected/unselected pairs deduced
+  # from two screens: expedition_select had 47/42/46, sortie_world has 48/42/44)
+  tab_sortie:    {frames: [sally_common_47, sally_common_48], verified: 2026-06-10}
+  tab_practice:  {frames: [sally_common_42, sally_common_43], verified: 2026-06-10}  # 43 observed on practice screen
+  tab_expedition: {frames: [sally_common_44, sally_common_46], verified: 2026-06-10}
+
+battle_result:                    # 戦闘結果 (atlas: battle_result_main)
+  continue_anywhere:              # whole screen is one click-to-continue zone
+    geom: {w: [1100, 1300], h: [600, 800]}
+    verified: 2026-06-10
+
+sortie_type:                      # 出撃選択 screen (atlas: sally_top)
+  header:
+    frames: [sally_top_0]         # 「出撃選択」 title text
+  practice_btn:
+    frames: [sally_top_1, sally_top_2]            # 演習 badge (2 states)
+    shape: circle                 # round badge — click center, bounds corners miss
+    verified: 2026-06-09
+  expedition_btn:
+    frames: [sally_top_4, sally_top_5, sally_top_6]  # 遠征 badge (3 states)
+    shape: circle
+    verified: 2026-06-09
+  sortie_btn:
+    frames: [sally_top_8, sally_top_9]            # 出撃 badge (2 states)
+    shape: circle
+    verified: 2026-06-09
+
+formation_select:                 # 陣形選択 (atlas: sally_jin)
+  # Single-fleet formations: 150x48 buttons, 2 states each.
+  # Verified 2026-06-10 against live capture (1-x sortie): top row
+  # 単縦(6)/複縦(0)/輪形(4), bottom row 梯形(10)/単横(8).
+  line_ahead:                     # 単縦陣
+    frames: [sally_jin_6, sally_jin_7]
+    verified: 2026-06-10
+  double_line:                    # 複縦陣
+    frames: [sally_jin_0, sally_jin_1]
+    verified: 2026-06-10
+  diamond:                        # 輪形陣
+    frames: [sally_jin_4, sally_jin_5]
+    verified: 2026-06-10
+  echelon:                        # 梯形陣
+    frames: [sally_jin_10, sally_jin_11]
+    verified: 2026-06-10
+  line_abreast:                   # 単横陣
+    frames: [sally_jin_8, sally_jin_9]
+    verified: 2026-06-10
+  vanguard:                       # 警戒陣 (event maps only — by elimination)
+    frames: [sally_jin_2, sally_jin_3]
+    verify: runtime
+  # Combined-fleet cruising formations: 210x45, 2 states each
+  cruising_1:                     # 第一警戒航行序列（対潜警戒）
+    frames: [sally_jin_19, sally_jin_20]
+    verify: runtime
+  cruising_2:                     # 第二警戒航行序列（前方警戒）
+    frames: [sally_jin_21, sally_jin_22]
+    verify: runtime
+  cruising_3:                     # 第三警戒航行序列（輪形陣）
+    frames: [sally_jin_23, sally_jin_24]
+    verify: runtime
+  cruising_4:                     # 第四警戒航行序列（戦闘隊形）
+    frames: [sally_jin_25, sally_jin_26]
+    verify: runtime
