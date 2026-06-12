@@ -23,6 +23,7 @@ import uvicorn
 
 from tools.simulator.plan import generate_sortie_plan
 from core.scene_perception import classify_screen, load_semantics
+from core import advisor as _advisor
 
 SNAPSHOT_PATH = Path.home() / ".kckit" / "box_snapshot.json"
 UI_ATLAS_DIR = ROOT / "data" / "ui_atlas" / "raw"
@@ -35,6 +36,31 @@ POI_SCREENSHOT_URL = "http://127.0.0.1:23457/screenshot"
 
 _browser_clients: set[WebSocket] = set()
 _last_scene_screen: str | None = None  # last screen classified from scene_tree
+_last_state_payload: dict | None = None   # full plugin state (advisor input)
+_last_tree_payload: dict | None = None    # last scene tree (advisor input)
+
+# ── Advisor (suggest/mock mode) ─────────────────────────────────────────────
+_advisor_enabled = False
+_advisor_config: dict = dict(_advisor.DEFAULT_CONFIG)
+_advisor_last: dict | None = None
+
+
+async def _advisor_tick() -> None:
+    """Re-derive the suggestion from current world state; broadcast on change."""
+    global _advisor_last
+    if not _advisor_enabled:
+        return
+    try:
+        sug = _advisor.next_step(_last_state_payload, _last_scene_screen,
+                                 _last_tree_payload, _advisor_config)
+    except Exception as e:
+        print(f"[advisor] error: {e}")
+        return
+    key = (sug or {}).get("instruction"), str((sug or {}).get("target"))
+    last_key = (_advisor_last or {}).get("instruction"), str((_advisor_last or {}).get("target"))
+    if key != last_key:
+        _advisor_last = sug
+        await _broadcast({"type": "advisor_suggestion", "payload": sug})
 
 # ── Recording ──────────────────────────────────────────────────────────────
 _recording = False
@@ -415,7 +441,8 @@ async def _poi_bridge() -> None:
                     if msg_type == "scene_tree":
                         payload = msg.get("payload")
                         if payload and payload.get("nodes"):
-                            global _last_scene_screen
+                            global _last_scene_screen, _last_tree_payload
+                            _last_tree_payload = payload
                             cls = classify_screen(payload["nodes"])
                             await _broadcast({
                                 "type":     "scene_tree",
@@ -441,6 +468,7 @@ async def _poi_bridge() -> None:
                                           default=None) if cls["prefixes"] else None
                                 asyncio.create_task(_capture_screen_sample(
                                     f"unknown_{top or 'bare'}", payload))
+                            await _advisor_tick()
                         continue
 
                     # Forward spy/probe/scene responses to browser
@@ -452,8 +480,10 @@ async def _poi_bridge() -> None:
 
                     # Full game state — extract and forward curated subset (ships are too large)
                     if msg_type == "state":
-                        global _ship_names
+                        global _ship_names, _last_state_payload
                         payload = msg.get("payload") or {}
+                        _last_state_payload = payload
+                        await _advisor_tick()
                         for sid, ship in (payload.get("ships") or {}).items():
                             name = ((ship.get("$master") or {}).get("api_name") or "")
                             if name:
@@ -1068,6 +1098,35 @@ async def pull_scene_tree():
     if not result or "error" in result or not result.get("nodes"):
         return {"payload": None, "classify": None}
     return {"payload": result, "classify": classify_screen(result["nodes"])}
+
+
+# ── Advisor endpoints ──────────────────────────────────────────────────────
+
+@app.get("/api/advisor")
+async def advisor_status():
+    return {"enabled": _advisor_enabled, "config": _advisor_config,
+            "suggestion": _advisor_last}
+
+
+@app.post("/api/advisor")
+async def advisor_set(body: dict):
+    """Enable/disable suggest mode and merge config.
+    Body: {"enabled": bool?, "config": {...}?}"""
+    global _advisor_enabled, _advisor_config, _advisor_last
+    if "enabled" in body:
+        _advisor_enabled = bool(body["enabled"])
+        if not _advisor_enabled:
+            _advisor_last = None
+            await _broadcast({"type": "advisor_suggestion", "payload": None})
+    if isinstance(body.get("config"), dict):
+        for k, v in body["config"].items():
+            if isinstance(v, dict) and isinstance(_advisor_config.get(k), dict):
+                _advisor_config[k] = {**_advisor_config[k], **v}
+            else:
+                _advisor_config[k] = v
+    _advisor_last = None        # force re-broadcast with new config
+    await _advisor_tick()
+    return {"enabled": _advisor_enabled, "config": _advisor_config}
 
 
 # ── Browser WebSocket ─────────────────────────────────────────────────────

@@ -220,6 +220,19 @@ body { display: flex; flex-direction: column; }
 }
 
 /* ── RESOURCES ── */
+#advisor-panel { padding: 6px 10px; border-bottom: 1px solid var(--border); }
+#advisor-config { display: flex; gap: 10px; font-size: 11px; flex-wrap: wrap;
+  color: var(--dim); margin: 4px 0; align-items: center; }
+#advisor-config label { cursor: pointer; }
+#advisor-card {
+  margin-top: 6px; padding: 8px 10px; border-radius: 4px;
+  background: rgba(88,198,255,0.08); border: 1px solid #2a5a7d;
+}
+#advisor-card.hidden { display: none; }
+#advisor-instruction { font-size: 13px; color: #58c6ff; font-weight: 600; }
+#advisor-reason { font-size: 11px; color: var(--dim); margin-top: 3px; }
+#advisor-toggle.active { color: #fff; background: #1b4a2d; border-color: #3fb950; }
+
 #resources-panel {
   flex-shrink: 0;
   background: var(--panel);
@@ -423,6 +436,23 @@ body { display: flex; flex-direction: column; }
   <div id="right-col">
 
     <!-- RESOURCES -->
+    <!-- AGENT ADVISOR (suggest / mock-op mode) -->
+    <div id="advisor-panel">
+      <div class="sec-hdr">代理建议（mock 操作）
+        <button id="advisor-toggle" class="hbtn" style="float:right">启动</button>
+      </div>
+      <div id="advisor-config">
+        <label><input type="checkbox" id="adv-exp" checked> 远征收发</label>
+        <label><input type="checkbox" id="adv-supply" checked> 补给</label>
+        <label><input type="checkbox" id="adv-quest" checked> 领任务</label>
+        <span id="adv-plan" title="舰队→远征计划（POST /api/advisor 可改）">计划 2→9 3→11 4→37</span>
+      </div>
+      <div id="advisor-card" class="hidden">
+        <div id="advisor-instruction"></div>
+        <div id="advisor-reason"></div>
+      </div>
+    </div>
+
     <div id="resources-panel">
       <div class="sec-hdr">Resources</div>
       <div id="resources-grid">
@@ -1002,6 +1032,8 @@ function renderScene() {
       _outline(ctx, n, '#58c6ff', sem ? sem.split('.')[1] : (n.t || ''));
     }
   }
+
+  drawSuggestionMarker(ctx);   // advisor mock-op target, on top of everything
 }
 
 function _drawNode(ctx, n, sprites, overlay) {
@@ -1098,7 +1130,8 @@ function _drawNode(ctx, n, sprites, overlay) {
 
 function updateReconVisibility() {
   const overlay = (typeof _sceneOvVisible !== 'undefined') && _sceneOvVisible;
-  reconCanvas.style.display = (viewMode === 'recon' || overlay) ? 'block' : 'none';
+  const sug = (typeof lastSuggestion !== 'undefined') && lastSuggestion && lastSuggestion.target;
+  reconCanvas.style.display = (viewMode === 'recon' || overlay || sug) ? 'block' : 'none';
   const legend = document.getElementById('ov-legend');
   if (legend) legend.classList.toggle('hidden', !overlay);
 }
@@ -1149,6 +1182,66 @@ function setViewMode(m) {
 }
 document.querySelectorAll('.vbtn').forEach(b =>
   b.addEventListener('click', () => setViewMode(b.dataset.mode)));
+
+// ── Agent advisor (suggest / mock-op mode) ──────────────────────────────────
+let advisorOn = false;
+let lastSuggestion = null;
+const advCard = document.getElementById('advisor-card');
+const advToggle = document.getElementById('advisor-toggle');
+
+function renderSuggestion(sug) {
+  lastSuggestion = sug;
+  if (!sug) {
+    advCard.classList.add('hidden');
+  } else {
+    advCard.classList.remove('hidden');
+    document.getElementById('advisor-instruction').textContent = '👉 ' + sug.instruction;
+    document.getElementById('advisor-reason').textContent =
+      `${sug.reason}${sug.target ? `  [${sug.target.source === 'semantic' ? '场景树' : '手动标定'}: ${sug.target.label}]` : ''}`;
+  }
+  updateReconVisibility();
+  scheduleRecon();
+}
+
+function drawSuggestionMarker(ctx) {
+  if (typeof advisorOn === 'undefined' || typeof lastSuggestion === 'undefined') return;
+  const t = lastSuggestion && lastSuggestion.target;
+  if (!advisorOn || !t) return;
+  const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
+  ctx.strokeStyle = '#ffd33d'; ctx.lineWidth = 3;
+  ctx.strokeRect(t.x, t.y, t.w, t.h);
+  ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI * 2); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx - 26, cy); ctx.lineTo(cx - 8, cy);
+  ctx.moveTo(cx + 8, cy);  ctx.lineTo(cx + 26, cy);
+  ctx.moveTo(cx, cy - 26); ctx.lineTo(cx, cy - 8);
+  ctx.moveTo(cx, cy + 8);  ctx.lineTo(cx, cy + 26);
+  ctx.stroke();
+  ctx.font = '14px sans-serif'; ctx.fillStyle = '#ffd33d';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('👉 ' + (t.label || ''), t.x, t.y - 4);
+}
+
+async function postAdvisor(body) {
+  try {
+    const r = await fetch('/api/advisor', { method: 'POST',
+      headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    return await r.json();
+  } catch { return null; }
+}
+
+advToggle.addEventListener('click', async () => {
+  advisorOn = !advisorOn;
+  advToggle.textContent = advisorOn ? '停止' : '启动';
+  advToggle.classList.toggle('active', advisorOn);
+  await postAdvisor({ enabled: advisorOn });
+  if (!advisorOn) renderSuggestion(null);
+});
+
+for (const [id, key] of [['adv-exp', 'expedition'], ['adv-supply', 'supply'], ['adv-quest', 'quest_claim']]) {
+  document.getElementById(id).addEventListener('change', e =>
+    postAdvisor({ config: { [key]: { enabled: e.target.checked } } }));
+}
 
 // ── Event log ──────────────────────────────────────────────────────────────
 let logEntries = [];
@@ -1410,6 +1503,12 @@ function handleWsMessage(msg) {
       }
       break;
     }
+
+    // Advisor suggestion (suggest / mock-op mode)
+    case 'advisor_suggestion':
+      renderSuggestion(msg.payload);
+      if (msg.payload) logInfo(`👉 ${msg.payload.instruction}`);
+      break;
 
     // Live scene tree (perception v2) → reconstruction + classification
     case 'scene_tree':
