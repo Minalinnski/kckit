@@ -43,14 +43,23 @@ common:
   tab_album:      {frames: [port_skin_1_47], verified: 2026-06-09}   # 図鑑表示
   tab_items:      {frames: [port_skin_1_33], verified: 2026-06-09}   # アイテム
   tab_furniture:  {frames: [port_skin_1_35], verified: 2026-06-09}   # 模様替え
-  tab_quest:      {frames: [port_skin_1_39], verified: 2026-06-09}   # 任務
+  tab_quest:      {frames: [port_skin_1_39, port_skin_1_37], verified: 2026-06-11}  # 任務 (37=selected)
   item_shop:      {frames: [port_skin_1_25], verify: runtime}        # 60x56 right of 任務
+  back_btn:                       # 戻る — big arrow button, multiple screens
+    frames: [common_misc_24]
+    verified: 2026-06-11
+  settings_btn:                   # 端末設定 gear (bottom right at port)
+    frames: [port_option_3]
+    verified: 2026-06-11
 
 repair:                           # 入渠 (atlas: repair_main)
   dock_slot:                      # alpha-0 click zone per dock, 252x72 — use
                                   # find_all to get all 4, ordered by y
     frames: [repair_main_1]
     verified: 2026-06-09
+  bucket_btn:                     # 高速修復 (バケツ)
+    frames: [repair_main_2]
+    verified: 2026-06-11
 
 hensei:                           # 編成 (atlas: organize_main)
   slot_card:                      # whole ship slot card (click = select ship)
@@ -65,6 +74,18 @@ hensei:                           # 編成 (atlas: organize_main)
   slot_shutter:                   # 247x157 carousel shutter panels per slot
     frames: [organize_main_31, organize_main_32]
     verify: runtime
+  expand_btn:                     # 編成展開
+    frames: [organize_main_50]
+    verified: 2026-06-11
+  record_btn:                     # 編成記録
+    frames: [organize_main_53]
+    verified: 2026-06-11
+  release_escorts_btn:            # 随伴艦一括解除
+    frames: [organize_main_58]
+    verified: 2026-06-11
+  supply_badge:                   # 給 shortcut badge
+    frames: [organize_main_17]
+    verified: 2026-06-11
 
 supply:                           # 補給 (atlas: supply_main)
   # Buttons are 138×43; the interactive flag tracks ENABLED state (a fully
@@ -74,8 +95,8 @@ supply:                           # 補給 (atlas: supply_main)
     frames: [supply_main_13, supply_main_12]
     verify: runtime
   aircraft_resupply_btn:          # 艦載機補充 (left of pair)
-    frames: [supply_main_16, supply_main_17]
-    verify: runtime
+    frames: [supply_main_15, supply_main_16]   # 15=enabled (observed interactive
+    verified: 2026-06-11                        # 2026-06-11), 16=disabled
   supply_all_btn:                 # まとめて補給 (156×48 bar, bottom right)
     frames: [supply_main_4, supply_main_5]
     verify: runtime
@@ -106,6 +127,31 @@ expedition_select:                # 遠征選択 (mostly texture-less interactiv
   tab_expedition:
     frames: [sally_common_46]
     verified: 2026-06-09
+
+port:                             # 母港转轮 (atlas: port_ringmenu) — labeled from
+                                  # contact sheet 2026-06-11; positions pending a
+                                  # clean runtime cross-check (capture had dialog)
+  ring_sortie:                    # 出撃 (ship silhouette + text variants)
+    frames: [port_ringmenu_1, port_ringmenu_2, port_ringmenu_26, port_ringmenu_27]
+    verify: runtime
+  ring_hensei:                    # 編成 gear
+    frames: [port_ringmenu_15, port_ringmenu_16]
+    verify: runtime
+  ring_equipment:                 # 改装 gear
+    frames: [port_ringmenu_17, port_ringmenu_18]
+    verify: runtime
+  ring_repair:                    # 入渠 gear
+    frames: [port_ringmenu_19, port_ringmenu_20]
+    verify: runtime
+  ring_factory:                   # 工廠 gear
+    frames: [port_ringmenu_5, port_ringmenu_6]
+    verify: runtime
+  ring_supply:                    # 補給 gear
+    frames: [port_ringmenu_28, port_ringmenu_29, port_ringmenu_30]
+    verify: runtime
+  ring_improve:                   # 改修工廠 (明石)
+    frames: [port_ringmenu_21]
+    verify: runtime
 
 quest_list:                       # 任務 (atlas: duty_main) — from 2026-06-10 capture
   quest_rows:                     # 945×96 rows ×5 — find_all by y
@@ -155,6 +201,9 @@ equipment:                        # 改装 (atlas: remodel_main)
     verified: 2026-06-10
   preset_tab_1: {frames: [remodel_preset_39], verify: runtime}
   preset_tab_2: {frames: [remodel_preset_41], verify: runtime}
+  unequip_btn:                    # × remove-equipment toggle (15×15)
+    frames: [remodel_main_56]
+    verified: 2026-06-11
 
 practice:                         # 演習 (atlas: sally_practice)
   opponent_rows:                  # 939×79 ×5 — find_all by y
@@ -190,6 +239,19 @@ sortie_world:                     # 海域選択 — verified 2026-06-10 from ca
   tab_sortie:    {frames: [sally_common_47, sally_common_48], verified: 2026-06-10}
   tab_practice:  {frames: [sally_common_42, sally_common_43], verified: 2026-06-10}  # 43 observed on practice screen
   tab_expedition: {frames: [sally_common_44, sally_common_46], verified: 2026-06-10}
+
+map_decision:                     # 地图决策弹窗（離脱判定/夜戦突入/進撃撤退 同布局）
+  # SAFETY-CRITICAL: the same two-option layout serves multiple dialogs with
+  # DIFFERENT meanings per side. NEVER click by position alone — first read
+  # the dialog type from visible Text nodes (find_text: 離脱判定→left=退避;
+  # 夜戦/進撃 dialogs differ). Verified 2026-06-11 from live 離脱判定 capture
+  # (時津風改 taiha 3/32: left 273×226 @301,450 = 退避, right = 退避せず).
+  option_left:
+    geom: {w: [260, 290], h: [210, 240]}
+    verified: 2026-06-11
+  option_right:
+    geom: {w: [260, 290], h: [210, 240]}
+    verified: 2026-06-11
 
 battle_result:                    # 戦闘結果 (atlas: battle_result_main)
   continue_anywhere:              # whole screen is one click-to-continue zone

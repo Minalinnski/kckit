@@ -37,16 +37,23 @@ _SEMANTICS_PATH = (
 # screens (overlays, sub-screens) are checked before generic ones, so e.g. a
 # formation-select overlay during sortie wins over the map atlas behind it.
 ATLAS_SCREEN_MAP: list[tuple[str, str]] = [
+    # Decision dialogs before everything: they overlay battle/map screens.
+    # The dialog TYPE (離脱判定/夜戦突入/進撃撤退…) is NOT in the fingerprint —
+    # read it from the visible PIXI.Text nodes (find_text).
+    ("map_decision", "map_decision"),
     # battle first: the battle HUD shows formation icons (sally_jin frames),
     # but formation_select never shows battle sprites
     ("battle_result", "battle_result"),
+    ("battle_telop", "battle"),
     ("battle_main", "battle"),
+    ("prac_main", "practice_battle"),
     ("sally_jin", "formation_select"),
     ("sally_top", "sortie_type"),
     ("sally_sortie", "sortie_world"),
     ("sally_map", "sortie_map"),
     ("sally_expedition", "expedition_select"),
     ("sally_practice", "practice"),
+    ("map_main", "sortie_map"),
     ("sally_airbase", "airbase"),
     ("supply_main", "supply"),
     ("arsenal_main", "factory"),
