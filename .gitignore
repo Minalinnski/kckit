@@ -38,3 +38,6 @@ data/maps/raw/
 
 # Local archive of Figma-era manual calibration (superseded by git history)
 backup/
+
+# NGA raw archive (86MB of forum content — regenerate: nga_archive.py)
+data/nga_archive/
